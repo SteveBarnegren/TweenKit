@@ -14,9 +14,9 @@ public class Action <T: Tweenable> {
     
     public var startValue: T! // Make private - set in initialiser
     public var endValue: T! // Make private - set in initialiser
+    public var duration = 1 // Make private - set in initialiser
     
     public var updateHandler: (_: T) -> () = {_ in} // Make private - set in initialiser
-    
     
     public init() {
     }

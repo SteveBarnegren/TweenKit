@@ -32,7 +32,9 @@ class ViewController: UIViewController {
         let action = InterpolationAction<CGPoint>()
         return action
     }()
-
+    
+    var lastTimeStamp: CFTimeInterval?
+    var elapsedTime: CFTimeInterval = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ class ViewController: UIViewController {
         view.addSubview(testView)
         view.addSubview(slider)
         
+        
         // Setup the action
         action.startValue = CGPoint(x: 0, y: 0)
         action.endValue = CGPoint(x: 200, y: 200)
@@ -48,6 +51,10 @@ class ViewController: UIViewController {
             newPoint in
             self.testView.frame.origin = newPoint
         }
+        
+        // Start the display link
+        startDisplayLink()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -60,6 +67,44 @@ class ViewController: UIViewController {
                               y: view.bounds.size.height - slider.bounds.size.height - 30,
                               width: view.bounds.size.width - (margin * 2),
                               height: slider.bounds.size.height);
+    }
+    
+    // MARK: - DisplayLink
+    
+    func startDisplayLink() {
+        let displaylink = CADisplayLink(target: self,
+                                        selector: #selector(step))
+        
+        displaylink.add(to: .current,
+                        forMode: .defaultRunLoopMode)
+    }
+    
+    func step(displaylink: CADisplayLink) {
+        print(displaylink.timestamp)
+        
+        let duration = Double(2.5)
+        
+        // We need a previous time stamp to check against. Save if we don't already have one
+        guard let last = lastTimeStamp else{
+            lastTimeStamp = displaylink.timestamp
+            return
+        }
+        
+        // Increase elapsed time
+        let dt = displaylink.timestamp - last
+        elapsedTime += dt
+        
+        // Wrap if required
+        if elapsedTime > duration {
+            elapsedTime -= duration
+        }
+        
+        // Update the action
+        action.updateWithTime(t: elapsedTime / duration)
+        
+        // Save the current time
+        lastTimeStamp = displaylink.timestamp
+        
     }
     
     // MARK: - Slider callback

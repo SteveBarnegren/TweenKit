@@ -14,6 +14,7 @@
 		6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */; };
 		6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */; };
 		6750B9421E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */; };
+		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +29,8 @@
 
 /* Begin PBXFileReference section */
 		6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6750B8F61E7C855A00E7AEE2 /* TweenKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweenKit.h; sourceTree = "<group>"; };
-		6750B8F71E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6750B8F61E7C855A00E7AEE2 /* TweenKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TweenKit.h; path = TweenKit/TweenKit.h; sourceTree = "<group>"; };
+		6750B8F71E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TweenKit/Info.plist; sourceTree = "<group>"; };
 		6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweenKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9011E7C855A00E7AEE2 /* TweenKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweenKitTests.swift; sourceTree = "<group>"; };
 		6750B9031E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +38,7 @@
 		6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolateAction.swift; sourceTree = "<group>"; };
 		6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweenable.swift; sourceTree = "<group>"; };
 		6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Tweenable.swift"; sourceTree = "<group>"; };
+		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				6750B8F51E7C855A00E7AEE2 /* TweenKit */,
+				6750B8F61E7C855A00E7AEE2 /* TweenKit.h */,
+				6750B8F71E7C855A00E7AEE2 /* Info.plist */,
 				6750B9001E7C855A00E7AEE2 /* TweenKitTests */,
 				6750B8F41E7C855A00E7AEE2 /* Products */,
 			);
@@ -79,9 +83,8 @@
 		6750B8F51E7C855A00E7AEE2 /* TweenKit */ = {
 			isa = PBXGroup;
 			children = (
-				6750B8F61E7C855A00E7AEE2 /* TweenKit.h */,
-				6750B8F71E7C855A00E7AEE2 /* Info.plist */,
 				6750B93E1E7C908400E7AEE2 /* Tweenable */,
+				6750B9431E7C9B3C00E7AEE2 /* Easing */,
 				6750B93D1E7C8F3000E7AEE2 /* Actions */,
 			);
 			path = TweenKit;
@@ -112,6 +115,14 @@
 				6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */,
 			);
 			name = Tweenable;
+			sourceTree = "<group>";
+		};
+		6750B9431E7C9B3C00E7AEE2 /* Easing */ = {
+			isa = PBXGroup;
+			children = (
+				6750B9441E7C9B4C00E7AEE2 /* Easing.swift */,
+			);
+			name = Easing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */,
 				6750B9371E7C878F00E7AEE2 /* Action.swift in Sources */,
 				6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */,
 				6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */,
