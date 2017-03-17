@@ -1,0 +1,16 @@
+PODS:
+  - TweenKit (0.1.0)
+
+DEPENDENCIES:
+  - TweenKit (from `../`)
+
+EXTERNAL SOURCES:
+  TweenKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TweenKit: 4feb6557522e2718455e9434346c7e161c5b0cd5
+
+PODFILE CHECKSUM: e35a292d29d0b0c3d916b6f275b562e313c17214
+
+COCOAPODS: 1.2.0
