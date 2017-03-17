@@ -1,6 +1,0 @@
-framework module Pods_TweenKit_Example {
-  umbrella header "Pods-TweenKit_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
