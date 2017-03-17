@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TweenKit_Example' do
+  pod 'TweenKit', :path => '../'
+
+  target 'TweenKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
