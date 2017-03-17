@@ -352,6 +352,7 @@
 				6750B92A1E7C85A300E7AEE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
