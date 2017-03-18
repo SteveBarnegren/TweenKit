@@ -54,10 +54,10 @@ class ViewController: UIViewController {
         // Create the action
         action = InterpolationAction(from: CGPoint(x: 0, y: 0),
                                      to: CGPoint(x: 200, y: 200),
-                                     duration: 5) {
+                                     duration: 3) {
                                         self.testView.frame.origin = $0
         }
-        action.easing = .sineInOut
+        action.easing = .elasticInOut
         
         // Create the Animation
         let animation = Animation(action: action)
