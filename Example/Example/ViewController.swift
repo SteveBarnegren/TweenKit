@@ -28,10 +28,7 @@ class ViewController: UIViewController {
         return slider
     }()
     
-    let action: InterpolationAction<CGPoint> = {
-        let action = InterpolationAction<CGPoint>()
-        return action
-    }()
+    var action: InterpolationAction<CGPoint>!
     
     var lastTimeStamp: CFTimeInterval?
     var elapsedTime: CFTimeInterval = 0
@@ -42,18 +39,30 @@ class ViewController: UIViewController {
         // Add Subviews
         view.addSubview(testView)
         view.addSubview(slider)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        perform(#selector(startTheAnimation), with: nil, afterDelay: 3)
+    }
+    
+    func startTheAnimation() {
         
-        // Setup the action
-        action.startValue = CGPoint(x: 0, y: 0)
-        action.endValue = CGPoint(x: 200, y: 200)
-        action.updateHandler = {
-            newPoint in
-            self.testView.frame.origin = newPoint
+        print("Start the animation!")
+        
+        // Create the action
+        action = InterpolationAction(from: CGPoint(x: 0, y: 0),
+                                     to: CGPoint(x: 200, y: 200),
+                                     duration: 5) {
+                                        self.testView.frame.origin = $0
         }
+        action.easing = .sineInOut
         
-        // Start the display link
-        startDisplayLink()
+        // Create the Animation
+        let animation = Animation(action: action)
+        animation.run()
+
         
     }
     
@@ -69,48 +78,9 @@ class ViewController: UIViewController {
                               height: slider.bounds.size.height);
     }
     
-    // MARK: - DisplayLink
-    
-    func startDisplayLink() {
-        let displaylink = CADisplayLink(target: self,
-                                        selector: #selector(step))
-        
-        displaylink.add(to: .current,
-                        forMode: .defaultRunLoopMode)
-    }
-    
-    func step(displaylink: CADisplayLink) {
-        print(displaylink.timestamp)
-        
-        let duration = Double(2.5)
-        
-        // We need a previous time stamp to check against. Save if we don't already have one
-        guard let last = lastTimeStamp else{
-            lastTimeStamp = displaylink.timestamp
-            return
-        }
-        
-        // Increase elapsed time
-        let dt = displaylink.timestamp - last
-        elapsedTime += dt
-        
-        // Wrap if required
-        if elapsedTime > duration {
-            elapsedTime -= duration
-        }
-        
-        // Update the action
-        action.updateWithTime(t: elapsedTime / duration)
-        
-        // Save the current time
-        lastTimeStamp = displaylink.timestamp
-        
-    }
-    
     // MARK: - Slider callback
     func sliderValueChanged() {
         print("Slider value changed")
-        action.updateWithTime(t: Double(slider.value))
     }
    
 }

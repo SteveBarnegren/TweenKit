@@ -8,25 +8,25 @@
 
 import Foundation
 
-public class Action <T: Tweenable> {
+public protocol SchedulableAction {
+    func updateWithTime(t: CFTimeInterval)
+    var duration: CFTimeInterval {get}
+}
+
+public class Action<T: Tweenable> : SchedulableAction {
     
     // MARK: - Properties
-    
-    public var startValue: T! // Make private - set in initialiser
-    public var endValue: T! // Make private - set in initialiser
-    public var duration = 1 // Make private - set in initialiser
-    
-    public var updateHandler: (_: T) -> () = {_ in} // Make private - set in initialiser
+    public internal(set) var duration: CFTimeInterval = 0
+    var updateHandler: (_: T) -> () = {_ in}
     
     public init() {
     }
     
-    // MARK: - Update
-
-    public func updateWithTime(t: Double) { // Should this really be public?
-        fatalError("Subclass must override")
-    }
+    // MARK: - Schedulable
     
+    public func updateWithTime(t: Double) {
+        fatalError("Subclasses must override")
+    }
 }
  
 

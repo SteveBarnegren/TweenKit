@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Easing {
+public enum Easing {
     case linear
     case sineIn
     case sineOut
