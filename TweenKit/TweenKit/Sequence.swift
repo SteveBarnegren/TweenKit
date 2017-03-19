@@ -12,6 +12,12 @@ public class Sequence: SchedulableAction {
     
     // MARK: - Public
     
+    public var reverse = false {
+        didSet {
+            actions.forEach{ $0.reverse = reverse }
+        }
+    }
+
     public init() {
     }
     
@@ -60,7 +66,7 @@ public class Sequence: SchedulableAction {
             
             // If we've changed action, finish the last one
             if let last = lastRunAction, last !== action {
-                last.updateWithTime(t: 1)
+                last.updateWithTime(t: reverse ? 0 : 1)
             }
             
             // Update the current action

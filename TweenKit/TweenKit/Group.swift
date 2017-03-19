@@ -13,6 +13,12 @@ public class Group: SchedulableAction {
     
     // MARK: - Public
     
+    public var reverse = false {
+        didSet {
+            actions.forEach{ $0.reverse = reverse }
+        }
+    }
+    
     public init() {
     }
     
@@ -59,9 +65,8 @@ public class Group: SchedulableAction {
             
             // Finish the Action if finished in the last update
             else if lastElapsedTime < action.duration, elapsedTime > action.duration {
-                action.updateWithTime(t: 1)
+                action.updateWithTime(t: reverse ? 0 : 1)
             }
-            
         }
         
         lastUpdateT = t

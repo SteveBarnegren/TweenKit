@@ -11,14 +11,14 @@ import Foundation
 public protocol SchedulableAction: class {
     func updateWithTime(t: CFTimeInterval)
     var duration: CFTimeInterval {get}
+    var reverse: Bool {get set}
 }
-
-
 
 public class Action<T: Tweenable> : SchedulableAction {
     
     // MARK: - Properties
     public internal(set) var duration: CFTimeInterval = 0
+    public var reverse: Bool = false
     var updateHandler: (_: T) -> () = {_ in}
     
     public init() {
