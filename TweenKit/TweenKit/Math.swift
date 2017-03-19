@@ -29,3 +29,10 @@ extension Comparable {
         return self
     }
 }
+
+extension Double {
+    
+    var fract: Double {
+        return self - Double(Int(self))
+    }
+}
