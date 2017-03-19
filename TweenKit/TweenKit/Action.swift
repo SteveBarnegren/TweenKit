@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SchedulableAction {
+public protocol SchedulableAction: class {
     func updateWithTime(t: CFTimeInterval)
     var duration: CFTimeInterval {get}
 }

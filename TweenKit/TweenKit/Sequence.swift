@@ -37,6 +37,7 @@ public class Sequence: SchedulableAction {
     public private(set) var duration = 0.0
     
     var actions = [SchedulableAction]()
+    var lastRunAction: SchedulableAction?
     
     // MARK: - Private Methods
 
@@ -57,17 +58,18 @@ public class Sequence: SchedulableAction {
                 continue
             }
             
-            // TODO: Keep a reference to the last action, if it has changed, can pass 0 or 1 t
+            // If we've changed action, finish the last one
+            if let last = lastRunAction, last !== action {
+                last.updateWithTime(t: 1)
+            }
             
+            // Update the current action
             let actionElapsed = (elapsedTime - offset) / action.duration
             action.updateWithTime(t: actionElapsed)
+            lastRunAction = action
             
             break
         }
     }
-    
-    
-    
-    
     
 }

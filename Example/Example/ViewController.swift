@@ -49,12 +49,13 @@ class ViewController: UIViewController {
         
         print("Start the animation!")
         
-        // Create the action
+        // move to the right
         let move = InterpolationAction(from: CGPoint(x: 0, y: 0),
-                                         to: CGPoint(x: 200, y: 200),
+                                         to: CGPoint(x: 300, y: 50),
                                          duration: 3) {
                                             self.testView.frame.origin = $0
         }
+        move.easing = .elasticOut
         
         let scale = InterpolationAction(from: self.testView.frame.size,
                                         to: CGSize(width: 100, height: 100),
@@ -62,13 +63,29 @@ class ViewController: UIViewController {
                                             self.testView.frame.size = $0
         }
         
-        //let group = Group(actions: move, scale)
+        let moveThenScale = Sequence(actions: move, scale)
+        
+        let changeColor = InterpolationAction(from: UIColor.blue,
+                                              to: UIColor.red,
+                                              duration: 10) {
+                                                self.testView.backgroundColor = $0
+        }
+        
+        let withChangeColor = Group(actions: moveThenScale, changeColor)
         
         
-        let sequence = Sequence(actions: move, scale)
+        let moveAgain = InterpolationAction(from: CGPoint(x: 300, y: 50),
+                                            to: CGPoint(x: 100, y: 500),
+                                            duration: 4) {
+                                                self.testView.frame.origin = $0
+        }
+        moveAgain.easing = .exponentialInOut
+        
+        
+        let theWholeThing = Sequence(actions: withChangeColor, moveAgain)
         
         // Create the Animation
-        let animation = Animation(action: sequence)
+        let animation = Animation(action: theWholeThing)
         animation.run()
         
     }
