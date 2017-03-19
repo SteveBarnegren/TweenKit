@@ -62,9 +62,7 @@ class ViewController: UIViewController {
                                             self.testView.frame.size = $0
         }
         
-        let group = Group()
-        group.add(action: move)
-        group.add(action: scale)
+        let group = Group(actions: move, scale)
         
         // Create the Animation
         let animation = Animation(action: group)

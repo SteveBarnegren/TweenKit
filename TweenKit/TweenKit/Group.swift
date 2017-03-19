@@ -16,6 +16,18 @@ public class Group: SchedulableAction {
     public init() {
     }
     
+    public init(actions: [SchedulableAction]) {
+        actions.forEach{
+            add(action: $0)
+        }
+    }
+    
+    public init(actions: SchedulableAction...) {
+        actions.forEach{
+            add(action: $0)
+        }
+    }
+    
     public func add(action: SchedulableAction) {
         actions.append(action)
         calculateDuration()
