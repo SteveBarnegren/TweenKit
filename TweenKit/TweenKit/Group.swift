@@ -13,6 +13,9 @@ public class Group: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
     public var reverse = false {
         didSet {
             actions.forEach{ $0.reverse = reverse }
@@ -47,6 +50,13 @@ public class Group: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Private methods
     
+    public func willBecomeActive() {
+        onBecomeActive()
+        actions.forEach{
+            $0.willBecomeActive()
+        }
+    }
+    
     func calculateDuration() {
         duration = actions.reduce(0){ max($0, $1.duration) }
     }
@@ -66,6 +76,7 @@ public class Group: FiniteTimeAction, SchedulableAction {
             // Finish the Action if finished in the last update
             else if lastElapsedTime < action.duration, elapsedTime > action.duration {
                 action.update(t: reverse ? 0 : 1)
+                action.didBecomeInactive()
             }
         }
         

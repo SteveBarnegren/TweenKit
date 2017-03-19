@@ -14,6 +14,7 @@
 		673CB7721E7EA0BD00592F24 /* YoyoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7711E7EA0BD00592F24 /* YoyoAction.swift */; };
 		673CB7741E7EA8AA00592F24 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7731E7EA8AA00592F24 /* RepeatAction.swift */; };
 		673CB7761E7EAD3700592F24 /* RepeatForeverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */; };
+		673CB7781E7EC8F600592F24 /* RunBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7771E7EC8F600592F24 /* RunBlockAction.swift */; };
 		6750B8FD1E7C855A00E7AEE2 /* TweenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */; };
 		6750B9021E7C855A00E7AEE2 /* TweenKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9011E7C855A00E7AEE2 /* TweenKitTests.swift */; };
 		6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6750B8F61E7C855A00E7AEE2 /* TweenKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,6 +45,7 @@
 		673CB7711E7EA0BD00592F24 /* YoyoAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoAction.swift; sourceTree = "<group>"; };
 		673CB7731E7EA8AA00592F24 /* RepeatAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatAction.swift; sourceTree = "<group>"; };
 		673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatForeverAction.swift; sourceTree = "<group>"; };
+		673CB7771E7EC8F600592F24 /* RunBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunBlockAction.swift; sourceTree = "<group>"; };
 		6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B8F61E7C855A00E7AEE2 /* TweenKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TweenKit.h; path = TweenKit/TweenKit.h; sourceTree = "<group>"; };
 		6750B8F71E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TweenKit/Info.plist; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */,
 				673CB7711E7EA0BD00592F24 /* YoyoAction.swift */,
 				673CB7731E7EA8AA00592F24 /* RepeatAction.swift */,
+				673CB7771E7EC8F600592F24 /* RunBlockAction.swift */,
 				673CB7701E7EA05900592F24 /* Collections */,
 			);
 			name = Actions;
@@ -279,6 +282,7 @@
 				673CB7721E7EA0BD00592F24 /* YoyoAction.swift in Sources */,
 				6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */,
 				673CB76D1E7E92BB00592F24 /* Sequence.swift in Sources */,
+				673CB7781E7EC8F600592F24 /* RunBlockAction.swift in Sources */,
 				673CB7761E7EAD3700592F24 /* RepeatForeverAction.swift in Sources */,
 				6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */,
 				673CB7741E7EA8AA00592F24 /* RepeatAction.swift in Sources */,

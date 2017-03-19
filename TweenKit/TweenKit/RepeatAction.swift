@@ -12,6 +12,9 @@ public class RepeatAction: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
     public init(action: FiniteTimeAction, times: Int) {
         self.action = action
         self.repeats = times

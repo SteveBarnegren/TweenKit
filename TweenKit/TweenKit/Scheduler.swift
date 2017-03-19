@@ -63,7 +63,7 @@ import Foundation
     }
     
     @objc private func step(displaylink: CADisplayLink) {
-        print(displaylink.timestamp)
+        //print(displaylink.timestamp)
         
         // We need a previous time stamp to check against. Save if we don't already have one
         guard let last = lastTimeStamp else{

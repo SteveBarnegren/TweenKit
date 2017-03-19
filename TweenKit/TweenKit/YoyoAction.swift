@@ -12,6 +12,9 @@ public class YoyoAction: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
     public var reverse = false
 
     public init(action: FiniteTimeAction) {

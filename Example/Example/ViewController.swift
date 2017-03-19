@@ -80,6 +80,8 @@ class ViewController: UIViewController {
                                                 self.testView.frame.origin = $0
         }
         moveAgain.easing = .exponentialInOut
+        moveAgain.onBecomeActive = { print("Move again become active") }
+        moveAgain.onBecomeInactive = { print("Move again become inactive") }
         
         
         let theWholeThing = Sequence(actions: withChangeColor, moveAgain)

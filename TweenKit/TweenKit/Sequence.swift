@@ -12,6 +12,9 @@ public class Sequence: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
     public var reverse = false {
         didSet {
             actions.forEach{ $0.reverse = reverse }
@@ -56,6 +59,11 @@ public class Sequence: FiniteTimeAction, SchedulableAction {
         let elapsedTime = t * duration
 
         var offset = CFTimeInterval(0)
+        var passedLastAction = false
+        
+        if lastRunAction == nil {
+            passedLastAction = true
+        }
         
         for action in actions {
             
@@ -65,8 +73,17 @@ public class Sequence: FiniteTimeAction, SchedulableAction {
             }
             
             // If we've changed action, finish the last one
-            if let last = lastRunAction, last !== action {
-                last.update(t: reverse ? 0 : 1)
+            if lastRunAction !== action {
+                
+                // Finish the last action
+                if let last = lastRunAction {
+                    last.update(t: reverse ? 0 : 1)
+                    last.didBecomeInactive()
+                }
+                
+                // start the new action
+                action.willBecomeActive()
+                lastRunAction = action
             }
             
             // Update the current action
