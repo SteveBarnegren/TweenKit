@@ -20,7 +20,6 @@ public class Animation : Equatable {
         return action.duration
     }
     
-    
     private let action: SchedulableAction!
     
     public init(action: SchedulableAction) {

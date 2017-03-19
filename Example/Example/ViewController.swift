@@ -28,11 +28,9 @@ class ViewController: UIViewController {
         return slider
     }()
     
-    var action: InterpolationAction<CGPoint>!
-    
     var lastTimeStamp: CFTimeInterval?
     var elapsedTime: CFTimeInterval = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,17 +50,25 @@ class ViewController: UIViewController {
         print("Start the animation!")
         
         // Create the action
-        action = InterpolationAction(from: CGPoint(x: 0, y: 0),
-                                     to: CGPoint(x: 200, y: 200),
-                                     duration: 3) {
-                                        self.testView.frame.origin = $0
+        let move = InterpolationAction(from: CGPoint(x: 0, y: 0),
+                                         to: CGPoint(x: 200, y: 200),
+                                         duration: 3) {
+                                            self.testView.frame.origin = $0
         }
-        action.easing = .elasticInOut
+        
+        let scale = InterpolationAction(from: self.testView.frame.size,
+                                        to: CGSize(width: 100, height: 100),
+                                        duration: 3) {
+                                            self.testView.frame.size = $0
+        }
+        
+        let group = Group()
+        group.add(action: move)
+        group.add(action: scale)
         
         // Create the Animation
-        let animation = Animation(action: action)
+        let animation = Animation(action: group)
         animation.run()
-
         
     }
     

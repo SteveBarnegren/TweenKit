@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
+		673CB76B1E7E889100592F24 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* Group.swift */; };
 		6750B8FD1E7C855A00E7AEE2 /* TweenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */; };
 		6750B9021E7C855A00E7AEE2 /* TweenKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9011E7C855A00E7AEE2 /* TweenKitTests.swift */; };
 		6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6750B8F61E7C855A00E7AEE2 /* TweenKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		673CB7681E7DAEC000592F24 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		673CB76A1E7E889100592F24 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B8F61E7C855A00E7AEE2 /* TweenKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TweenKit.h; path = TweenKit/TweenKit.h; sourceTree = "<group>"; };
 		6750B8F71E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TweenKit/Info.plist; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				6750B9361E7C878F00E7AEE2 /* Action.swift */,
 				6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */,
+				673CB76A1E7E889100592F24 /* Group.swift */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				6750B9471E7D99FD00E7AEE2 /* Scheduler.swift in Sources */,
 				6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */,
 				6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */,
+				673CB76B1E7E889100592F24 /* Group.swift in Sources */,
 				6750B9421E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift in Sources */,
 				673CB7691E7DAEC000592F24 /* Math.swift in Sources */,
 			);
