@@ -40,7 +40,7 @@ public class Sequence: SchedulableAction {
     
     // MARK: - Private Properties
     
-    public private(set) var duration = 0.0
+    public private(set) var duration = ActionDuration.finite(0)
     
     var actions = [SchedulableAction]()
     var lastRunAction: SchedulableAction?
@@ -48,19 +48,20 @@ public class Sequence: SchedulableAction {
     // MARK: - Private Methods
 
     func calculateDuration() {
-        duration = actions.reduce(0) { $0 + $1.duration }
+        let value = actions.reduce(0) { $0 + $1.finiteDuration }
+        duration = .finite(value)
     }
     
     public func updateWithTime(t: CFTimeInterval) {
         
-        let elapsedTime = t * duration
+        let elapsedTime = t * finiteDuration
 
         var offset = CFTimeInterval(0)
         
         for action in actions {
             
-            guard offset + action.duration > elapsedTime else {
-                offset += action.duration
+            guard offset + action.finiteDuration > elapsedTime else {
+                offset += action.finiteDuration
                 continue
             }
             
@@ -70,7 +71,7 @@ public class Sequence: SchedulableAction {
             }
             
             // Update the current action
-            let actionElapsed = (elapsedTime - offset) / action.duration
+            let actionElapsed = (elapsedTime - offset) / action.finiteDuration
             action.updateWithTime(t: actionElapsed)
             lastRunAction = action
             

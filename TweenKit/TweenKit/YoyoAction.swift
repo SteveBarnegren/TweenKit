@@ -16,12 +16,12 @@ public class YoyoAction: SchedulableAction {
 
     public init(action: SchedulableAction) {
         self.action = action
-        self.duration = action.duration * 2
+        self.duration = .finite( action.finiteDuration * 2 )
     }
     
     // MARK: - Private Properties
     
-    public internal(set) var duration: CFTimeInterval
+    public internal(set) var duration: ActionDuration
     let action: SchedulableAction
     
     // MARK: - Private Methods

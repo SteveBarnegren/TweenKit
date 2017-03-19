@@ -15,7 +15,7 @@ public class RepeatAction: SchedulableAction {
     public init(action: SchedulableAction, times: Int) {
         self.action = action
         self.repeats = times
-        self.duration = action.duration * Double(times)
+        self.duration = .finite( action.finiteDuration * Double(times) )
     }
     
     // MARK: - Private Properties
@@ -25,7 +25,7 @@ public class RepeatAction: SchedulableAction {
         }
     }
 
-    public internal(set) var duration: CFTimeInterval
+    public internal(set) var duration: ActionDuration
     let action: SchedulableAction
     let repeats: Int
     

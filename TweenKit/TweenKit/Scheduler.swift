@@ -77,16 +77,26 @@ import Foundation
 
         for animation in animations {
             
-            var remove = false
-            if animation.elapsedTime + dt > animation.duration {
-                remove = true
-            }
-            
-            animation.elapsedTime = (animation.elapsedTime + dt).constrained(max: animation.duration)
-            animation.update(t: animation.elapsedTime / animation.duration)
-            
-            if remove {
-                animationsToRemove.append(animation)
+            switch animation.duration {
+            case .finite(let animDuration):
+                
+                var remove = false
+                if animation.elapsedTime + dt > animDuration {
+                    remove = true
+                }
+                
+                animation.elapsedTime = (animation.elapsedTime + dt).constrained(max: animDuration)
+                animation.update(t: animation.elapsedTime / animDuration)
+                
+                if remove {
+                    animationsToRemove.append(animation)
+                }
+
+            case .infinite: break
+                
+                // Infinite actions support t > 1
+//                animation.elapsedTime = (animation.elapsedTime + dt)
+//                animation.update(t: animation.elapsedTime / animation.)
             }
         }
         

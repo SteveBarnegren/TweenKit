@@ -18,7 +18,7 @@ public class InterpolationAction<T: Tweenable>: Action<T> {
     public init(from startValue: T, to endValue: T, duration: Double, update: @escaping (_: T) -> ()) {
         super.init()
         
-        self.duration = duration
+        self.duration = .finite(duration)
         self.startValue = startValue
         self.endValue = endValue
         self.updateHandler = update

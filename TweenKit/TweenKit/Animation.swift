@@ -16,7 +16,7 @@ public class Animation : Equatable {
     
     var elapsedTime: CFTimeInterval = 0
     
-    var duration: CFTimeInterval {
+    var duration: ActionDuration {
         return action.duration
     }
     
