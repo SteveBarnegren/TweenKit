@@ -8,32 +8,25 @@
 
 import Foundation
 
-public class RepeatForeverAction: SchedulableAction {
+public class RepeatForeverAction: InfiniteTimeAction, SchedulableAction {
 
     // MARK: - Public
-    public init(action: SchedulableAction) {
+    public init(action: FiniteTimeAction) {
         self.action = action;
     }
     
-    var finiteDuration: CFTimeInterval {
-        return self.action.finiteDuration
-    }
-    
     // MARK: - Private Properties
-    public let duration = ActionDuration.infinite
-    public var reverse = false // reverse state is ignored
-    let action: SchedulableAction
+    let action: FiniteTimeAction
 
     // MARK: - Private Methods
     
-    public func updateWithTime(t: CFTimeInterval) {
-        action.updateWithTime(t: t.fract)
+    public func update(elapsedTime: CFTimeInterval) {
+        let actionT = (elapsedTime / action.duration).fract
+        action.update(t: actionT)
     }
-    
 }
 
-
-public extension SchedulableAction {
+public extension FiniteTimeAction {
     
     public func repeatedForever() -> RepeatForeverAction {
         return RepeatForeverAction(action: self)

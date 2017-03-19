@@ -9,7 +9,7 @@
 import Foundation
 
 /** Groups run multiple actions in parallel */
-public class Group: SchedulableAction {
+public class Group: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
@@ -22,51 +22,50 @@ public class Group: SchedulableAction {
     public init() {
     }
     
-    public init(actions: [SchedulableAction]) {
+    public init(actions: [FiniteTimeAction]) {
         actions.forEach{
             add(action: $0)
         }
     }
     
-    public init(actions: SchedulableAction...) {
+    public init(actions: FiniteTimeAction...) {
         actions.forEach{
             add(action: $0)
         }
     }
     
-    public func add(action: SchedulableAction) {
+    public func add(action: FiniteTimeAction) {
         actions.append(action)
         calculateDuration()
     }
     
     // MARK: - Private Properties
     
-    public internal(set) var duration = ActionDuration.finite(0)
-    private var actions = [SchedulableAction]()
+    public internal(set) var duration = Double(0)
+    private var actions = [FiniteTimeAction]()
     private var lastUpdateT = 0.0
     
     // MARK: - Private methods
     
     func calculateDuration() {
-        let value = actions.reduce(0){ max($0, $1.finiteDuration) }
-        duration = .finite(value)
+        duration = actions.reduce(0){ max($0, $1.duration) }
     }
     
-    public func updateWithTime(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
         
-        let elapsedTime = t * finiteDuration
-        let lastElapsedTime = lastUpdateT * finiteDuration
+        let elapsedTime = t * duration
+        let lastElapsedTime = lastUpdateT * duration
         
         for action in actions {
             
             // Update the action if it is in progress
-            if elapsedTime < action.finiteDuration {
-                action.updateWithTime(t: elapsedTime / action.finiteDuration)
+            if elapsedTime < action.duration {
+                action.update(t: elapsedTime / action.duration)
             }
             
             // Finish the Action if finished in the last update
-            else if lastElapsedTime < action.finiteDuration, elapsedTime > action.finiteDuration {
-                action.updateWithTime(t: reverse ? 0 : 1)
+            else if lastElapsedTime < action.duration, elapsedTime > action.duration {
+                action.update(t: reverse ? 0 : 1)
             }
         }
         

@@ -10,24 +10,45 @@ import Foundation
 
 public class Animation : Equatable {
     
-    public func run(){
-        Scheduler.shared.add(animation: self)
-    }
-    
-    var elapsedTime: CFTimeInterval = 0
-    
-    var duration: ActionDuration {
-        return action.duration
-    }
-    
-    private let action: SchedulableAction!
+    // MARK: - Public
     
     public init(action: SchedulableAction) {
         self.action = action
     }
     
-    func update(t: Double) {
-        action.updateWithTime(t: t)
+    public func run(){
+        Scheduler.shared.add(animation: self)
+    }
+    
+    // MARK: - Properties
+
+    var hasDuration: Bool {
+        return action is FiniteTimeAction
+    }
+    
+    var duration: Double {
+        
+        guard let ftAction = action as? FiniteTimeAction else {
+            return 0
+        }
+        
+        return ftAction.duration
+    }
+    
+    var elapsedTime: CFTimeInterval = 0
+    
+    private let action: SchedulableAction!
+    
+    func update(elapsedTime: CFTimeInterval) {
+        
+        self.elapsedTime = elapsedTime
+        
+        if let action = action as? FiniteTimeAction {
+            action.update(t: elapsedTime / duration)
+        }
+        else if let action = action as? InfiniteTimeAction {
+            action.update(elapsedTime: elapsedTime)
+        }
     }
 }
 

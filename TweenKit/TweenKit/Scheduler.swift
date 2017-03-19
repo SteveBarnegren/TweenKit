@@ -77,27 +77,29 @@ import Foundation
 
         for animation in animations {
             
-            switch animation.duration {
-            case .finite(let animDuration):
+            // Animations containing finite time actions
+            if animation.hasDuration {
                 
                 var remove = false
-                if animation.elapsedTime + dt > animDuration {
+                if animation.elapsedTime + dt > animation.duration {
                     remove = true
                 }
                 
-                animation.elapsedTime = (animation.elapsedTime + dt).constrained(max: animDuration)
-                animation.update(t: animation.elapsedTime / animDuration)
+                let newTime = (animation.elapsedTime + dt).constrained(max: animation.duration)
+                animation.update(elapsedTime: newTime)
                 
                 if remove {
                     animationsToRemove.append(animation)
                 }
-
-            case .infinite: break
-                
-                // Infinite actions support t > 1
-//                animation.elapsedTime = (animation.elapsedTime + dt)
-//                animation.update(t: animation.elapsedTime / animation.)
             }
+                
+            // Animations containing infinite time actions
+            else{
+                
+                let newTime = animation.elapsedTime + dt
+                animation.update(elapsedTime: newTime)
+            }
+            
         }
         
         // Remove finished animations

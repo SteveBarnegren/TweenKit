@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         let theWholeThing = Sequence(actions: withChangeColor, moveAgain)
         
         // Create the Animation
-        let animation = Animation(action: theWholeThing.yoyo().repeated(3) )
+        let animation = Animation(action: theWholeThing.yoyo().repeated(2) )
         animation.run()
         
     }

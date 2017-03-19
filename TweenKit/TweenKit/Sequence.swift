@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Sequence: SchedulableAction {
+public class Sequence: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
@@ -21,58 +21,57 @@ public class Sequence: SchedulableAction {
     public init() {
     }
     
-    public init(actions: [SchedulableAction]) {
+    public init(actions: [FiniteTimeAction]) {
         actions.forEach{
             add(action: $0)
         }
     }
     
-    public init(actions: SchedulableAction...) {
+    public init(actions: FiniteTimeAction...) {
         actions.forEach{
             add(action: $0)
         }
     }
 
-    public func add(action: SchedulableAction) {
+    public func add(action: FiniteTimeAction) {
         actions.append(action)
         calculateDuration()
     }
     
     // MARK: - Private Properties
     
-    public private(set) var duration = ActionDuration.finite(0)
+    public private(set) var duration = Double(0)
     
-    var actions = [SchedulableAction]()
-    var lastRunAction: SchedulableAction?
+    var actions = [FiniteTimeAction]()
+    var lastRunAction: FiniteTimeAction?
     
     // MARK: - Private Methods
 
     func calculateDuration() {
-        let value = actions.reduce(0) { $0 + $1.finiteDuration }
-        duration = .finite(value)
+        duration = actions.reduce(0) { $0 + $1.duration }
     }
     
-    public func updateWithTime(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
         
-        let elapsedTime = t * finiteDuration
+        let elapsedTime = t * duration
 
         var offset = CFTimeInterval(0)
         
         for action in actions {
             
-            guard offset + action.finiteDuration > elapsedTime else {
-                offset += action.finiteDuration
+            guard offset + action.duration > elapsedTime else {
+                offset += action.duration
                 continue
             }
             
             // If we've changed action, finish the last one
             if let last = lastRunAction, last !== action {
-                last.updateWithTime(t: reverse ? 0 : 1)
+                last.update(t: reverse ? 0 : 1)
             }
             
             // Update the current action
-            let actionElapsed = (elapsedTime - offset) / action.finiteDuration
-            action.updateWithTime(t: actionElapsed)
+            let actionElapsed = (elapsedTime - offset) / action.duration
+            action.update(t: actionElapsed)
             lastRunAction = action
             
             break

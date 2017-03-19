@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class RepeatAction: SchedulableAction {
+public class RepeatAction: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
-    public init(action: SchedulableAction, times: Int) {
+    public init(action: FiniteTimeAction, times: Int) {
         self.action = action
         self.repeats = times
-        self.duration = .finite( action.finiteDuration * Double(times) )
+        self.duration = action.duration * Double(times)
     }
     
     // MARK: - Private Properties
@@ -25,21 +25,21 @@ public class RepeatAction: SchedulableAction {
         }
     }
 
-    public internal(set) var duration: ActionDuration
-    let action: SchedulableAction
+    public internal(set) var duration: Double
+    let action: FiniteTimeAction
     let repeats: Int
     
     // MARK: - Private Methods
     
-    public func updateWithTime(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
         
         let actionT = ( t * Double(repeats) ).fract
-        action.updateWithTime(t: actionT)
+        action.update(t: actionT)
     }
     
 }
 
-public extension SchedulableAction {
+public extension FiniteTimeAction {
     
     public func repeated(_ times: Int) -> RepeatAction {
         return RepeatAction(action: self, times: times)
