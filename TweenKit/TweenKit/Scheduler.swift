@@ -32,6 +32,10 @@ import Foundation
             stopLoop()
         }
     }
+    
+    var numRunningAnimations: Int {
+        return self.animations.count
+    }
 
     // MARK: - Properties
     
@@ -50,7 +54,7 @@ import Foundation
         }
         
         displayLink = CADisplayLink(target: self,
-                                    selector: #selector(step))
+                                    selector: #selector(displayLinkCallback))
         
         displayLink?.add(to: .current,
                          forMode: .defaultRunLoopMode)
@@ -62,7 +66,7 @@ import Foundation
         displayLink = nil
     }
     
-    @objc private func step(displaylink: CADisplayLink) {
+    @objc private func displayLinkCallback(displaylink: CADisplayLink) {
         //print(displaylink.timestamp)
         
         // We need a previous time stamp to check against. Save if we don't already have one
@@ -71,10 +75,16 @@ import Foundation
             return
         }
         
-        
         // Update Animations
         let dt = displaylink.timestamp - last
-
+        step(dt: dt)
+        
+        // Save the current time
+        lastTimeStamp = displaylink.timestamp
+    }
+    
+    func step(dt: Double) {
+        
         for animation in animations {
             
             // Animations containing finite time actions
@@ -93,7 +103,7 @@ import Foundation
                 }
             }
                 
-            // Animations containing infinite time actions
+                // Animations containing infinite time actions
             else{
                 
                 let newTime = animation.elapsedTime + dt
@@ -107,9 +117,7 @@ import Foundation
             remove(animation: $0)
         }
         animationsToRemove.removeAll()
-        
-        // Save the current time
-        lastTimeStamp = displaylink.timestamp
+
     }
 
 }
