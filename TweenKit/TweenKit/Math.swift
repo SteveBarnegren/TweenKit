@@ -8,6 +8,17 @@
 
 import Foundation
 
+func max<T: Comparable>(_ values: T...) -> T {
+    
+    var maxValue = values.first!
+    
+    values.dropFirst().forEach{
+        maxValue = max(maxValue, $0)
+    }
+    
+    return maxValue
+}
+
 extension Comparable {
     
     func constrained(min: Self) -> Self {

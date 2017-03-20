@@ -32,7 +32,4 @@ class Ticker {
         
         callback(remainingTime)
     }
-    
-    
-    
 }

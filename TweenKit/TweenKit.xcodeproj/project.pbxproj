@@ -10,6 +10,14 @@
 		09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04ED1E80065C0011E68E /* Ticker.swift */; };
 		09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F11E8018E20011E68E /* SchedulerTests.swift */; };
 		09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */; };
+		09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */; };
+		09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */; };
+		09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */; };
+		09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */; };
+		09FF20831E802D330029CB2D /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20821E802D330029CB2D /* GroupTests.swift */; };
+		09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20841E802D430029CB2D /* SequenceTests.swift */; };
+		09FF20871E802D530029CB2D /* RunBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20861E802D530029CB2D /* RunBlockActionTests.swift */; };
+		09FF20891E8036A40029CB2D /* FiniteTimeActionTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */; };
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		673CB76B1E7E889100592F24 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* Group.swift */; };
 		673CB76D1E7E92BB00592F24 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* Sequence.swift */; };
@@ -44,6 +52,14 @@
 		09BB04ED1E80065C0011E68E /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		09BB04F11E8018E20011E68E /* SchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerTests.swift; sourceTree = "<group>"; };
 		09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolateActionTests.swift; sourceTree = "<group>"; };
+		09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatForeverActionTests.swift; sourceTree = "<group>"; };
+		09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sheduler+Extensions.swift"; sourceTree = "<group>"; };
+		09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoActionTests.swift; sourceTree = "<group>"; };
+		09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatActionTests.swift; sourceTree = "<group>"; };
+		09FF20821E802D330029CB2D /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
+		09FF20841E802D430029CB2D /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
+		09FF20861E802D530029CB2D /* RunBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunBlockActionTests.swift; sourceTree = "<group>"; };
+		09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteTimeActionTester.swift; sourceTree = "<group>"; };
 		673CB7681E7DAEC000592F24 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		673CB76A1E7E889100592F24 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		673CB76C1E7E92BB00592F24 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
@@ -90,8 +106,32 @@
 			isa = PBXGroup;
 			children = (
 				09BB04ED1E80065C0011E68E /* Ticker.swift */,
+				09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */,
+				09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		09FF207E1E802B6D0029CB2D /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */,
+				09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */,
+				09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */,
+				09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */,
+				09FF20861E802D530029CB2D /* RunBlockActionTests.swift */,
+				09FF20811E802D1C0029CB2D /* Collections */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		09FF20811E802D1C0029CB2D /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				09FF20821E802D330029CB2D /* GroupTests.swift */,
+				09FF20841E802D430029CB2D /* SequenceTests.swift */,
+			);
+			name = Collections;
 			sourceTree = "<group>";
 		};
 		673CB7701E7EA05900592F24 /* Collections */ = {
@@ -141,7 +181,7 @@
 			children = (
 				09BB04EC1E80062E0011E68E /* Supporting */,
 				09BB04F11E8018E20011E68E /* SchedulerTests.swift */,
-				09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */,
+				09FF207E1E802B6D0029CB2D /* Actions */,
 				6750B9011E7C855A00E7AEE2 /* TweenKitTests.swift */,
 				6750B9031E7C855A00E7AEE2 /* Info.plist */,
 			);
@@ -313,9 +353,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */,
+				09FF20831E802D330029CB2D /* GroupTests.swift in Sources */,
 				6750B9021E7C855A00E7AEE2 /* TweenKitTests.swift in Sources */,
+				09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */,
+				09FF20871E802D530029CB2D /* RunBlockActionTests.swift in Sources */,
+				09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */,
+				09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */,
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
+				09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */,
+				09FF20891E8036A40029CB2D /* FiniteTimeActionTester.swift in Sources */,
 				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,10 +29,7 @@ class InterpolateActionTests: XCTestCase {
         }
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
-        
-        Ticker(duration: duration + 1) {
-            self.scheduler.step(dt: $0)
-        }.run()
+        scheduler.stepTime(duration: duration + 1)
         
         XCTAssertEqualWithAccuracy(value, expectedEndValue, accuracy: 0.001)
     }

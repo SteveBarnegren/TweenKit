@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class YoyoAction: FiniteTimeAction, SchedulableAction {
+public class YoyoAction: FiniteTimeAction {
     
     // MARK: - Public
     
@@ -18,6 +18,7 @@ public class YoyoAction: FiniteTimeAction, SchedulableAction {
     public var reverse = false
 
     public init(action: FiniteTimeAction) {
+        
         self.action = action
         self.duration = action.duration * 2
     }
@@ -29,15 +30,27 @@ public class YoyoAction: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Private Methods
     
+    public func willBecomeActive() {
+        action.willBecomeActive()
+    }
+
+    public func didBecomeInactive() {
+        action.didBecomeInactive()
+    }
+    
     public func update(t: CFTimeInterval) {
         
         if t < 0.5 {
-            action.reverse = false
+            if action.reverse {
+                action.reverse = false
+            }
             let actionT = t * 2
             action.update(t: actionT)
         }
         else{
-            action.reverse = true
+            if !action.reverse {
+                action.reverse = true
+            }
             let actionT = 1-((t - 0.5) * 2);
             action.update(t: actionT)
         }

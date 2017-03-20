@@ -39,6 +39,18 @@ public class Animation : Equatable {
     
     private let action: SchedulableAction!
     
+    // MARK: - Methods
+    
+    func willStart() {
+        //action.willBecomeActive()
+        //action.willBegin()
+    }
+    
+    func didFinish() {
+        //action.didFinish()
+        //action.didBecomeInactive()
+    }
+    
     func update(elapsedTime: CFTimeInterval) {
         
         self.elapsedTime = elapsedTime
@@ -50,6 +62,10 @@ public class Animation : Equatable {
             action.update(elapsedTime: elapsedTime)
         }
     }
+    
+    
+    
+    
 }
 
 // MARK: - Equatable

@@ -16,6 +16,7 @@ import Foundation
     
     func add(animation: Animation) {
         animations.append(animation)
+        animation.willStart()
         startLoop()
     }
     
@@ -26,6 +27,7 @@ import Foundation
             return
         }
         
+        animation.didFinish()
         animations.remove(at: index)
         
         if animations.isEmpty {

@@ -23,6 +23,23 @@ class SchedulerTests: XCTestCase {
         super.tearDown()
     }
     
+    func testSchedulerReturnsCorrectNumberOfAnimations() {
+        
+        func addAnimation() {
+            let action = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, update: { _ in })
+            let animation = Animation(action: action)
+            scheduler.add(animation: animation)
+        }
+        
+        XCTAssertEqual(scheduler.numRunningAnimations, 0)
+        addAnimation()
+        XCTAssertEqual(scheduler.numRunningAnimations, 1)
+        addAnimation()
+        XCTAssertEqual(scheduler.numRunningAnimations, 2)
+        addAnimation()
+        XCTAssertEqual(scheduler.numRunningAnimations, 3)
+    }
+    
     func testAnimationIsRemovedOnCompletion() {
         
         let duration = 5.0
@@ -31,10 +48,7 @@ class SchedulerTests: XCTestCase {
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         
-        Ticker(duration: duration + 1) {
-            self.scheduler.step(dt: $0)
-        }.run()
-        
+        scheduler.stepTime(duration: duration + 1)
         XCTAssertEqual(scheduler.numRunningAnimations, 0)
     }
 }
