@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04ED1E80065C0011E68E /* Ticker.swift */; };
 		09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F11E8018E20011E68E /* SchedulerTests.swift */; };
+		09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */; };
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		673CB76B1E7E889100592F24 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* Group.swift */; };
 		673CB76D1E7E92BB00592F24 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* Sequence.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		09BB04ED1E80065C0011E68E /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		09BB04F11E8018E20011E68E /* SchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerTests.swift; sourceTree = "<group>"; };
+		09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolateActionTests.swift; sourceTree = "<group>"; };
 		673CB7681E7DAEC000592F24 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		673CB76A1E7E889100592F24 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		673CB76C1E7E92BB00592F24 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				09BB04EC1E80062E0011E68E /* Supporting */,
 				09BB04F11E8018E20011E68E /* SchedulerTests.swift */,
+				09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */,
 				6750B9011E7C855A00E7AEE2 /* TweenKitTests.swift */,
 				6750B9031E7C855A00E7AEE2 /* Info.plist */,
 			);
@@ -313,6 +316,7 @@
 				6750B9021E7C855A00E7AEE2 /* TweenKitTests.swift in Sources */,
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
+				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,9 +12,14 @@ public protocol Tweenable {
     func lerp(t: Double, end: Self) -> Self
 }
 
+extension Float: Tweenable {
+    public func lerp(t: Double, end: Float) -> Float {
+        return self + (end - self) * Float(t)
+    }
+}
+
 extension Double: Tweenable {
     public func lerp(t: Double, end: Double) -> Double {
         return self + (end - self) * t
     }
 }
-

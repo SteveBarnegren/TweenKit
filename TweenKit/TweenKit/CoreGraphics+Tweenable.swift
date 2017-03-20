@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension CGFloat: Tweenable {
+    public func lerp(t: Double, end: CGFloat) -> CGFloat {
+        return self + (end - self) * CGFloat(t)
+    }
+}
+
 extension CGPoint: Tweenable {
     public func lerp(t: Double, end: CGPoint) -> CGPoint {
         
