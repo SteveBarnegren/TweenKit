@@ -57,6 +57,10 @@ public class Group: FiniteTimeAction, SchedulableAction {
         }
     }
     
+    public func didBecomeInactive() {
+        onBecomeInactive()
+    }
+    
     func calculateDuration() {
         duration = actions.reduce(0){ max($0, $1.duration) }
     }

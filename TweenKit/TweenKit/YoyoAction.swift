@@ -31,11 +31,21 @@ public class YoyoAction: FiniteTimeAction {
     // MARK: - Private Methods
     
     public func willBecomeActive() {
-        action.willBecomeActive()
+        onBecomeActive()
+        
+        // Finite time action should really conform to schedulable?
+        if let schedulable = action as? SchedulableAction {
+            schedulable.willBecomeActive()
+        }
     }
 
     public func didBecomeInactive() {
-        action.didBecomeInactive()
+        onBecomeInactive()
+        
+        // Finite time action should really conform to schedulable?
+        if let schedulable = action as? SchedulableAction {
+            schedulable.didBecomeInactive()
+        }
     }
     
     public func update(t: CFTimeInterval) {

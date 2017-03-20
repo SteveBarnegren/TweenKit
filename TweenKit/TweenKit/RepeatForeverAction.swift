@@ -8,9 +8,13 @@
 
 import Foundation
 
-public class RepeatForeverAction: InfiniteTimeAction, SchedulableAction {
+public class RepeatForeverAction: InfiniteTimeAction {
 
     // MARK: - Public
+
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
     public init(action: FiniteTimeAction) {
         self.action = action;
     }
@@ -19,6 +23,14 @@ public class RepeatForeverAction: InfiniteTimeAction, SchedulableAction {
     let action: FiniteTimeAction
 
     // MARK: - Private Methods
+    
+    public func willBecomeActive() {
+        onBecomeActive()
+    }
+    
+    public func didBecomeInactive() {
+        onBecomeInactive()
+    }
     
     public func update(elapsedTime: CFTimeInterval) {
         let actionT = (elapsedTime / action.duration).fract

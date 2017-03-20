@@ -11,34 +11,36 @@ import Foundation
 // MARK: - Shedulable Action
 
 public protocol SchedulableAction: class {
-}
-
-// MARK: - Finite Time Action
-
-public protocol FiniteTimeAction : class {
     
-    var duration: Double {get}
-    var reverse: Bool {get set}
     var onBecomeActive: () -> () {get set}
     var onBecomeInactive: () -> () {get set}
     
     func willBecomeActive()
     func didBecomeInactive()
-    func update(t: CFTimeInterval)
 }
 
-public extension FiniteTimeAction {
-    public func willBecomeActive(){
-        onBecomeActive()
-    }
+// MARK: - Finite Time Action
+
+public protocol FiniteTimeAction : SchedulableAction {
     
-    public func didBecomeInactive(){
-        onBecomeInactive()
-    }
+    var duration: Double {get}
+    var reverse: Bool {get set}
+    
+     func update(t: CFTimeInterval)
 }
+
+//public extension FiniteTimeAction {
+//    public func willBecomeActive(){
+//        onBecomeActive()
+//    }
+//    
+//    public func didBecomeInactive(){
+//        onBecomeInactive()
+//    }
+//}
 
 // MARK: - Infinite Time Action
 
-public protocol InfiniteTimeAction : class {
+public protocol InfiniteTimeAction : SchedulableAction {
     func update(elapsedTime: CFTimeInterval)
 }

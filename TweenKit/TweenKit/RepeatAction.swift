@@ -34,6 +34,14 @@ public class RepeatAction: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Private Methods
     
+    public func willBecomeActive() {
+        onBecomeInactive()
+    }
+    
+    public func didBecomeInactive() {
+        onBecomeInactive()
+    }
+    
     public func update(t: CFTimeInterval) {
         
         let actionT = ( t * Double(repeats) ).fract

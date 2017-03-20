@@ -34,6 +34,10 @@ class RunBlockAction: FiniteTimeAction, SchedulableAction {
         handler()
     }
     
+    func didBecomeInactive() {
+        onBecomeInactive()
+    }
+    
     func update(t: CFTimeInterval) {
         // Do nothing
     }

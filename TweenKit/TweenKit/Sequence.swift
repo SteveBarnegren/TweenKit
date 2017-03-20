@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Sequence: FiniteTimeAction, SchedulableAction {
+public class Sequence: FiniteTimeAction {
     
     // MARK: - Public
     
@@ -52,6 +52,14 @@ public class Sequence: FiniteTimeAction, SchedulableAction {
 
     func calculateDuration() {
         duration = actions.reduce(0) { $0 + $1.duration }
+    }
+    
+    public func willBecomeActive() {
+        onBecomeActive()
+    }
+    
+    public func didBecomeInactive() {
+        onBecomeInactive()
     }
     
     public func update(t: CFTimeInterval) {
