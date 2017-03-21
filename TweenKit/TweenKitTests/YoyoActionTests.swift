@@ -56,6 +56,7 @@ class YoyoActionTests: XCTestCase {
     func testInnerActionEventOrder() {
         
         let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
+                                                                  .setReversed(reversed: false),
                                                                   .willBegin,
                                                                   .didFinish,
                                                                   .setReversed(reversed: true),
@@ -68,7 +69,7 @@ class YoyoActionTests: XCTestCase {
         let yoyo = action.yoyo()
         let animation = Animation(action: yoyo)
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: duration + 1)
+        scheduler.stepTime(duration: yoyo.duration + 1)
         
         
         let loggedEvents = action.loggedEventsOfTypes(expectedEvents)

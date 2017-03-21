@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class RepeatAction: FiniteTimeAction, SchedulableAction {
+public class RepeatAction: FiniteTimeAction {
     
     // MARK: - Public
     
@@ -40,6 +40,12 @@ public class RepeatAction: FiniteTimeAction, SchedulableAction {
     
     public func didBecomeInactive() {
         onBecomeInactive()
+    }
+    
+    public func willBegin() {
+    }
+    
+    public func didFinish() {
     }
     
     public func update(t: CFTimeInterval) {

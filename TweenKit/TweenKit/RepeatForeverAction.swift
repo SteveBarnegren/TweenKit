@@ -32,6 +32,12 @@ public class RepeatForeverAction: InfiniteTimeAction {
         onBecomeInactive()
     }
     
+    public func willBegin() {
+    }
+    
+    public func didFinish() {
+    }
+    
     public func update(elapsedTime: CFTimeInterval) {
         let actionT = (elapsedTime / action.duration).fract
         action.update(t: actionT)

@@ -44,6 +44,12 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
         onBecomeInactive()
     }
     
+    public func willBegin() {
+    }
+    
+    public func didFinish() {
+    }
+    
     public func update(t: Double) {
         
         // Apply easing

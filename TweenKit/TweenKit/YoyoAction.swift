@@ -10,6 +10,14 @@ import Foundation
 
 public class YoyoAction: FiniteTimeAction {
     
+    // MARK: - Types
+    
+    enum State {
+        case idle
+        case forwards
+        case backwards
+    }
+    
     // MARK: - Public
     
     public var onBecomeActive: () -> () = {}
@@ -27,42 +35,76 @@ public class YoyoAction: FiniteTimeAction {
     
     public internal(set) var duration: Double
     let action: FiniteTimeAction
+    var state = State.idle
     
     // MARK: - Private Methods
     
     public func willBecomeActive() {
         onBecomeActive()
-        
-        // Finite time action should really conform to schedulable?
-        if let schedulable = action as? SchedulableAction {
-            schedulable.willBecomeActive()
-        }
+        action.willBecomeActive()
     }
 
     public func didBecomeInactive() {
         onBecomeInactive()
-        
-        // Finite time action should really conform to schedulable?
-        if let schedulable = action as? SchedulableAction {
-            schedulable.didBecomeInactive()
-        }
+        action.didBecomeInactive()
+    }
+    
+    public func willBegin() {
+    }
+    
+    public func didFinish() {
+        action.didFinish()
+        state = .idle
     }
     
     public func update(t: CFTimeInterval) {
         
+        /*
+         The order of state changes and setReverse is important here. The inner action should receive the following calls:
+         
+         - will begin
+         - will finish
+         - reverse = true
+         - will begin
+         - will finish
+ 
+         Now the action is 'invoked twice' (two begin/finish calls), and it has the correct reverse state at the time of each call
+         There are unit tests that test the call order, please run them after making changes
+         */
+        
         if t < 0.5 {
-            if action.reverse {
+            
+            if state == .idle {
                 action.reverse = false
+                action.willBegin()
             }
+            else if state == .backwards {
+                action.didFinish()
+                action.reverse = false
+                action.willBegin()
+            }
+            
             let actionT = t * 2
             action.update(t: actionT)
+            
+            state = .forwards
         }
         else{
-            if !action.reverse {
+            
+            if state == .idle {
                 action.reverse = true
+                action.willBegin()
             }
+            else if state == .forwards {
+                action.didFinish()
+                action.reverse = true
+                action.willBegin()
+            }
+
             let actionT = 1-((t - 0.5) * 2);
             action.update(t: actionT)
+            
+            state = .backwards
         }
     }
 }

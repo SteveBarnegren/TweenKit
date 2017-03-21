@@ -62,6 +62,12 @@ public class Sequence: FiniteTimeAction {
         onBecomeInactive()
     }
     
+    public func willBegin() {
+    }
+    
+    public func didFinish() {
+    }
+    
     public func update(t: CFTimeInterval) {
         
         let elapsedTime = t * duration

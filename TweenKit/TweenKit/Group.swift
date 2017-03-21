@@ -50,6 +50,10 @@ public class Group: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Private methods
     
+    func calculateDuration() {
+        duration = actions.reduce(0){ max($0, $1.duration) }
+    }
+    
     public func willBecomeActive() {
         onBecomeActive()
         actions.forEach{
@@ -61,10 +65,12 @@ public class Group: FiniteTimeAction, SchedulableAction {
         onBecomeInactive()
     }
     
-    func calculateDuration() {
-        duration = actions.reduce(0){ max($0, $1.duration) }
+    public func willBegin() {
     }
     
+    public func didFinish() {
+    }
+
     public func update(t: CFTimeInterval) {
         
         let elapsedTime = t * duration

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RunBlockAction: FiniteTimeAction, SchedulableAction {
+class RunBlockAction: FiniteTimeAction {
     
     // MARK: - Public
     
@@ -36,6 +36,12 @@ class RunBlockAction: FiniteTimeAction, SchedulableAction {
     
     func didBecomeInactive() {
         onBecomeInactive()
+    }
+    
+    func willBegin() {
+    }
+    
+    func didFinish() {
     }
     
     func update(t: CFTimeInterval) {

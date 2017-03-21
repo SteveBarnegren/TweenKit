@@ -17,6 +17,9 @@ public protocol SchedulableAction: class {
     
     func willBecomeActive()
     func didBecomeInactive()
+    
+    func willBegin()
+    func didFinish()
 }
 
 // MARK: - Finite Time Action
@@ -26,14 +29,14 @@ public protocol FiniteTimeAction : SchedulableAction {
     var duration: Double {get}
     var reverse: Bool {get set}
     
-     func update(t: CFTimeInterval)
+    func update(t: CFTimeInterval)
 }
 
 //public extension FiniteTimeAction {
 //    public func willBecomeActive(){
 //        onBecomeActive()
 //    }
-//    
+//
 //    public func didBecomeInactive(){
 //        onBecomeInactive()
 //    }

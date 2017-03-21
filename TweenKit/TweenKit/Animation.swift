@@ -42,16 +42,16 @@ public class Animation : Equatable {
     // MARK: - Methods
     
     func willStart() {
-        //action.willBecomeActive()
-        //action.willBegin()
+        action.willBecomeActive()
+        action.willBegin()
     }
     
     func didFinish() {
-        //action.didFinish()
-        //action.didBecomeInactive()
+        action.didFinish()
+        action.didBecomeInactive()
     }
     
-    func update(elapsedTime: CFTimeInterval) {
+    func update(elapsedTime: CFTimeInterval) { 
         
         self.elapsedTime = elapsedTime
         
