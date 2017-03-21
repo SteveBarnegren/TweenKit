@@ -51,4 +51,30 @@ class RepeatForeverActionTests: XCTestCase {
         XCTAssertNotEqualWithAccuracy(firstReading, secondReading, 0.3)
     }
     
+    func testRepeatForeverActionCallsExpectedInnerActionEvents() {
+        
+        let actionDuration = 2.0
+        
+        let action = FiniteTimeActionTester(duration: actionDuration)
+        let repeatedForever = action.repeatedForever()
+        let animation = Animation(action: repeatedForever)
+        
+        scheduler.add(animation: animation)
+        scheduler.stepTime(duration: actionDuration * 3.5)
+        
+        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .willBegin
+        ]
+        
+        let events = action.loggedEventsOfTypes(expectedEvents)
+        
+        XCTAssertEqual(expectedEvents, events)
+    }
+    
 }
