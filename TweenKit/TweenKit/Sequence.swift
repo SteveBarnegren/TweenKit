@@ -69,10 +69,11 @@ public class Sequence: FiniteTimeAction {
     public func didFinish() {
         
         // finish the final action
-        if let lastAction = actions.last {
+        if let lastAction = reverse ? actions.first : actions.last {
             lastAction.didFinish()
             lastAction.didBecomeInactive()
         }
+        
     }
     
     public func update(t: CFTimeInterval) {
@@ -95,14 +96,6 @@ public class Sequence: FiniteTimeAction {
         for (index, action) in enumeratedActions {
             
             func incrementOffset() {
-                
-//                if reverse {
-//                    offset -= action.duration
-//                }
-//                else{
-//                    offset += action.duration
-//                }
-                
                 offset += reverse ? -action.duration : action.duration
             }
             
@@ -126,11 +119,6 @@ public class Sequence: FiniteTimeAction {
             // Continue to the next action?
             let continueToNext: Bool
             
-            print("******")
-            print("elapsed time: \(elapsedTime)")
-            print("offset: \(offset)")
-            print("reverse; \(reverse)")
-
             if reverse {
                 continueToNext = elapsedTime < offset && index != actions.count - 1
             }
