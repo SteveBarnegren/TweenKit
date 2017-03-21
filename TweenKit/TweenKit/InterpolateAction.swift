@@ -24,6 +24,14 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
         self.updateHandler = update
     }
     
+    public init(from startValue: T, to endValue: T, speed: Double, update: @escaping (_: T) -> ()) {
+        
+        self.duration = startValue.distanceTo(other: endValue) / speed
+        self.startValue = startValue
+        self.endValue = endValue
+        self.updateHandler = update
+    }
+    
     // MARK: - Properties
     
     public var startValue: T! // Make private - set in initialiser

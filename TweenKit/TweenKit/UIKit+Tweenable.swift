@@ -30,4 +30,8 @@ extension UIColor: Tweenable {
                                    blue: thisB + (endB - thisB) * CGFloat(t),
                                    alpha: thisA + (endA - thisA) * CGFloat(t))
     }
+    
+    public func distanceTo(other: UIColor) -> Double {
+        fatalError("Not implemented")
+    }
 }

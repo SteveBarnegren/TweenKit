@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     
      // COMPLEX
-    
+    /*
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -94,38 +94,40 @@ class ViewController: UIViewController {
         animation.run()
         
     }
-    
+    */
     
     
      // SEQUENCE
-    /*
+    
     func startTheAnimation() {
         
         print("Start the animation!")
         
+        let speed = 100.0
+        
         let moveRight = InterpolationAction(from: CGPoint(x: 10, y: 10),
-                                       to: CGPoint(x: 200, y: 10),
-                                       duration: 2) {
+                                       to: CGPoint(x: 250, y: 10),
+                                       speed: speed) {
                                         self.testView.frame.origin = $0
         }
         
-        let moveDown = InterpolationAction(from: CGPoint(x: 200, y: 10),
-                                           to: CGPoint(x: 200, y: 200),
-                                           duration: 2) {
+        let moveDown = InterpolationAction(from: CGPoint(x: 250, y: 10),
+                                           to: CGPoint(x: 250, y: 40),
+                                           speed: speed) {
                                             self.testView.frame.origin = $0
         }
         
-        let moveLeft = InterpolationAction(from: CGPoint(x: 200, y: 200),
-                                           to: CGPoint(x: 10, y: 200),
-                                           duration: 2) {
+        let moveLeft = InterpolationAction(from: CGPoint(x: 250, y: 40),
+                                           to: CGPoint(x: 10, y: 40),
+                                           speed: speed) {
                                             self.testView.frame.origin = $0
         }
 
-        let sequence = Sequence(actions: moveRight, moveDown, moveLeft)
+        let sequence = Sequence(actions: moveRight, moveDown, moveLeft)//.yoyo().repeated(3)
         let animation = Animation(action: sequence)
         animation.run()
     }
- */
+ 
 
     
     // GROUP

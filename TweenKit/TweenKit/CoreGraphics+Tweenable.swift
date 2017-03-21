@@ -12,6 +12,10 @@ extension CGFloat: Tweenable {
     public func lerp(t: Double, end: CGFloat) -> CGFloat {
         return self + (end - self) * CGFloat(t)
     }
+    
+    public func distanceTo(other: CGFloat) -> Double {
+        return Double(other - self)
+    }
 }
 
 extension CGPoint: Tweenable {
@@ -23,6 +27,11 @@ extension CGPoint: Tweenable {
         return CGPoint(x: x + (xDiff * CGFloat(t)),
                        y: y + (yDiff * CGFloat(t)))
     }
+    
+    public func distanceTo(other: CGPoint) -> Double {
+        return vector2DDistance(v1: (Double(self.x), Double(self.y)),
+                                v2: (Double(other.x), Double(other.y)))
+    }
 }
 
 extension CGSize: Tweenable {
@@ -33,6 +42,11 @@ extension CGSize: Tweenable {
         
         return CGSize(width: width + (widthDiff * CGFloat(t)),
                       height: height + (heightDiff * CGFloat(t)))
+    }
+    
+    public func distanceTo(other: CGSize) -> Double {
+        return vector2DDistance(v1: (Double(self.width), Double(self.height)),
+                                v2: (Double(other.width), Double(other.height)))
     }
 }
 
