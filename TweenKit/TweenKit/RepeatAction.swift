@@ -61,9 +61,16 @@ public class RepeatAction: FiniteTimeAction {
             self.action.didFinish()
             self.action.willBegin()
         }
-        
+    
         let actionT = ( t * Double(repeats) ).fract
-        action.update(t: actionT)
+
+        // Avoid situation where fract is 0.0 because t is 1.0
+        if t > 0 && actionT == 0  {
+            action.update(t: 1.0)
+        }
+        else{
+            action.update(t: actionT)
+        }
         
         lastRepeatNumber = repeatNumber
     }

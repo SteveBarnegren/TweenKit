@@ -46,6 +46,8 @@ class ViewController: UIViewController {
     }
     
     
+     // COMPLEX
+    
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -88,11 +90,14 @@ class ViewController: UIViewController {
         let theWholeThing = Sequence(actions: withChangeColor, moveAgain)
         
         // Create the Animation
-        let animation = Animation(action: theWholeThing.yoyo().repeated(2) )
+        let animation = Animation(action: theWholeThing.yoyo() )
         animation.run()
         
     }
- 
+    
+    
+    
+     // SEQUENCE
     /*
     func startTheAnimation() {
         
@@ -116,11 +121,41 @@ class ViewController: UIViewController {
                                             self.testView.frame.origin = $0
         }
 
-        let sequence = Sequence(actions: moveRight, moveDown, moveLeft).yoyo()
+        let sequence = Sequence(actions: moveRight, moveDown, moveLeft)
         let animation = Animation(action: sequence)
         animation.run()
     }
-*/
+ */
+
+    
+    // GROUP
+    /*
+    func startTheAnimation() {
+        
+        print("Start the animation!")
+        
+        let moveRight = InterpolationAction(from: CGPoint(x: 10, y: 10),
+                                            to: CGPoint(x: 200, y: 10),
+                                            duration: 3) {
+                                                self.testView.frame.origin = $0
+                                                
+                                                if self.testView.frame.origin.x > 190 {
+                                                    print("stop")
+                                                }
+        }
+        
+        let scale = InterpolationAction(from: CGSize(width: 30, height: 30),
+                                        to: CGSize(width: 100, height: 100),
+                                        duration: 2) {
+            self.testView.frame.size = $0
+        }
+        
+        let group = Group(actions: moveRight, scale).yoyo().repeated(2)
+        let animation = Animation(action: group)
+        animation.run()
+    }
+ */
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

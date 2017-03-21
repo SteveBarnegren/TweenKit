@@ -72,6 +72,9 @@ public class Group: FiniteTimeAction, SchedulableAction {
     
     public func willBegin() {
         
+        // Set the last elapsed time
+        lastUpdateT = reverse ? 1.0 : 0.0
+        
         // Invoke trigger actions
         if reverse == false {
             triggerActions.forEach{
@@ -88,6 +91,8 @@ public class Group: FiniteTimeAction, SchedulableAction {
     }
     
     public func didFinish() {
+        
+        print("Reverse: \(reverse)")
         
         // Finish actions
         wrappedActions.forEach{
@@ -110,7 +115,7 @@ public class Group: FiniteTimeAction, SchedulableAction {
         
         let elapsedTime = t * duration
         let lastElapsedTime = lastUpdateT * duration
-        
+                
         for wrapper in wrappedActions {
             
             // Update the action if it is in progress

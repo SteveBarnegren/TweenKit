@@ -91,17 +91,22 @@ public class Sequence: FiniteTimeAction {
             }
         }
         
+        // Calculate action offsets
+        var offsets = [Double]()
+        var offsetPos = 0.0
+        offsets.append(offsetPos)
+        actions.dropLast().forEach{
+            offsetPos += $0.duration
+            offsets.append(offsetPos)
+        }
+        
         // Update actions
-        var offset = reverse ? duration - actions.last!.duration : 0.0
         for (index, action) in enumeratedActions {
             
-            func incrementOffset() {
-                offset += reverse ? -action.duration : action.duration
-            }
+            let offset = reverse ? offsets.reversed()[index] : offsets[index]
             
             // skip if we havn't passed the last run action
             if index < lastRunIndex {
-                incrementOffset()
                 continue
             }
             
@@ -112,7 +117,9 @@ public class Sequence: FiniteTimeAction {
             }
             
             // Update the action
-            let actionElapsed = ((elapsedTime - offset) / action.duration).constrained(min: 0, max: action.duration)
+            let actionElapsed = ((elapsedTime - offset) / action.duration)
+                .constrained(min: 0, max: action.duration)
+            
             action.update(t: actionElapsed)
             lastRunAction = action
             
@@ -134,79 +141,8 @@ public class Sequence: FiniteTimeAction {
                 break
             }
             
-            // Update the offset
-            incrementOffset()
         }
         
-        /*
- public func update(t: CFTimeInterval) {
- 
- let elapsedTime = t * duration
- 
- // Get the last run action index
- var lastRunIndex = reverse ? actions.count : -1
- if let last = lastRunAction {
- for (index, action) in actions.enumerated() {
- if action === last {
- lastRunIndex = index
- }
- }
- }
- 
- // Update actions
- var offset = reverse ? duration : 0.0
- let enumeratedActions = reverse ? actions.reversed().enumerated() : actions.enumerated()
- for (index, action) in enumeratedActions {
- 
- func incrementOffset() {
- offset += reverse ? -action.duration : action.duration
- }
- 
- // skip if we havn't passed the last run action
- func isBeforeLastRunIndex(idx: Int) -> Bool {
- return self.reverse ? idx > lastRunIndex : idx < lastRunIndex
- }
- 
- if isBeforeLastRunIndex(idx: index) {
- incrementOffset()
- continue
- }
- 
- // Start the action?
- if action !== lastRunAction {
- action.willBecomeActive()
- action.willBegin()
- }
- 
- // Update the action
- let actionOffset = reverse ? offset - action.duration : offset
- let actionElapsed = ((elapsedTime - actionOffset) / action.duration).constrained(min: 0, max: action.duration)
- action.update(t: actionElapsed)
- lastRunAction = action
- 
- // Continue to the next action?
- let continueToNext: Bool
- 
- if reverse {
- continueToNext = elapsedTime < offset - action.duration
- }
- else{
- continueToNext = elapsedTime > offset + action.duration && index != actions.count - 1
- }
- 
- if continueToNext {
- action.didFinish()
- action.didBecomeInactive()
- }
- else{
- break
- }
- 
- // Update the offset
- incrementOffset()
- }
-*/
- 
     }
  
 }
