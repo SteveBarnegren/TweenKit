@@ -73,9 +73,8 @@ class GroupTests: XCTestCase {
         let group = Group(actions: interpolate, runBlock)
         group.didBecomeInactive()
         
-        XCTAssertTrue(wasInvoked)
+        XCTAssertFalse(wasInvoked)
     }
-
     
     func testRunBlockActionAreRunAtEndInReverse() {
         
