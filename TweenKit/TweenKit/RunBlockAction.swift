@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RunBlockAction: FiniteTimeAction {
+class RunBlockAction: TriggerAction {
     
     // MARK: - Public
     
@@ -24,14 +24,13 @@ class RunBlockAction: FiniteTimeAction {
     let handler: () -> ()
     public let duration = 0.0
     var reverse: Bool = false
-
-    func execute() {
+    
+    func trigger() {
         handler()
     }
     
     func willBecomeActive() {
         onBecomeInactive()
-        handler()
     }
     
     func didBecomeInactive() {

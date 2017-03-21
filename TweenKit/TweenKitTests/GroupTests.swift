@@ -57,22 +57,16 @@ class GroupTests: XCTestCase {
             wasInvoked = true
         }
         let group = Group(actions: interpolate, runBlock)
+        
+        // Test is run at the beginning
         group.willBecomeActive()
-        
+        group.willBegin()
         XCTAssertTrue(wasInvoked)
-    }
-    
-    func testRunBlockActionsAreNotRunAtEnd() {
         
-        var wasInvoked = false
-        
-        let interpolate = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { _ in })
-        let runBlock = RunBlockAction{
-            wasInvoked = true
-        }
-        let group = Group(actions: interpolate, runBlock)
+        // Test is not run at the end
+        wasInvoked = false
+        group.didFinish()
         group.didBecomeInactive()
-        
         XCTAssertFalse(wasInvoked)
     }
     
@@ -85,9 +79,41 @@ class GroupTests: XCTestCase {
             wasInvoked = true
         }
         let group = Group(actions: interpolate, runBlock)
+        group.reverse = true
+
+        // Test is not run at the beginning
         group.willBecomeActive()
+        group.willBegin()
+        XCTAssertFalse(wasInvoked)
         
+        // Test is run at the end
+        wasInvoked = false
+        group.didFinish()
+        group.didBecomeInactive()
         XCTAssertTrue(wasInvoked)
+    }
+    
+    func testExpectedInnerActionsLifeCycleEventsAreCalled() {
+        
+        let firstAction = FiniteTimeActionTester(duration: 1)
+        let secondAction = FiniteTimeActionTester(duration: 2)
+        let group = Group(actions: firstAction, secondAction)
+        let animation = Animation(action: group)
+        
+        scheduler.add(animation: animation)
+        scheduler.stepTime(duration: group.duration + 1)
+        
+        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .didBecomeInactive,
+                                                                  ]
+        
+        let firstActionEvents = firstAction.loggedEventsOfTypes(expectedEvents)
+        XCTAssertEqual(expectedEvents, firstActionEvents)
+        
+        let secondActionEvents = secondAction.loggedEventsOfTypes(expectedEvents)
+        XCTAssertEqual(expectedEvents, secondActionEvents)
     }
     
     

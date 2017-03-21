@@ -32,15 +32,17 @@ public protocol FiniteTimeAction : SchedulableAction {
     func update(t: CFTimeInterval)
 }
 
-//public extension FiniteTimeAction {
-//    public func willBecomeActive(){
-//        onBecomeActive()
-//    }
-//
-//    public func didBecomeInactive(){
-//        onBecomeInactive()
-//    }
-//}
+// MARK: - Trigger Action
+
+public protocol TriggerAction: FiniteTimeAction {
+    func trigger()
+}
+
+extension TriggerAction {
+    var duration: Double {
+        return 0
+    }
+}
 
 // MARK: - Infinite Time Action
 

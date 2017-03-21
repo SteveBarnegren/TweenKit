@@ -15,9 +15,11 @@ class RunBlockActionTests: XCTestCase {
         
         var wasInvoked = false
         
-        let action = RunBlockAction { 
+        let action = RunBlockAction {
             wasInvoked = true
         }
+        
+        action.trigger()
         action.willBecomeActive()
         
         XCTAssertTrue(wasInvoked)
@@ -34,8 +36,7 @@ class RunBlockActionTests: XCTestCase {
         }
         
         (0..<numTimes).forEach{ _ in
-            action.willBecomeActive()
-            action.didBecomeInactive()
+            action.trigger()
         }
         
         XCTAssertEqual(numTimesInvoked, numTimes)
