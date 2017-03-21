@@ -39,19 +39,31 @@ public class Sequence: FiniteTimeAction {
     public func add(action: FiniteTimeAction) {
         actions.append(action)
         calculateDuration()
+        calculateOffsets()
     }
     
     // MARK: - Private Properties
     
     public private(set) var duration = Double(0)
     
-    var actions = [FiniteTimeAction]()
-    var lastRunAction: FiniteTimeAction?
+    private var actions = [FiniteTimeAction]()
+    private var offsets = [Double]()
+    private var lastRunAction: FiniteTimeAction?
     
     // MARK: - Private Methods
 
-    func calculateDuration() {
+    private func calculateDuration() {
         duration = actions.reduce(0) { $0 + $1.duration }
+    }
+    
+    private func calculateOffsets() {
+        offsets = [Double]()
+        var offsetPos = 0.0
+        offsets.append(offsetPos)
+        actions.dropLast().forEach{
+            offsetPos += $0.duration
+            offsets.append(offsetPos)
+        }
     }
     
     public func willBecomeActive() {
@@ -89,15 +101,6 @@ public class Sequence: FiniteTimeAction {
                     lastRunIndex = index
                 }
             }
-        }
-        
-        // Calculate action offsets
-        var offsets = [Double]()
-        var offsetPos = 0.0
-        offsets.append(offsetPos)
-        actions.dropLast().forEach{
-            offsetPos += $0.duration
-            offsets.append(offsetPos)
         }
         
         // Update actions
