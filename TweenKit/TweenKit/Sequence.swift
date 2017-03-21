@@ -66,47 +66,62 @@ public class Sequence: FiniteTimeAction {
     }
     
     public func didFinish() {
+        
+        // finish the final action
+        if let lastAction = actions.last {
+            lastAction.didFinish()
+            lastAction.didBecomeInactive()
+        }
     }
     
     public func update(t: CFTimeInterval) {
         
         let elapsedTime = t * duration
-
-        var offset = CFTimeInterval(0)
-        var passedLastAction = false
         
-        if lastRunAction == nil {
-            passedLastAction = true
+        // Get the last run action index
+        var lastRunIndex = -1
+        if let last = lastRunAction {
+            for (index, action) in actions.enumerated() {
+                if action === last {
+                    lastRunIndex = index
+                }
+            }
         }
         
-        for action in actions {
+        // Update actions
+        var offset = 0.0
+        for (index, action) in actions.enumerated() {
             
-            guard offset + action.duration > elapsedTime else {
+            // skip if we havn't passed the last run action
+            if index < lastRunIndex {
                 offset += action.duration
                 continue
             }
             
-            // If we've changed action, finish the last one
-            if lastRunAction !== action {
-                
-                // Finish the last action
-                if let last = lastRunAction {
-                    last.update(t: reverse ? 0 : 1)
-                    last.didBecomeInactive()
-                }
-                
-                // start the new action
+            // Start the action?
+            if action !== lastRunAction {
                 action.willBecomeActive()
-                lastRunAction = action
+                action.willBegin()
             }
             
-            // Update the current action
-            let actionElapsed = (elapsedTime - offset) / action.duration
+            // Update the action
+            let actionElapsed = ((elapsedTime - offset) / action.duration).constrained(max: action.duration)
             action.update(t: actionElapsed)
             lastRunAction = action
             
-            break
+            // Continue to the next action?
+            if elapsedTime > offset + action.duration, index != actions.count - 1 {
+                action.didFinish()
+                action.didBecomeInactive()
+            }
+            else{
+                break
+            }
+            
+            // Update the offset
+            offset += action.duration
         }
+
     }
     
 }

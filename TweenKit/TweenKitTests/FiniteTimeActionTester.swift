@@ -87,6 +87,9 @@ class FiniteTimeActionTester: FiniteTimeAction {
     
     var updateCalled = false
     
+    var onWillBegin: () -> () = {}
+    var onDidFinish: () -> () = {}
+    
     // MARK: - FiniteTimeAction
 
     var duration: Double
@@ -98,27 +101,30 @@ class FiniteTimeActionTester: FiniteTimeAction {
     var onBecomeActive: () -> () = {}
     var onBecomeInactive: () -> () = {}
     
+    func willBecomeActive() {
+        loggedEvents.append(.willBecomeActive)
+        willBecomeActiveCallCount += 1
+        onBecomeActive()
+    }
+    
+    func didBecomeInactive() {
+        loggedEvents.append(.didBecomeInactive)
+        didBecomeInactiveCallCount += 1
+        onBecomeInactive()
+    }
+    
     func willBegin() {
         loggedEvents.append(.willBegin)
         willBeginCallCount += 1
+        onWillBegin()
     }
     
     func didFinish() {
         loggedEvents.append(.didFinish)
         didFinishCallCount += 1
+        onDidFinish()
     }
-    
-    func willBecomeActive() {
-        loggedEvents.append(.willBecomeActive)
-        onBecomeActive()
-        willBecomeActiveCallCount += 1
-    }
-    
-    func didBecomeInactive() {
-        loggedEvents.append(.didBecomeInactive)
-        onBecomeInactive()
-        didBecomeInactiveCallCount += 1
-    }
+
     
     public func update(t: CFTimeInterval) {
         updateCalled = true
