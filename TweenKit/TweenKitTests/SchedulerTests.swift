@@ -42,13 +42,13 @@ class SchedulerTests: XCTestCase {
     
     func testAnimationIsRemovedOnCompletion() {
         
-        let duration = 5.0
+        let duration = 0.1
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration) {_ in }
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         
-        scheduler.stepTime(duration: duration + 1)
+        scheduler.progressTime(duration: duration + 0.1)
         XCTAssertEqual(scheduler.numRunningAnimations, 0)
     }
 }

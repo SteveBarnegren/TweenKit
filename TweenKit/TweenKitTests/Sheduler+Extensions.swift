@@ -11,7 +11,7 @@ import Foundation
 
 extension Scheduler {
     
-    func stepTime(duration: Double, stepSize: Double = 1.0/60.0) {
+    func progressTime(duration: Double, stepSize: Double = 1.0/60.0) {
         Ticker(duration: duration) {
             self.step(dt: $0)
             }.run()

@@ -64,12 +64,12 @@ class YoyoActionTests: XCTestCase {
                                                                   .didFinish,
                                                                   .didBecomeInactive]
         
-        let duration = 2.0
+        let duration = 0.1
         let action = FiniteTimeActionTester(duration: duration)
         let yoyo = action.yoyo()
         let animation = Animation(action: yoyo)
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: yoyo.duration + 1)
+        scheduler.progressTime(duration: yoyo.duration + 0.1)
         
         
         let loggedEvents = action.loggedEventsOfTypes(expectedEvents)

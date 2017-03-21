@@ -20,7 +20,7 @@ class InterpolateActionTests: XCTestCase {
     
     func testInterpolateActionEndsWithEndValue() {
         
-        let duration = 5.0
+        let duration = 0.1
         let expectedEndValue = 12.0
         
         var value = 0.0
@@ -29,7 +29,7 @@ class InterpolateActionTests: XCTestCase {
         }
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: duration + 1)
+        scheduler.progressTime(duration: duration + 0.1)
         
         XCTAssertEqualWithAccuracy(value, expectedEndValue, accuracy: 0.001)
     }

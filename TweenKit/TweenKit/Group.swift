@@ -89,7 +89,11 @@ public class Group: FiniteTimeAction, SchedulableAction {
         
         // Finish actions
         wrappedActions.forEach{
-            $0.state = .finished
+            
+            if $0.state != .finished {
+                $0.action.update(t: reverse ? 0 : 1)
+                $0.state = .finished
+            }
         }
         
         // If we're being called in reverse, now we should call the trigger actions

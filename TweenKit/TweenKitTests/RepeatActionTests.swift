@@ -31,7 +31,7 @@ class RepeatActionTests: XCTestCase {
     
     func testActionIsRunCorrectNumberOfTimes() {
         
-        let action = FiniteTimeActionTester(duration: 2)
+        let action = FiniteTimeActionTester(duration: 0.1)
         let repeatedAction = action.repeated(3)
         
         let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
@@ -46,7 +46,7 @@ class RepeatActionTests: XCTestCase {
         
         let animation = Animation(action: repeatedAction)
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: repeatedAction.duration + 1)
+        scheduler.progressTime(duration: repeatedAction.duration + 0.1)
         
         let events = action.loggedEventsOfTypes(expectedEvents)
         

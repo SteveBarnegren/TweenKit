@@ -25,7 +25,7 @@ class RepeatForeverActionTests: XCTestCase {
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         
-        self.scheduler.stepTime(duration: 10000, stepSize: 100)
+        self.scheduler.progressTime(duration: 10000, stepSize: 100)
         
         XCTAssertEqual(scheduler.numRunningAnimations, 1)
     }
@@ -40,11 +40,11 @@ class RepeatForeverActionTests: XCTestCase {
         scheduler.add(animation: animation)
         
         // Run for a long time
-        self.scheduler.stepTime(duration: 10000.0, stepSize: 100.0)
+        self.scheduler.progressTime(duration: 10000.0, stepSize: 100.0)
         let firstReading = value
 
         // Step a short duration and confirm value is still changing
-        self.scheduler.stepTime(duration: actionDuration/2)
+        self.scheduler.progressTime(duration: actionDuration/2)
         let secondReading = value
         
         // The readings should be about 0.5 apart
@@ -53,14 +53,14 @@ class RepeatForeverActionTests: XCTestCase {
     
     func testRepeatForeverActionCallsExpectedInnerActionEvents() {
         
-        let actionDuration = 2.0
+        let actionDuration = 0.1
         
         let action = FiniteTimeActionTester(duration: actionDuration)
         let repeatedForever = action.repeatedForever()
         let animation = Animation(action: repeatedForever)
         
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: actionDuration * 3.5)
+        scheduler.progressTime(duration: actionDuration * 3.5)
         
         let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
                                                                   .willBegin,

@@ -34,14 +34,14 @@ class GroupTests: XCTestCase {
         var secondValue = 0.0
         var thirdValue = 0.0
         
-        let firstAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, update: { firstValue = $0 })
-        let secondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, update: { secondValue = $0 })
-        let thirdAction = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: { thirdValue = $0 })
+        let firstAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { firstValue = $0 })
+        let secondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { secondValue = $0 })
+        let thirdAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { thirdValue = $0 })
         
         let group = Group(actions: firstAction, secondAction, thirdAction)
         let animation = Animation(action: group)
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: group.duration + 1)
+        scheduler.progressTime(duration: group.duration + 0.1)
         
         XCTAssertEqualWithAccuracy(firstValue, 1.0, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(secondValue, 1.0, accuracy: 0.001)
@@ -95,13 +95,13 @@ class GroupTests: XCTestCase {
     
     func testExpectedInnerActionsLifeCycleEventsAreCalled() {
         
-        let firstAction = FiniteTimeActionTester(duration: 1)
-        let secondAction = FiniteTimeActionTester(duration: 2)
+        let firstAction = FiniteTimeActionTester(duration: 0.1)
+        let secondAction = FiniteTimeActionTester(duration: 0.2)
         let group = Group(actions: firstAction, secondAction)
         let animation = Animation(action: group)
         
         scheduler.add(animation: animation)
-        scheduler.stepTime(duration: group.duration + 1)
+        scheduler.progressTime(duration: group.duration + 0.1)
         
         let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
                                                                   .willBegin,
