@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         perform(#selector(startTheAnimation), with: nil, afterDelay: 3)
     }
     
+    
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -91,6 +92,35 @@ class ViewController: UIViewController {
         animation.run()
         
     }
+ 
+    /*
+    func startTheAnimation() {
+        
+        print("Start the animation!")
+        
+        let moveRight = InterpolationAction(from: CGPoint(x: 10, y: 10),
+                                       to: CGPoint(x: 200, y: 10),
+                                       duration: 2) {
+                                        self.testView.frame.origin = $0
+        }
+        
+        let moveDown = InterpolationAction(from: CGPoint(x: 200, y: 10),
+                                           to: CGPoint(x: 200, y: 200),
+                                           duration: 2) {
+                                            self.testView.frame.origin = $0
+        }
+        
+        let moveLeft = InterpolationAction(from: CGPoint(x: 200, y: 200),
+                                           to: CGPoint(x: 10, y: 200),
+                                           duration: 2) {
+                                            self.testView.frame.origin = $0
+        }
+
+        let sequence = Sequence(actions: moveRight, moveDown, moveLeft).yoyo()
+        let animation = Animation(action: sequence)
+        animation.run()
+    }
+*/
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

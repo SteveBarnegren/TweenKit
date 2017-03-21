@@ -8,12 +8,12 @@
 
 import Foundation
 
-class ReverseAction: FiniteTimeAction {
+public class ReverseAction: FiniteTimeAction {
     
     // MARK: - Public
     
-    var onBecomeActive: () -> () = {}
-    var onBecomeInactive: () -> () = {}
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
     
     init(action: FiniteTimeAction) {
         self.action = action
@@ -25,40 +25,40 @@ class ReverseAction: FiniteTimeAction {
     
     // MARK: - Private Methods
     
-    var reverse: Bool = false {
+    public var reverse: Bool = false {
         didSet {
             action.reverse = !action.reverse
         }
     }
     
-    var duration: Double {
+    public var duration: Double {
         return action.duration
     }
     
-    func willBecomeActive() {
+    public func willBecomeActive() {
         action.willBecomeActive()
         onBecomeActive()
     }
     
-    func didBecomeInactive() {
+    public func didBecomeInactive() {
         action.didBecomeInactive()
         onBecomeInactive()
     }
     
-    func willBegin() {
+    public func willBegin() {
         action.willBegin()
     }
     
-    func didFinish() {
+    public func didFinish() {
         action.didFinish()
     }
     
-    func update(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
         action.update(t: 1 - t)
     }
 }
 
-extension FiniteTimeAction {
+public extension FiniteTimeAction {
     func reversed() -> ReverseAction {
         return ReverseAction(action: self)
     }
