@@ -31,27 +31,41 @@ public class RepeatAction: FiniteTimeAction {
     public internal(set) var duration: Double
     let action: FiniteTimeAction
     let repeats: Int
+    var lastRepeatNumber = 0
     
     // MARK: - Private Methods
     
     public func willBecomeActive() {
         onBecomeInactive()
+        action.willBecomeActive()
     }
     
     public func didBecomeInactive() {
+        action.didBecomeInactive()
         onBecomeInactive()
     }
     
     public func willBegin() {
+        action.willBegin()
     }
     
     public func didFinish() {
+        action.didFinish()
     }
     
     public func update(t: CFTimeInterval) {
         
+        let repeatNumber = Int( t * Double(repeats) ).constrained(max: repeats-1)
+        
+        (lastRepeatNumber..<repeatNumber).forEach{ _ in
+            self.action.didFinish()
+            self.action.willBegin()
+        }
+        
         let actionT = ( t * Double(repeats) ).fract
         action.update(t: actionT)
+        
+        lastRepeatNumber = repeatNumber
     }
     
 }

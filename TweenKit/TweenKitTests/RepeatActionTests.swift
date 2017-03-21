@@ -30,8 +30,26 @@ class RepeatActionTests: XCTestCase {
     }
     
     func testActionIsRunCorrectNumberOfTimes() {
-        // TODO: 
-        // After passing tests for call blocks
-        // Repeat a sequence with call block and interpolate action, check block is called correct number of times
+        
+        let action = FiniteTimeActionTester(duration: 2)
+        let repeatedAction = action.repeated(3)
+        
+        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .didBecomeInactive,
+        ]
+        
+        let animation = Animation(action: repeatedAction)
+        scheduler.add(animation: animation)
+        scheduler.stepTime(duration: repeatedAction.duration + 1)
+        
+        let events = action.loggedEventsOfTypes(expectedEvents)
+        
+        XCTAssertEqual(expectedEvents, events)
     }
 }
