@@ -80,8 +80,10 @@ public class Group: FiniteTimeAction, SchedulableAction {
         }
         
         // Set actions in progress
-        wrappedActions.forEach{
-            $0.state = .inProgress
+        if !self.reverse {
+            wrappedActions.forEach{
+                $0.state = .inProgress
+            }
         }
     }
     
@@ -118,9 +120,9 @@ public class Group: FiniteTimeAction, SchedulableAction {
                 wrapper.action.update(t: elapsedTime / wrapper.action.duration)
             }
             
-            // Finish the Action if finished in the last update
-            else if lastElapsedTime < wrapper.action.duration, elapsedTime > wrapper.action.duration {
-                wrapper.action.update(t: reverse ? 0 : 1)
+            // Finish the action?
+            else if !reverse, lastElapsedTime < wrapper.action.duration, elapsedTime > wrapper.action.duration {
+                wrapper.action.update(t: 1.0)
                 wrapper.state = .finished
             }
         }
@@ -155,11 +157,6 @@ class GroupActionWrapper {
             case .inProgress:
                 action.willBecomeActive()
                 action.willBegin()
-                
-                if let trigger = action as? TriggerAction {
-                    trigger.trigger()
-                }
-                
             case .finished:
                 action.didFinish()
                 action.didBecomeInactive()

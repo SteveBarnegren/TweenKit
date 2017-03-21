@@ -1,3 +1,4 @@
+
 //
 //  FiniteTimeActionTester.swift
 //  TweenKit
@@ -87,6 +88,8 @@ class FiniteTimeActionTester: FiniteTimeAction {
     
     var updateCalled = false
     
+    var tag = 0
+    
     var onWillBegin: () -> () = {}
     var onDidFinish: () -> () = {}
     
@@ -105,6 +108,10 @@ class FiniteTimeActionTester: FiniteTimeAction {
         loggedEvents.append(.willBecomeActive)
         willBecomeActiveCallCount += 1
         onBecomeActive()
+        
+        if tag == 0 {
+            print("stop")
+        }
     }
     
     func didBecomeInactive() {

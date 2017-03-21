@@ -116,6 +116,33 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(expectedEvents, secondActionEvents)
     }
     
+    func testExpectedInnerActionsLifeCycleEventsAreCalledWhenReversed() {
+        
+        let firstAction = FiniteTimeActionTester(duration: 0.1)
+        firstAction.tag = 1
+        let secondAction = FiniteTimeActionTester(duration: 0.2)
+        let reversedGroup = Group(actions: firstAction, secondAction).reversed()
+        let animation = Animation(action: reversedGroup)
+        
+        scheduler.add(animation: animation)
+        scheduler.progressTime(duration: reversedGroup.duration + 0.1)
+        
+        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
+                                                                  .willBegin,
+                                                                  .didFinish,
+                                                                  .didBecomeInactive,
+                                                                  ]
+        
+        let firstActionEvents = firstAction.loggedEventsOfTypes(expectedEvents)
+        XCTAssertEqual(expectedEvents, firstActionEvents)
+        
+        //let secondActionEvents = secondAction.loggedEventsOfTypes(expectedEvents)
+        //XCTAssertEqual(expectedEvents, secondActionEvents)
+    }
+
+    
+    
+    
     
     
 }

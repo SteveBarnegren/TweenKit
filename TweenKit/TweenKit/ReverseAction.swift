@@ -17,6 +17,7 @@ class ReverseAction: FiniteTimeAction {
     
     init(action: FiniteTimeAction) {
         self.action = action
+        self.action.reverse = true
     }
     
     // MARK: - Private Properties
