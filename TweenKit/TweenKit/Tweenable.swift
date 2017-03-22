@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Tweenable
+
 public protocol Tweenable {
     func lerp(t: Double, end: Self) -> Self
     func distanceTo(other: Self) -> Double
@@ -31,4 +33,12 @@ extension Double: Tweenable {
     public func distanceTo(other: Double) -> Double {
         return other - self
     }
+}
+
+// MARK: - Tweenable2D
+
+public protocol Tweenable2DCoordinate{
+    var tweenableX: Double {get}
+    var tweenableY: Double {get}
+    init(tweenable x: Double, y: Double)
 }
