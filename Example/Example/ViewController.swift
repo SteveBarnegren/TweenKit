@@ -123,7 +123,7 @@ class ViewController: UIViewController {
                                             self.testView.frame.origin = $0
         }
 
-        let sequence = Sequence(actions: moveRight, moveDown, moveLeft)//.yoyo().repeated(3)
+        let sequence = Sequence(actions: moveRight, moveDown, moveLeft).yoyo().repeated(3)
         let animation = Animation(action: sequence)
         animation.run()
     }

@@ -120,10 +120,10 @@ public class Sequence: FiniteTimeAction {
             }
             
             // Update the action
-            let actionElapsed = ((elapsedTime - offset) / action.duration)
-                .constrained(min: 0, max: action.duration)
+            let actionT = ((elapsedTime - offset) / action.duration)
+                .constrained(min: 0, max: 1.0)
             
-            action.update(t: actionElapsed)
+            action.update(t: actionT)
             lastRunAction = action
             
             // Continue to the next action?
