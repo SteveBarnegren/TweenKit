@@ -74,7 +74,7 @@ public class YoyoAction: FiniteTimeAction {
          - will begin
          - will finish
  
-         Now the action is 'invoked twice' (two begin/finish calls), and it has the correct reverse state at the time of each call
+         The inner action is 'invoked twice' (two begin/finish calls), and it has the correct reverse state at the time of each call
          There are unit tests that test the call order, please run them after making changes
          */
         
