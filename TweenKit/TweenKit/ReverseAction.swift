@@ -21,7 +21,7 @@ public class ReverseAction: FiniteTimeAction {
     }
     
     // MARK: - Private Properties
-    let action: FiniteTimeAction
+    var action: FiniteTimeAction
     
     // MARK: - Private Methods
     

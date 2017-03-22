@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     
      // COMPLEX
-    /*
+    
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -94,11 +94,11 @@ class ViewController: UIViewController {
         animation.run()
         
     }
-    */
+ 
     
     
      // SEQUENCE
-    
+    /*
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
         let animation = Animation(action: sequence)
         animation.run()
     }
- 
+ */
 
     
     // GROUP

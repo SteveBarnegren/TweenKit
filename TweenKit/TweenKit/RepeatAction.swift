@@ -29,7 +29,7 @@ public class RepeatAction: FiniteTimeAction {
     }
 
     public internal(set) var duration: Double
-    let action: FiniteTimeAction
+    var action: FiniteTimeAction
     let repeats: Int
     var lastRepeatNumber = 0
     

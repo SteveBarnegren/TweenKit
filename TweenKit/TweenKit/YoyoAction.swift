@@ -40,7 +40,7 @@ public class YoyoAction: FiniteTimeAction {
     // MARK: - Private Properties
     
     public internal(set) var duration: Double
-    let action: FiniteTimeAction
+    var action: FiniteTimeAction
     var state = State.idle
     
     // MARK: - Private Methods

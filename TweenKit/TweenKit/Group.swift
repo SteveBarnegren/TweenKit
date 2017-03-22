@@ -18,7 +18,10 @@ public class Group: FiniteTimeAction, SchedulableAction {
     
     public var reverse = false {
         didSet {
-            wrappedActions.forEach{ $0.action.reverse = reverse }
+            wrappedActions = wrappedActions.map{ wrapped in
+                wrapped.action.reverse = reverse
+                return wrapped
+            }
         }
     }
     
@@ -149,7 +152,7 @@ class GroupActionWrapper {
         self.action = action
     }
     
-    let action: FiniteTimeAction
+    var action: FiniteTimeAction
     
     var state = State.notStarted {
         didSet{

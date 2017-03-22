@@ -10,14 +10,7 @@ import XCTest
 @testable import TweenKit
 
 class SequenceTests: XCTestCase {
-    
-    enum ActionEvents: Equatable {
-        case actionBecomeActive(FiniteTimeAction)
-        case actionBegin(FiniteTimeAction)
-        case actionFinish(FiniteTimeAction)
-        case actionBecomeInactive(FiniteTimeAction)
-    }
-    
+   
     var scheduler: Scheduler!
     
     override func setUp() {
@@ -144,20 +137,4 @@ class SequenceTests: XCTestCase {
     }
 
     
-}
-
-func ==(lhs: SequenceTests.ActionEvents, rhs: SequenceTests.ActionEvents) -> Bool {
-    
-    switch (lhs, rhs) {
-    case let (.actionBecomeActive(leftAction), .actionBecomeActive(rightAction)):
-        return leftAction === rightAction
-    case let (.actionBegin(leftAction), .actionBegin(rightAction)):
-        return leftAction === rightAction
-    case let (.actionFinish(leftAction), .actionFinish(rightAction)):
-        return leftAction === rightAction
-    case let (.actionBecomeInactive(leftAction), .actionBecomeInactive(rightAction)):
-        return leftAction === rightAction
-    default:
-        return false
-    }
 }

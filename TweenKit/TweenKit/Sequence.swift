@@ -17,7 +17,7 @@ public class Sequence: FiniteTimeAction {
     
     public var reverse = false {
         didSet {
-            actions.forEach{ $0.reverse = reverse }
+            wrappedActions.forEach{ $0.action.reverse = reverse }
         }
     }
 
@@ -37,7 +37,7 @@ public class Sequence: FiniteTimeAction {
     }
 
     public func add(action: FiniteTimeAction) {
-        actions.append(action)
+        wrappedActions.append( action.inClassWrapper() )
         calculateDuration()
         calculateOffsets()
     }
@@ -46,22 +46,22 @@ public class Sequence: FiniteTimeAction {
     
     public private(set) var duration = Double(0)
     
-    private var actions = [FiniteTimeAction]()
+    private var wrappedActions = [FiniteTimeActionClassWrapper]()
     private var offsets = [Double]()
-    private var lastRunAction: FiniteTimeAction?
+    private var lastRunAction: FiniteTimeActionClassWrapper?
     
     // MARK: - Private Methods
 
     private func calculateDuration() {
-        duration = actions.reduce(0) { $0 + $1.duration }
+        duration = wrappedActions.reduce(0) { $0 + $1.action.duration }
     }
     
     private func calculateOffsets() {
         offsets = [Double]()
         var offsetPos = 0.0
         offsets.append(offsetPos)
-        actions.dropLast().forEach{
-            offsetPos += $0.duration
+        wrappedActions.dropLast().forEach{
+            offsetPos += $0.action.duration
             offsets.append(offsetPos)
         }
     }
@@ -81,9 +81,9 @@ public class Sequence: FiniteTimeAction {
     public func didFinish() {
         
         // finish the final action
-        if let lastAction = reverse ? actions.first : actions.last {
-            lastAction.didFinish()
-            lastAction.didBecomeInactive()
+        if let lastAction = reverse ? wrappedActions.first : wrappedActions.last {
+            lastAction.action.didFinish()
+            lastAction.action.didBecomeInactive()
         }
         
     }
@@ -91,7 +91,7 @@ public class Sequence: FiniteTimeAction {
     public func update(t: CFTimeInterval) {
         
         let elapsedTime = t * duration
-        let enumeratedActions = reverse ? actions.reversed().enumerated() : actions.enumerated()
+        let enumeratedActions = reverse ? wrappedActions.reversed().enumerated() : wrappedActions.enumerated()
         
         // Get the last run action index
         var lastRunIndex = -1
@@ -104,7 +104,7 @@ public class Sequence: FiniteTimeAction {
         }
         
         // Update actions
-        for (index, action) in enumeratedActions {
+        for (index, wrapper) in enumeratedActions {
             
             let offset = reverse ? offsets.reversed()[index] : offsets[index]
             
@@ -114,31 +114,31 @@ public class Sequence: FiniteTimeAction {
             }
             
             // Start the action?
-            if action !== lastRunAction {
-                action.willBecomeActive()
-                action.willBegin()
+            if wrapper !== lastRunAction {
+                wrapper.action.willBecomeActive()
+                wrapper.action.willBegin()
             }
             
             // Update the action
-            let actionT = ((elapsedTime - offset) / action.duration)
+            let actionT = ((elapsedTime - offset) / wrapper.action.duration)
                 .constrained(min: 0, max: 1.0)
             
-            action.update(t: actionT)
-            lastRunAction = action
+            wrapper.action.update(t: actionT)
+            lastRunAction = wrapper
             
             // Continue to the next action?
             let continueToNext: Bool
             
             if reverse {
-                continueToNext = elapsedTime < offset && index != actions.count - 1
+                continueToNext = elapsedTime < offset && index != wrappedActions.count - 1
             }
             else{
-                continueToNext = elapsedTime > offset + action.duration && index != actions.count - 1
+                continueToNext = elapsedTime > offset + wrapper.action.duration && index != wrappedActions.count - 1
             }
             
             if continueToNext {
-                action.didFinish()
-                action.didBecomeInactive()
+                wrapper.action.didFinish()
+                wrapper.action.didBecomeInactive()
             }
             else{
                 break
