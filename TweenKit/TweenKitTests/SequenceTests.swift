@@ -124,6 +124,24 @@ class SequenceTests: XCTestCase {
         
         XCTAssertEqual(events, expectedEvents)
     }
+    
+    func testAllActionsEndInCompletedStates() {
+    
+        var value1 = 0.0, value2 = 0.0, value3 = 0.0
+        
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+
+        let sequence = Sequence(actions: action1, action2, action3)
+        let animation = Animation(action: sequence)
+        scheduler.add(animation: animation)
+        scheduler.progressTime(duration: sequence.duration + 0.1, stepSize: 0.05)
+        
+        XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value2, 1.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value3, 1.0, accuracy: 0.001)
+    }
 
     
 }
