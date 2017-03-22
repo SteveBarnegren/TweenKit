@@ -98,7 +98,7 @@ class ViewController: UIViewController {
     
     
      // SEQUENCE
-    
+    /*
     func startTheAnimation() {
         
         print("Start the animation!")
@@ -127,7 +127,23 @@ class ViewController: UIViewController {
         let animation = Animation(action: sequence)
         animation.run()
     }
+ */
  
+    
+    // ARC
+    func startTheAnimation() {
+ 
+        let screenCenter = CGPoint(x: UIScreen.main.bounds.size.width/2,
+                                   y: UIScreen.main.bounds.size.height/2)
+        
+        let action = ArcAction(center: screenCenter, radius: 100, startDegrees: 0, endDegrees: 360, duration: 5) {
+            self.testView.center = $0
+        }
+        action.easing = .elasticInOut
+        
+        let animation = Animation(action: action.yoyo())
+        animation.run()
+    }
 
     
     // GROUP

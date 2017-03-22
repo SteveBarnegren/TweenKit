@@ -48,7 +48,7 @@ extension CGPoint: Tweenable2DCoordinate {
         return Double(self.y)
     }
     
-    public init(tweenable x: Double, y: Double) {
+    public init(tweenableX x: Double, y: Double) {
         self.init(x: x, y: y)
     }
 }

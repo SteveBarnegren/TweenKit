@@ -40,5 +40,5 @@ extension Double: Tweenable {
 public protocol Tweenable2DCoordinate{
     var tweenableX: Double {get}
     var tweenableY: Double {get}
-    init(tweenable x: Double, y: Double)
+    init(tweenableX x: Double, y: Double)
 }
