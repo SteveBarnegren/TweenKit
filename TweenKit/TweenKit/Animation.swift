@@ -20,6 +20,8 @@ public class Animation : Equatable {
         Scheduler.shared.add(animation: self)
     }
     
+    public var onDidUpdate: () -> () = {}
+    
     // MARK: - Properties
 
     var hasDuration: Bool {
@@ -61,10 +63,9 @@ public class Animation : Equatable {
         else if let action = action as? InfiniteTimeAction {
             action.update(elapsedTime: elapsedTime)
         }
+        
+        onDidUpdate()
     }
-    
-    
-    
     
 }
 

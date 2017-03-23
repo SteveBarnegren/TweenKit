@@ -10,6 +10,7 @@
 		0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */; };
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
+		0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
 		6750B91C1E7C85A300E7AEE2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */; };
 		6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6750B9201E7C85A300E7AEE2 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSwitcherViewController.swift; sourceTree = "<group>"; };
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
+		0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubbableExampleViewController.swift; sourceTree = "<group>"; };
 		6750B9161E7C85A300E7AEE2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */,
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
+				0984A5A61E843C6C00240A50 /* 3. Scrubbable */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -83,6 +86,14 @@
 				0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */,
 			);
 			name = "2. Activity Indicator";
+			sourceTree = "<group>";
+		};
+		0984A5A61E843C6C00240A50 /* 3. Scrubbable */ = {
+			isa = PBXGroup;
+			children = (
+				0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */,
+			);
+			name = "3. Scrubbable";
 			sourceTree = "<group>";
 		};
 		6750B90D1E7C85A300E7AEE2 = {
@@ -223,6 +234,7 @@
 				0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */,
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
+				0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */,
 				0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
