@@ -17,16 +17,23 @@ extension FloatingPoint {
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
 
+// MARK: - Constants
+let defaultBackgroundColorTop = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
+let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
+
+
 class ScrubbableExampleViewController: UIViewController {
-    
-    // MARK: - Constants
-    
     
     // MARK: - Properties
     
     let scheduler = Scheduler()
     
     // MARK: - Layers
+    
+    let gradientLayer : CAGradientLayer = {
+        let layer = CAGradientLayer()
+        return layer
+    }()
     
     let sunMiddle: CALayer = {
         let layer = CALayer()
@@ -48,7 +55,7 @@ class ScrubbableExampleViewController: UIViewController {
     
     let moon: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.fillColor = UIColor.gray.cgColor
+        layer.fillColor = UIColor.white.cgColor
         layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         
         let topPoint = CGPoint(x: layer.bounds.size.width/2,
@@ -126,10 +133,21 @@ class ScrubbableExampleViewController: UIViewController {
         return minValue.lerp(t: Double(moonOnScreenAmount), end: maxValue)
     }
     
+    var backgroundColorTop = defaultBackgroundColorTop {
+        didSet{ updateBackgroundGradient() }
+    }
+    
+    var backgroundColorBottom = defaultBackgroundColorBottom {
+        didSet{ updateBackgroundGradient() }
+    }
+    
+    // MARK: - Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Add sub layers
+        view.layer.addSublayer(gradientLayer)
         view.layer.addSublayer(sunSideSpoke)
         view.layer.addSublayer(sunDiagonalSpoke)
         view.layer.addSublayer(sunMiddle)
@@ -146,47 +164,87 @@ class ScrubbableExampleViewController: UIViewController {
         scheduler.add(animation: animation)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
+    
     func makeSunAction() -> FiniteTimeAction {
+        
+        let duration = 2.0
         
         // Animate the sun on screen
         let moveSunOnScreen = InterpolationAction(from: CGFloat(0.0),
                                                   to: CGFloat(1.0),
-                                                  duration: 2,
+                                                  duration: duration,
                                                   update: { [unowned self] in self.sunOnScreenAmount = $0; self.sunSideSpokeSize = $0 })
         moveSunOnScreen.easing = .exponentialOut
         
         // Rotate sun
         let rotateSun = InterpolationAction(from: 0.0,
                                             to: 360.0 * 3.0,
-                                            duration: 2.5,
+                                            duration: duration + 0.5,
                                             update: { [unowned self] in self.sunRotation = $0})
         rotateSun.easing = .exponentialOut
         
+        // Change background color
+        let changeBackgroundColorTop = InterpolationAction(from: defaultBackgroundColorTop,
+                                                           to: UIColor(red: 0.118, green: 0.376, blue: 0.682, alpha: 1.00),
+                                                           duration: duration,
+                                                           update: { [unowned self] in self.backgroundColorTop = $0 })
+        changeBackgroundColorTop.easing = .exponentialOut
+        
+        let changeBackgroundColorBottom = InterpolationAction(from: defaultBackgroundColorBottom,
+                                                              to: UIColor(red: 0.569, green: 0.824, blue: 0.941, alpha: 1.00),
+                                                              duration: duration,
+                                                              update: { [unowned self] in self.backgroundColorBottom = $0 })
+        changeBackgroundColorBottom.easing = .exponentialOut
+        
         
         // Create group
-        let group = Group(actions: moveSunOnScreen, rotateSun)
+        let group = Group(actions: moveSunOnScreen, rotateSun, changeBackgroundColorTop, changeBackgroundColorBottom)
         
         return group
-       
+        
     }
     
     func makeMoonAction() -> FiniteTimeAction {
         
+        let duration = 2.0
+        
         // animate the moon on screen
-        let action = InterpolationAction(from: 0.0,
+        let move = InterpolationAction(from: 0.0,
                                          to: 1.0,
-                                         duration: 2,
+                                         duration: duration,
                                          update: { [unowned self] in self.moonOnScreenAmount = $0 })
-        action.easing = .exponentialOut
-        return action
+        move.easing = .exponentialOut
+        
+        // Change background color
+        let changeBackgroundColorTop = InterpolationAction(from: defaultBackgroundColorTop,
+                                                           to: UIColor(red: 0.114, green: 0.082, blue: 0.133, alpha: 1.00),
+                                                           duration: duration,
+                                                           update: { [unowned self] in self.backgroundColorTop = $0 })
+        changeBackgroundColorTop.easing = .exponentialOut
+        
+        let changeBackgroundColorBottom = InterpolationAction(from: defaultBackgroundColorBottom,
+                                                              to: UIColor(red: 0.278, green: 0.122, blue: 0.494, alpha: 1.00),
+                                                              duration: duration,
+                                                              update: { [unowned self] in self.backgroundColorBottom = $0 })
+        changeBackgroundColorBottom.easing = .exponentialOut
+        
+        // Group
+        let group = Group(actions: move, changeBackgroundColorTop, changeBackgroundColorBottom)
+
+        return group
     }
     
     // MARK: - Update
-    
+
     func updateSun() {
+    
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        
+
         updateSunMiddle()
         updateSunSideSpoke()
         updateSunDiagonalSpoke()
@@ -243,6 +301,19 @@ class ScrubbableExampleViewController: UIViewController {
                             y: moonPosition.y - moon.bounds.size.height/2,
                             width: moon.bounds.size.width,
                             height: moon.bounds.size.height)
+        
+        CATransaction.commit()
+    }
+    
+    func updateBackgroundGradient() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        gradientLayer.colors = [backgroundColorTop.cgColor, backgroundColorBottom.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.locations = [0.0, 1.0]
         
         CATransaction.commit()
     }
