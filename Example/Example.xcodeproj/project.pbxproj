@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0984A59C1E83BEB100240A50 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59B1E83BEB100240A50 /* ExampleViewController.swift */; };
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
+		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
 		6750B91C1E7C85A300E7AEE2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */; };
 		6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6750B9201E7C85A300E7AEE2 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		0984A59B1E83BEB100240A50 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
+		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
 		6750B9161E7C85A300E7AEE2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				0984A59B1E83BEB100240A50 /* ExampleViewController.swift */,
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
+				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -72,6 +75,14 @@
 				0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */,
 			);
 			name = "1. Basic Tween";
+			sourceTree = "<group>";
+		};
+		0984A5A11E83EFF000240A50 /* 2. Activity Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */,
+			);
+			name = "2. Activity Indicator";
 			sourceTree = "<group>";
 		};
 		6750B90D1E7C85A300E7AEE2 = {
@@ -145,7 +156,8 @@
 				TargetAttributes = {
 					6750B9151E7C85A300E7AEE2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 57B8T35GZ4;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -211,6 +223,7 @@
 				0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */,
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleViewController.swift in Sources */,
+				0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,10 +338,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
+				DEVELOPMENT_TEAM = 57B8T35GZ4;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4a27b31a-d6bc-4261-882a-6bc3907e5dac";
+				PROVISIONING_PROFILE_SPECIFIER = InHouseWildcard;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -337,10 +354,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hi Mum Said Dad Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
+				DEVELOPMENT_TEAM = 57B8T35GZ4;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4a27b31a-d6bc-4261-882a-6bc3907e5dac";
+				PROVISIONING_PROFILE_SPECIFIER = InHouseWildcard;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

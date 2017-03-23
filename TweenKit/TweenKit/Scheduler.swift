@@ -8,19 +8,19 @@
 
 import Foundation
 
-@objc class Scheduler : NSObject {
+@objc public class Scheduler : NSObject {
     
     // MARK: - Internal
     
     static let shared = Scheduler()
     
-    func add(animation: Animation) {
+    public func add(animation: Animation) {
         animations.append(animation)
         animation.willStart()
         startLoop()
     }
     
-    func remove(animation: Animation) {
+    public func remove(animation: Animation) {
         
         guard let index = animations.index(of: animation) else {
             print("Can't find animation to remove")

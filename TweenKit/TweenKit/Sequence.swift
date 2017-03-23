@@ -72,7 +72,6 @@ public class Sequence: FiniteTimeAction {
     
     public func didBecomeInactive() {
         onBecomeInactive()
-        lastRunAction = nil
     }
     
     public func willBegin() {
@@ -82,10 +81,12 @@ public class Sequence: FiniteTimeAction {
         
         // finish the final action
         if let lastAction = reverse ? wrappedActions.first : wrappedActions.last {
+            lastAction.action.update(t: reverse ? 0.0 : 1.0)
             lastAction.action.didFinish()
             lastAction.action.didBecomeInactive()
         }
         
+        lastRunAction = nil
     }
     
     public func update(t: CFTimeInterval) {
@@ -137,6 +138,7 @@ public class Sequence: FiniteTimeAction {
             }
             
             if continueToNext {
+                wrapper.action.update(t: reverse ? 0.0 : 1.0)
                 wrapper.action.didFinish()
                 wrapper.action.didBecomeInactive()
             }

@@ -71,3 +71,20 @@ extension CGSize: Tweenable {
     }
 }
 
+// MARK: - CGRect
+
+extension CGRect: Tweenable {
+    
+    public func lerp(t: Double, end: CGRect) -> CGRect {
+        
+        return CGRect(x: self.origin.x + (end.origin.x - self.origin.x) * CGFloat(t),
+                      y: self.origin.y + (end.origin.y - self.origin.y) * CGFloat(t),
+                      width: self.size.width + (end.size.width - self.size.width) * CGFloat(t),
+                      height: self.size.height + (end.size.height - self.size.height) * CGFloat(t))
+    }
+    
+    public func distanceTo(other: CGRect) -> Double {
+        fatalError("Not implemented")
+    }
+}
+

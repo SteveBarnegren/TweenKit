@@ -42,7 +42,9 @@ class ExampleViewController: UIViewController {
         view.addSubview(nextButton)
         
         // Set the initial content view controller
-        setContentViewController(to: BasicTweenViewController(nibName: nil, bundle: nil))
+        //setContentViewController(to: BasicTweenViewController(nibName: nil, bundle: nil))
+        setContentViewController(to: ActivityIndicatorExampleViewController(nibName: nil, bundle: nil))
+
     }
 
     override func viewDidLayoutSubviews() {

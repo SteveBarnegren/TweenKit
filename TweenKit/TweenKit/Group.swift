@@ -40,6 +40,22 @@ public class Group: FiniteTimeAction, SchedulableAction {
         }
     }
     
+    public init(staggered actions: [FiniteTimeAction], offset: Double) {
+        
+        for (index, action) in actions.enumerated() {
+            
+            if index == 0 {
+                add(action: action)
+            }
+            else{
+                let delay = DelayAction(duration: offset * Double(index))
+                let sequence = Sequence(actions: delay, action)
+                add(action: sequence)
+            }
+            
+        }
+    }
+    
     public func add(action: FiniteTimeAction) {
         
         if let trigger = action as? TriggerAction {
@@ -94,9 +110,7 @@ public class Group: FiniteTimeAction, SchedulableAction {
     }
     
     public func didFinish() {
-        
-        print("Reverse: \(reverse)")
-        
+                
         // Finish actions
         wrappedActions.forEach{
             
