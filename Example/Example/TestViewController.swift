@@ -9,7 +9,7 @@
 import UIKit
 import TweenKit
 
-class ViewController: UIViewController {
+class TestViewController: UIViewController {
     
     let testView: UIView = {
         let view = UIView(frame: .zero)
@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.white
         
         // Add Subviews
         view.addSubview(testView)

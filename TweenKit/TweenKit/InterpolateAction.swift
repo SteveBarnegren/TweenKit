@@ -8,10 +8,15 @@
 
 import Foundation
 
+enum TweenableValueType<T: Tweenable> {
+    case constant(T)
+    case dynamic( () -> (T) )
+}
+
 public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAction {
-  
+
     // MARK: - Public
-    
+
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
     public var easing = Easing.linear
