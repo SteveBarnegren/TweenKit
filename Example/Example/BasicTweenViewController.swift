@@ -26,7 +26,7 @@ class BasicTweenViewController: UIViewController {
     // Start the animation on view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         view.addSubview(squareView)
         startAnimation()
     }
@@ -43,7 +43,7 @@ class BasicTweenViewController: UIViewController {
         
         // Create an interpolation action
         // We can use a closure for the from argument to get the current frame of the view
-        // Note the use of [unowned self] in the closure to break retain cycle, as scheduler has the same lifetime as self
+        // Note the use of [unowned self] closures to break retain cycle, as scheduler has the same lifetime as self
         let action = InterpolationAction(from: { [unowned self] in self.squareView.frame },
                                          to: newFrame,
                                          duration: 2,

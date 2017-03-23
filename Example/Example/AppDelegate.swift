@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TweenKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,13 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        let scheduler = Scheduler()
         
         // Test view conteoller
         //let viewController = TestViewController(nibName: nil, bundle: nil)
         //window?.rootViewController = viewController
         
         // Example view controller
-        let viewController = ExampleViewController(nibName: nil, bundle: nil)
+        let viewController = ExampleSwitcherViewController(nibName: nil, bundle: nil)
         window?.rootViewController = viewController
         
         window?.makeKeyAndVisible()

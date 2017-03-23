@@ -44,8 +44,14 @@ import Foundation
     private var animations = [Animation]()
     private var animationsToRemove = [Animation]()
 
-    private var displayLink: CADisplayLink?
+    private var displayLink: DisplayLink?
     private var lastTimeStamp: CFTimeInterval?
+    
+    // MARK: - Deinit
+    
+    deinit {
+        stopLoop()
+    }
     
     // MARK: - Manage Loop
     
@@ -55,11 +61,10 @@ import Foundation
             return
         }
         
-        displayLink = CADisplayLink(target: self,
-                                    selector: #selector(displayLinkCallback))
-        
-        displayLink?.add(to: .current,
-                         forMode: .defaultRunLoopMode)
+        displayLink = DisplayLink(handler: {[unowned self] (displayLink) in
+             self.displayLinkCallback(displaylink: displayLink)
+        })
+                
     }
     
     private func stopLoop() {
@@ -122,4 +127,32 @@ import Foundation
 
     }
 
+}
+
+@objc class DisplayLink : NSObject {
+    
+    var caDisplayLink: CADisplayLink? = nil
+    let handler: (CADisplayLink) -> ()
+    
+    init(handler: @escaping (CADisplayLink) -> ()) {
+        
+        self.handler = handler
+        
+        super.init()
+        
+        caDisplayLink = CADisplayLink(target: self,
+                                      selector: #selector(displayLinkCallback(displaylink:)))
+        
+        caDisplayLink?.add(to: .current,
+                           forMode: .defaultRunLoopMode)
+        
+    }
+    
+    @objc private func displayLinkCallback(displaylink: CADisplayLink) {
+        self.handler(displaylink)
+    }
+    
+    func invalidate() {
+        caDisplayLink?.invalidate()
+    }
 }

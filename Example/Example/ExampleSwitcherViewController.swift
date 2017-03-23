@@ -8,11 +8,59 @@
 
 import UIKit
 
-class ExampleViewController: UIViewController {
+enum ExampleType: Int {
+    
+    case basicTween
+    case activityIndicator
+    
+    var count: Int {
+        
+        var rawValue = 0
+        
+        while let _ = ExampleType(rawValue: rawValue) {
+            rawValue += 1
+        }
+        
+        return rawValue
+    }
+    
+    func next() -> ExampleType {
+        var raw = self.rawValue
+        raw += 1
+        if let nextValue = ExampleType(rawValue: raw) {
+            return nextValue
+        }
+        return ExampleType(rawValue: 0)!
+    }
+    
+    func previous() -> ExampleType {
+        
+        var raw = self.rawValue
+        raw -= 1
+        if raw < 0 {
+            return ExampleType(rawValue: count-1)!
+        }
+        else{
+            return ExampleType(rawValue: raw)!
+        }
+    }
+    
+    func makeViewController() -> UIViewController {
+        switch self {
+        case .basicTween:
+            return BasicTweenViewController(nibName: nil, bundle: nil)
+        case .activityIndicator:
+            return ActivityIndicatorExampleViewController(nibName: nil, bundle: nil)
+        }
+    }
+}
+
+
+class ExampleSwitcherViewController: UIViewController {
     
     // MARK: - Properties
-    
     var contentViewController: UIViewController? = nil
+    var exampleType = ExampleType(rawValue: 0)!
     
     // MARK: - Views
     
@@ -30,7 +78,7 @@ class ExampleViewController: UIViewController {
         return button
     }()
 
-    // MARK: - Methods
+    // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +91,10 @@ class ExampleViewController: UIViewController {
         
         // Set the initial content view controller
         //setContentViewController(to: BasicTweenViewController(nibName: nil, bundle: nil))
-        setContentViewController(to: ActivityIndicatorExampleViewController(nibName: nil, bundle: nil))
+        //setContentViewController(to: ActivityIndicatorExampleViewController(nibName: nil, bundle: nil))
+        
+        let startViewController = exampleType.makeViewController()
+        setContentViewController(to: startViewController)
 
     }
 
@@ -72,26 +123,43 @@ class ExampleViewController: UIViewController {
         }
     }
     
+    // MARK: - Methods
+    
     @objc private func backButtonPressed(sender: UIButton) {
         print("Back button pressed")
+        
+        exampleType = exampleType.previous()
+        let viewController = exampleType.makeViewController()
+        setContentViewController(to: viewController)
+        
     }
 
     @objc private func nextButtonPressed(sender: UIButton) {
         print("Next button pressed")
+        
+        exampleType = exampleType.next()
+        let viewController = exampleType.makeViewController()
+        setContentViewController(to: viewController)
     }
     
     func setContentViewController(to viewController: UIViewController) {
-        
+                
         if let existing = contentViewController {
             existing.removeFromParentViewController()
             existing.view.removeFromSuperview()
         }
         
+        contentViewController = nil
+        
         addChildViewController(viewController)
         view.addSubview(viewController.view)
+        viewController.view.isUserInteractionEnabled = false
+        contentViewController = viewController
         
         view.setNeedsLayout()
     }
+    
+    
     
 
 }
