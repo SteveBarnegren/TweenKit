@@ -89,10 +89,7 @@ class ExampleSwitcherViewController: UIViewController {
         view.addSubview(backButton)
         view.addSubview(nextButton)
         
-        // Set the initial content view controller
-        //setContentViewController(to: BasicTweenViewController(nibName: nil, bundle: nil))
-        //setContentViewController(to: ActivityIndicatorExampleViewController(nibName: nil, bundle: nil))
-        
+        // Show the first example
         let startViewController = exampleType.makeViewController()
         setContentViewController(to: startViewController)
 
@@ -143,7 +140,7 @@ class ExampleSwitcherViewController: UIViewController {
     }
     
     func setContentViewController(to viewController: UIViewController) {
-                
+        
         if let existing = contentViewController {
             existing.removeFromParentViewController()
             existing.view.removeFromSuperview()
