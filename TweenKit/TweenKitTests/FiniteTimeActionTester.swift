@@ -119,10 +119,6 @@ class FiniteTimeActionTester: FiniteTimeAction {
         sharedEventLog?.add(event: .willBecomeActiveWithTag(tag))
         willBecomeActiveCallCount += 1
         onBecomeActive()
-        
-        if tag == 0 {
-            print("stop")
-        }
     }
     
     func didBecomeInactive() {
