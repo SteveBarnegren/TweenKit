@@ -49,6 +49,7 @@ class FiniteTimeActionTester: FiniteTimeAction {
     // MARK: - Test State
     
     var loggedEvents = [EventType]()
+    /*
     func loggedEventsOfTypes(_ eventsToMatch: [EventType]) -> [EventType] {
         
         func includeEvent(_ event: EventType) -> Bool {
@@ -65,6 +66,7 @@ class FiniteTimeActionTester: FiniteTimeAction {
             includeEvent($0)
         }
     }
+ */
     
     var willBeginCallCount = 0
     var has_WillBegin_BeenCalled: Bool {

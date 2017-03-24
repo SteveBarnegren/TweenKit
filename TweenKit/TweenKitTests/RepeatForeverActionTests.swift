@@ -72,9 +72,9 @@ class RepeatForeverActionTests: XCTestCase {
                                                                   .willBegin
         ]
         
-        let events = action.loggedEventsOfTypes(expectedEvents)
-        
-        XCTAssertEqual(expectedEvents, events)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
     }
     
 }

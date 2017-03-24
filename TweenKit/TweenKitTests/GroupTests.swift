@@ -109,11 +109,13 @@ class GroupTests: XCTestCase {
                                                                   .didBecomeInactive,
                                                                   ]
         
-        let firstActionEvents = firstAction.loggedEventsOfTypes(expectedEvents)
-        XCTAssertEqual(expectedEvents, firstActionEvents)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: firstAction.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
         
-        let secondActionEvents = secondAction.loggedEventsOfTypes(expectedEvents)
-        XCTAssertEqual(expectedEvents, secondActionEvents)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: secondAction.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
     }
     
     func testExpectedInnerActionsLifeCycleEventsAreCalledWhenReversed() {
@@ -133,16 +135,47 @@ class GroupTests: XCTestCase {
                                                                   .didBecomeInactive,
                                                                   ]
         
-        let firstActionEvents = firstAction.loggedEventsOfTypes(expectedEvents)
-        XCTAssertEqual(expectedEvents, firstActionEvents)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: firstAction.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
         
-        //let secondActionEvents = secondAction.loggedEventsOfTypes(expectedEvents)
-        //XCTAssertEqual(expectedEvents, secondActionEvents)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: secondAction.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+        
     }
-
     
+    func testGroupFullLifeCycleUpdatesInnerActions() {
+        
+        var value1 = 0.0, value2 = 0.0, value3 = 0.0
+        
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+        
+        let group = Group(actions: action1, action2, action3)
+        group.simulateFullLifeCycle()
+        
+        XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value2, 1.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value3, 1.0, accuracy: 0.001)
+    }
     
-    
-    
+    func testGroupFullLifeCycleUpdatesInnerActionsWhenReversed() {
+        
+        var value1 = 0.0, value2 = 0.0, value3 = 0.0
+        
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+        
+        let group = Group(actions: action1, action2, action3)
+        group.reverse = true
+        group.simulateFullLifeCycle()
+        
+        XCTAssertEqualWithAccuracy(value1, 0.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value2, 0.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value3, 0.0, accuracy: 0.001)
+    }
     
 }

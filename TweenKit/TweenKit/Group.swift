@@ -112,11 +112,17 @@ public class Group: FiniteTimeAction, SchedulableAction {
     public func didFinish() {
                 
         // Finish actions
-        wrappedActions.forEach{
+        for wrapper in wrappedActions {
             
-            if $0.state != .finished {
-                $0.action.update(t: reverse ? 0 : 1)
-                $0.state = .finished
+            if wrapper.state == .notStarted {
+                wrapper.action.willBecomeActive()
+                wrapper.action.willBegin()
+                wrapper.state = .inProgress
+            }
+            
+            if wrapper.state == .inProgress {
+                wrapper.action.update(t: reverse ? 0.0 : 1.0)
+                wrapper.state = .finished
             }
         }
         

@@ -48,8 +48,8 @@ class RepeatActionTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: repeatedAction.duration + 0.1)
         
-        let events = action.loggedEventsOfTypes(expectedEvents)
-        
-        XCTAssertEqual(expectedEvents, events)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
     }
 }

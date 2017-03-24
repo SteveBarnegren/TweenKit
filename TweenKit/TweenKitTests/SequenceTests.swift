@@ -136,7 +136,7 @@ class SequenceTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value3, 1.0, accuracy: 0.001)
     }
     
-    func testOnFinishUpdatesInnerActions() {
+    func testSequenceFullLifeCycleUpdatesInnerActions() {
         
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
@@ -150,6 +150,23 @@ class SequenceTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(value2, 1.0, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(value3, 1.0, accuracy: 0.001)
+    }
+    
+    func testSequenceFullLifeCycleUpdatesInnerActionsWhenReversed() {
+        
+        var value1 = 0.0, value2 = 0.0, value3 = 0.0
+        
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value3 = $0 })
+        
+        let sequence = Sequence(actions: action1, action2, action3)
+        sequence.reverse = true
+        sequence.simulateFullLifeCycle()
+        
+        XCTAssertEqualWithAccuracy(value1, 0.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value2, 0.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(value3, 0.0, accuracy: 0.001)
     }
  
 

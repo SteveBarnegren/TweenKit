@@ -86,10 +86,8 @@ class YoyoActionTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: yoyo.duration + 0.1)
         
-        
-        let loggedEvents = action.loggedEventsOfTypes(expectedEvents)
-        print(loggedEvents)
-        
-        XCTAssertEqual(expectedEvents, loggedEvents)
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
     }
 }
