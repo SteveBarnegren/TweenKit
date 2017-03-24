@@ -50,6 +50,7 @@ public class ReverseAction: FiniteTimeAction {
     }
     
     public func didFinish() {
+        action.update(t: reverse ? 1.0 : 0.0)
         action.didFinish()
     }
     

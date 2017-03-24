@@ -74,7 +74,7 @@ class GroupTests: XCTestCase {
         
         var wasInvoked = false
 
-        let interpolate = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { _ in })
+        let interpolate = FiniteTimeActionTester(duration: 1.0)
         let runBlock = RunBlockAction{
             wasInvoked = true
         }

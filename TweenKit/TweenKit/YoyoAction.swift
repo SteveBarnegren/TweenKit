@@ -59,6 +59,7 @@ public class YoyoAction: FiniteTimeAction {
     }
     
     public func didFinish() {
+        action.update(t: 0)
         action.didFinish()
         state = .idle
     }

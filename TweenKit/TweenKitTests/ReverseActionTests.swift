@@ -32,7 +32,11 @@ class ReverseActionTests: XCTestCase {
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value = $0 })
         let reversed = action.reversed()
+        
+        reversed.willBecomeActive()
+        reversed.willBegin()
         reversed.update(t: 0.0)
+        
         XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
     }
     
@@ -42,7 +46,11 @@ class ReverseActionTests: XCTestCase {
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value = $0 })
         let reversed = action.reversed()
+        
+        reversed.willBecomeActive()
+        reversed.willBegin()
         reversed.update(t: 1.0)
+        
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
     }
 }

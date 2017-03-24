@@ -35,6 +35,9 @@ class YoyoActionTests: XCTestCase {
         
         var value = 0.0
         let yoyo = InterpolationAction(from: start, to: end, duration: duration, update: {value = $0} ).yoyo()
+        
+        yoyo.willBecomeActive()
+        yoyo.willBegin()
         yoyo.update(t: 0.5)
         
         XCTAssertEqualWithAccuracy(value, end, accuracy: 0.001)
@@ -48,6 +51,9 @@ class YoyoActionTests: XCTestCase {
         
         var value = 0.0
         let yoyo = InterpolationAction(from: start, to: end, duration: duration, update: {value = $0} ).yoyo()
+        
+        yoyo.willBecomeActive()
+        yoyo.willBegin()
         yoyo.update(t: 1)
         
         XCTAssertEqualWithAccuracy(value, start, accuracy: 0.001)

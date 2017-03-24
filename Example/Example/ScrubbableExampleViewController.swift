@@ -18,7 +18,7 @@ extension FloatingPoint {
 }
 
 // MARK: - Constants
-let defaultBackgroundColorTop = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
+let defaultBackgroundColorTop = UIColor(red: 0.263, green: 0.118, blue: 0.565, alpha: 1.00)
 let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
 
 
@@ -121,7 +121,13 @@ class ScrubbableExampleViewController: UIViewController {
     }
     
     var moonOnScreenAmount = CGFloat(0.0) {
-        didSet{ updateMoon() }
+        didSet{ updateMoon()
+        
+            if moonOnScreenAmount > 0.9 {
+                print("!!!!MOON!!!!")
+            }
+        
+        }
     }
     
     var moonPosition: CGPoint {

@@ -79,6 +79,8 @@ public class Sequence: FiniteTimeAction {
     
     public func didFinish() {
         
+        print("sequence finish - reverse: \(reverse)")
+        
         // finish the final action
         if let lastAction = reverse ? wrappedActions.first : wrappedActions.last {
             lastAction.action.update(t: reverse ? 0.0 : 1.0)

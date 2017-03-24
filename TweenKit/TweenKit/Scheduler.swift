@@ -84,7 +84,7 @@ import Foundation
         
         // Update Animations
         let dt = displaylink.timestamp - last
-        step(dt: dt)
+        step(dt: dt/2.5)
         
         // Save the current time
         lastTimeStamp = displaylink.timestamp
