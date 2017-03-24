@@ -8,6 +8,22 @@
 
 import Foundation
 
+class SequenceActionWrapper {
+    
+    enum State {
+        case notStarted
+        case inProgress
+        case finished
+    }
+    
+    var state = State.notStarted
+    var action: FiniteTimeAction
+    
+    init(action: FiniteTimeAction) {
+        self.action = action
+    }
+}
+
 public class Sequence: FiniteTimeAction {
     
     // MARK: - Public
@@ -37,7 +53,7 @@ public class Sequence: FiniteTimeAction {
     }
 
     public func add(action: FiniteTimeAction) {
-        wrappedActions.append( action.inClassWrapper() )
+        wrappedActions.append( SequenceActionWrapper(action: action) )
         calculateDuration()
         calculateOffsets()
     }
@@ -46,9 +62,9 @@ public class Sequence: FiniteTimeAction {
     
     public private(set) var duration = Double(0)
     
-    private var wrappedActions = [FiniteTimeActionClassWrapper]()
+    private var wrappedActions = [SequenceActionWrapper]()
     private var offsets = [Double]()
-    private var lastRunAction: FiniteTimeActionClassWrapper?
+    private var lastRunAction: SequenceActionWrapper?
     
     // MARK: - Private Methods
 
@@ -81,6 +97,23 @@ public class Sequence: FiniteTimeAction {
         
         print("sequence finish - reverse: \(reverse)")
         
+        // Finish all of the inner actions
+        for wrapper in wrappedActions {
+        
+            if wrapper.state == .notStarted {
+                wrapper.action.willBecomeActive()
+                wrapper.action.willBegin()
+                wrapper.state = .inProgress
+            }
+            
+            if wrapper.state == .inProgress {
+                wrapper.action.update(t: reverse ? 0.0 : 1.0)
+                wrapper.action.didFinish()
+                wrapper.action.didBecomeInactive()
+            }
+        }
+        
+        /*
         // finish the final action
         if let lastAction = reverse ? wrappedActions.first : wrappedActions.last {
             lastAction.action.update(t: reverse ? 0.0 : 1.0)
@@ -89,6 +122,7 @@ public class Sequence: FiniteTimeAction {
         }
         
         lastRunAction = nil
+ */
     }
     
     public func update(t: CFTimeInterval) {
@@ -120,6 +154,7 @@ public class Sequence: FiniteTimeAction {
             if wrapper !== lastRunAction {
                 wrapper.action.willBecomeActive()
                 wrapper.action.willBegin()
+                wrapper.state = .inProgress
             }
             
             // Update the action
@@ -143,6 +178,7 @@ public class Sequence: FiniteTimeAction {
                 wrapper.action.update(t: reverse ? 0.0 : 1.0)
                 wrapper.action.didFinish()
                 wrapper.action.didBecomeInactive()
+                wrapper.state = .finished
             }
             else{
                 break

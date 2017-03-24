@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0914BDDE1E82C5F80002C6FB /* ArcAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914BDDD1E82C5F80002C6FB /* ArcAction.swift */; };
 		0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A41E83F99200240A50 /* DelayAction.swift */; };
+		0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5AB1E85229F00240A50 /* Action+Testable.swift */; };
 		09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04ED1E80065C0011E68E /* Ticker.swift */; };
 		09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F11E8018E20011E68E /* SchedulerTests.swift */; };
 		09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		0914BDDD1E82C5F80002C6FB /* ArcAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcAction.swift; sourceTree = "<group>"; };
 		0984A5A41E83F99200240A50 /* DelayAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayAction.swift; sourceTree = "<group>"; };
+		0984A5AB1E85229F00240A50 /* Action+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Action+Testable.swift"; sourceTree = "<group>"; };
 		09BB04ED1E80065C0011E68E /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		09BB04F11E8018E20011E68E /* SchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulerTests.swift; sourceTree = "<group>"; };
 		09BB04F31E801CE30011E68E /* InterpolateActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolateActionTests.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				09BB04ED1E80065C0011E68E /* Ticker.swift */,
 				09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */,
 				09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */,
+				0984A5AB1E85229F00240A50 /* Action+Testable.swift */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
 				09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */,
+				0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */,
 				09FF20891E8036A40029CB2D /* FiniteTimeActionTester.swift in Sources */,
 				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,
 			);
