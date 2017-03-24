@@ -121,10 +121,10 @@ class YoyoActionTests: XCTestCase {
         yoyo.simulateFullLifeCycle()
         
         let expectedEvents: [EventType] = [.willBecomeActive,
-                                           .setReversed(reversed: true),
+                                           .setReversed(reversed: false),
                                            .willBegin,
                                            .didFinish,
-                                           .setReversed(reversed: false),
+                                           .setReversed(reversed: true),
                                            .willBegin,
                                            .didFinish,
                                            .didBecomeInactive]

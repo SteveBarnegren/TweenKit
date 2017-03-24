@@ -118,17 +118,18 @@ class GroupTests: XCTestCase {
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
     
+    // MARK: - Test LifeCycle
+    
     func testExpectedInnerActionsLifeCycleEventsAreCalledWhenReversed() {
         
         let firstAction = FiniteTimeActionTester(duration: 0.1)
         let secondAction = FiniteTimeActionTester(duration: 0.2)
-        let reversedGroup = Group(actions: firstAction, secondAction).reversed()
-        let animation = Animation(action: reversedGroup)
+        let group = Group(actions: firstAction, secondAction)
+        group.reverse = true
+        group.simulateFullLifeCycle()
         
-        scheduler.add(animation: animation)
-        scheduler.progressTime(duration: reversedGroup.duration + 0.1)
-        
-        let expectedEvents: [EventType] = [.willBecomeActive,
+        let expectedEvents: [EventType] = [.setReversed(reversed: true),
+                                           .willBecomeActive,
                                            .willBegin,
                                            .didFinish,
                                            .didBecomeInactive,

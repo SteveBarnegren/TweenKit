@@ -18,6 +18,8 @@ class ReverseActionTests: XCTestCase {
         scheduler = Scheduler()
     }
     
+    // MARK: - Test Duration
+    
     func testReverseActionReportsSameDurationAsInnerAction() {
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { _ in} )
@@ -25,6 +27,8 @@ class ReverseActionTests: XCTestCase {
         
         XCTAssertEqualWithAccuracy(action.duration, reversed.duration, accuracy: 0.001)
     }
+    
+    // MARK: - Test Tweening
     
     func testReverseActionStartsAtActionEnd() {
         
@@ -53,4 +57,43 @@ class ReverseActionTests: XCTestCase {
         
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
     }
+    
+    // MARK: - Test LifeCycle
+    
+    func testReverseActionInnerActionReceivesCorrectLifeCycleEvents() {
+        
+        let action = FiniteTimeActionTester(duration: 5.0)
+        let reversed = action.reversed()
+        reversed.simulateFullLifeCycle()
+        
+        let expectedEvents: [EventType] = [.setReversed(reversed: true),
+                                           .willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+    
+    func testReverseActionInnerActionReceivesCorrectLifeCycleEventsWhenReversed() {
+        
+        let action = FiniteTimeActionTester(duration: 5.0)
+        let reversed = action.reversed()
+        reversed.reverse = true  // ==
+        reversed.simulateFullLifeCycle()
+        
+        let expectedEvents: [EventType] = [.setReversed(reversed: true),
+                                           .setReversed(reversed: false), // ==
+                                           .willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+
 }

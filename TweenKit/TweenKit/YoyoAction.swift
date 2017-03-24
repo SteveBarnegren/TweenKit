@@ -25,7 +25,7 @@ public class YoyoAction: FiniteTimeAction {
     
     public var reverse = false {
         didSet{
-            if reverse != oldValue {
+            if reverse != oldValue, state != .idle {
                 action.reverse = !action.reverse
             }
         }
@@ -56,10 +56,7 @@ public class YoyoAction: FiniteTimeAction {
     }
     
     public func willBegin() {
-        
-        action.reverse = reverse
-        action.willBegin()
-        self.state = reverse ? .backwards : .forwards
+        self.update(t: reverse ? 1.0 : 0.0)
     }
     
     public func didFinish() {
@@ -86,6 +83,11 @@ public class YoyoAction: FiniteTimeAction {
         
         if t < 0.5 {
             
+            if state == .idle {
+                action.reverse = reverse
+                action.willBegin()
+            }
+            
             if state == .backwards {
                 action.didFinish()
                 action.reverse = reverse
@@ -98,6 +100,11 @@ public class YoyoAction: FiniteTimeAction {
             state = .forwards
         }
         else{
+            
+            if state == .idle {
+                action.reverse = !reverse
+                action.willBegin()
+            }
             
             if state == .forwards {
                 action.didFinish()
