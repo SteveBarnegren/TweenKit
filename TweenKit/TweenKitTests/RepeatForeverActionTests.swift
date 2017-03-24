@@ -77,4 +77,29 @@ class RepeatForeverActionTests: XCTestCase {
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
     
+    func testRepeatForeverActionCallsExpectedInnerActionEventsWithStepSizeGreaterThanInnerActionDuration() {
+        
+        let action = FiniteTimeActionTester(duration: 1.0)
+        let repeatedForever = action.repeatedForever()
+        
+        // Simulate a jump of 3.5 actions worth
+        repeatedForever.willBecomeActive()
+        repeatedForever.willBegin()
+        repeatedForever.update(elapsedTime: action.duration * 3.5)
+        
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin
+        ]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+    
 }

@@ -90,4 +90,26 @@ class YoyoActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
+    
+    // MARK: - Test LifeCycle
+    
+    func testYoyoInnerActionReceivesExpectedLifeCycleEvents() {
+        
+        let action = FiniteTimeActionTester(duration: 1.0)
+        let yoyo = action.yoyo()
+        yoyo.simulateFullLifeCycle()
+        
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .setReversed(reversed: false),
+                                           .willBegin,
+                                           .didFinish,
+                                           .setReversed(reversed: true),
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
 }

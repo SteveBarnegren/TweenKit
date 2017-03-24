@@ -18,6 +18,8 @@ class InterpolateActionTests: XCTestCase {
         scheduler = Scheduler()
     }
     
+    // MARK: - Tweening
+    
     func testInterpolateActionEndsWithEndValue() {
         
         let duration = 0.1
@@ -49,6 +51,8 @@ class InterpolateActionTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
     }
     
+    // MARK: - LifeCycle
+    
     func testInterpolateActionFullLifeCycleResultsInExpectedEndValue() {
 
         var value = 0.0
@@ -56,4 +60,14 @@ class InterpolateActionTests: XCTestCase {
         action.simulateFullLifeCycle()
         XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
     }
+    
+    func testInterpolateActionFullLifeCycleResultsInExpectedEndValueWhenReversed() {
+        
+        var value = 0.0
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0) { value = $0 }
+        action.reverse = true
+        action.simulateFullLifeCycle()
+        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+    }
+
 }

@@ -108,6 +108,13 @@ class FiniteTimeActionTester: FiniteTimeAction {
     var duration: Double
     var reverse: Bool = false {
         didSet{
+            
+            //!!! Log if reverse is true
+            if reverse == true {
+                print("STOP!")
+            }
+            /////////////////////////////////////
+            
             loggedEvents.append(.setReversed(reversed: reverse))
         }
     }

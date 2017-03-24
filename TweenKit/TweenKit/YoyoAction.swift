@@ -56,6 +56,10 @@ public class YoyoAction: FiniteTimeAction {
     }
     
     public func willBegin() {
+        
+        action.reverse = reverse
+        action.willBegin()
+        self.state = reverse ? .backwards : .forwards
     }
     
     public func didFinish() {
@@ -82,11 +86,7 @@ public class YoyoAction: FiniteTimeAction {
         
         if t < 0.5 {
             
-            if state == .idle {
-                action.reverse = reverse
-                action.willBegin()
-            }
-            else if state == .backwards {
+            if state == .backwards {
                 action.didFinish()
                 action.reverse = reverse
                 action.willBegin()
@@ -99,11 +99,7 @@ public class YoyoAction: FiniteTimeAction {
         }
         else{
             
-            if state == .idle {
-                action.reverse = !reverse
-                action.willBegin()
-            }
-            else if state == .forwards {
+            if state == .forwards {
                 action.didFinish()
                 action.reverse = !reverse
                 action.willBegin()
