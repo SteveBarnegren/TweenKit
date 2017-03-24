@@ -34,15 +34,15 @@ class RepeatActionTests: XCTestCase {
         let action = FiniteTimeActionTester(duration: 0.1)
         let repeatedAction = action.repeated(3)
         
-        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .didBecomeInactive,
-        ]
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive,
+                                           ]
         
         let animation = Animation(action: repeatedAction)
         scheduler.add(animation: animation)

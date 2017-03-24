@@ -49,4 +49,11 @@ class InterpolateActionTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
     }
     
+    func testInterpolateActionFullLifeCycleResultsInExpectedEndValue() {
+
+        var value = 0.0
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0) { value = $0 }
+        action.simulateFullLifeCycle()
+        XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
+    }
 }

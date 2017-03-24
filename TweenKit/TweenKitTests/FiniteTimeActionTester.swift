@@ -10,64 +10,71 @@
 import Foundation
 @testable import TweenKit
 
-
-func ==(lhs: FiniteTimeActionTester.EventType, rhs: FiniteTimeActionTester.EventType) -> Bool {
+// Types
+enum EventType {
+    case willBegin
+    case willBeginWithTag(Int)
     
-    switch (lhs, rhs) {
-    case (.willBegin, .willBegin):
-        return true
-    case (.didFinish, .didFinish):
-        return true
-    case (.willBecomeActive, .willBecomeActive):
-        return true
-    case (.didBecomeInactive, .didBecomeInactive):
-        return true
-    case (.setReversed(let leftValue), .setReversed(let rightValue)):
-        return leftValue == rightValue
-    default:
-        return false
+    case didFinish
+    case didFinishWithTag(Int)
+    
+    case willBecomeActive
+    case willBecomeActiveWithTag(Int)
+    
+    case didBecomeInactive
+    case didBecomeInactiveWithTag(Int)
+    
+    case setReversed(reversed: Bool)
+    case setReversedWithTag(Int, reversed: Bool)
+    
+    func asString() -> String {
+        
+        switch self {
+        case .willBegin: return "Will Begin"
+        case .willBeginWithTag(let tag): return "Will Begin (\(tag))"
+        case .didFinish: return "Did Finish"
+        case .didFinishWithTag(let tag): return "Did Finish (\(tag))"
+        case .willBecomeActive: return "Will Become Active"
+        case .willBecomeActiveWithTag(let tag): return "Will Become Active (\(tag))"
+        case .didBecomeInactive: return "Did Become Inactive"
+        case .didBecomeInactiveWithTag(let tag): return "Did Become Inactive (\(tag))"
+        case .setReversed(let reversed): return "Set Reversed -> \(reversed)"
+        case let .setReversedWithTag(tag, reversed): return "Set Reversed -> \(reversed) (\(tag)) "
+        }
+    }
+}
+
+
+class EventLog {
+    
+    private var loggedEvents = [EventType]()
+    
+    fileprivate func add(event: EventType) {
+        loggedEvents.append(event)
+    }
+    
+    var events: [EventType] {
+        return loggedEvents
     }
 }
 
 class FiniteTimeActionTester: FiniteTimeAction {
 
-    // Types
-    enum EventType: Equatable {
-        case willBegin
-        case didFinish
-        case willBecomeActive
-        case didBecomeInactive
-        case setReversed(reversed: Bool)
-    }
-    
     // MARK: - Init
  
     init(duration: Double) {
         self.duration = duration
     }
     
+    init(duration: Double, externalEventLog: EventLog, tag: Int) {
+        self.duration = duration
+        self.sharedEventLog = externalEventLog
+        self.tag = tag
+    }
+    
     // MARK: - Test State
     
     var loggedEvents = [EventType]()
-    /*
-    func loggedEventsOfTypes(_ eventsToMatch: [EventType]) -> [EventType] {
-        
-        func includeEvent(_ event: EventType) -> Bool {
-            
-            if event == .setReversed(reversed: true) || event == .setReversed(reversed: false) {
-                return eventsToMatch.contains(.setReversed(reversed: true)) || eventsToMatch.contains(.setReversed(reversed: false))
-            }
-            else{
-                return eventsToMatch.contains(event)
-            }
-        }
-        
-        return loggedEvents.filter{
-            includeEvent($0)
-        }
-    }
- */
-    
     var willBeginCallCount = 0
     var has_WillBegin_BeenCalled: Bool {
         return willBeginCallCount > 0
@@ -90,10 +97,11 @@ class FiniteTimeActionTester: FiniteTimeAction {
     
     var updateCalled = false
     
-    var tag = 0
-    
     var onWillBegin: () -> () = {}
     var onDidFinish: () -> () = {}
+    
+    private var sharedEventLog: EventLog? = nil
+    private var tag: Int = 0
     
     // MARK: - FiniteTimeAction
 
@@ -108,6 +116,7 @@ class FiniteTimeActionTester: FiniteTimeAction {
     
     func willBecomeActive() {
         loggedEvents.append(.willBecomeActive)
+        sharedEventLog?.add(event: .willBecomeActiveWithTag(tag))
         willBecomeActiveCallCount += 1
         onBecomeActive()
         
@@ -118,18 +127,21 @@ class FiniteTimeActionTester: FiniteTimeAction {
     
     func didBecomeInactive() {
         loggedEvents.append(.didBecomeInactive)
+        sharedEventLog?.add(event: .didBecomeInactiveWithTag(tag))
         didBecomeInactiveCallCount += 1
         onBecomeInactive()
     }
     
     func willBegin() {
         loggedEvents.append(.willBegin)
+        sharedEventLog?.add(event: .willBeginWithTag(tag))
         willBeginCallCount += 1
         onWillBegin()
     }
     
     func didFinish() {
         loggedEvents.append(.didFinish)
+        sharedEventLog?.add(event: .didFinishWithTag(tag))
         didFinishCallCount += 1
         onDidFinish()
     }

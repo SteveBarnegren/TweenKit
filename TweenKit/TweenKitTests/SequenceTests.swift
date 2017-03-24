@@ -74,7 +74,38 @@ class SequenceTests: XCTestCase {
         XCTAssertEqual(events, expectedEvents)
     }
     
-    func testActionsEventsAreCalledInExpectedOrderWhenReversed() {
+    func testActionsEventsAreCalledInExpectedOrderWhenInReverseAction() {
+        
+        let eventLog = EventLog()
+        
+        let action1 = FiniteTimeActionTester(duration: 0.1, externalEventLog: eventLog, tag: 1)
+        let action2 = FiniteTimeActionTester(duration: 0.2, externalEventLog: eventLog, tag: 2)
+        let action3 = FiniteTimeActionTester(duration: 0.3, externalEventLog: eventLog, tag: 3)
+        
+        let sequence = Sequence(actions: action1, action2, action3)
+        sequence.simulateFullLifeCycle()
+
+        let expectedEvents: [EventType] = [.willBecomeActiveWithTag(1),
+                                           .willBeginWithTag(1),
+                                           .didFinishWithTag(1),
+                                           .didBecomeInactiveWithTag(1),
+                                           .willBecomeActiveWithTag(2),
+                                           .willBeginWithTag(2),
+                                           .didFinishWithTag(2),
+                                           .didBecomeInactiveWithTag(2),
+                                           .willBecomeActiveWithTag(3),
+                                           .willBeginWithTag(3),
+                                           .didFinishWithTag(3),
+                                           .didBecomeInactiveWithTag(3),
+                                           ]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: eventLog.events,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+
+    /*
+    func testActionsEventsAreCalledInExpectedOrderWhenInReverseAction() {
         
         func makeBecomeActiveString(tag: Int) -> String { return "Become Active: \(tag)" }
         func makeBecomeInactiveString(tag: Int) -> String { return "Become Inactive: \(tag)" }
@@ -117,6 +148,7 @@ class SequenceTests: XCTestCase {
         
         XCTAssertEqual(events, expectedEvents)
     }
+ */
     
     func testAllActionsEndInCompletedStates() {
     

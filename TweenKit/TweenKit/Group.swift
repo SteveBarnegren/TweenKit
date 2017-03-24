@@ -115,13 +115,10 @@ public class Group: FiniteTimeAction, SchedulableAction {
         for wrapper in wrappedActions {
             
             if wrapper.state == .notStarted {
-                wrapper.action.willBecomeActive()
-                wrapper.action.willBegin()
                 wrapper.state = .inProgress
             }
             
             if wrapper.state == .inProgress {
-                wrapper.action.update(t: reverse ? 0.0 : 1.0)
                 wrapper.state = .finished
             }
         }
@@ -150,7 +147,6 @@ public class Group: FiniteTimeAction, SchedulableAction {
             
             // Finish the action?
             else if !reverse, lastElapsedTime < wrapper.action.duration, elapsedTime > wrapper.action.duration {
-                wrapper.action.update(t: 1.0)
                 wrapper.state = .finished
             }
         }

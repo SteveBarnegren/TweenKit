@@ -15,47 +15,33 @@ extension XCTestCase {
         case none
         case onlyMatchingExpectedEventsTypes
         
-        func apply(recordedEvents: [FiniteTimeActionTester.EventType],
-                   expectedEvents: [FiniteTimeActionTester.EventType]) -> [FiniteTimeActionTester.EventType] {
+        func apply(recordedEvents: [EventType],
+                   expectedEvents: [EventType]) -> [EventType] {
+            
+            let expectedEventsAsStrings = expectedEvents.map{ $0.asString() }
             
             switch self {
             case .none:
                 return recordedEvents
             case .onlyMatchingExpectedEventsTypes:
-                return recordedEvents.filter{
-                    return expectedEvents.contains($0)
-                }
+                return recordedEvents.filter{ recorded in expectedEventsAsStrings.contains(recorded.asString()) }
             }
         }
     }
     
-    func AssertLifeCycleEventsAreAsExpected(recordedEvents: [FiniteTimeActionTester.EventType],
-                                            expectedEvents: [FiniteTimeActionTester.EventType],
+    func AssertLifeCycleEventsAreAsExpected(recordedEvents: [EventType],
+                                            expectedEvents: [EventType],
                                             filter: Filter,
                                             file: StaticString = #file,
                                             line: UInt = #line) {
         
-        func stringFromEvents(_ events: [FiniteTimeActionTester.EventType]) -> String {
+        func stringFromEvents(_ events: [EventType]) -> String {
             
             var string = ""
             string += "["
             for event in events {
-                
-                let eventString: String
-                switch event {
-                case .willBecomeActive:
-                    eventString = "Will Become Active"
-                case .willBegin:
-                    eventString = "Will Begin"
-                case .didFinish:
-                    eventString = "Did Finish"
-                case .didBecomeInactive:
-                    eventString = "Did Become Inactive"
-                case .setReversed(let reversed):
-                    eventString = "Set Reverse (\(reversed))"
-                }
                 string += "\n"
-                string += eventString
+                string += event.asString()
             }
             
             if string != "[" {
@@ -76,8 +62,8 @@ extension XCTestCase {
         let otherEventsAsString = stringFromEvents(expectedEvents)
         
         // Assert
-        XCTAssertEqual(recordedEvents,
-                       expectedEvents,
+        XCTAssertEqual(eventsAsString,
+                       otherEventsAsString,
                        "\n\nRECORDED EVENTS:\n\n\(eventsAsString)\n\nARE NOT EQUAL TO EXPECTED EVENTS:\n\n\(otherEventsAsString)\n\n",
             file: file,
             line: line)

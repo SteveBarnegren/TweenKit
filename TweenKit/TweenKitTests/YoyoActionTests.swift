@@ -70,14 +70,14 @@ class YoyoActionTests: XCTestCase {
     
     func testInnerActionEventOrder() {
         
-        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
-                                                                  .setReversed(reversed: false),
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .setReversed(reversed: true),
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .didBecomeInactive]
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .setReversed(reversed: false),
+                                           .willBegin,
+                                           .didFinish,
+                                           .setReversed(reversed: true),
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
         
         let duration = 0.1
         let action = FiniteTimeActionTester(duration: duration)

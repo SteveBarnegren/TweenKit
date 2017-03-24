@@ -62,14 +62,14 @@ class RepeatForeverActionTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: actionDuration * 3.5)
         
-        let expectedEvents: [FiniteTimeActionTester.EventType] = [.willBecomeActive,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .willBegin,
-                                                                  .didFinish,
-                                                                  .willBegin
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin
         ]
         
         AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
