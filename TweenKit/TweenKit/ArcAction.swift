@@ -71,6 +71,7 @@ public class ArcAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     }
     
     public func didFinish() {
+        update(t: reverse ? 0.0 : 1.0)
     }
     
     public func update(t: CFTimeInterval) {

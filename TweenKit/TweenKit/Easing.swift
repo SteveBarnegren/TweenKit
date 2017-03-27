@@ -11,7 +11,7 @@ import Foundation
 let kPERIOD: Double = 0.3
 let M_PI_X_2: Double = M_PI * 2.0
 
-public enum Easing {
+public enum Easing: Int {
     
     // Linear
     case linear
@@ -41,7 +41,7 @@ public enum Easing {
     case elasticOut
     case elasticInOut
     
-    func apply(t: Double) -> Double {
+    public func apply(t: Double) -> Double {
         
         switch self {
             

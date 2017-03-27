@@ -68,5 +68,26 @@ extension XCTestCase {
             file: file,
             line: line)
     }
+    
+    func AssertCGPointsAreEqualWithAccuracy(_ p1: CGPoint,
+                                            _ p2: CGPoint,
+                                            accuracy: Double,
+                                            file: StaticString = #file,
+                                            line: UInt = #line) {
+        
+        let xDiff = abs(p2.x - p1.x)
+        let yDiff = abs(p2.y - p1.y)
+        
+        let allowedDifference = 0.001
+        
+        if Double(xDiff) < allowedDifference && Double(yDiff) < allowedDifference {
+            return
+        }
+        
+        let message = "(\(p1.x), \(p1.y)) is not equal to (\(p2.x, p2.y)))"
+        
+        XCTFail(message, file: file, line: line)
+    }
+
 }
 

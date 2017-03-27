@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0914BDDE1E82C5F80002C6FB /* ArcAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914BDDD1E82C5F80002C6FB /* ArcAction.swift */; };
+		096D09A51E891A5100E0A406 /* ArcActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09A41E891A5100E0A406 /* ArcActionTests.swift */; };
+		096D09A71E8924FE00E0A406 /* DelayActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09A61E8924FE00E0A406 /* DelayActionTests.swift */; };
 		0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A41E83F99200240A50 /* DelayAction.swift */; };
 		0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5AB1E85229F00240A50 /* Action+Testable.swift */; };
 		0984A5AE1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		0914BDDD1E82C5F80002C6FB /* ArcAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcAction.swift; sourceTree = "<group>"; };
+		096D09A41E891A5100E0A406 /* ArcActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcActionTests.swift; sourceTree = "<group>"; };
+		096D09A61E8924FE00E0A406 /* DelayActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayActionTests.swift; sourceTree = "<group>"; };
 		0984A5A41E83F99200240A50 /* DelayAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayAction.swift; sourceTree = "<group>"; };
 		0984A5AB1E85229F00240A50 /* Action+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Action+Testable.swift"; sourceTree = "<group>"; };
 		0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+CustomAssertions.swift"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */,
 				09FF20861E802D530029CB2D /* RunBlockActionTests.swift */,
 				09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */,
+				096D09A41E891A5100E0A406 /* ArcActionTests.swift */,
+				096D09A61E8924FE00E0A406 /* DelayActionTests.swift */,
 				09FF20811E802D1C0029CB2D /* Collections */,
 			);
 			name = Actions;
@@ -380,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */,
+				096D09A71E8924FE00E0A406 /* DelayActionTests.swift in Sources */,
 				09FF208D1E8169E00029CB2D /* ReverseActionTests.swift in Sources */,
 				09FF20831E802D330029CB2D /* GroupTests.swift in Sources */,
 				09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */,
@@ -387,6 +394,7 @@
 				09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */,
 				0984A5AE1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift in Sources */,
 				09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */,
+				096D09A51E891A5100E0A406 /* ArcActionTests.swift in Sources */,
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
 				09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */,

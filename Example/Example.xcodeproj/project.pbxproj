@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */; };
+		096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AF1E89275600E0A406 /* EasingExampleCell.swift */; };
+		096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096D09B01E89275600E0A406 /* EasingExampleCell.xib */; };
 		0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */; };
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExamplesViewController.swift; sourceTree = "<group>"; };
+		096D09AF1E89275600E0A406 /* EasingExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExampleCell.swift; sourceTree = "<group>"; };
+		096D09B01E89275600E0A406 /* EasingExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EasingExampleCell.xib; sourceTree = "<group>"; };
 		0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSwitcherViewController.swift; sourceTree = "<group>"; };
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		096D09A81E8925F400E0A406 /* 4.Easing Examples */ = {
+			isa = PBXGroup;
+			children = (
+				096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */,
+				096D09AF1E89275600E0A406 /* EasingExampleCell.swift */,
+				096D09B01E89275600E0A406 /* EasingExampleCell.xib */,
+			);
+			name = "4.Easing Examples";
+			sourceTree = "<group>";
+		};
 		0984A59D1E83C16900240A50 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +84,7 @@
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
 				0984A5A61E843C6C00240A50 /* 3. Scrubbable */,
+				096D09A81E8925F400E0A406 /* 4.Easing Examples */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -219,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9241E7C85A300E7AEE2 /* LaunchScreen.storyboard in Resources */,
+				096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */,
 				6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +253,8 @@
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */,
+				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,
+				096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */,
 				0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ enum ExampleType: Int {
     case basicTween
     case activityIndicator
     case sunExample
+    case easingExamples
     
     var count: Int {
         
@@ -54,6 +55,8 @@ enum ExampleType: Int {
             return ActivityIndicatorExampleViewController(nibName: nil, bundle: nil)
         case .sunExample:
             return ScrubbableExampleViewController(nibName: nil, bundle: nil)
+        case .easingExamples:
+            return EasingExamplesViewController(nibName: nil, bundle: nil)
         }
     }
 }
@@ -92,9 +95,8 @@ class ExampleSwitcherViewController: UIViewController {
         view.addSubview(backButton)
         view.addSubview(nextButton)
         
-        // show sun example
-        self.exampleType = .sunExample
-        
+        // show easing example
+        self.exampleType = .easingExamples
         
         // Show the first example
         let startViewController = exampleType.makeViewController()
@@ -157,7 +159,7 @@ class ExampleSwitcherViewController: UIViewController {
         
         addChildViewController(viewController)
         view.addSubview(viewController.view)
-        viewController.view.isUserInteractionEnabled = false
+        //viewController.view.isUserInteractionEnabled = false
         contentViewController = viewController
         
         view.setNeedsLayout()

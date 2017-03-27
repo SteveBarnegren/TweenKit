@@ -12,6 +12,7 @@ import XCTest
 class InterpolateActionTests: XCTestCase {
     
     var scheduler: Scheduler!
+    let tempValue = 0.90
     
     override func setUp() {
         super.setUp()
@@ -19,6 +20,15 @@ class InterpolateActionTests: XCTestCase {
     }
     
     // MARK: - Tweening
+    
+    func testInterpolateActionFromClosureSetsStartValue() {
+        
+        let value = 6.23
+        let action = InterpolationAction(from: { value }, to: Double(1.0), duration: 1.0, update: {_ in})
+        action.simulateFullLifeCycle()
+        
+        XCTAssertEqualWithAccuracy(action.startValue, value, accuracy: 0.001)
+    }
     
     func testInterpolateActionEndsWithEndValue() {
         

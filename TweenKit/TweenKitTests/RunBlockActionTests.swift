@@ -11,6 +11,10 @@ import XCTest
 
 class RunBlockActionTests: XCTestCase {
     
+    
+    
+    // MARK: - Test Trigger Closure
+    
     func testClosureIsInvoked() {
         
         var wasInvoked = false

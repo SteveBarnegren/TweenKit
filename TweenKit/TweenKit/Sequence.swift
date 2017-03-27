@@ -91,11 +91,16 @@ public class Sequence: FiniteTimeAction {
     }
     
     public func willBegin() {
+        
+        // Reset
+        lastRunAction = nil
+        
+        wrappedActions.forEach{
+            $0.state = .notStarted
+        }
     }
     
     public func didFinish() {
-        
-        print("sequence finish - reverse: \(reverse)")
         
         // Finish all of the inner actions
         for wrapper in wrappedActions {

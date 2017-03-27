@@ -8,38 +8,38 @@
 
 import Foundation
 
-class DelayAction: FiniteTimeAction {
+public class DelayAction: FiniteTimeAction {
     
     // MARK: - Public
     
-    init(duration: Double) {
+    public init(duration: Double) {
         self.duration = duration
     }
     
     // MARK: - Properties
     
-    let duration: Double
-    var reverse = false
+    public let duration: Double
+    public var reverse = false
     
-    var onBecomeActive: () -> () = {}
-    var onBecomeInactive: () -> () = {}
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
     
     // MARK: - Methods
     
-    func willBecomeActive() {
+    public func willBecomeActive() {
         onBecomeActive()
     }
     
-    func didBecomeInactive() {
+    public func didBecomeInactive() {
         onBecomeInactive()
     }
     
-    func willBegin() {
+    public func willBegin() {
     }
     
-    func didFinish() {
+    public func didFinish() {
     }
     
-    func update(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
     }
 }
