@@ -52,4 +52,29 @@ class RepeatActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
+    
+    // MARK: - Inner Action Life
+    
+    func testInnerActionExpectedLifeCycleEventsAreCalled() {
+        
+        let action = FiniteTimeActionTester(duration: 5.0)
+        let repeated = action.repeated(3)
+        repeated.simulateFullLifeCycle()
+        
+        let expectedEvents: [EventType] = [.willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+    
+    
+    
 }

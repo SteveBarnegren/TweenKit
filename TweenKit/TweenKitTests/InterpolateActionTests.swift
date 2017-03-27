@@ -36,15 +36,15 @@ class InterpolateActionTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value, expectedEndValue, accuracy: 0.001)
     }
     
-    func testInterpolateActionEndWithStartValueWhenInReverseAction() {
+    func testInterpolateActionEndsWithStartValueReversed() {
         
         let duration = 0.1
         
         var value = 0.0
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration) { value = $0 }
-        let reversed = action.reversed()
+        action.reverse = true
         
-        let animation = Animation(action: reversed)
+        let animation = Animation(action: action)
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: duration + 0.1)
         

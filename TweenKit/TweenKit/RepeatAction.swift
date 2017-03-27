@@ -36,11 +36,13 @@ public class RepeatAction: FiniteTimeAction {
     // MARK: - Private Methods
     
     public func willBecomeActive() {
-        onBecomeInactive()
+        lastRepeatNumber = 0
         action.willBecomeActive()
+        onBecomeInactive()
     }
     
     public func didBecomeInactive() {
+        
         action.didBecomeInactive()
         onBecomeInactive()
     }
@@ -50,6 +52,13 @@ public class RepeatAction: FiniteTimeAction {
     }
     
     public func didFinish() {
+        
+        // We might have skipped over the action, so we still need to run the full cycle
+        (lastRepeatNumber..<repeats-1).forEach{ _ in
+            self.action.didFinish()
+            self.action.willBegin()
+        }
+
         action.didFinish()
     }
     

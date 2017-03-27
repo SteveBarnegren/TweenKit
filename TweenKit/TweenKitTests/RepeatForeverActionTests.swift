@@ -19,6 +19,8 @@ class RepeatForeverActionTests: XCTestCase {
         scheduler = Scheduler()
     }
     
+    // MARK: - Test Repeat Forever
+    
     func testRepeatForeverActionIsNeverRemoved() {
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5, update: {_ in} ).repeatedForever()
@@ -50,6 +52,8 @@ class RepeatForeverActionTests: XCTestCase {
         // The readings should be about 0.5 apart
         XCTAssertNotEqualWithAccuracy(firstReading, secondReading, 0.3)
     }
+    
+    // MARK: - Test Inner Action LifeCycle Events
     
     func testRepeatForeverActionCallsExpectedInnerActionEvents() {
         
