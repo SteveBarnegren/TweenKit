@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let scheduler = Scheduler()
         
         // Test view conteoller
-        //let viewController = TestViewController(nibName: nil, bundle: nil)
-        //window?.rootViewController = viewController
+        let viewController = TestViewController(nibName: nil, bundle: nil)
+        window?.rootViewController = viewController
         
         // Example view controller
-        let viewController = ExampleSwitcherViewController(nibName: nil, bundle: nil)
-        window?.rootViewController = viewController
+        //let viewController = ExampleSwitcherViewController(nibName: nil, bundle: nil)
+        //window?.rootViewController = viewController
         
         window?.makeKeyAndVisible()
         

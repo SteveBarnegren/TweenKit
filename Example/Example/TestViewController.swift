@@ -28,6 +28,7 @@ class TestViewController: UIViewController {
         return slider
     }()
     
+    let scheduler = Scheduler()
     var lastTimeStamp: CFTimeInterval?
     var elapsedTime: CFTimeInterval = 0
     
@@ -47,135 +48,34 @@ class TestViewController: UIViewController {
         perform(#selector(startTheAnimation), with: nil, afterDelay: 3)
     }
     
-    
-     // COMPLEX
-    /*
     func startTheAnimation() {
         
-        print("Start the animation!")
+        let startPoint = CGPoint(x: 30,
+                                 y: 30)
         
-        // move to the right
-        let move = InterpolationAction(from: CGPoint(x: 0, y: 0),
-                                         to: CGPoint(x: 300, y: 50),
-                                         duration: 3) {
-                                            self.testView.frame.origin = $0
-        }
-        move.easing = .elasticOut
-        
-        let scale = InterpolationAction(from: self.testView.frame.size,
-                                        to: CGSize(width: 100, height: 100),
-                                        duration: 3) {
-                                            self.testView.frame.size = $0
-        }
-        
-        let moveThenScale = Sequence(actions: move, scale)
-        
-        let changeColor = InterpolationAction(from: UIColor.blue,
-                                              to: UIColor.red,
-                                              duration: 10) {
-                                                self.testView.backgroundColor = $0
-        }
-        
-        let withChangeColor = Group(actions: moveThenScale, changeColor)
-        
-        
-        let moveAgain = InterpolationAction(from: CGPoint(x: 300, y: 50),
-                                            to: CGPoint(x: 100, y: 500),
-                                            duration: 4) {
-                                                self.testView.frame.origin = $0
-        }
-        moveAgain.easing = .exponentialInOut
-        moveAgain.onBecomeActive = { print("Move again become active") }
-        moveAgain.onBecomeInactive = { print("Move again become inactive") }
-        
-        
-        let theWholeThing = Sequence(actions: withChangeColor, moveAgain)
-        
-        // Create the Animation
-        let animation = Animation(action: theWholeThing.yoyo().reversed().repeated(2) )
-        animation.run()
-        
-    }
- */
-    
-    
-     // SEQUENCE
-    /*
-    func startTheAnimation() {
-        
-        print("Start the animation!")
-        
-        let speed = 100.0
-        
-        let moveRight = InterpolationAction(from: CGPoint(x: 10, y: 10),
-                                       to: CGPoint(x: 250, y: 10),
-                                       speed: speed) {
-                                        self.testView.frame.origin = $0
-        }
-        
-        let moveDown = InterpolationAction(from: CGPoint(x: 250, y: 10),
-                                           to: CGPoint(x: 250, y: 40),
-                                           speed: speed) {
-                                            self.testView.frame.origin = $0
-        }
-        
-        let moveLeft = InterpolationAction(from: CGPoint(x: 250, y: 40),
-                                           to: CGPoint(x: 10, y: 40),
-                                           speed: speed) {
-                                            self.testView.frame.origin = $0
-        }
+        let curves: [Curve<CGPoint>] = [
+            .lineToPoint( CGPoint(x: 60, y: 60) ),
+            .lineToPoint( CGPoint(x: 200, y: 80) ),
+            .lineToPoint( CGPoint(x: 50, y: 300) ),
+            .lineToPoint( CGPoint(x: 300, y: 20) ),
+            .quadCurveToPoint(CGPoint(x: 30, y: 20), cp: CGPoint(x: 160, y: 450)),
+            .lineToPoint( CGPoint(x: 30, y: 300) ),
+            .cubicCurveToPoint(CGPoint(x: 300, y: 300),
+                               cp1: CGPoint(x: 100, y: 50),
+                               cp2: CGPoint(x: 170, y: 500))
 
-        let sequence = Sequence(actions: moveRight, moveDown, moveLeft).yoyo().repeated(3)
-        let animation = Animation(action: sequence)
-        animation.run()
+            ]
+        
+        let path = BezierPath(start: startPoint,
+                              curves: curves)
+        
+        let action = BezierAction(path: path,
+                     duration: 15,
+                     update: { [unowned self] in self.testView.center = $0 })
+        
+        let animation = Animation(action: action)
+        scheduler.add(animation: animation)
     }
- */
- 
-    
-    // ARC
-    func startTheAnimation() {
- 
-        let screenCenter = CGPoint(x: UIScreen.main.bounds.size.width/2,
-                                   y: UIScreen.main.bounds.size.height/2)
-        
-        let action = ArcAction(center: screenCenter, radius: 100, startDegrees: 0, endDegrees: 360, duration: 5) {
-            self.testView.center = $0
-        }
-        action.easing = .elasticInOut
-        
-        let animation = Animation(action: action.yoyo())
-        animation.run()
-    }
-
-    
-    // GROUP
-    /*
-    func startTheAnimation() {
-        
-        print("Start the animation!")
-        
-        let moveRight = InterpolationAction(from: CGPoint(x: 10, y: 10),
-                                            to: CGPoint(x: 200, y: 10),
-                                            duration: 3) {
-                                                self.testView.frame.origin = $0
-                                                
-                                                if self.testView.frame.origin.x > 190 {
-                                                    print("stop")
-                                                }
-        }
-        
-        let scale = InterpolationAction(from: CGSize(width: 30, height: 30),
-                                        to: CGSize(width: 100, height: 100),
-                                        duration: 2) {
-            self.testView.frame.size = $0
-        }
-        
-        let group = Group(actions: moveRight, scale).yoyo().repeated(2)
-        let animation = Animation(action: group)
-        animation.run()
-    }
- */
-
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
