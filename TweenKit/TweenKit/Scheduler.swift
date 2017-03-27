@@ -126,7 +126,6 @@ import Foundation
         animationsToRemove.removeAll()
 
     }
-
 }
 
 @objc class DisplayLink : NSObject {
@@ -144,7 +143,7 @@ import Foundation
                                       selector: #selector(displayLinkCallback(displaylink:)))
         
         caDisplayLink?.add(to: .current,
-                           forMode: .defaultRunLoopMode)
+                           forMode: .commonModes)
         
     }
     
