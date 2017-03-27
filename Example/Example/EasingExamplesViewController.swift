@@ -28,6 +28,8 @@ class EasingExamplesViewController: UIViewController {
         let tableView = UITableView(frame: .zero)
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.contentInset.top = 50
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -64,6 +66,11 @@ class EasingExamplesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.contentOffset.y = -tableView.contentInset.top
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,13 +134,17 @@ extension EasingExamplesViewController: UITableViewDataSource, UITableViewDelega
     
     func updateTableCells() {
         
-        for (index, cell) in tableView.visibleCells.enumerated() {
+        for cell in tableView.visibleCells {
             
             guard let cell = cell as? EasingExampleCell else {
                 continue
             }
             
-            let cellModel = cellModels[index]
+            guard let indexPath = tableView.indexPath(for: cell) else {
+                continue
+            }
+            
+            let cellModel = cellModels[indexPath.row]
             cell.animatedPct = cellModel.value
         }
     }

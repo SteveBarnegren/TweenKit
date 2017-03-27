@@ -67,14 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		096D09A81E8925F400E0A406 /* 4.Easing Examples */ = {
+		096D09A81E8925F400E0A406 /* 4. Easing Examples */ = {
 			isa = PBXGroup;
 			children = (
 				096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */,
 				096D09AF1E89275600E0A406 /* EasingExampleCell.swift */,
 				096D09B01E89275600E0A406 /* EasingExampleCell.xib */,
 			);
-			name = "4.Easing Examples";
+			name = "4. Easing Examples";
 			sourceTree = "<group>";
 		};
 		0984A59D1E83C16900240A50 /* Examples */ = {
@@ -84,7 +84,7 @@
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
 				0984A5A61E843C6C00240A50 /* 3. Scrubbable */,
-				096D09A81E8925F400E0A406 /* 4.Easing Examples */,
+				096D09A81E8925F400E0A406 /* 4. Easing Examples */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
