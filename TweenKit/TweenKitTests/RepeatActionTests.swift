@@ -75,6 +75,29 @@ class RepeatActionTests: XCTestCase {
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
     
+    func testInnerActionExpectedLifeCycleEventsAreCalledWhenReversed() {
+        
+        let action = FiniteTimeActionTester(duration: 5.0)
+        let repeated = action.repeated(3)
+        repeated.reverse = true
+        repeated.simulateFullLifeCycle()
+        
+        let expectedEvents: [EventType] = [.setReversed(reversed: true),
+                                           .willBecomeActive,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .willBegin,
+                                           .didFinish,
+                                           .didBecomeInactive]
+        
+        AssertLifeCycleEventsAreAsExpected(recordedEvents: action.loggedEvents,
+                                           expectedEvents: expectedEvents,
+                                           filter: .onlyMatchingExpectedEventsTypes)
+    }
+
+    
     
     
 }

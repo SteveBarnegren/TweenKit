@@ -27,7 +27,7 @@ public class ReverseAction: FiniteTimeAction {
     
     public var reverse: Bool = false {
         didSet {
-            action.reverse = !action.reverse
+            action.reverse = !reverse
         }
     }
     

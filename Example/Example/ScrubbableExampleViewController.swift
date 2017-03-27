@@ -121,13 +121,7 @@ class ScrubbableExampleViewController: UIViewController {
     }
     
     var moonOnScreenAmount = CGFloat(0.0) {
-        didSet{ updateMoon()
-        
-            if moonOnScreenAmount > 0.9 {
-                print("!!!!MOON!!!!")
-            }
-        
-        }
+        didSet{ updateMoon() }
     }
     
     var moonPosition: CGPoint {

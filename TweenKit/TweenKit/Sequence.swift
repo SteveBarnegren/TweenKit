@@ -175,7 +175,7 @@ public class Sequence: FiniteTimeAction {
             }
             
             if continueToNext {
-                wrapper.action.update(t: reverse ? 0.0 : 1.0)
+                //wrapper.action.update(t: reverse ? 0.0 : 1.0)
                 wrapper.action.didFinish()
                 wrapper.action.didBecomeInactive()
                 wrapper.state = .finished

@@ -103,52 +103,6 @@ class SequenceTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
-
-    /*
-    func testActionsEventsAreCalledInExpectedOrderWhenInReverseAction() {
-        
-        func makeBecomeActiveString(tag: Int) -> String { return "Become Active: \(tag)" }
-        func makeBecomeInactiveString(tag: Int) -> String { return "Become Inactive: \(tag)" }
-        func makeWillBeginString(tag: Int) -> String { return "Will Begin: \(tag)" }
-        func makeDidFinishString(tag: Int) -> String { return "Did Finish: \(tag)" }
-        
-        var events = [String]()
-        
-        func makeAction(tag: Int) -> FiniteTimeActionTester {
-            let action = FiniteTimeActionTester(duration: 0.1)
-            action.onBecomeActive = { events.append(makeBecomeActiveString(tag: tag)) }
-            action.onBecomeInactive = { events.append(makeBecomeInactiveString(tag: tag)) }
-            action.onWillBegin = { events.append(makeWillBeginString(tag: tag)) }
-            action.onDidFinish = { events.append(makeDidFinishString(tag: tag)) }
-            return action
-        }
-        
-        let action1 = makeAction(tag: 1)
-        let action2 = makeAction(tag: 2)
-        let action3 = makeAction(tag: 3)
-        
-        let reversedSequence = Sequence(actions: action1, action2, action3).reversed()
-        let animation = Animation(action: reversedSequence)
-        scheduler.add(animation: animation)
-        scheduler.progressTime(duration: reversedSequence.duration + 0.1)
-        
-        let expectedEvents: [String] = [makeBecomeActiveString(tag: 3),
-                                        makeWillBeginString(tag: 3),
-                                        makeDidFinishString(tag: 3),
-                                        makeBecomeInactiveString(tag: 3),
-                                        makeBecomeActiveString(tag: 2),
-                                        makeWillBeginString(tag: 2),
-                                        makeDidFinishString(tag: 2),
-                                        makeBecomeInactiveString(tag: 2),
-                                        makeBecomeActiveString(tag: 1),
-                                        makeWillBeginString(tag: 1),
-                                        makeDidFinishString(tag: 1),
-                                        makeBecomeInactiveString(tag: 1),
-                                        ]
-        
-        XCTAssertEqual(events, expectedEvents)
-    }
- */
     
     func testAllActionsEndInCompletedStates() {
     

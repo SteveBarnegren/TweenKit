@@ -93,15 +93,14 @@ class GroupTests: XCTestCase {
         XCTAssertTrue(wasInvoked)
     }
     
+    // MARK: - Test LifeCycle
+    
     func testExpectedInnerActionsLifeCycleEventsAreCalled() {
         
         let firstAction = FiniteTimeActionTester(duration: 0.1)
         let secondAction = FiniteTimeActionTester(duration: 0.2)
         let group = Group(actions: firstAction, secondAction)
-        let animation = Animation(action: group)
-        
-        scheduler.add(animation: animation)
-        scheduler.progressTime(duration: group.duration + 0.1)
+        group.simulateFullLifeCycle()
         
         let expectedEvents: [EventType] = [.willBecomeActive,
                                            .willBegin,
@@ -117,8 +116,6 @@ class GroupTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
-    
-    // MARK: - Test LifeCycle
     
     func testExpectedInnerActionsLifeCycleEventsAreCalledWhenReversed() {
         
