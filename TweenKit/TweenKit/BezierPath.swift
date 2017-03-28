@@ -1,0 +1,197 @@
+//
+//  BezierPath.swift
+//  TweenKit
+//
+//  Created by Steven Barnegren on 28/03/2017.
+//  Copyright © 2017 Steve Barnegren. All rights reserved.
+//
+
+import Foundation
+
+// MARK: - ****** CURVE ******
+
+public enum Curve<T: Tweenable2DCoordinate> {
+    case lineToPoint(T)
+    case quadCurveToPoint(T, cp: T)
+    case cubicCurveToPoint(T, cp1: T, cp2: T)
+    
+    var endPoint: T {
+        switch self {
+        case let .lineToPoint(p): return p
+        case let .quadCurveToPoint(p, _): return p
+        case let .cubicCurveToPoint(p, _, _): return p
+        }
+    }
+    
+    func length(from: T) -> Double {
+        
+        /*
+         We have to split the curves in to segments to estimate the distance.
+         For the moment just split in to 1000, which is high enough resolution for the majority of curves,
+         but we could get away with much less for short curves
+         */
+        
+        let numSegments = 100
+        
+        var distance = 0.0
+        var lastPoint = from
+        
+        for i in 1...numSegments {
+            
+            let t = Double(i) / Double(numSegments)
+            let currentPoint = value(previous: from, t: t)
+            
+            distance += vector2DDistance(v1: (x: lastPoint.tweenableX, y: lastPoint.tweenableY),
+                                         v2: (x: currentPoint.tweenableX, y: currentPoint.tweenableY))
+            lastPoint = currentPoint
+        }
+        
+        return distance
+    }
+    
+    func value(previous: T, t: Double) -> T {
+        
+        switch self {
+        case let .lineToPoint(end):
+            return valueOnLineToPoint(from: previous, to: end, t: t)
+        case let .quadCurveToPoint(end, control):
+            return valueOnQuadCurveToPoint(from: previous, to: end, cp: control, t: t)
+        case let .cubicCurveToPoint(end, control1, control2):
+            return valueOnCubicCurveToPoint(from: previous, to: end, cp1: control1, cp2: control2, t: t)
+        }
+    }
+    
+    func valueOnLineToPoint(from: T, to: T, t: Double) -> T {
+        let x = from.tweenableX + ((to.tweenableX - from.tweenableX) * t)
+        let y = from.tweenableY + ((to.tweenableY - from.tweenableY) * t)
+        return T(tweenableX: x, y: y)
+    }
+    
+    func valueOnQuadCurveToPoint(from: T, to: T, cp: T, t: Double) -> T {
+        
+        let x = (1 - t) * (1 - t) * from.tweenableX + 2 * (1 - t) * t * cp.tweenableX + t * t * to.tweenableX;
+        let y = (1 - t) * (1 - t) * from.tweenableY + 2 * (1 - t) * t * cp.tweenableY + t * t * to.tweenableY;
+        return T(tweenableX: x, y: y)
+    }
+    
+    func valueOnCubicCurveToPoint(from: T, to: T, cp1: T, cp2: T, t: Double) -> T {
+        
+        let x = pow(1 - t, 3) * from.tweenableX + 3.0 * pow(1 - t, 2) * t * cp1.tweenableX + 3.0 * (1 - t) * t * t * cp2.tweenableX + t * t * t * to.tweenableX;
+        let y = pow(1 - t, 3) * from.tweenableY + 3.0 * pow(1 - t, 2) * t * cp1.tweenableY + 3.0 * (1 - t) * t * t * cp2.tweenableY + t * t * t * to.tweenableY;
+        
+        return T(tweenableX: x, y: y)
+    }
+}
+
+// MARK: - ****** BEZIER POINT ******
+
+struct BezierPoint<T: Tweenable2DCoordinate> {
+    let curve: Curve<T>
+    var length: Double = 0.0
+    var pathPctAtStart = 0.0
+    var pathPctAtEnd = 0.0
+    
+    init(curve: Curve<T>) {
+        self.curve = curve
+    }
+}
+
+
+// MARK: - ****** BEZIER PATH ******
+
+public struct BezierPath<T: Tweenable2DCoordinate> {
+    let startLocation: T
+    var points = [BezierPoint<T>]()
+    var length = 0.0
+    
+    public init(start: T, curves: [Curve<T>]) {
+        
+        self.startLocation = start
+        
+        self.points = curves.map{
+            BezierPoint(curve: $0)
+        }
+        
+        calculatePointLengths()
+        calculatePathLength()
+        calculatePointPathPcts()
+    }
+    
+    mutating func calculatePointLengths() {
+        
+        var lastPoint = startLocation
+        
+        for i in 0..<points.count{
+            let length = points[i].curve.length(from: lastPoint)
+            points[i].length = length
+            lastPoint = points[i].curve.endPoint
+            print("Length: \(length)")
+        }
+    }
+    
+    mutating func calculatePathLength() {
+        
+        var cumulativeLength = 0.0
+        points.forEach{
+            cumulativeLength += $0.length
+        }
+        length = cumulativeLength
+    }
+    
+    mutating func calculatePointPathPcts() {
+        
+        var cumulativeLength = 0.0
+        
+        func cumulativeLengthNotZero() -> Double {
+            return cumulativeLength == 0 ? 0.00001 : cumulativeLength
+        }
+        
+        for i in 0..<points.count{
+            
+            points[i].pathPctAtStart = cumulativeLengthNotZero() / length
+            cumulativeLength += points[i].length
+            points[i].pathPctAtEnd = cumulativeLengthNotZero() / length
+            
+            print("*******")
+            print("Length: \(length)")
+            print("Length so far: \(cumulativeLength)")
+            print("start T: \(points[i].pathPctAtStart)")
+            print("end T: \(points[i].pathPctAtEnd)")
+            
+        }
+    }
+    
+    func valueAt(t: Double) -> T {
+        
+        print("***********")
+        
+        // Clamp t (this means that we can't use easing functions that rely on t > 1 eg. elastic)
+        var t = t
+        t = t.constrained(min: 0.0, max: 1.0)
+        
+        // Get the point we're on
+        
+        var lastLocation = startLocation
+        var point = points.first!
+        
+        for (index, p) in points.enumerated() {
+            
+            if index == points.count-1 || (p.pathPctAtStart < t && p.pathPctAtEnd > t){
+                point = p
+                break
+            }
+            else{
+                lastLocation = p.curve.endPoint
+            }
+        }
+        
+        // Get the value from the point
+        let pointTLength = point.pathPctAtEnd - point.pathPctAtStart
+        print("T length: \(pointTLength)")
+        var pointT = (t - point.pathPctAtStart) / pointTLength
+        print("point T = \(pointT)")
+        pointT = pointT.constrained(min: 0.0, max: 1.0)
+        return point.curve.value(previous: lastLocation, t: pointT)
+    }
+}
+

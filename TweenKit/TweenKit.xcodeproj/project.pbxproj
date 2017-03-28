@@ -20,6 +20,7 @@
 		09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */; };
 		09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */; };
 		09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */; };
+		09F52D7C1E8A6AF5003B09E2 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */; };
 		09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */; };
 		09FF20831E802D330029CB2D /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20821E802D330029CB2D /* GroupTests.swift */; };
 		09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20841E802D430029CB2D /* SequenceTests.swift */; };
@@ -70,6 +71,7 @@
 		09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatForeverActionTests.swift; sourceTree = "<group>"; };
 		09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sheduler+Extensions.swift"; sourceTree = "<group>"; };
 		09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoActionTests.swift; sourceTree = "<group>"; };
+		09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierPath.swift; sourceTree = "<group>"; };
 		09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatActionTests.swift; sourceTree = "<group>"; };
 		09FF20821E802D330029CB2D /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		09FF20841E802D430029CB2D /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
@@ -121,8 +123,8 @@
 		0914BDDC1E82C5D40002C6FB /* Tweenable2DCoordiate */ = {
 			isa = PBXGroup;
 			children = (
+				09F52D7A1E8A6AE2003B09E2 /* BezierAction */,
 				0914BDDD1E82C5F80002C6FB /* ArcAction.swift */,
-				096D09B31E894D6700E0A406 /* BezierAction.swift */,
 			);
 			name = Tweenable2DCoordiate;
 			sourceTree = "<group>";
@@ -137,6 +139,15 @@
 				0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		09F52D7A1E8A6AE2003B09E2 /* BezierAction */ = {
+			isa = PBXGroup;
+			children = (
+				09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */,
+				096D09B31E894D6700E0A406 /* BezierAction.swift */,
+			);
+			name = BezierAction;
 			sourceTree = "<group>";
 		};
 		09FF207E1E802B6D0029CB2D /* Actions */ = {
@@ -364,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */,
+				09F52D7C1E8A6AF5003B09E2 /* BezierPath.swift in Sources */,
 				6750B9371E7C878F00E7AEE2 /* Action.swift in Sources */,
 				6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */,
 				673CB76F1E7E98E100592F24 /* UIKit+Tweenable.swift in Sources */,
