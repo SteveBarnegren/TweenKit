@@ -11,7 +11,6 @@ import Foundation
 public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     
     // MARK: - Public
-    
     public init(path: BezierPath<T>, duration: Double, update: @escaping (T) -> ()) {
         self.duration = duration
         self.path = path

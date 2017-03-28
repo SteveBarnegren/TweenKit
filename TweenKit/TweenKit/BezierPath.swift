@@ -29,9 +29,10 @@ public enum Curve<T: Tweenable2DCoordinate> {
          We have to split the curves in to segments to estimate the distance.
          For the moment just split in to 1000, which is high enough resolution for the majority of curves,
          but we could get away with much less for short curves
+         might have to think of a better way to approach this
          */
         
-        let numSegments = 100
+        let numSegments = 1000
         
         var distance = 0.0
         var lastPoint = from
@@ -48,6 +49,8 @@ public enum Curve<T: Tweenable2DCoordinate> {
         
         return distance
     }
+    
+    // MARK: - Get value at t
     
     func value(previous: T, t: Double) -> T {
         
@@ -106,6 +109,10 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
     
     public init(start: T, curves: [Curve<T>]) {
         
+        guard curves.count > 0 else {
+            fatalError("Bezier path cannot be constructed with just a start point")
+        }
+        
         self.startLocation = start
         
         self.points = curves.map{
@@ -117,6 +124,7 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         calculatePointPathPcts()
     }
     
+    /** Calculates the length to each point. This is slow, so it is calculated once and the result is stored in the point struct */
     mutating func calculatePointLengths() {
         
         var lastPoint = startLocation
@@ -129,6 +137,7 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         }
     }
     
+    /** Calculates the whole path length, this isn't super fast for long paths, so it gets stored */
     mutating func calculatePathLength() {
         
         var cumulativeLength = 0.0
@@ -138,45 +147,42 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         length = cumulativeLength
     }
     
+    /** Calculates and stores the pct along the path that each point begins */
     mutating func calculatePointPathPcts() {
         
         var cumulativeLength = 0.0
         
-        func cumulativeLengthNotZero() -> Double {
-            return cumulativeLength == 0 ? 0.00001 : cumulativeLength
-        }
-        
         for i in 0..<points.count{
             
-            points[i].pathPctAtStart = cumulativeLengthNotZero() / length
+            points[i].pathPctAtStart = (i == 0 ? 0 : cumulativeLength / length)
             cumulativeLength += points[i].length
-            points[i].pathPctAtEnd = cumulativeLengthNotZero() / length
-            
-            print("*******")
-            print("Length: \(length)")
-            print("Length so far: \(cumulativeLength)")
-            print("start T: \(points[i].pathPctAtStart)")
-            print("end T: \(points[i].pathPctAtEnd)")
-            
+            points[i].pathPctAtEnd = (i == points.count - 1 ? 1.0 : cumulativeLength / length)
         }
     }
     
+    /** Get the value at a point on the path */
     func valueAt(t: Double) -> T {
         
-        print("***********")
-        
-        // Clamp t (this means that we can't use easing functions that rely on t > 1 eg. elastic)
+        // Clamp t - this means that we can't use easing functions that rely on t > 1 eg. elastic (for now at least)
         var t = t
         t = t.constrained(min: 0.0, max: 1.0)
         
-        // Get the point we're on
-        
+        // Get the current point
         var lastLocation = startLocation
         var point = points.first!
         
         for (index, p) in points.enumerated() {
             
-            if index == points.count-1 || (p.pathPctAtStart < t && p.pathPctAtEnd > t){
+            var next: BezierPoint<T>?
+            if index + 1 < points.count {
+                next = points[index + 1]
+            }
+            
+            if index == points.count-1 {
+                point = p
+                break
+            }
+            else if let next = next, next.pathPctAtStart > t {
                 point = p
                 break
             }
@@ -187,11 +193,8 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         
         // Get the value from the point
         let pointTLength = point.pathPctAtEnd - point.pathPctAtStart
-        print("T length: \(pointTLength)")
         var pointT = (t - point.pathPctAtStart) / pointTLength
-        print("point T = \(pointT)")
         pointT = pointT.constrained(min: 0.0, max: 1.0)
         return point.curve.value(previous: lastLocation, t: pointT)
     }
 }
-

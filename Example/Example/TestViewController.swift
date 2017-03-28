@@ -50,30 +50,22 @@ class TestViewController: UIViewController {
     
     func startTheAnimation() {
         
-        let startPoint = CGPoint(x: 30,
-                                 y: 30)
-        
-        let curves: [Curve<CGPoint>] = [
-            .lineToPoint( CGPoint(x: 60, y: 60) ),
-            .lineToPoint( CGPoint(x: 200, y: 80) ),
-            .lineToPoint( CGPoint(x: 50, y: 300) ),
-            .lineToPoint( CGPoint(x: 300, y: 20) ),
-            .quadCurveToPoint(CGPoint(x: 30, y: 20), cp: CGPoint(x: 160, y: 450)),
-            .lineToPoint( CGPoint(x: 30, y: 300) ),
-            .cubicCurveToPoint(CGPoint(x: 300, y: 300),
-                               cp1: CGPoint(x: 100, y: 50),
-                               cp2: CGPoint(x: 170, y: 500))
+        let path = UIBezierPath()
+        path.move(to: CGPoint.zero)
+        path.addLine(to: CGPoint(x: 200, y: 200))
+        path.addQuadCurve(to: CGPoint(x: 310, y: 200), controlPoint: CGPoint(x: 275, y: 500))
+        path.addCurve(to: CGPoint(x: 100, y: 200),
+                      controlPoint1: CGPoint(x: 175, y: 0),
+                      controlPoint2: CGPoint(x: 275, y: 500))
+        path.close()
 
-            ]
+        let bezierPath = path.asBezierPath()
         
-        let path = BezierPath(start: startPoint,
-                              curves: curves)
-        
-        let action = BezierAction(path: path,
+        let action = BezierAction(path: bezierPath,
                      duration: 15,
                      update: { [unowned self] in self.testView.center = $0 })
         
-        let animation = Animation(action: action)
+        let animation = Animation(action: action.yoyo())
         scheduler.add(animation: animation)
     }
     

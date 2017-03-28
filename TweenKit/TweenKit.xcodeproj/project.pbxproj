@@ -21,6 +21,9 @@
 		09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */; };
 		09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */; };
 		09F52D7C1E8A6AF5003B09E2 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */; };
+		09F52D801E8A6D92003B09E2 /* BezierActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7F1E8A6D92003B09E2 /* BezierActionTests.swift */; };
+		09F52D821E8A703F003B09E2 /* BezierPath+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */; };
+		09F52D841E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */; };
 		09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */; };
 		09FF20831E802D330029CB2D /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20821E802D330029CB2D /* GroupTests.swift */; };
 		09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20841E802D430029CB2D /* SequenceTests.swift */; };
@@ -72,6 +75,9 @@
 		09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sheduler+Extensions.swift"; sourceTree = "<group>"; };
 		09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoActionTests.swift; sourceTree = "<group>"; };
 		09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierPath.swift; sourceTree = "<group>"; };
+		09F52D7F1E8A6D92003B09E2 /* BezierActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierActionTests.swift; sourceTree = "<group>"; };
+		09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Testable.swift"; sourceTree = "<group>"; };
+		09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+BezierPath.swift"; sourceTree = "<group>"; };
 		09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatActionTests.swift; sourceTree = "<group>"; };
 		09FF20821E802D330029CB2D /* GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		09FF20841E802D430029CB2D /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 				09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */,
 				0984A5AB1E85229F00240A50 /* Action+Testable.swift */,
 				0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */,
+				09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 		09F52D7A1E8A6AE2003B09E2 /* BezierAction */ = {
 			isa = PBXGroup;
 			children = (
+				09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */,
 				09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */,
 				096D09B31E894D6700E0A406 /* BezierAction.swift */,
 			);
@@ -161,6 +169,7 @@
 				09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */,
 				096D09A41E891A5100E0A406 /* ArcActionTests.swift */,
 				096D09A61E8924FE00E0A406 /* DelayActionTests.swift */,
+				09F52D7F1E8A6D92003B09E2 /* BezierActionTests.swift */,
 				09FF20811E802D1C0029CB2D /* Collections */,
 			);
 			name = Actions;
@@ -379,6 +388,7 @@
 				6750B9371E7C878F00E7AEE2 /* Action.swift in Sources */,
 				6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */,
 				673CB76F1E7E98E100592F24 /* UIKit+Tweenable.swift in Sources */,
+				09F52D841E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift in Sources */,
 				096D09B41E894D6700E0A406 /* BezierAction.swift in Sources */,
 				6750B9471E7D99FD00E7AEE2 /* Scheduler.swift in Sources */,
 				0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */,
@@ -405,10 +415,12 @@
 				096D09A71E8924FE00E0A406 /* DelayActionTests.swift in Sources */,
 				09FF208D1E8169E00029CB2D /* ReverseActionTests.swift in Sources */,
 				09FF20831E802D330029CB2D /* GroupTests.swift in Sources */,
+				09F52D801E8A6D92003B09E2 /* BezierActionTests.swift in Sources */,
 				09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */,
 				09FF20871E802D530029CB2D /* RunBlockActionTests.swift in Sources */,
 				09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */,
 				0984A5AE1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift in Sources */,
+				09F52D821E8A703F003B09E2 /* BezierPath+Testable.swift in Sources */,
 				09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */,
 				096D09A51E891A5100E0A406 /* ArcActionTests.swift in Sources */,
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
