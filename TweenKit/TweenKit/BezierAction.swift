@@ -31,14 +31,14 @@ public enum Curve<T: Tweenable2DCoordinate> {
          but we could get away with much less for short curves
          */
         
-        let numSegments = 1000
+        let numSegments = 100
         
         var distance = 0.0
         var lastPoint = from
         
         for i in 1...numSegments {
             
-            let t = Double(i / numSegments)
+            let t = Double(i) / Double(numSegments)
             let currentPoint = value(previous: from, t: t)
             
             distance += vector2DDistance(v1: (x: lastPoint.tweenableX, y: lastPoint.tweenableY),
@@ -165,16 +165,18 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         
         print("***********")
         
-        // Get the point we're on
+        // Clamp t (this means that we can't use easing functions that rely on t > 1 eg. elastic)
+        var t = t
+        t = t.constrained(min: 0.0, max: 1.0)
         
-        //let t = t.fract
+        // Get the point we're on
         
         var lastLocation = startLocation
         var point = points.first!
         
-        for p in points {
+        for (index, p) in points.enumerated() {
             
-            if p.pathPctAtStart < t && p.pathPctAtEnd > t{
+            if index == points.count-1 || (p.pathPctAtStart < t && p.pathPctAtEnd > t){
                 point = p
                 break
             }
@@ -186,8 +188,9 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
         // Get the value from the point
         let pointTLength = point.pathPctAtEnd - point.pathPctAtStart
         print("T length: \(pointTLength)")
-        let pointT = (t - point.pathPctAtStart) / pointTLength
+        var pointT = (t - point.pathPctAtStart) / pointTLength
         print("point T = \(pointT)")
+        pointT = pointT.constrained(min: 0.0, max: 1.0)
         return point.curve.value(previous: lastLocation, t: pointT)
     }
 }
@@ -218,15 +221,18 @@ public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     // MARK: - Methods
     
     public func willBecomeActive() {
+        onBecomeActive()
     }
     
     public func didBecomeInactive() {
+        onBecomeInactive()
     }
     
     public func willBegin() {
     }
     
     public func didFinish() {
+        update(t: reverse ? 0.0 : 1.0)
     }
     
     public func update(t: CFTimeInterval) {
