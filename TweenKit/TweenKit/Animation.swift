@@ -16,10 +16,6 @@ public class Animation : Equatable {
         self.action = action
     }
     
-    public func run(){
-        Scheduler.shared.add(animation: self)
-    }
-    
     public var onDidUpdate: () -> () = {}
     
     // MARK: - Properties

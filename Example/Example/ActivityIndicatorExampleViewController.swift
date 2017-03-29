@@ -82,8 +82,7 @@ class ActivityIndicatorExampleViewController: UIViewController {
         let repeatForever = group.repeatedForever()
         
         // Run the action
-        let animation = Animation(action: repeatForever)
-        scheduler.add(animation: animation)
+        scheduler.run(action: repeatForever)
     }
     
 }

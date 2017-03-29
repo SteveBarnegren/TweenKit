@@ -185,8 +185,7 @@ class ScrubbableExampleViewController: UIViewController {
             actionScrubber = ActionScrubber(action: sequence)
         }
         else{
-            let animation = Animation(action: sequence.yoyo().repeatedForever() )
-            scheduler.add(animation: animation)
+            scheduler.run(action: sequence.yoyo().repeatedForever() )
         }
     }
     

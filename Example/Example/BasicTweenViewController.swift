@@ -56,9 +56,7 @@ class BasicTweenViewController: UIViewController {
         let repeatedAction = action.yoyo().repeatedForever()
         
         // Run the action
-        let animation = Animation(action: repeatedAction)
-        scheduler.add(animation: animation)
-        
+        scheduler.run(action: repeatedAction)
     }
     
 }

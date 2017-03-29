@@ -96,9 +96,7 @@ class EasingExamplesViewController: UIViewController {
             
         let sequence = Sequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
         let repeated = sequence.repeatedForever()
-        
-        let animation = Animation(action: repeated)
-        scheduler.add(animation: animation)
+        scheduler.run(action: repeated)
         
         hasStartedAnimation = true
     }

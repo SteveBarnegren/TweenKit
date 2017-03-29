@@ -12,7 +12,11 @@ import Foundation
     
     // MARK: - Internal
     
-    static let shared = Scheduler()
+    @discardableResult public func run(action: SchedulableAction) -> Animation {
+        let animation = Animation(action: action)
+        add(animation: animation)
+        return animation
+    }
     
     public func add(animation: Animation) {
         animations.append(animation)
