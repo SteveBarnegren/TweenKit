@@ -24,13 +24,35 @@ let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525
 
 class ScrubbableExampleViewController: UIViewController {
     
+    // MARK: - Public
+    init(scrubbable: Bool) {
+        self.scrubbable = scrubbable
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Properties
     
+    let scrubbable: Bool
     let scheduler = Scheduler()
+    var actionScrubber: ActionScrubber?
     
-    // MARK: - Layers
+    // MARK: - Views / Layers
     
-    let gradientLayer : CAGradientLayer = {
+    let slider: UISlider = {
+        let slider = UISlider(frame: .zero)
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.isUserInteractionEnabled = true
+        slider.isContinuous = true
+        return slider
+    }()
+    
+    let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         return layer
     }()
@@ -93,7 +115,7 @@ class ScrubbableExampleViewController: UIViewController {
         return layer
     }()
 
-    // MARK: - Variables
+    // MARK: - Animation Variables
     
     var sunRadius = CGFloat(50) {
         didSet { updateSun() }
@@ -152,21 +174,33 @@ class ScrubbableExampleViewController: UIViewController {
         view.layer.addSublayer(sunDiagonalSpoke)
         view.layer.addSublayer(sunMiddle)
         view.layer.addSublayer(moon)
+        if scrubbable { view.addSubview(slider) }
         
         // Start the animation
         let moonAppear = makeMoonAction().reversed()
         let sunAppear = makeSunAction()
-        
         let sequence = Sequence(actions: moonAppear, sunAppear)
-        let repeated = sequence.yoyo().repeatedForever()
         
-        let animation = Animation(action: repeated)
-        scheduler.add(animation: animation)
+        if scrubbable {
+            actionScrubber = ActionScrubber(action: sequence)
+        }
+        else{
+            let animation = Animation(action: sequence.yoyo().repeatedForever() )
+            scheduler.add(animation: animation)
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientLayer.frame = view.bounds
+        
+        // Layout Slider
+        slider.sizeToFit()
+        let margin = CGFloat(5)
+        slider.frame = CGRect(x: margin,
+                              y: view.bounds.size.height - slider.bounds.size.height - 30,
+                              width: view.bounds.size.width - (margin * 2),
+                              height: slider.bounds.size.height);
     }
     
     func makeSunAction() -> FiniteTimeAction {
@@ -236,6 +270,11 @@ class ScrubbableExampleViewController: UIViewController {
         let group = Group(actions: move, changeBackgroundColorTop, changeBackgroundColorBottom)
 
         return group
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.actionScrubber?.update(t: 0.0)
     }
     
     // MARK: - Update
@@ -316,6 +355,14 @@ class ScrubbableExampleViewController: UIViewController {
         gradientLayer.locations = [0.0, 1.0]
         
         CATransaction.commit()
+    }
+    
+    // MARK: - Actions
+    
+    @objc func sliderValueChanged() {
+        print("Slider value changed!")
+        
+        actionScrubber?.update(t: Double(slider.value))
     }
 
 

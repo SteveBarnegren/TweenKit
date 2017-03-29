@@ -139,7 +139,7 @@ public class Group: FiniteTimeAction, SchedulableAction {
         for wrapper in wrappedActions {
             
             // Update the action if it is in progress
-            if elapsedTime < wrapper.action.duration {
+            if elapsedTime <= wrapper.action.duration {
                 
                 wrapper.state = .inProgress
                 wrapper.action.update(t: elapsedTime / wrapper.action.duration)

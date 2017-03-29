@@ -12,7 +12,8 @@ enum ExampleType: Int {
     
     case basicTween
     case activityIndicator
-    case sunExample
+    case sunAndMoon
+    case sunAndMoonScrubbable
     case easingExamples
     
     var count: Int {
@@ -53,8 +54,10 @@ enum ExampleType: Int {
             return BasicTweenViewController(nibName: nil, bundle: nil)
         case .activityIndicator:
             return ActivityIndicatorExampleViewController(nibName: nil, bundle: nil)
-        case .sunExample:
-            return ScrubbableExampleViewController(nibName: nil, bundle: nil)
+        case .sunAndMoon:
+            return ScrubbableExampleViewController(scrubbable: false)
+        case .sunAndMoonScrubbable:
+            return ScrubbableExampleViewController(scrubbable: true)
         case .easingExamples:
             return EasingExamplesViewController(nibName: nil, bundle: nil)
         }
