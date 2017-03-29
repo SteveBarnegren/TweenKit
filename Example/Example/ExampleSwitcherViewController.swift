@@ -119,7 +119,10 @@ class ExampleSwitcherViewController: UIViewController {
         nextButton.frame.origin = CGPoint(x: view.bounds.size.width - buttonMargins - nextButton.bounds.size.width,
                                           y: view.bounds.size.height - buttonMargins - nextButton.bounds.size.height)
         
+        contentViewController?.view.frame = view.bounds
+        
         // Content view controller
+        /*
         if let content = contentViewController {
             
             content.view.frame = CGRect(x: 0,
@@ -127,6 +130,7 @@ class ExampleSwitcherViewController: UIViewController {
                                         width: self.view.bounds.size.width,
                                         height: backButton.frame.origin.y - buttonMargins)
         }
+ */
     }
     
     // MARK: - Methods
@@ -159,7 +163,7 @@ class ExampleSwitcherViewController: UIViewController {
         
         addChildViewController(viewController)
         view.addSubview(viewController.view)
-        //viewController.view.isUserInteractionEnabled = false
+        view.sendSubview(toBack: viewController.view)
         contentViewController = viewController
         
         view.setNeedsLayout()
