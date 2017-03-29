@@ -50,17 +50,19 @@ class TestViewController: UIViewController {
     
     func startTheAnimation() {
         
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 100, y: 200))
-        path.addCurve(to: CGPoint(x: 300, y: 200),
+        let linePath = UIBezierPath()
+        linePath.move(to: CGPoint(x: 80, y: 80))
+        linePath.addLine(to: CGPoint(x: 300, y: 300))
+        
+        let cubicCurvePath = UIBezierPath()
+        cubicCurvePath.move(to: CGPoint(x: 100, y: 200))
+        cubicCurvePath.addCurve(to: CGPoint(x: 300, y: 200),
                       controlPoint1: CGPoint(x: 175, y: 0),
                       controlPoint2: CGPoint(x: 275, y: 500))
-        //path.close()
 
-        let bezierPath = path.asBezierPath()
-        
+        let bezierPath = cubicCurvePath.asBezierPath()
         let action = BezierAction(path: bezierPath,
-                     duration: 2,
+                     duration: 3,
                      update: { [unowned self] in self.testView.center = $0 })
         
         let animation = Animation(action: action.yoyo())
