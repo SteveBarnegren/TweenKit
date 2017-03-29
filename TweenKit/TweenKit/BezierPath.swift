@@ -27,12 +27,12 @@ public enum Curve<T: Tweenable2DCoordinate> {
         
         /*
          We have to split the curves in to segments to estimate the distance.
-         For the moment just split in to 1000, which is high enough resolution for the majority of curves,
+         For the moment just split in to 20, which is high enough resolution for the majority of curves,
          but we could get away with much less for short curves
          might have to think of a better way to approach this
          */
         
-        let numSegments = 1000
+        let numSegments = 20
         
         var distance = 0.0
         var lastPoint = from

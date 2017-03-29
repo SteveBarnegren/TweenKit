@@ -17,7 +17,7 @@ public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
         self.updateHandler = update
     }
     
-    public var easing = Easing.elasticInOut
+    public var easing = Easing.linear
     public var duration: Double
     public var reverse = false
 
