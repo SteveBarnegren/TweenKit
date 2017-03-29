@@ -47,9 +47,8 @@ class BasicTweenViewController: UIViewController {
         let action = InterpolationAction(from: { [unowned self] in self.squareView.frame },
                                          to: newFrame,
                                          duration: 2,
-                                         update: { [unowned self] in self.squareView.frame = $0 })
-        action.easing = .exponentialInOut
-        
+                                         easing: .exponentialInOut,
+                                         update: { [unowned self] in self.squareView.frame = $0 })        
         
         // Yoyo (run the action back and forth), and repeat it forever
         // You can construct YoyoAction and RepeatForeverAction objects manually, but it's easier to use the convenience functions

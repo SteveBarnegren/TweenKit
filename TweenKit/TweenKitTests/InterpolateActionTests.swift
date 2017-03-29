@@ -24,7 +24,7 @@ class InterpolateActionTests: XCTestCase {
     func testInterpolateActionFromClosureSetsStartValue() {
         
         let value = 6.23
-        let action = InterpolationAction(from: { value }, to: Double(1.0), duration: 1.0, update: {_ in})
+        let action = InterpolationAction(from: { value }, to: Double(1.0), duration: 1.0, easing: .linear, update: {_ in})
         action.simulateFullLifeCycle()
         
         XCTAssertEqualWithAccuracy(action.startValue, value, accuracy: 0.001)
@@ -36,7 +36,7 @@ class InterpolateActionTests: XCTestCase {
         let expectedEndValue = 12.0
         
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: expectedEndValue, duration: duration) {
+        let action = InterpolationAction(from: 0.0, to: expectedEndValue, duration: duration, easing: .linear) {
             value = $0
         }
         let animation = Animation(action: action)
@@ -51,7 +51,7 @@ class InterpolateActionTests: XCTestCase {
         let duration = 0.1
         
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration) { value = $0 }
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration, easing: .linear) { value = $0 }
         action.reverse = true
         
         let animation = Animation(action: action)
@@ -66,7 +66,7 @@ class InterpolateActionTests: XCTestCase {
     func testInterpolateActionFullLifeCycleResultsInExpectedEndValue() {
 
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0) { value = $0 }
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear) { value = $0 }
         action.simulateFullLifeCycle()
         XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
     }
@@ -74,7 +74,7 @@ class InterpolateActionTests: XCTestCase {
     func testInterpolateActionFullLifeCycleResultsInExpectedEndValueWhenReversed() {
         
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0) { value = $0 }
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear) { value = $0 }
         action.reverse = true
         action.simulateFullLifeCycle()
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)

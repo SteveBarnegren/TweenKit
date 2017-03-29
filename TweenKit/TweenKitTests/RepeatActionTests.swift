@@ -23,7 +23,7 @@ class RepeatActionTests: XCTestCase {
         
         let numRepeats = 3
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: {_ in})
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: {_ in})
         let repeatedAction = RepeatAction(action: action, times: numRepeats)
         
         XCTAssertEqualWithAccuracy(action.duration * Double(numRepeats), repeatedAction.duration, accuracy: 0.001)

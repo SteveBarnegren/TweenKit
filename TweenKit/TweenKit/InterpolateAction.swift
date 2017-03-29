@@ -28,15 +28,17 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
 
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
-    public var easing = Easing.linear
+    public var easing: Easing
     
     public init(from startValue: T,
                 to endValue: T,
                 duration: Double,
+                easing: Easing,
                 update: @escaping (_: T) -> ()) {
         
         self.duration = duration
         self.updateHandler = update
+        self.easing = easing
         
         self.startTweenableValue = .constant(startValue)
         self.endTweenableValue = .constant(endValue)
@@ -45,10 +47,12 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
     public init(from startValue: @escaping () -> (T),
                 to endValue: T,
                 duration: Double,
+                easing: Easing,
                 update: @escaping (_: T) -> ()) {
         
         self.duration = duration
         self.updateHandler = update
+        self.easing = easing
         
         self.startTweenableValue = .dynamic(startValue)
         self.endTweenableValue = .constant(endValue)
@@ -57,8 +61,10 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
     public init(from startValue: T,
                 to endValue: T,
                 speed: Double,
+                easing: Easing,
                 update: @escaping (_: T) -> ()) {
         
+        self.easing = easing
         self.duration = startValue.distanceTo(other: endValue) / speed
         self.updateHandler = update
         self.startTweenableValue = .constant(startValue)

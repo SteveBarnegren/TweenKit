@@ -83,7 +83,7 @@ class EasingExamplesViewController: UIViewController {
     
     func startAnimation(){
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0) {
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear) {
             [unowned self] in
             
             for i in 0..<self.cellModels.count {

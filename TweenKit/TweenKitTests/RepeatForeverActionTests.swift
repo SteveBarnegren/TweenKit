@@ -23,7 +23,7 @@ class RepeatForeverActionTests: XCTestCase {
     
     func testRepeatForeverActionIsNeverRemoved() {
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5, update: {_ in} ).repeatedForever()
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5, easing: .linear, update: {_ in} ).repeatedForever()
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         
@@ -37,7 +37,7 @@ class RepeatForeverActionTests: XCTestCase {
         let actionDuration = 5.0
         
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: actionDuration, update: { value = $0 } ).repeatedForever()
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: actionDuration, easing: .linear, update: { value = $0 } ).repeatedForever()
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         

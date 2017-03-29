@@ -21,7 +21,7 @@ class YoyoActionTests: XCTestCase {
     
     func testDurationIsDoubleInnerAction() {
         
-        let inner = InterpolationAction(from: 0, to: 1, duration: 5, update: { _ in })
+        let inner = InterpolationAction(from: 0, to: 1, duration: 5, easing: .linear, update: { _ in })
         let yoyo = YoyoAction(action: inner)
         
         XCTAssertEqualWithAccuracy(inner.duration * 2, yoyo.duration, accuracy: 0.001)
@@ -34,7 +34,7 @@ class YoyoActionTests: XCTestCase {
         let duration = 5.0
         
         var value = 0.0
-        let yoyo = InterpolationAction(from: start, to: end, duration: duration, update: {value = $0} ).yoyo()
+        let yoyo = InterpolationAction(from: start, to: end, duration: duration, easing: .linear, update: {value = $0} ).yoyo()
         
         yoyo.willBecomeActive()
         yoyo.willBegin()
@@ -50,7 +50,7 @@ class YoyoActionTests: XCTestCase {
         let duration = 5.0
         
         var value = 0.0
-        let yoyo = InterpolationAction(from: start, to: end, duration: duration, update: {value = $0} ).yoyo()
+        let yoyo = InterpolationAction(from: start, to: end, duration: duration, easing: .linear, update: {value = $0} ).yoyo()
         
         yoyo.willBecomeActive()
         yoyo.willBegin()
@@ -62,7 +62,7 @@ class YoyoActionTests: XCTestCase {
     func testOnFinishUpdatesInnerAction() {
         
         var value = 0.0
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: {value = $0})
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: {value = $0})
         let yoyo = action.yoyo()
         yoyo.simulateFullLifeCycle()
         XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)

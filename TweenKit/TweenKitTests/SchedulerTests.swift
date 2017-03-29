@@ -26,7 +26,7 @@ class SchedulerTests: XCTestCase {
     func testSchedulerReturnsCorrectNumberOfAnimations() {
         
         func addAnimation() {
-            let action = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, update: { _ in })
+            let action = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear, update: { _ in })
             let animation = Animation(action: action)
             scheduler.add(animation: animation)
         }
@@ -44,7 +44,7 @@ class SchedulerTests: XCTestCase {
         
         let duration = 0.1
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration) {_ in }
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: duration, easing: .linear) {_ in }
         let animation = Animation(action: action)
         scheduler.add(animation: animation)
         

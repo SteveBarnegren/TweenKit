@@ -210,28 +210,28 @@ class ScrubbableExampleViewController: UIViewController {
         let moveSunOnScreen = InterpolationAction(from: CGFloat(0.0),
                                                   to: CGFloat(1.0),
                                                   duration: duration,
+                                                  easing: .exponentialOut,
                                                   update: { [unowned self] in self.sunOnScreenAmount = $0; self.sunSideSpokeSize = $0 })
-        moveSunOnScreen.easing = .exponentialOut
         
         // Rotate sun
         let rotateSun = InterpolationAction(from: 0.0,
                                             to: 360.0 * 3.0,
                                             duration: duration + 0.5,
+                                            easing: .exponentialOut,
                                             update: { [unowned self] in self.sunRotation = $0})
-        rotateSun.easing = .exponentialOut
         
         // Change background color
         let changeBackgroundColorTop = InterpolationAction(from: defaultBackgroundColorTop,
                                                            to: UIColor(red: 0.118, green: 0.376, blue: 0.682, alpha: 1.00),
                                                            duration: duration,
+                                                           easing: .exponentialOut,
                                                            update: { [unowned self] in self.backgroundColorTop = $0 })
-        changeBackgroundColorTop.easing = .exponentialOut
         
         let changeBackgroundColorBottom = InterpolationAction(from: defaultBackgroundColorBottom,
                                                               to: UIColor(red: 0.569, green: 0.824, blue: 0.941, alpha: 1.00),
                                                               duration: duration,
+                                                              easing: .exponentialOut,
                                                               update: { [unowned self] in self.backgroundColorBottom = $0 })
-        changeBackgroundColorBottom.easing = .exponentialOut
         
         
         // Create group
@@ -249,21 +249,21 @@ class ScrubbableExampleViewController: UIViewController {
         let move = InterpolationAction(from: 0.0,
                                          to: 1.0,
                                          duration: duration,
+                                         easing: .exponentialOut,
                                          update: { [unowned self] in self.moonOnScreenAmount = $0 })
-        move.easing = .exponentialOut
         
         // Change background color
         let changeBackgroundColorTop = InterpolationAction(from: defaultBackgroundColorTop,
                                                            to: UIColor(red: 0.114, green: 0.082, blue: 0.133, alpha: 1.00),
                                                            duration: duration,
+                                                           easing: .exponentialOut,
                                                            update: { [unowned self] in self.backgroundColorTop = $0 })
-        changeBackgroundColorTop.easing = .exponentialOut
         
         let changeBackgroundColorBottom = InterpolationAction(from: defaultBackgroundColorBottom,
                                                               to: UIColor(red: 0.278, green: 0.122, blue: 0.494, alpha: 1.00),
                                                               duration: duration,
+                                                              easing: .exponentialOut,
                                                               update: { [unowned self] in self.backgroundColorBottom = $0 })
-        changeBackgroundColorBottom.easing = .exponentialOut
         
         // Group
         let group = Group(actions: move, changeBackgroundColorTop, changeBackgroundColorBottom)

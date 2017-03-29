@@ -20,9 +20,9 @@ class GroupTests: XCTestCase {
     
     func testGroupHasExpectedDuration() {
         
-        let oneSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, update: { _ in })
-        let twoSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, update: { _ in })
-        let threeSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: { _ in })
+        let oneSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear, update: { _ in })
+        let twoSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear, update: { _ in })
+        let threeSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: { _ in })
         
         let group = Group(actions: oneSecondAction, twoSecondAction, threeSecondAction)
         XCTAssertEqualWithAccuracy(group.duration, 3.0, accuracy: 0.001)
@@ -34,9 +34,9 @@ class GroupTests: XCTestCase {
         var secondValue = 0.0
         var thirdValue = 0.0
         
-        let firstAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { firstValue = $0 })
-        let secondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { secondValue = $0 })
-        let thirdAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { thirdValue = $0 })
+        let firstAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, easing: .linear, update: { firstValue = $0 })
+        let secondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { secondValue = $0 })
+        let thirdAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { thirdValue = $0 })
         
         let group = Group(actions: firstAction, secondAction, thirdAction)
         let animation = Animation(action: group)
@@ -45,14 +45,14 @@ class GroupTests: XCTestCase {
         
         XCTAssertEqualWithAccuracy(firstValue, 1.0, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(secondValue, 1.0, accuracy: 0.001)
-       // XCTAssertEqualWithAccuracy(thirdValue, 1.0, accuracy: 0.001)
+        XCTAssertEqualWithAccuracy(thirdValue, 1.0, accuracy: 0.001)
     }
     
     func testRunBlockActionsAreRunAtBeginning() {
         
         var wasInvoked = false
         
-        let interpolate = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { _ in })
+        let interpolate = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { _ in })
         let runBlock = RunBlockAction{
             wasInvoked = true
         }
@@ -146,9 +146,9 @@ class GroupTests: XCTestCase {
         
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, easing: .linear, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
         
         let group = Group(actions: action1, action2, action3)
         group.simulateFullLifeCycle()
@@ -162,9 +162,9 @@ class GroupTests: XCTestCase {
         
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, easing: .linear, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
         
         let group = Group(actions: action1, action2, action3)
         group.reverse = true

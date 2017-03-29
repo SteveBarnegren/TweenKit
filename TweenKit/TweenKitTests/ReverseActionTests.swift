@@ -22,7 +22,7 @@ class ReverseActionTests: XCTestCase {
     
     func testReverseActionReportsSameDurationAsInnerAction() {
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { _ in} )
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { _ in} )
         let reversed = action.reversed()
         
         XCTAssertEqualWithAccuracy(action.duration, reversed.duration, accuracy: 0.001)
@@ -34,7 +34,7 @@ class ReverseActionTests: XCTestCase {
         
         var value = 0.5
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value = $0 })
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value = $0 })
         let reversed = action.reversed()
         
         reversed.willBecomeActive()
@@ -48,7 +48,7 @@ class ReverseActionTests: XCTestCase {
         
         var value = 0.5
         
-        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value = $0 })
+        let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value = $0 })
         let reversed = action.reversed()
         
         reversed.willBecomeActive()

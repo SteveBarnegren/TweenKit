@@ -20,9 +20,9 @@ class SequenceTests: XCTestCase {
     
     func testDurationIsSumOfActionsDuration() {
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, update: {_ in})
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, update: {_ in})
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: {_ in})
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear, update: {_ in})
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear, update: {_ in})
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: {_ in})
         let sequence = Sequence(actions: action1, action2, action3)
         
         let expectedDuration = action1.duration + action2.duration + action3.duration
@@ -108,9 +108,9 @@ class SequenceTests: XCTestCase {
     
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, update: { value1 = $0 })
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, update: { value2 = $0 })
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, update: { value3 = $0 })
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.1, easing: .linear, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
 
         let sequence = Sequence(actions: action1, action2, action3)
         let animation = Animation(action: sequence)
@@ -126,9 +126,9 @@ class SequenceTests: XCTestCase {
         
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: { value1 = $0 })
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, update: { value2 = $0 })
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value3 = $0 })
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, easing: .linear, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value3 = $0 })
         
         let sequence = Sequence(actions: action1, action2, action3)
         sequence.simulateFullLifeCycle()
@@ -142,9 +142,9 @@ class SequenceTests: XCTestCase {
         
         var value1 = 0.0, value2 = 0.0, value3 = 0.0
         
-        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, update: { value1 = $0 })
-        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, update: { value2 = $0 })
-        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, update: { value3 = $0 })
+        let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: { value1 = $0 })
+        let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, easing: .linear, update: { value2 = $0 })
+        let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value3 = $0 })
         
         let sequence = Sequence(actions: action1, action2, action3)
         sequence.reverse = true
