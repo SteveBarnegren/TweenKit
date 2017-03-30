@@ -35,16 +35,9 @@ class EasingExamplesViewController: UIViewController {
     
     fileprivate var cellModels: [CellModel] = {
         
-        var models = [CellModel]()
-       
-        var num = 0
-        
-        while let easing = Easing(rawValue: num) {
-            let model = CellModel(easing: easing, value: 0.0)
-            models.append(model)
-            num += 1
+        return Easing.all().map{
+            CellModel(easing: $0, value: 0.0)
         }
-        return models
     }()
     
     fileprivate let scheduler = Scheduler()
@@ -151,6 +144,18 @@ extension EasingExamplesViewController: UITableViewDataSource, UITableViewDelega
 // MARK: - TweenKit.Easing Extension
 
 extension Easing {
+    
+    static func all() -> [Easing] {
+        
+        var array = [Easing]()
+        var num = 0
+        
+        while let easing = Easing(rawValue: num) {
+            array.append(easing)
+            num += 1
+        }
+        return array
+    }
     
     var name: String {
         

@@ -68,7 +68,7 @@ public extension CGPath {
                     
                 case .addCurveToPoint:
                     let points = Array(UnsafeBufferPointer(start: element.points, count: 3))
-                    newPathElement = PathElement(curve: .cubicCurveToPoint(points[2], cp1: points[1], cp2: points[0]))
+                    newPathElement = PathElement(curve: .cubicCurveToPoint(points[2], cp1: points[0], cp2: points[1]))
                     
                 case .closeSubpath:
                     guard let start = getStartPoint() else {

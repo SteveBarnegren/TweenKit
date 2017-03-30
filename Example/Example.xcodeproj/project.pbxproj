@@ -11,9 +11,10 @@
 		096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AF1E89275600E0A406 /* EasingExampleCell.swift */; };
 		096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096D09B01E89275600E0A406 /* EasingExampleCell.xib */; };
 		097B7CA31E8C1B2A00D56D03 /* DraggablePointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CA21E8C1B2A00D56D03 /* DraggablePointsView.swift */; };
-		097B7CA61E8C1CFB00D56D03 /* BezierQuadCurveExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CA51E8C1CFB00D56D03 /* BezierQuadCurveExampleViewController.swift */; };
+		097B7CA61E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CA51E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift */; };
 		097B7CA91E8D11CF00D56D03 /* DrawClosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CA81E8D11CF00D56D03 /* DrawClosureView.swift */; };
 		097B7CAB1E8D22B600D56D03 /* CycleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAA1E8D22B600D56D03 /* CycleSelector.swift */; };
+		097B7CAD1E8D48F200D56D03 /* BezierExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAC1E8D48F200D56D03 /* BezierExampleModel.swift */; };
 		0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */; };
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
@@ -47,9 +48,10 @@
 		096D09AF1E89275600E0A406 /* EasingExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExampleCell.swift; sourceTree = "<group>"; };
 		096D09B01E89275600E0A406 /* EasingExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EasingExampleCell.xib; sourceTree = "<group>"; };
 		097B7CA21E8C1B2A00D56D03 /* DraggablePointsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggablePointsView.swift; sourceTree = "<group>"; };
-		097B7CA51E8C1CFB00D56D03 /* BezierQuadCurveExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierQuadCurveExampleViewController.swift; sourceTree = "<group>"; };
+		097B7CA51E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierCurveExampleViewController.swift; sourceTree = "<group>"; };
 		097B7CA81E8D11CF00D56D03 /* DrawClosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawClosureView.swift; sourceTree = "<group>"; };
 		097B7CAA1E8D22B600D56D03 /* CycleSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleSelector.swift; sourceTree = "<group>"; };
+		097B7CAC1E8D48F200D56D03 /* BezierExampleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierExampleModel.swift; sourceTree = "<group>"; };
 		0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSwitcherViewController.swift; sourceTree = "<group>"; };
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +100,8 @@
 		097B7CA41E8C1CA200D56D03 /* 5. Bezier Quad Curve */ = {
 			isa = PBXGroup;
 			children = (
-				097B7CA51E8C1CFB00D56D03 /* BezierQuadCurveExampleViewController.swift */,
+				097B7CAC1E8D48F200D56D03 /* BezierExampleModel.swift */,
+				097B7CA51E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift */,
 			);
 			name = "5. Bezier Quad Curve";
 			sourceTree = "<group>";
@@ -280,8 +283,9 @@
 				097B7CA31E8C1B2A00D56D03 /* DraggablePointsView.swift in Sources */,
 				0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */,
 				097B7CAB1E8D22B600D56D03 /* CycleSelector.swift in Sources */,
-				097B7CA61E8C1CFB00D56D03 /* BezierQuadCurveExampleViewController.swift in Sources */,
+				097B7CA61E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift in Sources */,
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
+				097B7CAD1E8D48F200D56D03 /* BezierExampleModel.swift in Sources */,
 				097B7CA91E8D11CF00D56D03 /* DrawClosureView.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */,
