@@ -23,11 +23,15 @@ class InterpolateActionTests: XCTestCase {
     
     func testInterpolateActionFromClosureSetsStartValue() {
         
-        let value = 6.23
-        let action = InterpolationAction(from: { value }, to: Double(1.0), duration: 1.0, easing: .linear, update: {_ in})
-        action.simulateFullLifeCycle()
+        let startValue = 6.23
+        var updatedValue = 0.0
+        let action = InterpolationAction(from: { startValue }, to: Double(1.0), duration: 1.0, easing: .linear, update: { updatedValue = $0 })
         
-        XCTAssertEqualWithAccuracy(action.startValue, value, accuracy: 0.001)
+        action.willBecomeActive()
+        action.willBegin()
+        action.update(t: 0.0)
+        
+        XCTAssertEqualWithAccuracy(updatedValue, startValue, accuracy: 0.001)
     }
     
     func testInterpolateActionEndsWithEndValue() {
