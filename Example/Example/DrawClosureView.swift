@@ -16,6 +16,7 @@ class DrawClosureView: UIView {
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = UIColor.clear
     }
     
     init(closure: @escaping () -> ()) {

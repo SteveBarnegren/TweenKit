@@ -54,14 +54,49 @@ class BezierQuadCurveExampleViewController: UIViewController {
         return layer
     }()
     
+    let easingSelector: CycleSelector<Easing> =  {
+        
+        let options: [(String, Easing)] = [
+            ("Linear", .linear),
+            ("ExponentialInOut", .exponentialInOut),
+            ("ElasticIn", .elasticIn),
+            ("ElasticOut", .elasticOut),
+            ]
+        
+        let selector = CycleSelector(options: options)
+        return selector
+    }()
+    
+    let durationSelector: CycleSelector<Double> =  {
+        
+        let options: [(String, Double)] = [
+            ("1s", 1.0),
+            ("2s", 2.0),
+            ("3s", 3.0),
+            ("4s", 4.0),
+            ]
+        
+        let selector = CycleSelector(options: options)
+        return selector
+    }()
+
+    
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startPoint = CGPoint(x: 50, y: 50)
-        controlPoint = CGPoint(x: 100, y: 100)
-        endPoint = CGPoint(x: 200, y: 200)
+        // Calculate points start
+        let sideMargin = CGFloat(70.0)
+        startPoint = CGPoint(x: sideMargin,
+                             y: UIScreen.main.bounds.size.height/2)
+        controlPoint = CGPoint(x: UIScreen.main.bounds.size.width/2,
+                               y: UIScreen.main.bounds.size.height/2 - 100)
+        endPoint = CGPoint(x: UIScreen.main.bounds.size.width - sideMargin,
+                           y: UIScreen.main.bounds.size.height/2)
+        
+        // Background
+        view.backgroundColor = UIColor.white
         
         // Draw view
         drawView.drawClosure = {
@@ -80,6 +115,22 @@ class BezierQuadCurveExampleViewController: UIViewController {
         pointsView.dataSource = self
         pointsView.delegate = self
         pointsView.reload()
+        
+        // Easing selector
+        view.addSubview(easingSelector)
+        easingSelector.onSelect = {
+            [unowned self] _ in
+            self.stopAnimation()
+            self.startAnimation()
+        }
+        
+        // Duration Selector
+        view.addSubview(durationSelector)
+        durationSelector.onSelect = {
+            [unowned self] _ in
+            self.stopAnimation()
+            self.startAnimation()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -91,6 +142,13 @@ class BezierQuadCurveExampleViewController: UIViewController {
         super.viewDidLayoutSubviews()
         pointsView.frame = view.bounds
         drawView.frame = view.bounds
+        
+        easingSelector.sizeToFit()
+        easingSelector.frame.origin = CGPoint(x: view.bounds.size.width - easingSelector.bounds.size.width - 8,
+                                              y: 8)
+        
+        durationSelector.sizeToFit()
+        durationSelector.frame.origin = CGPoint(x: 8, y: 8)
     }
     
     // MARK: - Methods
@@ -105,10 +163,11 @@ class BezierQuadCurveExampleViewController: UIViewController {
         animatingLayer.isHidden = false
         
         let bezierPath = path.asBezierPath()
-        let action = BezierAction(path: bezierPath, duration: 1) {
+        let action = BezierAction(path: bezierPath, duration: durationSelector.selectedValue) {
             [unowned self] in
             self.animatingLayer.center = $0
         }
+        action.easing = easingSelector.selectedValue
         scheduler.run(action: action)
         
         isAnimating = true
