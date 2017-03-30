@@ -39,6 +39,14 @@ import Foundation
         }
     }
     
+    public func removeAll() {
+        
+        let allAnimations = animations
+        allAnimations.forEach{
+            self.remove(animation: $0)
+        }
+    }
+    
     var numRunningAnimations: Int {
         return self.animations.count
     }
@@ -65,10 +73,11 @@ import Foundation
             return
         }
         
+        lastTimeStamp = nil
+        
         displayLink = DisplayLink(handler: {[unowned self] (displayLink) in
              self.displayLinkCallback(displaylink: displayLink)
         })
-                
     }
     
     private func stopLoop() {

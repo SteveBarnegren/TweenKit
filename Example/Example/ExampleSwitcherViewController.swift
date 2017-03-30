@@ -15,6 +15,7 @@ enum ExampleType: Int {
     case sunAndMoon
     case sunAndMoonScrubbable
     case easingExamples
+    case bezierQuadCurve
     
     var count: Int {
         
@@ -60,6 +61,8 @@ enum ExampleType: Int {
             return ScrubbableExampleViewController(scrubbable: true)
         case .easingExamples:
             return EasingExamplesViewController(nibName: nil, bundle: nil)
+        case .bezierQuadCurve:
+            return BezierQuadCurveExampleViewController(nibName: nil, bundle: nil)
         }
     }
 }
