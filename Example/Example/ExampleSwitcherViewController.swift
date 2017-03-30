@@ -57,9 +57,9 @@ enum ExampleType: Int {
         case .activityIndicator:
             return ActivityIndicatorExampleViewController(nibName: nil, bundle: nil)
         case .sunAndMoon:
-            return ScrubbableExampleViewController(scrubbable: false)
+            return SunAndMoonExampleViewController(scrubbable: false)
         case .sunAndMoonScrubbable:
-            return ScrubbableExampleViewController(scrubbable: true)
+            return SunAndMoonExampleViewController(scrubbable: true)
         case .easingExamples:
             return EasingExamplesViewController(nibName: nil, bundle: nil)
         case .bezierQuadCurve:
@@ -103,10 +103,7 @@ class ExampleSwitcherViewController: UIViewController {
         // Add subviews
         view.addSubview(backButton)
         view.addSubview(nextButton)
-        
-        // show easing example
-        self.exampleType = .easingExamples
-        
+                
         // Show the first example
         let startViewController = exampleType.makeViewController()
         setContentViewController(to: startViewController)

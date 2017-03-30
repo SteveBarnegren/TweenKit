@@ -114,8 +114,6 @@ class DraggablePointsView: UIView {
             return
         }
         
-        print("Touch offset: \(touchOffset)")
-        
         points[index].location = CGPoint(x: location.x + touchOffset.x,
                                          y: location.y + touchOffset.y)
         
@@ -145,11 +143,6 @@ class DraggablePointsView: UIView {
         
         for (index, point) in points.enumerated() {
 
-            print("******")
-            print("Location: \(location)")
-            print("Point location: \(point.location)")
-            print("Distance: \(location.distanceTo(other: point.location))")
-            
             guard location.distanceTo(other: point.location) < selectDistance else {
                 continue
             }
@@ -162,10 +155,6 @@ class DraggablePointsView: UIView {
             else{
                 closestIndex = index
             }
-        }
-        
-        if let index = closestIndex {
-            print("Chose index: \(index)")
         }
         
         return closestIndex

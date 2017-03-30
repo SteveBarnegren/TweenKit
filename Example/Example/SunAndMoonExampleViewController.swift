@@ -1,5 +1,5 @@
 //
-//  ScrubbableExampleViewController.swift
+//  SunAndMoonExampleViewController.swift
 //  Example
 //
 //  Created by Steven Barnegren on 23/03/2017.
@@ -22,7 +22,7 @@ let defaultBackgroundColorTop = UIColor(red: 0.263, green: 0.118, blue: 0.565, a
 let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
 
 
-class ScrubbableExampleViewController: UIViewController {
+class SunAndMoonExampleViewController: UIViewController {
     
     // MARK: - Public
     init(scrubbable: Bool) {
@@ -59,19 +59,19 @@ class ScrubbableExampleViewController: UIViewController {
     
     let sunMiddle: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor.orange.cgColor
+        layer.backgroundColor = UIColor(red: 0.965, green: 0.490, blue: 0.125, alpha: 1.00).cgColor
         return layer
     }()
     
     let sunSideSpoke: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor.yellow.cgColor
+        layer.backgroundColor = UIColor(red: 1.000, green: 0.918, blue: 0.318, alpha: 1.00).cgColor
         return layer
     }()
     
     let sunDiagonalSpoke: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor.yellow.cgColor
+        layer.backgroundColor = UIColor(red: 1.000, green: 0.918, blue: 0.318, alpha: 1.00).cgColor
         return layer
     }()
     
@@ -359,8 +359,6 @@ class ScrubbableExampleViewController: UIViewController {
     // MARK: - Actions
     
     @objc func sliderValueChanged() {
-        print("Slider value changed!")
-        
         actionScrubber?.update(t: Double(slider.value))
     }
 

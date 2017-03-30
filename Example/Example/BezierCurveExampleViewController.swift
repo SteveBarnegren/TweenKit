@@ -132,6 +132,7 @@ class BezierCurveExampleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.startAnimation()
+        showInstructionPrompt()
     }
     
     override func viewDidLayoutSubviews() {
@@ -199,6 +200,40 @@ class BezierCurveExampleViewController: UIViewController {
         animatingLayer.isHidden = true
         
         isAnimating = false
+    }
+    
+    fileprivate func showInstructionPrompt() {
+        
+        let label = UILabel(frame: .zero)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Drag the points to change the curve"
+        label.textColor = UIColor.darkText
+        label.alpha = 0
+        view.addSubview(label)
+        
+        let leftPin = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: label, attribute: .left, multiplier: 1, constant: -8)
+        let rightPin = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: label, attribute: .right, multiplier: 1, constant: 8)
+        let bottomPin = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 60)
+        view.addConstraints([leftPin, rightPin, bottomPin])
+        
+        // Fade in then out
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut, animations: {
+            [weak label] in
+            label?.alpha = 1
+            
+            }, completion: { _ in
+                
+                UIView.animate(withDuration: 0.6, delay: 3, options: .curveEaseInOut, animations: {
+                    [weak label] in
+                    label?.alpha = 0
+                    }, completion: {
+                        [weak label] _ in
+                        label?.removeFromSuperview()
+                })
+                
+        })
+        
     }
     
 }

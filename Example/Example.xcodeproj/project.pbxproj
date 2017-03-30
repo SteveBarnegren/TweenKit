@@ -18,7 +18,7 @@
 		0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */; };
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
-		0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */; };
+		0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
 		6750B91C1E7C85A300E7AEE2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */; };
 		6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6750B9201E7C85A300E7AEE2 /* Assets.xcassets */; };
@@ -55,7 +55,7 @@
 		0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSwitcherViewController.swift; sourceTree = "<group>"; };
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
-		0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubbableExampleViewController.swift; sourceTree = "<group>"; };
+		0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunAndMoonExampleViewController.swift; sourceTree = "<group>"; };
 		6750B9161E7C85A300E7AEE2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -77,14 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		096D09A81E8925F400E0A406 /* 4. Easing Examples */ = {
+		096D09A81E8925F400E0A406 /* 5. Easing Examples */ = {
 			isa = PBXGroup;
 			children = (
 				096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */,
 				096D09AF1E89275600E0A406 /* EasingExampleCell.swift */,
 				096D09B01E89275600E0A406 /* EasingExampleCell.xib */,
 			);
-			name = "4. Easing Examples";
+			name = "5. Easing Examples";
 			sourceTree = "<group>";
 		};
 		097B7C9F1E8C1AD500D56D03 /* Views */ = {
@@ -97,13 +97,13 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		097B7CA41E8C1CA200D56D03 /* 5. Bezier Quad Curve */ = {
+		097B7CA41E8C1CA200D56D03 /* 6/7. Bezier Curves */ = {
 			isa = PBXGroup;
 			children = (
 				097B7CAC1E8D48F200D56D03 /* BezierExampleModel.swift */,
 				097B7CA51E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift */,
 			);
-			name = "5. Bezier Quad Curve";
+			name = "6/7. Bezier Curves";
 			sourceTree = "<group>";
 		};
 		0984A59D1E83C16900240A50 /* Examples */ = {
@@ -112,9 +112,9 @@
 				0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */,
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
-				0984A5A61E843C6C00240A50 /* 3. Scrubbable */,
-				096D09A81E8925F400E0A406 /* 4. Easing Examples */,
-				097B7CA41E8C1CA200D56D03 /* 5. Bezier Quad Curve */,
+				0984A5A61E843C6C00240A50 /* 3/4. Sun and moon */,
+				096D09A81E8925F400E0A406 /* 5. Easing Examples */,
+				097B7CA41E8C1CA200D56D03 /* 6/7. Bezier Curves */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -135,12 +135,12 @@
 			name = "2. Activity Indicator";
 			sourceTree = "<group>";
 		};
-		0984A5A61E843C6C00240A50 /* 3. Scrubbable */ = {
+		0984A5A61E843C6C00240A50 /* 3/4. Sun and moon */ = {
 			isa = PBXGroup;
 			children = (
-				0984A5A91E843CA800240A50 /* ScrubbableExampleViewController.swift */,
+				0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */,
 			);
-			name = "3. Scrubbable";
+			name = "3/4. Sun and moon";
 			sourceTree = "<group>";
 		};
 		6750B90D1E7C85A300E7AEE2 = {
@@ -288,7 +288,7 @@
 				097B7CAD1E8D48F200D56D03 /* BezierExampleModel.swift in Sources */,
 				097B7CA91E8D11CF00D56D03 /* DrawClosureView.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
-				0984A5AA1E843CA800240A50 /* ScrubbableExampleViewController.swift in Sources */,
+				0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */,
 				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,
 				096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */,
 				0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */,
