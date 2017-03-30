@@ -154,7 +154,34 @@ class SequenceTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value2, 0.0, accuracy: 0.001)
         XCTAssertEqualWithAccuracy(value3, 0.0, accuracy: 0.001)
     }
- 
-
     
+    // MARK: - Active / Inactive closures
+    
+    func testSequenceActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner1 = FiniteTimeActionTester(duration: 1.0)
+        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let sequence = Sequence(actions: inner1, inner2)
+        sequence.onBecomeActive = {
+            numCalls += 1
+        }
+        sequence.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testSequenceActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner1 = FiniteTimeActionTester(duration: 1.0)
+        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let sequence = Sequence(actions: inner1, inner2)
+        sequence.onBecomeInactive = {
+            numCalls += 1
+        }
+        sequence.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
 }

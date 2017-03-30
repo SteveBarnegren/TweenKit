@@ -133,5 +133,33 @@ class YoyoActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
+    
+    // MARK: - Active / Inactive closures
+    
+    func testYoyoActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let yoyo = YoyoAction(action: inner)
+        yoyo.onBecomeActive = {
+            numCalls += 1
+        }
+        yoyo.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testYoyoActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let yoyo = YoyoAction(action: inner)
+        yoyo.onBecomeInactive = {
+            numCalls += 1
+        }
+        yoyo.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
 
 }

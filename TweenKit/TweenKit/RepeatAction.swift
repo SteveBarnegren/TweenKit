@@ -38,7 +38,7 @@ public class RepeatAction: FiniteTimeAction {
     public func willBecomeActive() {
         lastRepeatNumber = 0
         action.willBecomeActive()
-        onBecomeInactive()
+        onBecomeActive()
     }
     
     public func didBecomeInactive() {

@@ -74,4 +74,31 @@ class ArcActionTests: XCTestCase {
         
         AssertCGPointsAreEqualWithAccuracy(value, expectedValue, accuracy: 0.001)
     }
+    
+    // MARK: - Active / Inactive closures
+    
+    func testArcActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let action = ArcAction(center: CGPoint.zero, radius: 5, startDegrees: 0, endDegrees: 0, duration: 1, update: {_ in})
+        action.onBecomeActive = {
+            numCalls += 1
+        }
+        action.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testArcActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let action = ArcAction(center: CGPoint.zero, radius: 5, startDegrees: 0, endDegrees: 0, duration: 1, update: {_ in})
+        action.onBecomeInactive = {
+            numCalls += 1
+        }
+        action.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
 }

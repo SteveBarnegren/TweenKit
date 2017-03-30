@@ -175,4 +175,35 @@ class GroupTests: XCTestCase {
         XCTAssertEqualWithAccuracy(value3, 0.0, accuracy: 0.001)
     }
     
+    // MARK: - Active / Inactive closures
+    
+    func testGroupActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner1 = FiniteTimeActionTester(duration: 1.0)
+        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let group = Group(actions: inner1, inner2)
+        group.onBecomeActive = {
+            numCalls += 1
+        }
+        group.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testGroupActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner1 = FiniteTimeActionTester(duration: 1.0)
+        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let group = Group(actions: inner1, inner2)
+        group.onBecomeInactive = {
+            numCalls += 1
+        }
+        group.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
+    
 }

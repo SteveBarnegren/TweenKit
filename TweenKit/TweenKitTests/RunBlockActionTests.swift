@@ -11,8 +11,6 @@ import XCTest
 
 class RunBlockActionTests: XCTestCase {
     
-    
-    
     // MARK: - Test Trigger Closure
     
     func testClosureIsInvoked() {
@@ -45,6 +43,33 @@ class RunBlockActionTests: XCTestCase {
         
         XCTAssertEqual(numTimesInvoked, numTimes)
     }
+    
+    // MARK: - Active / Inactive closures
+    
+    func testRepeatActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let runBlock = FiniteTimeActionTester(duration: 1.0)
+        runBlock.onBecomeActive = {
+            numCalls += 1
+        }
+        runBlock.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testRepeatActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let runBlock = FiniteTimeActionTester(duration: 1.0)
+        runBlock.onBecomeInactive = {
+            numCalls += 1
+        }
+        runBlock.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
     
     
 }

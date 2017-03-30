@@ -95,5 +95,34 @@ class ReverseActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
+    
+    // MARK: - Active / Inactive closures
+    
+    func testReverseActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let reversed = inner.reversed()
+        reversed.onBecomeActive = {
+            numCalls += 1
+        }
+        reversed.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testReverseActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let reversed = inner.reversed()
+        reversed.onBecomeInactive = {
+            numCalls += 1
+        }
+        reversed.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
 
 }

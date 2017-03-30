@@ -23,4 +23,30 @@ class DelayActionTests: XCTestCase {
         XCTAssertEqualWithAccuracy(action.duration, duration, accuracy: 0.001)
     }
     
+    // MARK: - Active / Inactive closures
+    
+    func testDelayActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let action = DelayAction(duration: 1.0)
+        action.onBecomeActive = {
+            numCalls += 1
+        }
+        action.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testDelayActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let action = DelayAction(duration: 1.0)
+        action.onBecomeInactive = {
+            numCalls += 1
+        }
+        action.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
 }

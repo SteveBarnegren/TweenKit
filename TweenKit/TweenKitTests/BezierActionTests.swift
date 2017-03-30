@@ -73,6 +73,39 @@ class BezierActionTests: XCTestCase {
         AssertCGPointsAreEqualWithAccuracy(value, startPoint, accuracy: 0.001)
     }
     
+    // MARK: - Active / Inactive closures
+    
+    func testBezierActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let path = makeBasicTestPath()
+        let action = BezierAction(path: path,
+                                  duration: 1.0,
+                                  update: {_ in})
+        action.onBecomeActive = {
+            numCalls += 1
+        }
+        action.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testBezierActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let path = makeBasicTestPath()
+        let action = BezierAction(path: path,
+                                  duration: 1.0,
+                                  update: {_ in})
+        action.onBecomeInactive = {
+            numCalls += 1
+        }
+        action.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
+    
     
     
 }

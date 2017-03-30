@@ -30,7 +30,7 @@ class RunBlockAction: TriggerAction {
     }
     
     func willBecomeActive() {
-        onBecomeInactive()
+        onBecomeActive()
     }
     
     func didBecomeInactive() {

@@ -105,5 +105,4 @@ class RepeatForeverActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
-    
 }

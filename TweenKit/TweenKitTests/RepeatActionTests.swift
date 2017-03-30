@@ -96,8 +96,32 @@ class RepeatActionTests: XCTestCase {
                                            expectedEvents: expectedEvents,
                                            filter: .onlyMatchingExpectedEventsTypes)
     }
-
     
+    // MARK: - Active / Inactive closures
     
+    func testRepeatActionOnBecomeActiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let repeated = inner.repeated(3)
+        repeated.onBecomeActive = {
+            numCalls += 1
+        }
+        repeated.willBecomeActive()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
     
+    func testRepeatActionOnBecomeInactiveClosureIsCalled() {
+        
+        var numCalls = 0
+        let inner = FiniteTimeActionTester(duration: 1.0)
+        let repeated = inner.repeated(3)
+        repeated.onBecomeInactive = {
+            numCalls += 1
+        }
+        repeated.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
 }
