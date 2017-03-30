@@ -49,7 +49,7 @@ class BezierActionTests: XCTestCase {
         
         let action = BezierAction(path: path,
                                   duration: 5.0,
-                                  update: { value = $0 })
+                                  update: { (pos, _) in value = pos })
         action.simulateFullLifeCycle()
         
         AssertCGPointsAreEqualWithAccuracy(value, endPoint, accuracy: 0.001)
@@ -66,7 +66,7 @@ class BezierActionTests: XCTestCase {
         
         let action = BezierAction(path: path,
                                   duration: 5.0,
-                                  update: { value = $0 })
+                                  update: { (pos, _) in value = pos })
         action.reverse = true
         action.simulateFullLifeCycle()
         
