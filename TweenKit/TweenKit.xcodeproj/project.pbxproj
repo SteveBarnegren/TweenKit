@@ -12,6 +12,7 @@
 		096D09A71E8924FE00E0A406 /* DelayActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09A61E8924FE00E0A406 /* DelayActionTests.swift */; };
 		096D09B41E894D6700E0A406 /* BezierAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09B31E894D6700E0A406 /* BezierAction.swift */; };
 		097B7C9E1E8C0CF500D56D03 /* ActionScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */; };
+		097B7CAF1E8D735900D56D03 /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
 		0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A41E83F99200240A50 /* DelayAction.swift */; };
 		0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5AB1E85229F00240A50 /* Action+Testable.swift */; };
 		0984A5AE1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */; };
@@ -67,6 +68,7 @@
 		096D09A61E8924FE00E0A406 /* DelayActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayActionTests.swift; sourceTree = "<group>"; };
 		096D09B31E894D6700E0A406 /* BezierAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierAction.swift; sourceTree = "<group>"; };
 		097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScrubber.swift; sourceTree = "<group>"; };
+		097B7CAE1E8D735900D56D03 /* Lazy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lazy.swift; sourceTree = "<group>"; };
 		0984A5A41E83F99200240A50 /* DelayAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayAction.swift; sourceTree = "<group>"; };
 		0984A5AB1E85229F00240A50 /* Action+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Action+Testable.swift"; sourceTree = "<group>"; };
 		0984A5AD1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+CustomAssertions.swift"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				673CB7681E7DAEC000592F24 /* Math.swift */,
+				097B7CAE1E8D735900D56D03 /* Lazy.swift */,
 				097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */,
 				097B7C9C1E8C0C9400D56D03 /* Scheduler */,
 				6750B93E1E7C908400E7AEE2 /* Tweenable */,
@@ -400,6 +403,7 @@
 				6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */,
 				673CB76F1E7E98E100592F24 /* UIKit+Tweenable.swift in Sources */,
 				09F52D841E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift in Sources */,
+				097B7CAF1E8D735900D56D03 /* Lazy.swift in Sources */,
 				096D09B41E894D6700E0A406 /* BezierAction.swift in Sources */,
 				6750B9471E7D99FD00E7AEE2 /* Scheduler.swift in Sources */,
 				0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */,

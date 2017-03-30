@@ -57,13 +57,35 @@ class TestViewController: UIViewController {
         let cubicCurvePath = UIBezierPath()
         cubicCurvePath.move(to: CGPoint(x: 100, y: 200))
         cubicCurvePath.addCurve(to: CGPoint(x: 300, y: 200),
-                      controlPoint1: CGPoint(x: 175, y: 0),
-                      controlPoint2: CGPoint(x: 275, y: 500))
-
+                                controlPoint1: CGPoint(x: 175, y: 0),
+                                controlPoint2: CGPoint(x: 275, y: 500))
+        
         let bezierPath = cubicCurvePath.asBezierPath()
+        
+        let action = BezierAction(path: bezierPath, duration: 3) {
+            [unowned self] (positon, rotation) in
+            
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            self.testView.layer.transform = CATransform3DIdentity
+            self.testView.layer.frame.origin = CGPoint(x: positon.x - self.testView.layer.frame.size.width/2,
+                                                       y: positon.y - self.testView.layer.frame.size.height/2)
+            self.testView.layer.transform = CATransform3DMakeRotation(CGFloat(rotation.value),
+                                                                      0,
+                                                                      0,
+                                                                      1)
+            CATransaction.commit()
+        }
+        
+        
+        /*
         let action = BezierAction(path: bezierPath,
-                     duration: 3,
-                     update: { [unowned self] in self.testView.center = $0 })
+                                  duration: 3) {
+                                    [unowned self] in position: CGPoint, rotation: Lazy<Double>
+                                    
+                                    self.testView.center = $0
+        })
+ */
         
         let animation = Animation(action: action.yoyo())
         scheduler.add(animation: animation)

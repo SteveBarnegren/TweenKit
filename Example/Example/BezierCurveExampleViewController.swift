@@ -155,19 +155,38 @@ class BezierCurveExampleViewController: UIViewController {
             return
         }
         
-        animatingLayer.center = self.points.first!
+        // Reset the layer position and roation
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        self.animatingLayer.transform = CATransform3DIdentity
+        self.animatingLayer.frame.origin = CGPoint(x: points.first!.x - self.animatingLayer.frame.size.width/2,
+                                                   y: points.first!.y - self.animatingLayer.frame.size.height/2)
+        CATransaction.commit()
+
         animatingLayer.isHidden = false
         
+        // Create the action
         let bezierPath = model.makePath(fromPoints: self.points).asBezierPath()
+        
         let action = BezierAction(path: bezierPath, duration: durationSelector.selectedValue) {
-            [unowned self] in
-            self.animatingLayer.center = $0
+            [unowned self] (position, rotation) in
+            
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            
+            self.animatingLayer.transform = CATransform3DIdentity
+            self.animatingLayer.frame.origin = CGPoint(x: position.x - self.animatingLayer.frame.size.width/2,
+                                                       y: position.y - self.animatingLayer.frame.size.height/2)
+            self.animatingLayer.transform = CATransform3DMakeRotation(CGFloat(rotation.value), 0, 0, 1)
+            CATransaction.commit()
+            
         }
         action.easing = easingSelector.selectedValue
 
         scheduler.run(action: action)
         
         isAnimating = true
+ 
     }
     
     fileprivate func stopAnimation() {

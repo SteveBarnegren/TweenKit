@@ -11,7 +11,7 @@ import Foundation
 public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     
     // MARK: - Public
-    public init(path: BezierPath<T>, duration: Double, update: @escaping (T) -> ()) {
+    public init(path: BezierPath<T>, duration: Double, update: @escaping (T, Lazy<Double>) -> ()) {
         self.duration = duration
         self.path = path
         self.updateHandler = update
@@ -27,7 +27,7 @@ public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     // MARK: - Properties
     
     let path: BezierPath<T>
-    let updateHandler: (T) -> ()
+    let updateHandler: (T, Lazy<Double>) -> ()
     
     // MARK: - Methods
     
@@ -49,7 +49,19 @@ public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     public func update(t: CFTimeInterval) {
         
         let t = easing.apply(t: t)
+        
         let value = path.valueAt(t: t)
-        updateHandler(value)
+        
+        let rotation = Lazy<Double> {
+            [unowned self] in
+            
+            let diff = 0.001
+            
+            let beforeValue = self.path.valueAt(t: t - diff)
+            let afterValue = self.path.valueAt(t: t + diff)
+            return beforeValue.angle(to: afterValue)
+        }
+        
+        updateHandler(value, rotation)
     }
 }

@@ -168,18 +168,8 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
     mutating func calculateOvershootAngles() {
         
         func angle(from: T, to: T) -> Double {
-            
-            let adj = to.tweenableX - from.tweenableX
-            let opp = to.tweenableY - from.tweenableY
-            var angle = atan(opp/adj)
-            
-            if to.tweenableX > from.tweenableX {
-                angle += Double.pi
-            }
-            
-            return angle + Double.pi
+            return from.angle(to: to)
         }
-        
         
         let firstCurve = points.first!.curve
         startOvershootAngle = angle(from: firstCurve.value(previous: startLocation, t: 0.001),

@@ -42,3 +42,22 @@ public protocol Tweenable2DCoordinate{
     var tweenableY: Double {get}
     init(tweenableX x: Double, y: Double)
 }
+
+extension Tweenable2DCoordinate {
+    
+    func angle(to other: Self) -> Double {
+        
+        let adj = other.tweenableX - self.tweenableX
+        let opp = other.tweenableY - self.tweenableY
+        var angle = atan(opp/adj)
+        
+        if other.tweenableX > self.tweenableX {
+            angle += Double.pi
+        }
+        
+        return angle + Double.pi
+    }
+
+    
+    
+}
