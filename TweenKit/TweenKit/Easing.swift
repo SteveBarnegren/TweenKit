@@ -9,7 +9,7 @@
 import Foundation
 
 let kPERIOD: Double = 0.3
-let M_PI_X_2: Double = M_PI * 2.0
+let M_PI_X_2: Double = Double.pi * 2.0
 
 public enum Easing: Int {
     
@@ -51,13 +51,13 @@ public enum Easing: Int {
             
         // **** Sine ****
         case .sineIn:
-            return -1.0 * cos(t * M_PI_2) + 1.0
+            return -1.0 * cos(t * (Double.pi/2)) + 1.0
             
         case .sineOut:
-            return sin(t * M_PI_2)
+            return sin(t * (Double.pi/2))
             
         case .sineInOut:
-            return -0.5 * (cos(M_PI*t) - 1.0)
+            return -0.5 * (cos(Double.pi*t) - 1.0)
         
         // **** Exponential ****
         case .exponentialIn:

@@ -36,8 +36,8 @@ public class ArcAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
         
         self.center = center
         self.radius = radius
-        self.startAngle = startDegrees * (M_PI / 180.0)
-        self.endAngle = endDegrees * (M_PI / 180.0)
+        self.startAngle = startDegrees * (Double.pi / 180.0)
+        self.endAngle = endDegrees * (Double.pi / 180.0)
         self.duration = duration
         self.handler = update
     }

@@ -71,16 +71,17 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
         self.endTweenableValue = .constant(endValue)
     }
     
+    
     // MARK: - Properties
     
+    public var reverse = false
+    public var duration = Double(0)
+
     private var startTweenableValue: TweenableValue<T>
     private var endTweenableValue: TweenableValue<T>
 
-    public var startValue: T! // Make private - set in initialiser
-    public var endValue: T! // Make private - set in initialiser
-    
-    public var duration = Double(0)
-    public var reverse = false
+    private var startValue: T! // Make private - set in initialiser
+    private var endValue: T! // Make private - set in initialiser
     
     var updateHandler: (_: T) -> () = {_ in}
 
