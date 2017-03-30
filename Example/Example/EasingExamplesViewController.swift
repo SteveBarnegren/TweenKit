@@ -61,11 +61,6 @@ class EasingExamplesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.contentOffset.y = -tableView.contentInset.top
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         
