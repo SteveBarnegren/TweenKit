@@ -17,6 +17,7 @@ enum ExampleType: Int {
     case easingExamples
     case bezierQuadCurve
     case bezierCubicCurve
+    case onboarding
 
     var count: Int {
         
@@ -66,6 +67,8 @@ enum ExampleType: Int {
             return BezierCurveExampleViewController(model: QuadCurveDemoModel())
         case .bezierCubicCurve:
             return BezierCurveExampleViewController(model: CubicCurveDemoModel())
+        case .onboarding:
+            return OnboardingExampleViewController(nibName: nil, bundle: nil)
         }
     }
 }

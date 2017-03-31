@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09140D831E8DA46C00E3A4BB /* OnboardingExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */; };
+		09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */; };
+		09140D8B1E8E726E00E3A4BB /* OnboardingCellHello.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */; };
 		096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */; };
 		096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AF1E89275600E0A406 /* EasingExampleCell.swift */; };
 		096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096D09B01E89275600E0A406 /* EasingExampleCell.xib */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExampleViewController.swift; sourceTree = "<group>"; };
+		09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCellHello.swift; sourceTree = "<group>"; };
+		09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCellHello.xib; sourceTree = "<group>"; };
 		096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExamplesViewController.swift; sourceTree = "<group>"; };
 		096D09AF1E89275600E0A406 /* EasingExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExampleCell.swift; sourceTree = "<group>"; };
 		096D09B01E89275600E0A406 /* EasingExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EasingExampleCell.xib; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09140D7F1E8DA43F00E3A4BB /* 8. Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */,
+				09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */,
+				09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */,
+			);
+			name = "8. Onboarding";
+			sourceTree = "<group>";
+		};
 		096D09A81E8925F400E0A406 /* 5. Easing Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +131,7 @@
 				0984A5A61E843C6C00240A50 /* 3/4. Sun and moon */,
 				096D09A81E8925F400E0A406 /* 5. Easing Examples */,
 				097B7CA41E8C1CA200D56D03 /* 6/7. Bezier Curves */,
+				09140D7F1E8DA43F00E3A4BB /* 8. Onboarding */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9241E7C85A300E7AEE2 /* LaunchScreen.storyboard in Resources */,
+				09140D8B1E8E726E00E3A4BB /* OnboardingCellHello.xib in Resources */,
 				096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */,
 				6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */,
 			);
@@ -287,7 +305,9 @@
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
 				097B7CAD1E8D48F200D56D03 /* BezierExampleModel.swift in Sources */,
 				097B7CA91E8D11CF00D56D03 /* DrawClosureView.swift in Sources */,
+				09140D831E8DA46C00E3A4BB /* OnboardingExampleViewController.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
+				09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */,
 				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,
 				096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */,
