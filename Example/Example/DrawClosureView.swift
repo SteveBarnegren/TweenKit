@@ -41,7 +41,6 @@ class DrawClosureView: UIView {
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(UIColor.clear.cgColor)
         context?.clear(rect)
-        //context?.fill(rect)
         
         drawClosure()
     }

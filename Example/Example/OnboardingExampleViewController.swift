@@ -7,8 +7,27 @@
 //
 
 import UIKit
+import TweenKit
 
 class OnboardingExampleViewController: UIViewController {
+    
+    
+    // MARK: - Properties
+    
+    var actionScrubber: ActionScrubber?
+    var hasAppeared = false
+    
+    let backgroundColorView = {
+        return BackgroundColorView()
+    }()
+    
+    let starsView = {
+       return StarsView()
+    }()
+    
+    let rocketView = {
+       return RocketView()
+    }()
     
     let collectionView: UICollectionView = {
         
@@ -16,10 +35,10 @@ class OnboardingExampleViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = UIColor.clear
         collectionView.isPagingEnabled = true
         return collectionView
     }()
-    
     
     // MARK: - UIViewController
     
@@ -28,6 +47,11 @@ class OnboardingExampleViewController: UIViewController {
         
         // Collection view
         registerCells()
+        
+        // Add Subviews
+        view.addSubview(backgroundColorView)
+        view.addSubview(starsView)
+        view.addSubview(rocketView)
         view.addSubview(collectionView)
         
         // Reload
@@ -38,13 +62,67 @@ class OnboardingExampleViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.collectionView.frame = view.bounds
+        collectionView.frame = view.bounds
+        rocketView.frame = view.bounds
+        starsView.frame = view.bounds
+        backgroundColorView.frame = view.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !hasAppeared {
+            actionScrubber = ActionScrubber(action: buildAction())
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hasAppeared = true
     }
     
     // MARK: - Methods
     
+    func buildAction() -> FiniteTimeAction {
+        
+        let rocketAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear) {
+            [unowned self] in
+            self.rocketView.setRocketAnimationPct(t: $0)
+        }
+        
+        let starsAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear) {
+            [unowned self] in
+            self.starsView.update(t: $0)
+        }
+        
+        return Group(actions: rocketAction, starsAction)
+    }
+    /*
+    func makeBackgroundColorsAction() {
+        
+        let topColor1 = InterpolationAction(from: UIColor.black,
+                                           to: UIColor(red: 0.122, green: 0.122, blue: 0.231, alpha: 1.00),
+                                           duration: 1.0, easing: .linear
+        
+        
+        
+        
+    }
+ */
+    
     func registerCells() {
         collectionView.registerCellFromNib(withTypeName: OnboardingCellHello.typeName)
+    }
+}
+
+extension OnboardingExampleViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.x
+        
+        let pageOffset = offset / view.bounds.size.width
+        print("Offset: \(pageOffset)")
+        actionScrubber?.update(elapsedTime: Double(pageOffset))
     }
 }
 

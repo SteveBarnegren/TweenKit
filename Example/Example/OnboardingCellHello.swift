@@ -12,7 +12,9 @@ class OnboardingCellHello: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        backgroundColor = UIColor.clear
+        contentView.backgroundColor = UIColor.clear
     }
 
 }

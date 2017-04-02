@@ -37,11 +37,15 @@ public class ActionScrubber {
         }
         
         // Update
-        let t = t.constrained(min: 0.0, max: 1.0)
+        //let t = t.constrained(min: 0.0, max: 1.0)
         action.update(t: t)
         
         // Save t
         lastUpdateT = t
+    }
+    
+    public func update(elapsedTime: Double) {
+        update(t: elapsedTime / action.duration)
     }
     
     // MARK: - Properties
