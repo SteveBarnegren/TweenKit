@@ -95,20 +95,38 @@ class OnboardingExampleViewController: UIViewController {
             self.starsView.update(t: $0)
         }
         
-        return Group(actions: rocketAction, starsAction)
+        return Group(actions: rocketAction, starsAction, makeBackgroundColorsAction())
     }
-    /*
-    func makeBackgroundColorsAction() {
+    
+    func makeBackgroundColorsAction() -> FiniteTimeAction {
         
-        let topColor1 = InterpolationAction(from: UIColor.black,
-                                           to: UIColor(red: 0.122, green: 0.122, blue: 0.231, alpha: 1.00),
-                                           duration: 1.0, easing: .linear
+        let colors: [(UIColor, UIColor)] = [
+            // Start
+            (
+                UIColor.black,
+                UIColor.black
+            ),
+            // Space
+            (
+                UIColor(red: 0.004, green: 0.000, blue: 0.063, alpha: 1.00),
+                UIColor(red: 0.031, green: 0.035, blue: 0.114, alpha: 1.00)
+            ),
+            ]
         
+        let toSpaceColors = InterpolationAction(from: 0.0,
+                                                to: 1.0,
+                                                duration: 1.0,
+                                                easing: .linear) {
+                                                    [unowned self] in
+                                                    let startColors = colors[0]
+                                                    let endColors = colors[1]
+                                                    let top = startColors.0.lerp(t: $0, end: endColors.0)
+                                                    let bottom = startColors.1.lerp(t: $0, end: endColors.1)
+                                                    self.backgroundColorView.setColors(top: top, bottom: bottom)
+        }
         
-        
-        
+        return toSpaceColors
     }
- */
     
     func registerCells() {
         collectionView.registerCellFromNib(withTypeName: OnboardingCellHello.typeName)

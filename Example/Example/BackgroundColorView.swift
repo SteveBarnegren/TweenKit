@@ -36,6 +36,8 @@ class BackgroundColorView: UIView {
         super.init(frame: frame)
         
         layer.addSublayer(gradientLayer)
+        
+        setColors(top: UIColor.black, bottom: UIColor.black)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,10 +46,9 @@ class BackgroundColorView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.frame = bounds
+        gradientLayer.frame = bounds
     }
 
 
-   
 
 }

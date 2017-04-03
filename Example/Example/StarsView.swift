@@ -37,6 +37,8 @@ class StarsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        
+        backgroundColor = UIColor.clear
      
         // Create the stars
         stars = makeStars().sorted{ $0.0.currentPosition.y < $0.1.currentPosition.y }
