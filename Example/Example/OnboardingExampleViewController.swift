@@ -67,6 +67,11 @@ class OnboardingExampleViewController: UIViewController {
         return collectionView
     }()
     
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl(frame: .zero)
+        return pageControl
+    }()
+    
     // MARK: - UIViewController
     
     override func viewDidLoad() {
@@ -74,6 +79,9 @@ class OnboardingExampleViewController: UIViewController {
         
         // Collection view
         registerCells()
+        
+        // Page Control
+        pageControl.numberOfPages = cellTitles.count
         
         // Add Subviews
         view.addSubview(backgroundColorView)
@@ -83,6 +91,7 @@ class OnboardingExampleViewController: UIViewController {
         view.addSubview(collectionView)
         view.addSubview(tkAttributesView)
         view.layer.addSublayer(exclamationLayer)
+        view.addSubview(pageControl)
         
         // Reload
         collectionView.dataSource = self
@@ -102,6 +111,14 @@ class OnboardingExampleViewController: UIViewController {
         let attrY = view.bounds.size.height * 0.5
         tkAttributesView.frame = CGRect(x: 0, y: attrY, width: view.bounds.size.width, height: view.bounds.size.height - attrY)
         
+        // Page Control
+        pageControl.sizeToFit()
+        pageControl.frame = CGRect(x: view.bounds.size.width/2 - pageControl.bounds.size.width/2,
+                                   y: view.bounds.size.height - pageControl.bounds.size.height - 50,
+                                   width: pageControl.bounds.size.width,
+                                   height: pageControl.bounds.size.height)
+        
+        // Exclamation layer
         updateExclamationLayer()
     }
     
@@ -204,7 +221,7 @@ class OnboardingExampleViewController: UIViewController {
                                                     self.clockView.fillOpacity = $0
         }
         
-        let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount }, to: 0.4, duration: 1.0, easing: .linear) { [unowned self] in
+        let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount }, to: 0.55, duration: 1.0, easing: .linear) { [unowned self] in
             self.clockView.onScreenAmount = $0
             self.updateExclamationLayer()
         }
@@ -246,14 +263,17 @@ class OnboardingExampleViewController: UIViewController {
                            UIColor(red: 0.031, green: 0.035, blue: 0.114, alpha: 1.00))
         let clockColors = (UIColor(red: 0.114, green: 0.110, blue: 0.337, alpha: 1.00),
                            UIColor(red: 0.114, green: 0.110, blue: 0.337, alpha: 1.00))
-        let sunColors = (UIColor(red: 0.004, green: 0.251, blue: 0.631, alpha: 1.00),
-                         UIColor(red: 0.298, green: 0.525, blue: 0.776, alpha: 1.00))
+        let littleClockColors = (UIColor(red: 0.004, green: 0.251, blue: 0.631, alpha: 1.00),
+                                 UIColor(red: 0.298, green: 0.525, blue: 0.776, alpha: 1.00))
+        let exclamationColors = (UIColor(red: 0.149, green: 0.102, blue: 0.188, alpha: 1.00),
+                                 UIColor(red: 0.149, green: 0.102, blue: 0.188, alpha: 1.00))
         
         let colors: [(UIColor, UIColor)] = [
-           startColors,
-           spaceColors,
-           clockColors,
-           sunColors,
+            startColors,
+            spaceColors,
+            clockColors,
+            littleClockColors,
+            exclamationColors,
             ]
         
         var actions = [FiniteTimeAction]()
@@ -288,6 +308,11 @@ extension OnboardingExampleViewController: UIScrollViewDelegate {
         let pageOffset = offset / view.bounds.size.width
         print("Offset: \(pageOffset)")
         actionScrubber?.update(elapsedTime: Double(pageOffset))
+        
+        var currentPage = Int(pageOffset + 0.5)
+        currentPage = max(currentPage, 0)
+        currentPage = min(currentPage, cellTitles.count-1)
+        pageControl.currentPage = currentPage
     }
 }
 

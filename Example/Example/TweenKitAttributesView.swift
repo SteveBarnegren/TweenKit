@@ -33,10 +33,10 @@ class TweenKitAttributesView: UIView {
         // Make the action
         var actions = [FiniteTimeAction]()
         
-        let duration = 0.9
+        let duration = 0.8
         for index in (0..<labelsInfo.count) {
             
-            let action = InterpolationAction(from: CGFloat(0), to: CGFloat(1), duration: 1.0, easing: .sineIn, update: { [unowned self] in
+            let action = InterpolationAction(from: CGFloat(0), to: CGFloat(1), duration: 1.0, easing: .sineInOut, update: { [unowned self] in
                 self.labelsInfo[index].pctVisible = $0
             })
             actions.append(action)
@@ -79,17 +79,22 @@ class TweenKitAttributesView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let labelHeight = bounds.size.height / CGFloat(labels.count)
+
+        let containerHeight = bounds.size.height - 100
+        let labelHeight = containerHeight / CGFloat(labels.count)
         
         for (index, label) in labels.enumerated() {
             
             let labelInfo = labelsInfo[index]
             
+            let inY = labelHeight * CGFloat(index)
+            let outY = inY + bounds.size.height
+            let y = outY.lerp(t: Double(labelInfo.pctVisible), end: inY)
+            
             label.frame = CGRect(x: 0,
-                                 y: (bounds.size.height * (1 - labelInfo.pctVisible) + (labelHeight * CGFloat(index))),
-                                 width: bounds.size.width,
-                                 height: labelHeight)
+                                  y: y,
+                                  width: bounds.size.width,
+                                  height: labelHeight)
             
         }
         
