@@ -29,6 +29,12 @@ class OnboardingExampleViewController: UIViewController {
        return RocketView()
     }()
     
+    let clockView: ClockView = {
+        let view = ClockView()
+        view.isHidden = true
+        return view
+    }()
+    
     let collectionView: UICollectionView = {
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -52,6 +58,7 @@ class OnboardingExampleViewController: UIViewController {
         view.addSubview(backgroundColorView)
         view.addSubview(starsView)
         view.addSubview(rocketView)
+        view.addSubview(clockView)
         view.addSubview(collectionView)
         
         // Reload
@@ -90,42 +97,93 @@ class OnboardingExampleViewController: UIViewController {
             self.rocketView.setRocketAnimationPct(t: $0)
         }
         
-        let starsAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear) {
+        let starsAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear) {
             [unowned self] in
             self.starsView.update(t: $0)
         }
         
-        return Group(actions: rocketAction, starsAction, makeBackgroundColorsAction())
+        return Group(actions:
+            [rocketAction,
+            starsAction,
+            makeClockAction(),
+            makeBackgroundColorsAction()]
+        )
+    }
+    
+    func makeClockAction() -> FiniteTimeAction {
+        
+        // First page action
+        let firstPageAction = InterpolationAction(from: 0.0,
+                                               to: 1.0,
+                                               duration: 1.0,
+                                               easing: .linear) { [unowned self] in
+                                                self.clockView.onScreenAmount = $0
+        }
+        
+        // Second page action
+        let secondPageChangeTime = InterpolationAction(from: 23.0,
+                                                       to: 24.0 + 4.0,
+                                                       duration: 1.0,
+                                                       easing: .linear) { [unowned self] in
+                                                        self.clockView.hours = $0
+        }
+        
+        let secondPageMoveClock = InterpolationAction(from: 1.0,
+                                                      to: 1.3,
+                                                      duration: 1.0,
+                                                      easing: .linear) { [unowned self] in
+            self.clockView.onScreenAmount = $0
+        }
+        
+        let secondPageChangeSize = InterpolationAction(from: 1.0, to: 0.5, duration: 1.0, easing: .linear) { [unowned self] in
+            self.clockView.size = $0
+        }
+        
+        let secondPageAction = Group(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize)
+        
+        // Full action
+        let fullAction = Sequence(actions: firstPageAction, secondPageAction)
+        fullAction.onBecomeActive = { [unowned self] in self.clockView.isHidden = false }
+        fullAction.onBecomeInactive = { [unowned self] in self.clockView.isHidden = true }
+        
+        // Return full action with start delay
+        return Sequence(actions: DelayAction(duration: 1.0), fullAction)
     }
     
     func makeBackgroundColorsAction() -> FiniteTimeAction {
         
+        let startColors = (UIColor.black, UIColor.black)
+        let spaceColors = (UIColor(red: 0.004, green: 0.000, blue: 0.063, alpha: 1.00),
+                           UIColor(red: 0.031, green: 0.035, blue: 0.114, alpha: 1.00))
+        let clockColors = (UIColor(red: 0.114, green: 0.110, blue: 0.337, alpha: 1.00),
+                           UIColor(red: 0.114, green: 0.110, blue: 0.337, alpha: 1.00))
+        let sunColors = (UIColor(red: 0.004, green: 0.251, blue: 0.631, alpha: 1.00),
+                         UIColor(red: 0.298, green: 0.525, blue: 0.776, alpha: 1.00))
+        
         let colors: [(UIColor, UIColor)] = [
-            // Start
-            (
-                UIColor.black,
-                UIColor.black
-            ),
-            // Space
-            (
-                UIColor(red: 0.004, green: 0.000, blue: 0.063, alpha: 1.00),
-                UIColor(red: 0.031, green: 0.035, blue: 0.114, alpha: 1.00)
-            ),
+           startColors,
+           spaceColors,
+           clockColors,
+           sunColors,
             ]
         
-        let toSpaceColors = InterpolationAction(from: 0.0,
-                                                to: 1.0,
-                                                duration: 1.0,
-                                                easing: .linear) {
-                                                    [unowned self] in
-                                                    let startColors = colors[0]
-                                                    let endColors = colors[1]
-                                                    let top = startColors.0.lerp(t: $0, end: endColors.0)
-                                                    let bottom = startColors.1.lerp(t: $0, end: endColors.1)
-                                                    self.backgroundColorView.setColors(top: top, bottom: bottom)
+        var actions = [FiniteTimeAction]()
+        
+        for (startColors, endColors) in zip(colors, colors.dropFirst()) {
+            
+            let action = InterpolationAction(from: 0.0,
+                                             to: 1.0,
+                                             duration: 1.0,
+                                             easing: .linear) {
+                                                [unowned self] in
+                                                let top = startColors.0.lerp(t: $0, end: endColors.0)
+                                                let bottom = startColors.1.lerp(t: $0, end: endColors.1)
+                                                self.backgroundColorView.setColors(top: top, bottom: bottom)
+            }
+            actions.append(action)
         }
         
-        return toSpaceColors
+        return Sequence(actions: actions)
     }
     
     func registerCells() {
@@ -151,7 +209,7 @@ extension OnboardingExampleViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

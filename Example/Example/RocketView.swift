@@ -62,7 +62,7 @@ class RocketView: UIView {
         }
         
         // Fade out the trail at the end
-        let trailFadeTime = 0.1
+        let trailFadeTime = 0.5
         if t < 1 - trailFadeTime {
             drawPathView.alpha = 1.0
         }

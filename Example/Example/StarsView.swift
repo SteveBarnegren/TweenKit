@@ -60,7 +60,7 @@ class StarsView: UIView {
         }
         
         let group = Group(staggered: actions, offset: (1.0 - duration) / Double(actions.count))
-        self.actionScrubber = ActionScrubber(action: group)
+        self.actionScrubber = ActionScrubber(action: group.yoyo())
     }
     
     func update(t: Double) {
