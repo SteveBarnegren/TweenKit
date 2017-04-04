@@ -24,6 +24,9 @@ class OnboardingExampleViewController: UIViewController {
     var actionScrubber: ActionScrubber?
     var hasAppeared = false
     
+    var showExclamation = false
+    var exclamationOriginY = CGFloat(0)
+    
     let backgroundColorView = {
         return BackgroundColorView()
     }()
@@ -45,6 +48,12 @@ class OnboardingExampleViewController: UIViewController {
     let tkAttributesView: TweenKitAttributesView = {
         let view = TweenKitAttributesView()
         return view
+    }()
+    
+    let exclamationLayer: CALayer = {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.white.cgColor
+        return layer
     }()
     
     let collectionView: UICollectionView = {
@@ -73,6 +82,7 @@ class OnboardingExampleViewController: UIViewController {
         view.addSubview(clockView)
         view.addSubview(collectionView)
         view.addSubview(tkAttributesView)
+        view.layer.addSublayer(exclamationLayer)
         
         // Reload
         collectionView.dataSource = self
@@ -82,13 +92,41 @@ class OnboardingExampleViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         collectionView.frame = view.bounds
         rocketView.frame = view.bounds
         starsView.frame = view.bounds
         backgroundColorView.frame = view.bounds
         
+        // tkAttributesView
         let attrY = view.bounds.size.height * 0.5
         tkAttributesView.frame = CGRect(x: 0, y: attrY, width: view.bounds.size.width, height: view.bounds.size.height - attrY)
+        
+        updateExclamationLayer()
+    }
+    
+    func updateExclamationLayer() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        exclamationLayer.isHidden = true
+        if showExclamation {
+            
+            let bottomY = clockView.clockRect.origin.y - 30
+            if bottomY > exclamationOriginY {
+                
+               
+                
+                exclamationLayer.isHidden = false
+                exclamationLayer.frame = CGRect(x: view.bounds.size.width/2 - clockView.clockRect.width/2,
+                                                y: exclamationOriginY,
+                                                width: clockView.clockRect.width,
+                                                height: bottomY - exclamationOriginY)
+            }
+        }
+        
+        CATransaction.commit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,9 +206,16 @@ class OnboardingExampleViewController: UIViewController {
         
         let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount }, to: 0.4, duration: 1.0, easing: .linear) { [unowned self] in
             self.clockView.onScreenAmount = $0
+            self.updateExclamationLayer()
         }
+        thirdPageMoveClock.onBecomeActive = { [unowned self] in
+            self.showExclamation = true
+            self.exclamationOriginY = self.clockView.clockRect.origin.y
+        }
+        thirdPageMoveClock.onBecomeInactive = { [unowned self] in self.showExclamation = false }
         
         let thirdPageAction = Group(actions: thirdPageFillWhite, thirdPageMoveClock)
+       
         
         // Full action
         let fullAction = Sequence(actions: firstPageAction, secondPageAction, thirdPageAction)

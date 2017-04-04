@@ -27,7 +27,13 @@ class ClockView: UIView {
     var fillOpacity = CGFloat(0) {
         didSet{ drawView.redraw() }
     }
-
+    
+    var clockRect: CGRect {
+        return CGRect(x: clockPosition.x - clockSize.width/2,
+                      y: clockPosition.y - clockSize.height/2,
+                      width: clockSize.width,
+                      height: clockSize.height)
+    }
     
     init() {
         super.init(frame: UIScreen.main.bounds)
