@@ -9,6 +9,15 @@
 import UIKit
 
 class OnboardingCellHello: UICollectionViewCell {
+    
+    // MARK: - Public
+    
+    func setTitle(_ text: String) {
+        titleLabel.text = text
+    }
+    
+        
+    @IBOutlet weak private var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,5 +25,5 @@ class OnboardingCellHello: UICollectionViewCell {
         backgroundColor = UIColor.clear
         contentView.backgroundColor = UIColor.clear
     }
-
+    
 }

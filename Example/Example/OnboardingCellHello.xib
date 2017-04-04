@@ -18,10 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="257" height="292"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRx-tg-OFK">
-                        <rect key="frame" x="16" y="16" width="225" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRx-tg-OFK">
+                        <rect key="frame" x="16" y="16" width="225" height="36"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -33,6 +33,9 @@
                 <constraint firstItem="GRx-tg-OFK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="sWl-rO-xjq"/>
             </constraints>
             <size key="customSize" width="257" height="292"/>
+            <connections>
+                <outlet property="titleLabel" destination="GRx-tg-OFK" id="Ofz-nB-Hp3"/>
+            </connections>
             <point key="canvasLocation" x="-185.5" y="180"/>
         </collectionViewCell>
     </objects>

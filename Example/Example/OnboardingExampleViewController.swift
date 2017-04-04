@@ -11,8 +11,15 @@ import TweenKit
 
 class OnboardingExampleViewController: UIViewController {
     
-    
     // MARK: - Properties
+    
+    let cellTitles: [String] = [
+        "",
+        "This is a rocket",
+        "This is a clock",
+        "Scrubbable animations",
+        "Will make your onboarding rock"
+    ]
     
     var actionScrubber: ActionScrubber?
     var hasAppeared = false
@@ -32,6 +39,11 @@ class OnboardingExampleViewController: UIViewController {
     let clockView: ClockView = {
         let view = ClockView()
         view.isHidden = true
+        return view
+    }()
+    
+    let tkAttributesView: TweenKitAttributesView = {
+        let view = TweenKitAttributesView()
         return view
     }()
     
@@ -60,6 +72,7 @@ class OnboardingExampleViewController: UIViewController {
         view.addSubview(rocketView)
         view.addSubview(clockView)
         view.addSubview(collectionView)
+        view.addSubview(tkAttributesView)
         
         // Reload
         collectionView.dataSource = self
@@ -73,6 +86,9 @@ class OnboardingExampleViewController: UIViewController {
         rocketView.frame = view.bounds
         starsView.frame = view.bounds
         backgroundColorView.frame = view.bounds
+        
+        let attrY = view.bounds.size.height * 0.5
+        tkAttributesView.frame = CGRect(x: 0, y: attrY, width: view.bounds.size.width, height: view.bounds.size.height - attrY)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +122,7 @@ class OnboardingExampleViewController: UIViewController {
             [rocketAction,
             starsAction,
             makeClockAction(),
+            makeTkAttributesAction(),
             makeBackgroundColorsAction()]
         )
     }
@@ -141,13 +158,40 @@ class OnboardingExampleViewController: UIViewController {
         
         let secondPageAction = Group(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize)
         
+        // Third page action
+        let thirdPageFillWhite = InterpolationAction(from: 0.0,
+                                                  to: 1.0,
+                                                  duration: 1.0,
+                                                  easing: .linear) { [unowned self] in
+                                                    self.clockView.fillOpacity = $0
+        }
+        
+        let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount }, to: 0.4, duration: 1.0, easing: .linear) { [unowned self] in
+            self.clockView.onScreenAmount = $0
+        }
+        
+        let thirdPageAction = Group(actions: thirdPageFillWhite, thirdPageMoveClock)
+        
         // Full action
-        let fullAction = Sequence(actions: firstPageAction, secondPageAction)
+        let fullAction = Sequence(actions: firstPageAction, secondPageAction, thirdPageAction)
         fullAction.onBecomeActive = { [unowned self] in self.clockView.isHidden = false }
         fullAction.onBecomeInactive = { [unowned self] in self.clockView.isHidden = true }
         
         // Return full action with start delay
         return Sequence(actions: DelayAction(duration: 1.0), fullAction)
+    }
+    
+    func makeTkAttributesAction() -> FiniteTimeAction {
+        
+        let action = InterpolationAction(from: 0.0,
+                                         to: 1.0,
+                                         duration: 2,
+                                         easing: .linear) { [unowned self] in
+                                            self.tkAttributesView.update(pct: $0)
+        }
+        
+        let delay = DelayAction(duration: 2.0)
+        return Sequence(actions: delay, action)
     }
     
     func makeBackgroundColorsAction() -> FiniteTimeAction {
@@ -209,12 +253,13 @@ extension OnboardingExampleViewController: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return cellTitles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCellHello.typeName, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCellHello.typeName, for: indexPath) as! OnboardingCellHello
+        cell.setTitle(cellTitles[indexPath.row])
         return cell
     }
     

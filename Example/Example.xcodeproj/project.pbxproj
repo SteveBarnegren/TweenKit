@@ -14,6 +14,7 @@
 		09140D8F1E8EA72B00E3A4BB /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D8E1E8EA72B00E3A4BB /* StarsView.swift */; };
 		09140D921E8EB6DD00E3A4BB /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D911E8EB6DD00E3A4BB /* BackgroundColorView.swift */; };
 		09140DA81E93D41900E3A4BB /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140DA71E93D41900E3A4BB /* ClockView.swift */; };
+		09140DAC1E94092900E3A4BB /* TweenKitAttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140DAB1E94092900E3A4BB /* TweenKitAttributesView.swift */; };
 		096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */; };
 		096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09AF1E89275600E0A406 /* EasingExampleCell.swift */; };
 		096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096D09B01E89275600E0A406 /* EasingExampleCell.xib */; };
@@ -58,6 +59,7 @@
 		09140D8E1E8EA72B00E3A4BB /* StarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		09140D911E8EB6DD00E3A4BB /* BackgroundColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
 		09140DA71E93D41900E3A4BB /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		09140DAB1E94092900E3A4BB /* TweenKitAttributesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenKitAttributesView.swift; sourceTree = "<group>"; };
 		096D09AB1E89263000E0A406 /* EasingExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExamplesViewController.swift; sourceTree = "<group>"; };
 		096D09AF1E89275600E0A406 /* EasingExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasingExampleCell.swift; sourceTree = "<group>"; };
 		096D09B01E89275600E0A406 /* EasingExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EasingExampleCell.xib; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				09140D8E1E8EA72B00E3A4BB /* StarsView.swift */,
 				09140D8C1E8E898B00E3A4BB /* RocketView.swift */,
 				09140DA71E93D41900E3A4BB /* ClockView.swift */,
+				09140DAB1E94092900E3A4BB /* TweenKitAttributesView.swift */,
 			);
 			name = BackgroundViews;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */,
 				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,
+				09140DAC1E94092900E3A4BB /* TweenKitAttributesView.swift in Sources */,
 				096D09AC1E89263000E0A406 /* EasingExamplesViewController.swift in Sources */,
 				09140D8D1E8E898B00E3A4BB /* RocketView.swift in Sources */,
 				0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */,

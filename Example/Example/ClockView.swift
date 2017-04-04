@@ -24,26 +24,24 @@ class ClockView: UIView {
         didSet{ drawView.redraw() }
     }
     
+    var fillOpacity = CGFloat(0) {
+        didSet{ drawView.redraw() }
+    }
+
+    
     init() {
         super.init(frame: UIScreen.main.bounds)
         
         drawView.drawClosure = {
             
-            func drawHandWithHours(hours: Double, length: Double) {
+            func handEndPoint(hours: Double, length: Double) -> CGPoint {
                 
                 let angle = ((Double.pi * 2) * hours/12.0) - Double.pi/2
                 let x = cos(angle) * length
                 let y = sin(angle) * length
                 
-                let start = self.clockPosition
-                let end = CGPoint(x: self.clockPosition.x + CGFloat(x),
-                                  y: self.clockPosition.y + CGFloat(y))
-                
-                let path = UIBezierPath()
-                path.move(to: start)
-                path.addLine(to: end)
-                path.lineWidth = self.lineWidth
-                path.stroke()
+                return CGPoint(x: self.clockPosition.x + CGFloat(x),
+                               y: self.clockPosition.y + CGFloat(y))
             }
             
             UIColor.white.set()
@@ -52,15 +50,26 @@ class ClockView: UIView {
                                      y: self.clockPosition.y - (self.clockSize.height/2),
                                      width: self.clockSize.width,
                                      height: self.clockSize.height)
-            let path = UIBezierPath(ovalIn: clockBounds)
-            path.lineWidth = self.lineWidth
-            path.stroke()
+            let borderPath = UIBezierPath(ovalIn: clockBounds)
+            borderPath.lineWidth = self.lineWidth
+            borderPath.stroke()
             
-            let hourHandHours = self.hours
-            let minuteHandHours = self.hours * 12
+            let hourHandEnd = handEndPoint(hours: self.hours, length: Double(self.clockSize.height/2) * 0.333)
+            let minuteHandEnd = handEndPoint(hours: self.hours * 12, length: Double(self.clockSize.height/2) * 0.666)
             
-            drawHandWithHours(hours: hourHandHours, length: Double(self.clockSize.height/2) * 0.333)
-            drawHandWithHours(hours: minuteHandHours, length: Double(self.clockSize.height/2) * 0.666)
+            let handsPath = UIBezierPath()
+            handsPath.move(to: hourHandEnd)
+            handsPath.addLine(to: self.clockPosition)
+            handsPath.addLine(to: minuteHandEnd)
+            
+            handsPath.lineWidth = self.lineWidth
+            handsPath.lineJoinStyle = .round
+            handsPath.lineCapStyle = .round
+            handsPath.stroke()
+            
+            UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: self.fillOpacity).set()
+            borderPath.fill()
+
         }
         
         addSubview(drawView)
