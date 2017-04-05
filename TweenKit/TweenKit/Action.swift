@@ -49,21 +49,3 @@ extension TriggerAction {
 public protocol InfiniteTimeAction : SchedulableAction {
     func update(elapsedTime: CFTimeInterval)
 }
-
-
-// MARK: - ****** FiniteTimeActionClassWrapper ******
-
-// Some of the container actions rely on identiy comparison (===), so will wrap the action in a class
-class FiniteTimeActionClassWrapper{
-    var action: FiniteTimeAction
-    
-    init(action: FiniteTimeAction) {
-        self.action = action
-    }
-}
-
-extension FiniteTimeAction {
-    func inClassWrapper() -> FiniteTimeActionClassWrapper {
-        return FiniteTimeActionClassWrapper(action: self)
-    }
-}
