@@ -194,7 +194,7 @@ class OnboardingExampleViewController: UIViewController {
     
     func makeClockAction() -> FiniteTimeAction {
         
-        // First page action
+        // First page action (move clock on screen)
         let firstPageAction = InterpolationAction(from: 0.0,
                                                to: 1.0,
                                                duration: 1.0,
@@ -202,7 +202,7 @@ class OnboardingExampleViewController: UIViewController {
                                                 self.clockView.onScreenAmount = $0
         }
         
-        // Second page action
+        // Second page action (move up and make small)
         let secondPageChangeTime = InterpolationAction(from: 23.0,
                                                        to: 24.0 + 4.0,
                                                        duration: 1.0,
@@ -217,13 +217,27 @@ class OnboardingExampleViewController: UIViewController {
             self.clockView.onScreenAmount = $0
         }
         
-        let secondPageChangeSize = InterpolationAction(from: 1.0, to: 0.5, duration: 1.0, easing: .linear) { [unowned self] in
+        let secondPageChangeSize = InterpolationAction(from: 1.0,
+                                                       to: 0.5,
+                                                       duration: 1.0,
+                                                       easing: .linear) { [unowned self] in
             self.clockView.size = $0
         }
         
-        let secondPageAction = Group(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize)
+        let getClockPostion = RunBlockAction(handler: {
+            [unowned self] in
+            if self.exclamationOriginY == nil {
+                self.exclamationOriginY = self.clockView.clockRect.origin.y
+            }
+        })
         
-        // Third page action
+        let secondPageAction = Sequence(actions:
+            [
+                Group(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize),
+                getClockPostion
+            ])
+                
+        // Third page action (move to bottom)
         let thirdPageFillWhite = InterpolationAction(from: 0.0,
                                                   to: 1.0,
                                                   duration: 1.0,
@@ -231,15 +245,16 @@ class OnboardingExampleViewController: UIViewController {
                                                     self.clockView.fillOpacity = $0
         }
         
-        let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount }, to: 0.55, duration: 1.0, easing: .linear) { [unowned self] in
+        let thirdPageMoveClock = InterpolationAction(from: { [unowned self] in self.clockView.onScreenAmount },
+                                                     to: 0.55,
+                                                     duration: 1.0,
+                                                     easing: .linear) { [unowned self] in
             self.clockView.onScreenAmount = $0
             self.updateExclamationLayer()
         }
+        
         thirdPageMoveClock.onBecomeActive = { [unowned self] in
             self.showExclamation = true
-            if self.exclamationOriginY == nil {
-                self.exclamationOriginY = self.clockView.clockRect.origin.y
-            }
         }
         thirdPageMoveClock.onBecomeInactive = { [unowned self] in self.showExclamation = false }
         
@@ -318,7 +333,6 @@ extension OnboardingExampleViewController: UIScrollViewDelegate {
         let offset = scrollView.contentOffset.x
         
         let pageOffset = offset / view.bounds.size.width
-        print("Offset: \(pageOffset)")
         actionScrubber?.update(elapsedTime: Double(pageOffset))
         
         var currentPage = Int(pageOffset + 0.5)

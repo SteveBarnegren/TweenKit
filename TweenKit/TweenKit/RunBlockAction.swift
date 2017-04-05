@@ -8,14 +8,14 @@
 
 import Foundation
 
-class RunBlockAction: TriggerAction {
+public class RunBlockAction: TriggerAction {
     
     // MARK: - Public
     
-    var onBecomeActive: () -> () = {}
-    var onBecomeInactive: () -> () = {}
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
     
-    init(handler: @escaping () -> ()) {
+    public init(handler: @escaping () -> ()) {
         self.handler = handler
     }
     
@@ -23,27 +23,27 @@ class RunBlockAction: TriggerAction {
     
     let handler: () -> ()
     public let duration = 0.0
-    var reverse: Bool = false
+    public var reverse: Bool = false
     
-    func trigger() {
+    public func trigger() {
         handler()
     }
     
-    func willBecomeActive() {
+    public func willBecomeActive() {
         onBecomeActive()
     }
     
-    func didBecomeInactive() {
+    public func didBecomeInactive() {
         onBecomeInactive()
     }
     
-    func willBegin() {
+    public func willBegin() {
     }
     
-    func didFinish() {
+    public func didFinish() {
     }
     
-    func update(t: CFTimeInterval) {
+    public func update(t: CFTimeInterval) {
         // Do nothing
     }
 }

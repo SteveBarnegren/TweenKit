@@ -184,4 +184,19 @@ class SequenceTests: XCTestCase {
         
         XCTAssertEqual(numCalls, 1)
     }
+    
+    // MARK: - Call Trigger Actions
+    
+    func testSequenceCallsTriggerActions() {
+        
+        var numCalls = 0
+        
+        let timeAction = FiniteTimeActionTester(duration: 1.0)
+        let triggerAction = RunBlockAction(handler: { numCalls += 1 })
+        
+        let sequence = Sequence(actions: timeAction, triggerAction)
+        sequence.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
 }

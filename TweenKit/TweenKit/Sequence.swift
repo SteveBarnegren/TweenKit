@@ -113,21 +113,15 @@ public class Sequence: FiniteTimeAction {
             
             if wrapper.state == .inProgress {
                 wrapper.action.update(t: reverse ? 0.0 : 1.0)
+                
+                if let trigger = wrapper.action as? TriggerAction {
+                    trigger.trigger()
+                }
+                
                 wrapper.action.didFinish()
                 wrapper.action.didBecomeInactive()
             }
         }
-        
-        /*
-        // finish the final action
-        if let lastAction = reverse ? wrappedActions.first : wrappedActions.last {
-            lastAction.action.update(t: reverse ? 0.0 : 1.0)
-            lastAction.action.didFinish()
-            lastAction.action.didBecomeInactive()
-        }
-        
-        lastRunAction = nil
- */
     }
     
     public func update(t: CFTimeInterval) {
