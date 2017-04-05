@@ -25,7 +25,7 @@ class OnboardingExampleViewController: UIViewController {
     var hasAppeared = false
     
     var showExclamation = false
-    var exclamationOriginY = CGFloat(0)
+    var exclamationOriginY: CGFloat?
     
     let backgroundColorView = {
         return BackgroundColorView()
@@ -134,18 +134,16 @@ class OnboardingExampleViewController: UIViewController {
         CATransaction.setDisableActions(true)
         
         exclamationLayer.isHidden = true
-        if showExclamation {
+        if showExclamation, let originY = exclamationOriginY {
             
             let bottomY = clockView.clockRect.origin.y - 30
-            if bottomY > exclamationOriginY {
-                
-               
+            if bottomY > originY {
                 
                 exclamationLayer.isHidden = false
                 exclamationLayer.frame = CGRect(x: view.bounds.size.width/2 - clockView.clockRect.width/2,
-                                                y: exclamationOriginY,
+                                                y: originY,
                                                 width: clockView.clockRect.width,
-                                                height: bottomY - exclamationOriginY)
+                                                height: bottomY - originY)
             }
         }
         
@@ -239,7 +237,9 @@ class OnboardingExampleViewController: UIViewController {
         }
         thirdPageMoveClock.onBecomeActive = { [unowned self] in
             self.showExclamation = true
-            self.exclamationOriginY = self.clockView.clockRect.origin.y
+            if self.exclamationOriginY == nil {
+                self.exclamationOriginY = self.clockView.clockRect.origin.y
+            }
         }
         thirdPageMoveClock.onBecomeInactive = { [unowned self] in self.showExclamation = false }
         
