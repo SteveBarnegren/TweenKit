@@ -27,6 +27,7 @@
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
 		0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */; };
+		09CE9BAA1E95447E0008C33E /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BA91E95447E0008C33E /* IntroView.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
 		6750B91C1E7C85A300E7AEE2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */; };
 		6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6750B9201E7C85A300E7AEE2 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTweenViewController.swift; sourceTree = "<group>"; };
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
 		0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunAndMoonExampleViewController.swift; sourceTree = "<group>"; };
+		09CE9BA91E95447E0008C33E /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		6750B9161E7C85A300E7AEE2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		09140D901E8EA73100E3A4BB /* BackgroundViews */ = {
 			isa = PBXGroup;
 			children = (
+				09CE9BA91E95447E0008C33E /* IntroView.swift */,
 				09140D911E8EB6DD00E3A4BB /* BackgroundColorView.swift */,
 				09140D8E1E8EA72B00E3A4BB /* StarsView.swift */,
 				09140D8C1E8E898B00E3A4BB /* RocketView.swift */,
@@ -334,6 +337,7 @@
 				09140D831E8DA46C00E3A4BB /* OnboardingExampleViewController.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
 				09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */,
+				09CE9BAA1E95447E0008C33E /* IntroView.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */,
 				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,
 				09140DAC1E94092900E3A4BB /* TweenKitAttributesView.swift in Sources */,

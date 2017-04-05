@@ -31,8 +31,12 @@ class OnboardingExampleViewController: UIViewController {
         return BackgroundColorView()
     }()
     
+    let introView = {
+        return IntroView()
+    }()
+    
     let starsView = {
-       return StarsView()
+        return StarsView()
     }()
     
     let rocketView = {
@@ -90,6 +94,7 @@ class OnboardingExampleViewController: UIViewController {
         view.addSubview(clockView)
         view.addSubview(collectionView)
         view.addSubview(tkAttributesView)
+        view.addSubview(introView)
         view.layer.addSublayer(exclamationLayer)
         view.addSubview(pageControl)
         
@@ -106,6 +111,7 @@ class OnboardingExampleViewController: UIViewController {
         rocketView.frame = view.bounds
         starsView.frame = view.bounds
         backgroundColorView.frame = view.bounds
+        introView.frame = view.bounds
         
         // tkAttributesView
         let attrY = view.bounds.size.height * 0.5
@@ -173,12 +179,18 @@ class OnboardingExampleViewController: UIViewController {
             self.starsView.update(t: $0)
         }
         
+        let introAction = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear) {
+            [unowned self] in
+            self.introView.update(t: $0)
+        }
+        
         return Group(actions:
-            [rocketAction,
-            starsAction,
-            makeClockAction(),
-            makeTkAttributesAction(),
-            makeBackgroundColorsAction()]
+            [introAction,
+             rocketAction,
+             starsAction,
+             makeClockAction(),
+             makeTkAttributesAction(),
+             makeBackgroundColorsAction()]
         )
     }
     
