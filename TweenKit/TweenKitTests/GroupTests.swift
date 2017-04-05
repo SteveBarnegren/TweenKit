@@ -204,6 +204,5 @@ class GroupTests: XCTestCase {
         
         XCTAssertEqual(numCalls, 1)
     }
-
     
 }

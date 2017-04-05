@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Shedulable Action
 
-public protocol SchedulableAction {
+public protocol SchedulableAction : class {
     
     var onBecomeActive: () -> () {get set}
     var onBecomeInactive: () -> () {get set}

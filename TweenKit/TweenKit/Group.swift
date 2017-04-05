@@ -28,13 +28,11 @@ public class Group: FiniteTimeAction, SchedulableAction {
     public init() {
     }
     
-    public init(actions: [FiniteTimeAction]) {
-        actions.forEach{
-            add(action: $0)
-        }
+    public convenience init(actions: FiniteTimeAction...) {
+        self.init(actions: actions)
     }
     
-    public init(actions: FiniteTimeAction...) {
+    public init(actions: [FiniteTimeAction]) {
         actions.forEach{
             add(action: $0)
         }
@@ -57,6 +55,13 @@ public class Group: FiniteTimeAction, SchedulableAction {
     }
     
     public func add(action: FiniteTimeAction) {
+        
+        let allActions = wrappedActions.map{ $0.action } + (triggerActions as [FiniteTimeAction])
+        for existingAction in allActions {
+            if existingAction === action {
+                fatalError("You cannot the same action to a group multiple times!")
+            }
+        }
         
         if let trigger = action as? TriggerAction {
             triggerActions.append(trigger)
