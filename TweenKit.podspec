@@ -15,11 +15,11 @@ Pod::Spec.new do |s|
 TweenKit makes it easy to animate anything!
                        DESC
 
-  s.homepage         = 'https://github.com/steve.barnegren@gmail.com/TweenKit'
+  s.homepage         = 'https://github.com/SteveBarnegren/TweenKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'steve.barnegren@gmail.com' => 'steve.barnegren@gmail.com' }
-  s.source           = { :git => 'https://github.com/steve.barnegren@gmail.com/TweenKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/SteveBarnegren/TweenKit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/SteveBarnegren'
 
   s.ios.deployment_target = '8.0'
