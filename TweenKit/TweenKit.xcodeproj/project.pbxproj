@@ -22,6 +22,7 @@
 		09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */; };
 		09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */; };
 		09BB04FC1E8027B70011E68E /* YoyoActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */; };
+		09CE9BAF1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BAE1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift */; };
 		09F52D7C1E8A6AF5003B09E2 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */; };
 		09F52D801E8A6D92003B09E2 /* BezierActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7F1E8A6D92003B09E2 /* BezierActionTests.swift */; };
 		09F52D821E8A703F003B09E2 /* BezierPath+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */; };
@@ -78,6 +79,7 @@
 		09BB04F51E80208C0011E68E /* RepeatForeverActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatForeverActionTests.swift; sourceTree = "<group>"; };
 		09BB04F71E8023950011E68E /* Sheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sheduler+Extensions.swift"; sourceTree = "<group>"; };
 		09BB04FB1E8027B70011E68E /* YoyoActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoActionTests.swift; sourceTree = "<group>"; };
+		09CE9BAE1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsTweenableTests.swift; sourceTree = "<group>"; };
 		09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierPath.swift; sourceTree = "<group>"; };
 		09F52D7F1E8A6D92003B09E2 /* BezierActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierActionTests.swift; sourceTree = "<group>"; };
 		09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Testable.swift"; sourceTree = "<group>"; };
@@ -159,6 +161,14 @@
 				09F52D811E8A703F003B09E2 /* BezierPath+Testable.swift */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		09CE9BAD1E9639E00008C33E /* Tweenable */ = {
+			isa = PBXGroup;
+			children = (
+				09CE9BAE1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift */,
+			);
+			name = Tweenable;
 			sourceTree = "<group>";
 		};
 		09F52D7A1E8A6AE2003B09E2 /* BezierAction */ = {
@@ -245,6 +255,7 @@
 			children = (
 				09BB04EC1E80062E0011E68E /* Supporting */,
 				09BB04F11E8018E20011E68E /* SchedulerTests.swift */,
+				09CE9BAD1E9639E00008C33E /* Tweenable */,
 				09FF207E1E802B6D0029CB2D /* Actions */,
 				6750B9031E7C855A00E7AEE2 /* Info.plist */,
 			);
@@ -440,6 +451,7 @@
 				09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */,
 				096D09A51E891A5100E0A406 /* ArcActionTests.swift in Sources */,
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
+				09CE9BAF1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
 				09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */,
 				0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */,
