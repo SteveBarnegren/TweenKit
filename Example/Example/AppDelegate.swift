@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Test view conteoller
-        //let viewController = TestViewController(nibName: nil, bundle: nil)
-        //window?.rootViewController = viewController
-        
-        // Example view controller
         let viewController = ExampleSwitcherViewController(nibName: nil, bundle: nil)
         window?.rootViewController = viewController
         

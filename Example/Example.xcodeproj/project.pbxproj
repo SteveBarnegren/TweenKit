@@ -28,6 +28,7 @@
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
 		0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */; };
 		09CE9BAA1E95447E0008C33E /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BA91E95447E0008C33E /* IntroView.swift */; };
+		09CE9BB21E963FAD0008C33E /* StringTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BB11E963FAD0008C33E /* StringTweenViewController.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
 		6750B91C1E7C85A300E7AEE2 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */; };
 		6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6750B9201E7C85A300E7AEE2 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExampleViewController.swift; sourceTree = "<group>"; };
 		0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunAndMoonExampleViewController.swift; sourceTree = "<group>"; };
 		09CE9BA91E95447E0008C33E /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		09CE9BB11E963FAD0008C33E /* StringTweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTweenViewController.swift; sourceTree = "<group>"; };
 		6750B9161E7C85A300E7AEE2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6750B91B1E7C85A300E7AEE2 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09140D7F1E8DA43F00E3A4BB /* 8. Onboarding */ = {
+		09140D7F1E8DA43F00E3A4BB /* 9. Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				09140D901E8EA73100E3A4BB /* BackgroundViews */,
@@ -103,7 +105,7 @@
 				09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */,
 				09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */,
 			);
-			name = "8. Onboarding";
+			name = "9. Onboarding";
 			sourceTree = "<group>";
 		};
 		09140D901E8EA73100E3A4BB /* BackgroundViews */ = {
@@ -117,6 +119,14 @@
 				09140DAB1E94092900E3A4BB /* TweenKitAttributesView.swift */,
 			);
 			name = BackgroundViews;
+			sourceTree = "<group>";
+		};
+		09575F591E96765E006AF873 /* 8. String Tween */ = {
+			isa = PBXGroup;
+			children = (
+				09CE9BB11E963FAD0008C33E /* StringTweenViewController.swift */,
+			);
+			name = "8. String Tween";
 			sourceTree = "<group>";
 		};
 		096D09A81E8925F400E0A406 /* 5. Easing Examples */ = {
@@ -151,13 +161,15 @@
 		0984A59D1E83C16900240A50 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				09CE9BB01E963F8E0008C33E /* String Tween */,
 				0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */,
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
 				0984A5A61E843C6C00240A50 /* 3/4. Sun and moon */,
 				096D09A81E8925F400E0A406 /* 5. Easing Examples */,
 				097B7CA41E8C1CA200D56D03 /* 6/7. Bezier Curves */,
-				09140D7F1E8DA43F00E3A4BB /* 8. Onboarding */,
+				09575F591E96765E006AF873 /* 8. String Tween */,
+				09140D7F1E8DA43F00E3A4BB /* 9. Onboarding */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -184,6 +196,13 @@
 				0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */,
 			);
 			name = "3/4. Sun and moon";
+			sourceTree = "<group>";
+		};
+		09CE9BB01E963F8E0008C33E /* String Tween */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "String Tween";
 			sourceTree = "<group>";
 		};
 		6750B90D1E7C85A300E7AEE2 = {
@@ -330,6 +349,7 @@
 				0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */,
 				09140D921E8EB6DD00E3A4BB /* BackgroundColorView.swift in Sources */,
 				097B7CAB1E8D22B600D56D03 /* CycleSelector.swift in Sources */,
+				09CE9BB21E963FAD0008C33E /* StringTweenViewController.swift in Sources */,
 				097B7CA61E8C1CFB00D56D03 /* BezierCurveExampleViewController.swift in Sources */,
 				6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */,
 				097B7CAD1E8D48F200D56D03 /* BezierExampleModel.swift in Sources */,
