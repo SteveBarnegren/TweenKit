@@ -11,12 +11,12 @@ import XCTest
 
 class YoyoActionTests: XCTestCase {
     
-    var scheduler: Scheduler!
+    var scheduler: ActionScheduler!
     
     override func setUp() {
         super.setUp()
         
-        scheduler = Scheduler()
+        scheduler = ActionScheduler()
     }
     
     func testDurationIsDoubleInnerAction() {

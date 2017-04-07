@@ -11,12 +11,12 @@ import XCTest
 
 class RepeatForeverActionTests: XCTestCase {
     
-    var scheduler: Scheduler!
+    var scheduler: ActionScheduler!
     
     override func setUp() {
         super.setUp()
         
-        scheduler = Scheduler()
+        scheduler = ActionScheduler()
     }
     
     // MARK: - Test Repeat Forever

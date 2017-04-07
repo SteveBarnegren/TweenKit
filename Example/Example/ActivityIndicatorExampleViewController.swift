@@ -26,7 +26,7 @@ extension CALayer {
 
 class ActivityIndicatorExampleViewController: UIViewController {
     
-    let scheduler = Scheduler()
+    let scheduler = ActionScheduler()
 
     var circleLayers = [CALayer]()
     

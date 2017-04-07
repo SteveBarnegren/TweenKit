@@ -49,7 +49,7 @@
 		6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */; };
 		6750B9421E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */; };
 		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
-		6750B9471E7D99FD00E7AEE2 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* Scheduler.swift */; };
+		6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
 		6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +109,7 @@
 		6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweenable.swift; sourceTree = "<group>"; };
 		6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Tweenable.swift"; sourceTree = "<group>"; };
 		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
-		6750B9461E7D99FD00E7AEE2 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScheduler.swift; sourceTree = "<group>"; };
 		6750B9481E7DA10100E7AEE2 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,7 +144,7 @@
 		097B7C9C1E8C0C9400D56D03 /* Scheduler */ = {
 			isa = PBXGroup;
 			children = (
-				6750B9461E7D99FD00E7AEE2 /* Scheduler.swift */,
+				6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */,
 				6750B9481E7DA10100E7AEE2 /* Animation.swift */,
 			);
 			name = Scheduler;
@@ -416,7 +416,7 @@
 				09F52D841E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift in Sources */,
 				097B7CAF1E8D735900D56D03 /* Lazy.swift in Sources */,
 				096D09B41E894D6700E0A406 /* BezierAction.swift in Sources */,
-				6750B9471E7D99FD00E7AEE2 /* Scheduler.swift in Sources */,
+				6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */,
 				0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */,
 				673CB7721E7EA0BD00592F24 /* YoyoAction.swift in Sources */,
 				6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */,

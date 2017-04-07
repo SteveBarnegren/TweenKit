@@ -20,7 +20,7 @@ class BezierCurveExampleViewController: UIViewController {
 
     // MARK: - Properties
     
-    let scheduler = Scheduler()
+    let scheduler = ActionScheduler()
     var isAnimating = false
     let model: BezierDemoModel!
     

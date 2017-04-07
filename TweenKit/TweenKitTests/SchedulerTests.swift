@@ -11,11 +11,11 @@ import XCTest
 
 class SchedulerTests: XCTestCase {
     
-    var scheduler: Scheduler!
+    var scheduler: ActionScheduler!
     
     override func setUp() {
         super.setUp()
-        scheduler = Scheduler()
+        scheduler = ActionScheduler()
     }
     
     override func tearDown() {

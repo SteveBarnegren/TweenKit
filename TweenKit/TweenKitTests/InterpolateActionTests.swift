@@ -11,12 +11,12 @@ import XCTest
 
 class InterpolateActionTests: XCTestCase {
     
-    var scheduler: Scheduler!
+    var scheduler: ActionScheduler!
     let tempValue = 0.90
     
     override func setUp() {
         super.setUp()
-        scheduler = Scheduler()
+        scheduler = ActionScheduler()
     }
     
     // MARK: - Tweening

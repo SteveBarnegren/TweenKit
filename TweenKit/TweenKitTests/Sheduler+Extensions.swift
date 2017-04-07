@@ -9,7 +9,7 @@
 import Foundation
 @testable import TweenKit
 
-extension Scheduler {
+extension ActionScheduler {
     
     func progressTime(duration: Double, stepSize: Double = 1.0/60.0) {
         Ticker(duration: duration) {

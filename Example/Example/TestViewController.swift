@@ -28,7 +28,7 @@ class TestViewController: UIViewController {
         return slider
     }()
     
-    let scheduler = Scheduler()
+    let scheduler = ActionScheduler()
     var lastTimeStamp: CFTimeInterval?
     var elapsedTime: CFTimeInterval = 0
     

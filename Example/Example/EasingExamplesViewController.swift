@@ -40,7 +40,7 @@ class EasingExamplesViewController: UIViewController {
         }
     }()
     
-    fileprivate let scheduler = Scheduler()
+    fileprivate let scheduler = ActionScheduler()
     fileprivate var hasStartedAnimation = false
     
     // MARK: - UIViewController

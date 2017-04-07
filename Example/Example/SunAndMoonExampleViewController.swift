@@ -37,7 +37,7 @@ class SunAndMoonExampleViewController: UIViewController {
     // MARK: - Properties
     
     let scrubbable: Bool
-    let scheduler = Scheduler()
+    let scheduler = ActionScheduler()
     var actionScrubber: ActionScrubber?
     
     // MARK: - Views / Layers

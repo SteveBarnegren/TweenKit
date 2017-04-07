@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public class Scheduler : NSObject {
+@objc public class ActionScheduler : NSObject {
     
     // MARK: - Internal
     
