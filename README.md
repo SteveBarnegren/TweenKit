@@ -62,37 +62,34 @@ CGRect, CGFloat, Double, Float, UIColor, and other common objects already adopt 
 We can use TweenKit's `InterpolationAction` to animate a view's frame:
 
 ```
-let fromRect = CGRect(x: 50, y: 50, width: 100, height: 100)
-let toRect = CGRect(x: 200, y: 200, width: 200, height: 70)
+let fromRect = CGRect(x: 50, y: 50, width: 40, height: 40)
+let toRect = CGRect(x: 100, y: 100, width: 200, height: 100)
         
 let action = InterpolationAction(from: fromRect,
                                  to: toRect,
                                  duration: 1.0,
-                                 easing: .exponentialInOut,
-                                 update: {
-        [unowned self] in self.redView.frame = $0
-        })
-
-// Tell the scheduler to run the action      
+                                 easing: .exponentialInOut) {
+                                    [unowned self] in self.redView.frame = $0
+}
+        
 scheduler.run(action: action)
 ```
-!!! Show animation GIF (Basic Tween View Controller) !!!
+![basictween](https://cloud.githubusercontent.com/assets/6288713/24793903/a4d1b0b8-1b7b-11e7-925d-42deea17faeb.gif)
 
 ### Grouping animations
 
-Using `Group`, several animations can be run at once:
+Using `Group`, several animations can be run at once. For instance, we can change a view's frame and it's background color:
 
 ```
 // Create a move action
-let fromRect = CGRect(x: 100, y: 100, width: 50, height: 50)
-let toRect = CGRect(x: 200, y: 200, width: 70, height: 70)
+let fromRect = CGRect(x: 50, y: 50, width: 40, height: 40)
+let toRect = CGRect(x: 100, y: 100, width: 200, height: 100)
         
 let move = InterpolationAction(from: fromRect,
                                  to: toRect,
                                  duration: 2.0,
                                  easing: .elasticOut) {
-                                    [unowned self] in
-                                    self.squareView.frame = $0
+                        [unowned self] in self.squareView.frame = $0
 }
         
 // Create a color change action
@@ -100,7 +97,7 @@ let changeColor = InterpolationAction(from: UIColor.red,
                                       to: UIColor.orange,
                                       duration: 2.0,
                                       easing: .exponentialOut) {
-                                        [unowned self] in self.squareView.backgroundColor = $0
+                        [unowned self] in self.squareView.backgroundColor = $0
 }
         
 // Make a group to run them at the same time
@@ -108,7 +105,7 @@ let moveAndChangeColor = Group(actions: move, changeColor)
 scheduler.run(action: moveAndChangeColor)
 ```
 
-!!! Groups GIF !!!
+![grouptween](https://cloud.githubusercontent.com/assets/6288713/24795622/d9c06778-1b81-11e7-9c8b-c44c614e7528.gif)
 
 ### Running animations in sequence
 
@@ -116,24 +113,24 @@ Using `Sequence`, several animations can be run in order. This time, we can use 
 
 ```
 let moveOne = InterpolationAction(from: { [unowned self] in self.squareView.frame },
-                                  to: CGRect(x: 200, y: 150, width: 50, height: 50),
+                                  to: CGRect(x: 120, y: 80, width: 50, height: 50),
                                   duration: 1,
                                   easing: .exponentialInOut) {
-                                  [unowned self] in self.squareView.frame = $0
+                                   [unowned self] in self.squareView.frame = $0
 }
         
 let moveTwo = InterpolationAction(from: { [unowned self] in self.squareView.frame },
-                                  to: CGRect(x: 150, y: 220, width: 130, height: 130),
+                                  to: CGRect(x: 70, y: 120, width: 130, height: 130),
                                   duration: 1,
                                   easing: .exponentialInOut) {
-                                  [unowned self] in self.squareView.frame = $0
+                                    [unowned self] in self.squareView.frame = $0
 }
         
 let moveTwice = Sequence(actions: moveOne, moveTwo)
 scheduler.run(action: moveTwice)
 ```
 
-!!! GIF !!!
+![sequencetween](https://cloud.githubusercontent.com/assets/6288713/24795989/3486bcba-1b83-11e7-8e2d-cdce94c451ad.gif)
 
 ### Repeating actions
 
@@ -158,7 +155,41 @@ let move = InterpolationAction(from: { [unowned self] in self.squareView.frame }
         
 scheduler.run(action: move.yoyo().repeatedForever() )
 ```
-!!! Yoyo GIF !!!
+![yoyotween](https://cloud.githubusercontent.com/assets/6288713/24805340/49231f76-1ba9-11e7-9832-2ce5da836947.gif)
+
+### Arc Actions
+
+`ArcAction` can animate any object that conforms to `Tweenable2DCoordinate` in a circular motion.
+
+By creating some `ArcAction`s  in a staggared `Group`, we can easily create an activity indicator:
+
+```
+// Create an ArcAction for each circle layer
+let actions = circleLayers.map{
+    layer -> ArcAction<CGPoint> in
+            
+    let action = ArcAction(center: self.view.center,
+                           radius: radius,
+                           startDegrees: 0,
+                           endDegrees: 360,
+                           duration: 1.3) {
+                            [unowned layer] in layer.center = $0
+    }
+    action.easing = .sineInOut
+    return action
+}
+        
+// Run the actions in a staggered group
+let group = Group(staggered: actions, offset: 0.125)
+        
+// Repeat forever
+let repeatForever = group.repeatedForever()
+        
+// Run the action
+scheduler.run(action: repeatForever)
+```
+
+![activityindicator](https://cloud.githubusercontent.com/assets/6288713/24805875/f4b39e0a-1baa-11e7-9e3d-ba8116ec27c5.gif)
 
 ### Bezier Actions
 
@@ -191,26 +222,27 @@ Instead of adding the action to a scheduler, create an `ActionScrubber` instance
 
 ```     
 let move = InterpolationAction(from: { [unowned self] in self.squareView.frame },
-                               to: CGRect(x: 250, y: 100, width: 100, height: 100),
+                               to: CGRect(x: 130, y: 100, width: 100, height: 100),
                                duration: 1,
-                               easing: .sineInOut) {
-                               [unowned self] in self.squareView.frame = $0
+                               easing: .elasticOut) {
+                                [unowned self] in self.squareView.frame = $0
 }
         
 self.actionScrubber = ActionScrubber(action: move)
 
-// Update the action scrubber on slider changed callback 
+// Scrub the action in a UISlider callback
 func sliderChanged(slider: UISlider) {
     actionScrubber.update(t: Double(slider.value))
 }
-
 ```
+
+![scrubbabletween](https://cloud.githubusercontent.com/assets/6288713/24806390/9955ef7a-1bac-11e7-901c-625e8283487f.gif)
 
 ### Animating your own objects
 
 By adding conformance to the `Tweenable` protocol, anything can be animated. You decide what it means to 'tween' your object, making this a flexible approach.
 
-For instance, by conforming `String` to `Tweenable` we can change a **bat** into a **cat**:
+For instance, by conforming `String` to `Tweenable` we can turn a **bat** into a **cat**:
 
 ![battocat](https://cloud.githubusercontent.com/assets/6288713/24763350/04d6c82e-1ae9-11e7-9aa8-d0ec97cdd8f1.gif)
 

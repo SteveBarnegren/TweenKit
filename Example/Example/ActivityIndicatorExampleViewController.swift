@@ -61,7 +61,7 @@ class ActivityIndicatorExampleViewController: UIViewController {
                                 y: self.view.center.y - CGFloat(radius))
         }
         
-        // Create an ArcAction for each layer
+        // Create an ArcAction for each circle layer
         let actions = circleLayers.map{
             layer -> ArcAction<CGPoint> in
             
@@ -69,8 +69,9 @@ class ActivityIndicatorExampleViewController: UIViewController {
                                    radius: radius,
                                    startDegrees: 0,
                                    endDegrees: 360,
-                                   duration: 1.3,
-                                   update: { [unowned layer] in layer.center = $0 })
+                                   duration: 1.3) {
+                                    [unowned layer] in layer.center = $0
+            }
             action.easing = .sineInOut
             return action
         }

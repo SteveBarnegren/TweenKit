@@ -27,6 +27,8 @@
 		0984A5A01E83C1CA00240A50 /* BasicTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A59F1E83C1CA00240A50 /* BasicTweenViewController.swift */; };
 		0984A5A31E83F03400240A50 /* ActivityIndicatorExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A21E83F03400240A50 /* ActivityIndicatorExampleViewController.swift */; };
 		0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */; };
+		09A515E71E97D980004CD867 /* TweenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */; };
+		09A515E81E97D980004CD867 /* TweenKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09CE9BAA1E95447E0008C33E /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BA91E95447E0008C33E /* IntroView.swift */; };
 		09CE9BB21E963FAD0008C33E /* StringTweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9BB11E963FAD0008C33E /* StringTweenViewController.swift */; };
 		6750B91A1E7C85A300E7AEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9191E7C85A300E7AEE2 /* AppDelegate.swift */; };
@@ -37,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		09A515E91E97D980004CD867 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6750B8F21E7C855A00E7AEE2;
+			remoteInfo = TweenKit;
+		};
 		6750B9301E7C85AD00E7AEE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
@@ -52,6 +61,20 @@
 			remoteInfo = TweenKitTests;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09A515EB1E97D981004CD867 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09A515E81E97D980004CD867 /* TweenKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExampleViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9341E7C85E600E7AEE2 /* TweenKit.framework in Frameworks */,
+				09A515E71E97D980004CD867 /* TweenKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,10 +279,12 @@
 				6750B9121E7C85A300E7AEE2 /* Sources */,
 				6750B9131E7C85A300E7AEE2 /* Frameworks */,
 				6750B9141E7C85A300E7AEE2 /* Resources */,
+				09A515EB1E97D981004CD867 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09A515EA1E97D980004CD867 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -369,6 +395,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		09A515EA1E97D980004CD867 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TweenKit;
+			targetProxy = 09A515E91E97D980004CD867 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6750B9221E7C85A300E7AEE2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -477,10 +511,12 @@
 		6750B9291E7C85A300E7AEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
 				DEVELOPMENT_TEAM = 57B8T35GZ4;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,11 +529,13 @@
 		6750B92A1E7C85A300E7AEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hi Mum Said Dad Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
 				DEVELOPMENT_TEAM = 57B8T35GZ4;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
