@@ -76,7 +76,7 @@ scheduler.run(action: action)
 ```
 ![basictween](https://cloud.githubusercontent.com/assets/6288713/24793903/a4d1b0b8-1b7b-11e7-925d-42deea17faeb.gif)
 
-### Grouping animations
+### Grouping actions
 
 Using `Group`, several animations can be run at once. For instance, we can change a view's frame and it's background color:
 
@@ -107,7 +107,7 @@ scheduler.run(action: moveAndChangeColor)
 
 ![grouptween](https://cloud.githubusercontent.com/assets/6288713/24795622/d9c06778-1b81-11e7-9c8b-c44c614e7528.gif)
 
-### Running animations in sequence
+### Running actions in sequence
 
 Using `Sequence`, several animations can be run in order. This time, we can use supply a closure as the 'from' parameter, to animate the view from it's current frame:
 
