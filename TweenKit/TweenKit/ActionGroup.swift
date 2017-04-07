@@ -47,7 +47,7 @@ public class ActionGroup: FiniteTimeAction, SchedulableAction {
             }
             else{
                 let delay = DelayAction(duration: offset * Double(index))
-                let sequence = Sequence(actions: delay, action)
+                let sequence = ActionSequence(actions: delay, action)
                 add(action: sequence)
             }
             

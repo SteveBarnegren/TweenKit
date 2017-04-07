@@ -23,7 +23,7 @@ class SequenceTests: XCTestCase {
         let action1 = InterpolationAction(from: 0.0, to: 1.0, duration: 1.0, easing: .linear, update: {_ in})
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear, update: {_ in})
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: {_ in})
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         
         let expectedDuration = action1.duration + action2.duration + action3.duration
         
@@ -52,7 +52,7 @@ class SequenceTests: XCTestCase {
         let action2 = makeAction(tag: 2)
         let action3 = makeAction(tag: 3)
         
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         let animation = Animation(action: sequence)
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: sequence.duration + 0.1)
@@ -82,7 +82,7 @@ class SequenceTests: XCTestCase {
         let action2 = FiniteTimeActionTester(duration: 0.2, externalEventLog: eventLog, tag: 2)
         let action3 = FiniteTimeActionTester(duration: 0.3, externalEventLog: eventLog, tag: 3)
         
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         sequence.simulateFullLifeCycle()
 
         let expectedEvents: [EventType] = [.willBecomeActiveWithTag(1),
@@ -112,7 +112,7 @@ class SequenceTests: XCTestCase {
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
 
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         let animation = Animation(action: sequence)
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: sequence.duration + 0.1, stepSize: 0.05)
@@ -130,7 +130,7 @@ class SequenceTests: XCTestCase {
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, easing: .linear, update: { value2 = $0 })
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value3 = $0 })
         
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         sequence.simulateFullLifeCycle()
         
         XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
@@ -146,7 +146,7 @@ class SequenceTests: XCTestCase {
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 4.0, easing: .linear, update: { value2 = $0 })
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { value3 = $0 })
         
-        let sequence = Sequence(actions: action1, action2, action3)
+        let sequence = ActionSequence(actions: action1, action2, action3)
         sequence.reverse = true
         sequence.simulateFullLifeCycle()
         
@@ -162,7 +162,7 @@ class SequenceTests: XCTestCase {
         var numCalls = 0
         let inner1 = FiniteTimeActionTester(duration: 1.0)
         let inner2 = FiniteTimeActionTester(duration: 1.0)
-        let sequence = Sequence(actions: inner1, inner2)
+        let sequence = ActionSequence(actions: inner1, inner2)
         sequence.onBecomeActive = {
             numCalls += 1
         }
@@ -176,7 +176,7 @@ class SequenceTests: XCTestCase {
         var numCalls = 0
         let inner1 = FiniteTimeActionTester(duration: 1.0)
         let inner2 = FiniteTimeActionTester(duration: 1.0)
-        let sequence = Sequence(actions: inner1, inner2)
+        let sequence = ActionSequence(actions: inner1, inner2)
         sequence.onBecomeInactive = {
             numCalls += 1
         }
@@ -194,7 +194,7 @@ class SequenceTests: XCTestCase {
         let timeAction = FiniteTimeActionTester(duration: 1.0)
         let triggerAction = RunBlockAction(handler: { numCalls += 1 })
         
-        let sequence = Sequence(actions: timeAction, triggerAction)
+        let sequence = ActionSequence(actions: timeAction, triggerAction)
         sequence.simulateFullLifeCycle()
         
         XCTAssertEqual(numCalls, 1)

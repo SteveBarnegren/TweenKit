@@ -179,7 +179,7 @@ class SunAndMoonExampleViewController: UIViewController {
         // Start the animation
         let moonAppear = makeMoonAction().reversed()
         let sunAppear = makeSunAction()
-        let sequence = Sequence(actions: moonAppear, sunAppear)
+        let sequence = ActionSequence(actions: moonAppear, sunAppear)
         
         if scrubbable {
             actionScrubber = ActionScrubber(action: sequence)

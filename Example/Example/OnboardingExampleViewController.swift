@@ -231,7 +231,7 @@ class OnboardingExampleViewController: UIViewController {
             }
         })
         
-        let secondPageAction = Sequence(actions:
+        let secondPageAction = ActionSequence(actions:
             [
                 ActionGroup(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize),
                 getClockPostion
@@ -262,12 +262,12 @@ class OnboardingExampleViewController: UIViewController {
        
         
         // Full action
-        let fullAction = Sequence(actions: firstPageAction, secondPageAction, thirdPageAction)
+        let fullAction = ActionSequence(actions: firstPageAction, secondPageAction, thirdPageAction)
         fullAction.onBecomeActive = { [unowned self] in self.clockView.isHidden = false }
         fullAction.onBecomeInactive = { [unowned self] in self.clockView.isHidden = true }
         
         // Return full action with start delay
-        return Sequence(actions: DelayAction(duration: 1.0), fullAction)
+        return ActionSequence(actions: DelayAction(duration: 1.0), fullAction)
     }
     
     func makeTkAttributesAction() -> FiniteTimeAction {
@@ -280,7 +280,7 @@ class OnboardingExampleViewController: UIViewController {
         }
         
         let delay = DelayAction(duration: 2.0)
-        return Sequence(actions: delay, action)
+        return ActionSequence(actions: delay, action)
     }
     
     func makeBackgroundColorsAction() -> FiniteTimeAction {
@@ -319,7 +319,7 @@ class OnboardingExampleViewController: UIViewController {
             actions.append(action)
         }
         
-        return Sequence(actions: actions)
+        return ActionSequence(actions: actions)
     }
     
     func registerCells() {

@@ -82,7 +82,7 @@ class EasingExamplesViewController: UIViewController {
             self.updateTableCells()
         }
             
-        let sequence = Sequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
+        let sequence = ActionSequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
         let repeated = sequence.repeatedForever()
         scheduler.run(action: repeated)
         

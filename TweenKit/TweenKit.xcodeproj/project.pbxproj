@@ -29,14 +29,14 @@
 		09F52D841E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */; };
 		09FF20801E802B8E0029CB2D /* RepeatActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */; };
 		09FF20831E802D330029CB2D /* ActionGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20821E802D330029CB2D /* ActionGroupTests.swift */; };
-		09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20841E802D430029CB2D /* SequenceTests.swift */; };
+		09FF20851E802D430029CB2D /* ActionSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20841E802D430029CB2D /* ActionSequenceTests.swift */; };
 		09FF20871E802D530029CB2D /* RunBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20861E802D530029CB2D /* RunBlockActionTests.swift */; };
 		09FF20891E8036A40029CB2D /* FiniteTimeActionTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */; };
 		09FF208B1E815B460029CB2D /* ReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208A1E815B460029CB2D /* ReverseAction.swift */; };
 		09FF208D1E8169E00029CB2D /* ReverseActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */; };
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		673CB76B1E7E889100592F24 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
-		673CB76D1E7E92BB00592F24 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* Sequence.swift */; };
+		673CB76D1E7E92BB00592F24 /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
 		673CB76F1E7E98E100592F24 /* UIKit+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76E1E7E98E100592F24 /* UIKit+Tweenable.swift */; };
 		673CB7721E7EA0BD00592F24 /* YoyoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7711E7EA0BD00592F24 /* YoyoAction.swift */; };
 		673CB7741E7EA8AA00592F24 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7731E7EA8AA00592F24 /* RepeatAction.swift */; };
@@ -86,14 +86,14 @@
 		09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+BezierPath.swift"; sourceTree = "<group>"; };
 		09FF207F1E802B8E0029CB2D /* RepeatActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatActionTests.swift; sourceTree = "<group>"; };
 		09FF20821E802D330029CB2D /* ActionGroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroupTests.swift; sourceTree = "<group>"; };
-		09FF20841E802D430029CB2D /* SequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceTests.swift; sourceTree = "<group>"; };
+		09FF20841E802D430029CB2D /* ActionSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSequenceTests.swift; sourceTree = "<group>"; };
 		09FF20861E802D530029CB2D /* RunBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunBlockActionTests.swift; sourceTree = "<group>"; };
 		09FF20881E8036A40029CB2D /* FiniteTimeActionTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteTimeActionTester.swift; sourceTree = "<group>"; };
 		09FF208A1E815B460029CB2D /* ReverseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseAction.swift; sourceTree = "<group>"; };
 		09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseActionTests.swift; sourceTree = "<group>"; };
 		673CB7681E7DAEC000592F24 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		673CB76A1E7E889100592F24 /* ActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroup.swift; sourceTree = "<group>"; };
-		673CB76C1E7E92BB00592F24 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		673CB76C1E7E92BB00592F24 /* ActionSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSequence.swift; sourceTree = "<group>"; };
 		673CB76E1E7E98E100592F24 /* UIKit+Tweenable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Tweenable.swift"; sourceTree = "<group>"; };
 		673CB7711E7EA0BD00592F24 /* YoyoAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoyoAction.swift; sourceTree = "<group>"; };
 		673CB7731E7EA8AA00592F24 /* RepeatAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatAction.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				09FF20821E802D330029CB2D /* ActionGroupTests.swift */,
-				09FF20841E802D430029CB2D /* SequenceTests.swift */,
+				09FF20841E802D430029CB2D /* ActionSequenceTests.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				673CB76A1E7E889100592F24 /* ActionGroup.swift */,
-				673CB76C1E7E92BB00592F24 /* Sequence.swift */,
+				673CB76C1E7E92BB00592F24 /* ActionSequence.swift */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				0984A5A51E83F99200240A50 /* DelayAction.swift in Sources */,
 				673CB7721E7EA0BD00592F24 /* YoyoAction.swift in Sources */,
 				6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */,
-				673CB76D1E7E92BB00592F24 /* Sequence.swift in Sources */,
+				673CB76D1E7E92BB00592F24 /* ActionSequence.swift in Sources */,
 				09FF208B1E815B460029CB2D /* ReverseAction.swift in Sources */,
 				673CB7781E7EC8F600592F24 /* RunBlockAction.swift in Sources */,
 				0914BDDE1E82C5F80002C6FB /* ArcAction.swift in Sources */,
@@ -453,7 +453,7 @@
 				09BB04F21E8018E20011E68E /* SchedulerTests.swift in Sources */,
 				09CE9BAF1E9639FF0008C33E /* CoreGraphicsTweenableTests.swift in Sources */,
 				09BB04EE1E80065C0011E68E /* Ticker.swift in Sources */,
-				09FF20851E802D430029CB2D /* SequenceTests.swift in Sources */,
+				09FF20851E802D430029CB2D /* ActionSequenceTests.swift in Sources */,
 				0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */,
 				09FF20891E8036A40029CB2D /* FiniteTimeActionTester.swift in Sources */,
 				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,

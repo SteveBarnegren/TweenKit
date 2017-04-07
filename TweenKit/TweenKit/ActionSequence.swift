@@ -24,7 +24,7 @@ class SequenceActionWrapper {
     }
 }
 
-public class Sequence: FiniteTimeAction {
+public class ActionSequence: FiniteTimeAction {
     
     // MARK: - Public
     

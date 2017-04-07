@@ -160,7 +160,7 @@ class StringTweenViewController: UIViewController {
         }
         
         // Create a sequence a delay at each end
-        let sequence = Sequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
+        let sequence = ActionSequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
         
         // Run it forever
         scheduler.run(action: sequence.yoyo().repeatedForever())
