@@ -37,12 +37,12 @@ pod "TweenKit"
 
 Add `import TweenKit` to the top of the files you want to use TweenKit from
 
-### Creating a scheduler instance
+### Creating an ActionScheduler
 
-You should create an instance of `Scheduler` to run your animations. You should retain the scheduler, so it's best made as a property on your View Controller.
+Create an instance of `ActionScheduler` to run your animations. You should retain the scheduler, so it's best made as a property on your View Controller.
 
 ```
-let scheduler = Scheduler()
+let scheduler = ActionScheduler()
 ```
 
 ### Actions
@@ -78,7 +78,7 @@ scheduler.run(action: action)
 
 ### Grouping actions
 
-Using `Group`, several animations can be run at once. For instance, we can change a view's frame and it's background color:
+Using an `ActionGroup`, several animations can be run at once. For instance, we can change a view's frame and it's background color:
 
 ```
 // Create a move action
@@ -101,7 +101,7 @@ let changeColor = InterpolationAction(from: UIColor.red,
 }
         
 // Make a group to run them at the same time
-let moveAndChangeColor = Group(actions: move, changeColor)
+let moveAndChangeColor = ActionGroup(actions: move, changeColor)
 scheduler.run(action: moveAndChangeColor)
 ```
 
@@ -109,7 +109,7 @@ scheduler.run(action: moveAndChangeColor)
 
 ### Running actions in sequence
 
-Using `Sequence`, several animations can be run in order. This time, we can use supply a closure as the 'from' parameter, to animate the view from it's current frame:
+Using an `ActionSequence`, several animations can be run in order. This time, we can use supply a closure as the 'from' parameter, to animate the view from it's current frame:
 
 ```
 let moveOne = InterpolationAction(from: { [unowned self] in self.squareView.frame },
@@ -126,7 +126,7 @@ let moveTwo = InterpolationAction(from: { [unowned self] in self.squareView.fram
                                     [unowned self] in self.squareView.frame = $0
 }
         
-let moveTwice = Sequence(actions: moveOne, moveTwo)
+let moveTwice = ActionSequence(actions: moveOne, moveTwo)
 scheduler.run(action: moveTwice)
 ```
 
@@ -143,7 +143,7 @@ scheduler.run(action: repeatedForever)
 
 ### Yoyo
 
-If you want your action to go back and forth, you can use the `Yoyo` action:
+If you want your action to go back and forth, you can use a `YoyoAction`. These can be easily constructed by calling the `yoyo()` method on any action:
 
 ```
 let move = InterpolationAction(from: { [unowned self] in self.squareView.frame },
@@ -180,7 +180,7 @@ let actions = circleLayers.map{
 }
         
 // Run the actions in a staggered group
-let group = Group(staggered: actions, offset: 0.125)
+let group = ActionGroup(staggered: actions, offset: 0.125)
         
 // Repeat forever
 let repeatForever = group.repeatedForever()
