@@ -45,7 +45,7 @@ class IntroView: UIView {
             self.bottomLabel.alpha = $0
         }
         
-        let group = Group(actions: moveAction, alphaAction)
+        let group = ActionGroup(actions: moveAction, alphaAction)
         actionScrubber = ActionScrubber(action: group)
     }
     

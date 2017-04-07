@@ -9,7 +9,7 @@
 import Foundation
 
 /** Groups run multiple actions in parallel */
-public class Group: FiniteTimeAction, SchedulableAction {
+public class ActionGroup: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     

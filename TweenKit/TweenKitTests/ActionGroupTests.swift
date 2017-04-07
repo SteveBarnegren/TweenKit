@@ -24,7 +24,7 @@ class GroupTests: XCTestCase {
         let twoSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear, update: { _ in })
         let threeSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: { _ in })
         
-        let group = Group(actions: oneSecondAction, twoSecondAction, threeSecondAction)
+        let group = ActionGroup(actions: oneSecondAction, twoSecondAction, threeSecondAction)
         XCTAssertEqualWithAccuracy(group.duration, 3.0, accuracy: 0.001)
     }
     
@@ -38,7 +38,7 @@ class GroupTests: XCTestCase {
         let secondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { secondValue = $0 })
         let thirdAction = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { thirdValue = $0 })
         
-        let group = Group(actions: firstAction, secondAction, thirdAction)
+        let group = ActionGroup(actions: firstAction, secondAction, thirdAction)
         let animation = Animation(action: group)
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: group.duration + 0.1)
@@ -56,7 +56,7 @@ class GroupTests: XCTestCase {
         let runBlock = RunBlockAction{
             wasInvoked = true
         }
-        let group = Group(actions: interpolate, runBlock)
+        let group = ActionGroup(actions: interpolate, runBlock)
         
         // Test is run at the beginning
         group.willBecomeActive()
@@ -78,7 +78,7 @@ class GroupTests: XCTestCase {
         let runBlock = RunBlockAction{
             wasInvoked = true
         }
-        let group = Group(actions: interpolate, runBlock)
+        let group = ActionGroup(actions: interpolate, runBlock)
         group.reverse = true
 
         // Test is not run at the beginning
@@ -99,7 +99,7 @@ class GroupTests: XCTestCase {
         
         let firstAction = FiniteTimeActionTester(duration: 0.1)
         let secondAction = FiniteTimeActionTester(duration: 0.2)
-        let group = Group(actions: firstAction, secondAction)
+        let group = ActionGroup(actions: firstAction, secondAction)
         group.simulateFullLifeCycle()
         
         let expectedEvents: [EventType] = [.willBecomeActive,
@@ -121,7 +121,7 @@ class GroupTests: XCTestCase {
         
         let firstAction = FiniteTimeActionTester(duration: 0.1)
         let secondAction = FiniteTimeActionTester(duration: 0.2)
-        let group = Group(actions: firstAction, secondAction)
+        let group = ActionGroup(actions: firstAction, secondAction)
         group.reverse = true
         group.simulateFullLifeCycle()
         
@@ -150,7 +150,7 @@ class GroupTests: XCTestCase {
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
         
-        let group = Group(actions: action1, action2, action3)
+        let group = ActionGroup(actions: action1, action2, action3)
         group.simulateFullLifeCycle()
         
         XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
@@ -166,7 +166,7 @@ class GroupTests: XCTestCase {
         let action2 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.2, easing: .linear, update: { value2 = $0 })
         let action3 = InterpolationAction(from: 0.0, to: 1.0, duration: 0.3, easing: .linear, update: { value3 = $0 })
         
-        let group = Group(actions: action1, action2, action3)
+        let group = ActionGroup(actions: action1, action2, action3)
         group.reverse = true
         group.simulateFullLifeCycle()
         
@@ -182,7 +182,7 @@ class GroupTests: XCTestCase {
         var numCalls = 0
         let inner1 = FiniteTimeActionTester(duration: 1.0)
         let inner2 = FiniteTimeActionTester(duration: 1.0)
-        let group = Group(actions: inner1, inner2)
+        let group = ActionGroup(actions: inner1, inner2)
         group.onBecomeActive = {
             numCalls += 1
         }
@@ -196,7 +196,7 @@ class GroupTests: XCTestCase {
         var numCalls = 0
         let inner1 = FiniteTimeActionTester(duration: 1.0)
         let inner2 = FiniteTimeActionTester(duration: 1.0)
-        let group = Group(actions: inner1, inner2)
+        let group = ActionGroup(actions: inner1, inner2)
         group.onBecomeInactive = {
             numCalls += 1
         }

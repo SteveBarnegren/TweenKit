@@ -43,7 +43,7 @@ class TweenKitAttributesView: UIView {
         }
         
         let offset = (1.0 - duration) / Double(self.labelsInfo.count)
-        let fullAction = Group(staggered: actions, offset: offset)
+        let fullAction = ActionGroup(staggered: actions, offset: offset)
         actionScrubber = ActionScrubber(action: fullAction.yoyo())
         
     }

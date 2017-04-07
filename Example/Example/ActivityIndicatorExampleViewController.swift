@@ -77,7 +77,7 @@ class ActivityIndicatorExampleViewController: UIViewController {
         }
         
         // Run the actions in a staggered group
-        let group = Group(staggered: actions, offset: 0.125)
+        let group = ActionGroup(staggered: actions, offset: 0.125)
         
         // Repeat forever
         let repeatForever = group.repeatedForever()

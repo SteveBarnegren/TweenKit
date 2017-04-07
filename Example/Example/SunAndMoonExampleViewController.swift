@@ -235,7 +235,7 @@ class SunAndMoonExampleViewController: UIViewController {
         
         
         // Create group
-        let group = Group(actions: moveSunOnScreen, rotateSun, changeBackgroundColorTop, changeBackgroundColorBottom)
+        let group = ActionGroup(actions: moveSunOnScreen, rotateSun, changeBackgroundColorTop, changeBackgroundColorBottom)
         
         return group
         
@@ -266,7 +266,7 @@ class SunAndMoonExampleViewController: UIViewController {
                                                               update: { [unowned self] in self.backgroundColorBottom = $0 })
         
         // Group
-        let group = Group(actions: move, changeBackgroundColorTop, changeBackgroundColorBottom)
+        let group = ActionGroup(actions: move, changeBackgroundColorTop, changeBackgroundColorBottom)
 
         return group
     }

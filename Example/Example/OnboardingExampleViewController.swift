@@ -182,7 +182,7 @@ class OnboardingExampleViewController: UIViewController {
             self.introView.update(t: $0)
         }
         
-        return Group(actions:
+        return ActionGroup(actions:
             [introAction,
              rocketAction,
              starsAction,
@@ -233,7 +233,7 @@ class OnboardingExampleViewController: UIViewController {
         
         let secondPageAction = Sequence(actions:
             [
-                Group(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize),
+                ActionGroup(actions: secondPageChangeTime, secondPageMoveClock, secondPageChangeSize),
                 getClockPostion
             ])
                 
@@ -258,7 +258,7 @@ class OnboardingExampleViewController: UIViewController {
         }
         thirdPageMoveClock.onBecomeInactive = { [unowned self] in self.showExclamation = false }
         
-        let thirdPageAction = Group(actions: thirdPageFillWhite, thirdPageMoveClock)
+        let thirdPageAction = ActionGroup(actions: thirdPageFillWhite, thirdPageMoveClock)
        
         
         // Full action
