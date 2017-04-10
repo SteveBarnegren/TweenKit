@@ -5,4 +5,6 @@ xcode_scheme: TweenKit
 xcode_sdk: iphonesimulator10.1
 
 #script: xcodebuild -project TweenKit.xcodeproj -scheme TweenKit -sdk iphonesimulator10.1 build test
-script: xcodebuild test -project TweenKit/TweenKit.xcodeproj -scheme TweenKit -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0'
+#script: xcodebuild test -project TweenKit/TweenKit.xcodeproj -scheme TweenKit -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0'
+
+script: xcodebuild test -project TweenKit/TweenKit.xcodeproj -scheme TweenKit -sdk iphonesimulator -destination "name=iPhone SE"
