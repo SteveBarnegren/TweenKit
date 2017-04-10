@@ -1,9 +1,10 @@
 # TweenKit
 
-[![CI Status](http://img.shields.io/travis/steve.barnegren@gmail.com/TweenKit.svg?style=flat)](https://travis-ci.org/steve.barnegren@gmail.com/TweenKit)
+[![CI Status](https://api.travis-ci.org/SteveBarnegren/TweenKit.svg?branch=master)](https://travis-ci.org/SteveBarnegren/TweenKit)
 [![Version](https://img.shields.io/cocoapods/v/TweenKit.svg?style=flat)](http://cocoapods.org/pods/TweenKit)
 [![License](https://img.shields.io/cocoapods/l/TweenKit.svg?style=flat)](http://cocoapods.org/pods/TweenKit)
 [![Platform](https://img.shields.io/cocoapods/p/TweenKit.svg?style=flat)](http://cocoapods.org/pods/TweenKit)
+[![Twitter](https://img.shields.io/badge/contact-@stevebarnegren-blue.svg?style=flat)](https://twitter.com/stevebarnegren)
 
 TweenKit is a powerful animation library that allows you to animate (or 'tween') anything. TweenKit's animations are also scrubbable; perfect for building awesome onboarding experiences!
 
