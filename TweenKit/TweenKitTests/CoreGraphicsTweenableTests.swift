@@ -32,6 +32,8 @@ class CoreGraphicsTweenableTests: XCTestCase {
     }
     
     func testCGPointCanBeConstructedAsTweenable2DCoordinate() {
+        
+        XCTFail("Test CI test fail")
     
         let x = CGFloat(2)
         let y = CGFloat(3)
