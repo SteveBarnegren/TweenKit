@@ -1,3 +1,5 @@
-language: objective-c
-script:
-	- xcodebuild test -project TweenKit.xcodeproj -scheme TweenKitTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 6'
+language: objective-c 
+osx_image: xcode8.3
+xcode_project: TweenKit.xcodeproj
+xcode_scheme: TweenKit
+xcode_sdk: iphonesimulator10.1
