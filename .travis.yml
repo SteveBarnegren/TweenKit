@@ -2,4 +2,7 @@ language: objective-c
 osx_image: xcode8.3
 xcode_project: TweenKit.xcodeproj
 xcode_scheme: TweenKit
-xcode_sdk: iphonesimulator10.1
+//xcode_sdk: iphonesimulator10.1
+
+script:
+xcodebuild -project TweenKit.xcodeproj -scheme TweenKit -sdk iphonesimulator10.1 build test
