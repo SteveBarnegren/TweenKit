@@ -58,7 +58,7 @@ class EventLog {
     }
 }
 
-class FiniteTimeActionTester: FiniteTimeAction {
+class FiniteTimeActionMock: FiniteTimeAction {
 
     // MARK: - Init
  

@@ -31,7 +31,7 @@ class RepeatActionTests: XCTestCase {
     
     func testActionIsRunCorrectNumberOfTimes() {
         
-        let action = FiniteTimeActionTester(duration: 0.1)
+        let action = FiniteTimeActionMock(duration: 0.1)
         let repeatedAction = action.repeated(3)
         
         let expectedEvents: [EventType] = [.willBecomeActive,
@@ -57,7 +57,7 @@ class RepeatActionTests: XCTestCase {
     
     func testInnerActionExpectedLifeCycleEventsAreCalled() {
         
-        let action = FiniteTimeActionTester(duration: 5.0)
+        let action = FiniteTimeActionMock(duration: 5.0)
         let repeated = action.repeated(3)
         repeated.simulateFullLifeCycle()
         
@@ -77,7 +77,7 @@ class RepeatActionTests: XCTestCase {
     
     func testInnerActionExpectedLifeCycleEventsAreCalledWhenReversed() {
         
-        let action = FiniteTimeActionTester(duration: 5.0)
+        let action = FiniteTimeActionMock(duration: 5.0)
         let repeated = action.repeated(3)
         repeated.reverse = true
         repeated.simulateFullLifeCycle()
@@ -102,7 +102,7 @@ class RepeatActionTests: XCTestCase {
     func testRepeatActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let repeated = inner.repeated(3)
         repeated.onBecomeActive = {
             numCalls += 1
@@ -115,7 +115,7 @@ class RepeatActionTests: XCTestCase {
     func testRepeatActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let repeated = inner.repeated(3)
         repeated.onBecomeInactive = {
             numCalls += 1

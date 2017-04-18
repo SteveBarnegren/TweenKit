@@ -49,7 +49,7 @@ class RunBlockActionTests: XCTestCase {
     func testRepeatActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let runBlock = FiniteTimeActionTester(duration: 1.0)
+        let runBlock = FiniteTimeActionMock(duration: 1.0)
         runBlock.onBecomeActive = {
             numCalls += 1
         }
@@ -61,7 +61,7 @@ class RunBlockActionTests: XCTestCase {
     func testRepeatActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let runBlock = FiniteTimeActionTester(duration: 1.0)
+        let runBlock = FiniteTimeActionMock(duration: 1.0)
         runBlock.onBecomeInactive = {
             numCalls += 1
         }

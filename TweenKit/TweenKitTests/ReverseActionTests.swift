@@ -62,7 +62,7 @@ class ReverseActionTests: XCTestCase {
     
     func testReverseActionInnerActionReceivesCorrectLifeCycleEvents() {
         
-        let action = FiniteTimeActionTester(duration: 5.0)
+        let action = FiniteTimeActionMock(duration: 5.0)
         let reversed = action.reversed()
         reversed.simulateFullLifeCycle()
         
@@ -79,7 +79,7 @@ class ReverseActionTests: XCTestCase {
     
     func testReverseActionInnerActionReceivesCorrectLifeCycleEventsWhenReversed() {
         
-        let action = FiniteTimeActionTester(duration: 5.0)
+        let action = FiniteTimeActionMock(duration: 5.0)
         let reversed = action.reversed()
         reversed.reverse = true  // ==
         reversed.simulateFullLifeCycle()
@@ -101,7 +101,7 @@ class ReverseActionTests: XCTestCase {
     func testReverseActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let reversed = inner.reversed()
         reversed.onBecomeActive = {
             numCalls += 1
@@ -114,7 +114,7 @@ class ReverseActionTests: XCTestCase {
     func testReverseActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let reversed = inner.reversed()
         reversed.onBecomeInactive = {
             numCalls += 1

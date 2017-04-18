@@ -59,7 +59,7 @@ class RepeatForeverActionTests: XCTestCase {
         
         let actionDuration = 0.1
         
-        let action = FiniteTimeActionTester(duration: actionDuration)
+        let action = FiniteTimeActionMock(duration: actionDuration)
         let repeatedForever = action.repeatedForever()
         let animation = Animation(action: repeatedForever)
         
@@ -83,7 +83,7 @@ class RepeatForeverActionTests: XCTestCase {
     
     func testRepeatForeverActionCallsExpectedInnerActionEventsWithStepSizeGreaterThanInnerActionDuration() {
         
-        let action = FiniteTimeActionTester(duration: 1.0)
+        let action = FiniteTimeActionMock(duration: 1.0)
         let repeatedForever = action.repeatedForever()
         
         // Simulate a jump of 3.5 actions worth

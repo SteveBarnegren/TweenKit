@@ -74,7 +74,7 @@ class GroupTests: XCTestCase {
         
         var wasInvoked = false
 
-        let interpolate = FiniteTimeActionTester(duration: 1.0)
+        let interpolate = FiniteTimeActionMock(duration: 1.0)
         let runBlock = RunBlockAction{
             wasInvoked = true
         }
@@ -97,8 +97,8 @@ class GroupTests: XCTestCase {
     
     func testExpectedInnerActionsLifeCycleEventsAreCalled() {
         
-        let firstAction = FiniteTimeActionTester(duration: 0.1)
-        let secondAction = FiniteTimeActionTester(duration: 0.2)
+        let firstAction = FiniteTimeActionMock(duration: 0.1)
+        let secondAction = FiniteTimeActionMock(duration: 0.2)
         let group = ActionGroup(actions: firstAction, secondAction)
         group.simulateFullLifeCycle()
         
@@ -119,8 +119,8 @@ class GroupTests: XCTestCase {
     
     func testExpectedInnerActionsLifeCycleEventsAreCalledWhenReversed() {
         
-        let firstAction = FiniteTimeActionTester(duration: 0.1)
-        let secondAction = FiniteTimeActionTester(duration: 0.2)
+        let firstAction = FiniteTimeActionMock(duration: 0.1)
+        let secondAction = FiniteTimeActionMock(duration: 0.2)
         let group = ActionGroup(actions: firstAction, secondAction)
         group.reverse = true
         group.simulateFullLifeCycle()
@@ -180,8 +180,8 @@ class GroupTests: XCTestCase {
     func testGroupActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner1 = FiniteTimeActionTester(duration: 1.0)
-        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let inner1 = FiniteTimeActionMock(duration: 1.0)
+        let inner2 = FiniteTimeActionMock(duration: 1.0)
         let group = ActionGroup(actions: inner1, inner2)
         group.onBecomeActive = {
             numCalls += 1
@@ -194,8 +194,8 @@ class GroupTests: XCTestCase {
     func testGroupActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner1 = FiniteTimeActionTester(duration: 1.0)
-        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let inner1 = FiniteTimeActionMock(duration: 1.0)
+        let inner2 = FiniteTimeActionMock(duration: 1.0)
         let group = ActionGroup(actions: inner1, inner2)
         group.onBecomeInactive = {
             numCalls += 1

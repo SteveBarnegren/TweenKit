@@ -80,7 +80,7 @@ class YoyoActionTests: XCTestCase {
                                            .didBecomeInactive]
         
         let duration = 0.1
-        let action = FiniteTimeActionTester(duration: duration)
+        let action = FiniteTimeActionMock(duration: duration)
         let yoyo = action.yoyo()
         let animation = Animation(action: yoyo)
         scheduler.add(animation: animation)
@@ -95,7 +95,7 @@ class YoyoActionTests: XCTestCase {
     
     func testYoyoInnerActionReceivesExpectedLifeCycleEvents() {
         
-        let action = FiniteTimeActionTester(duration: 1.0)
+        let action = FiniteTimeActionMock(duration: 1.0)
         let yoyo = action.yoyo()
         yoyo.simulateFullLifeCycle()
         
@@ -115,7 +115,7 @@ class YoyoActionTests: XCTestCase {
     
     func testYoyoInnerActionReceivesExpectedLifeCycleEventsWhenReversed() {
         
-        let action = FiniteTimeActionTester(duration: 1.0)
+        let action = FiniteTimeActionMock(duration: 1.0)
         let yoyo = action.yoyo()
         yoyo.reverse = true
         yoyo.simulateFullLifeCycle()
@@ -139,7 +139,7 @@ class YoyoActionTests: XCTestCase {
     func testYoyoActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let yoyo = YoyoAction(action: inner)
         yoyo.onBecomeActive = {
             numCalls += 1
@@ -152,7 +152,7 @@ class YoyoActionTests: XCTestCase {
     func testYoyoActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner = FiniteTimeActionTester(duration: 1.0)
+        let inner = FiniteTimeActionMock(duration: 1.0)
         let yoyo = YoyoAction(action: inner)
         yoyo.onBecomeInactive = {
             numCalls += 1

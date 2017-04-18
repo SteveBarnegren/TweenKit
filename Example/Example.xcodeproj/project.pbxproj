@@ -185,7 +185,6 @@
 		0984A59D1E83C16900240A50 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				09CE9BB01E963F8E0008C33E /* String Tween */,
 				0984A59B1E83BEB100240A50 /* ExampleSwitcherViewController.swift */,
 				0984A59E1E83C17100240A50 /* 1. Basic Tween */,
 				0984A5A11E83EFF000240A50 /* 2. Activity Indicator */,
@@ -220,13 +219,6 @@
 				0984A5A91E843CA800240A50 /* SunAndMoonExampleViewController.swift */,
 			);
 			name = "3/4. Sun and moon";
-			sourceTree = "<group>";
-		};
-		09CE9BB01E963F8E0008C33E /* String Tween */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "String Tween";
 			sourceTree = "<group>";
 		};
 		6750B90D1E7C85A300E7AEE2 = {

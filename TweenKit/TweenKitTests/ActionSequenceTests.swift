@@ -39,8 +39,8 @@ class SequenceTests: XCTestCase {
 
         var events = [String]()
         
-        func makeAction(tag: Int) -> FiniteTimeActionTester {
-            let action = FiniteTimeActionTester(duration: 0.1)
+        func makeAction(tag: Int) -> FiniteTimeActionMock {
+            let action = FiniteTimeActionMock(duration: 0.1)
             action.onBecomeActive = { events.append(makeBecomeActiveString(tag: tag)) }
             action.onBecomeInactive = { events.append(makeBecomeInactiveString(tag: tag)) }
             action.onWillBegin = { events.append(makeWillBeginString(tag: tag)) }
@@ -78,9 +78,9 @@ class SequenceTests: XCTestCase {
         
         let eventLog = EventLog()
         
-        let action1 = FiniteTimeActionTester(duration: 0.1, externalEventLog: eventLog, tag: 1)
-        let action2 = FiniteTimeActionTester(duration: 0.2, externalEventLog: eventLog, tag: 2)
-        let action3 = FiniteTimeActionTester(duration: 0.3, externalEventLog: eventLog, tag: 3)
+        let action1 = FiniteTimeActionMock(duration: 0.1, externalEventLog: eventLog, tag: 1)
+        let action2 = FiniteTimeActionMock(duration: 0.2, externalEventLog: eventLog, tag: 2)
+        let action3 = FiniteTimeActionMock(duration: 0.3, externalEventLog: eventLog, tag: 3)
         
         let sequence = ActionSequence(actions: action1, action2, action3)
         sequence.simulateFullLifeCycle()
@@ -160,8 +160,8 @@ class SequenceTests: XCTestCase {
     func testSequenceActionOnBecomeActiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner1 = FiniteTimeActionTester(duration: 1.0)
-        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let inner1 = FiniteTimeActionMock(duration: 1.0)
+        let inner2 = FiniteTimeActionMock(duration: 1.0)
         let sequence = ActionSequence(actions: inner1, inner2)
         sequence.onBecomeActive = {
             numCalls += 1
@@ -174,8 +174,8 @@ class SequenceTests: XCTestCase {
     func testSequenceActionOnBecomeInactiveClosureIsCalled() {
         
         var numCalls = 0
-        let inner1 = FiniteTimeActionTester(duration: 1.0)
-        let inner2 = FiniteTimeActionTester(duration: 1.0)
+        let inner1 = FiniteTimeActionMock(duration: 1.0)
+        let inner2 = FiniteTimeActionMock(duration: 1.0)
         let sequence = ActionSequence(actions: inner1, inner2)
         sequence.onBecomeInactive = {
             numCalls += 1
@@ -191,7 +191,7 @@ class SequenceTests: XCTestCase {
         
         var numCalls = 0
         
-        let timeAction = FiniteTimeActionTester(duration: 1.0)
+        let timeAction = FiniteTimeActionMock(duration: 1.0)
         let triggerAction = RunBlockAction(handler: { numCalls += 1 })
         
         let sequence = ActionSequence(actions: timeAction, triggerAction)
