@@ -197,7 +197,7 @@ class SunAndMoonExampleViewController: UIViewController {
         slider.sizeToFit()
         let margin = CGFloat(5)
         slider.frame = CGRect(x: margin,
-                              y: view.bounds.size.height - slider.bounds.size.height - 30,
+                              y: view.bounds.size.height - slider.bounds.size.height - 50,
                               width: view.bounds.size.width - (margin * 2),
                               height: slider.bounds.size.height);
     }

@@ -303,7 +303,7 @@
 				TargetAttributes = {
 					6750B9151E7C85A300E7AEE2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 57B8T35GZ4;
+						DevelopmentTeam = VAA3W4LPY2;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -513,15 +513,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
-				DEVELOPMENT_TEAM = 57B8T35GZ4;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Steven Barnegren (5AMCQ7SD28)";
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4a27b31a-d6bc-4261-882a-6bc3907e5dac";
-				PROVISIONING_PROFILE_SPECIFIER = InHouseWildcard;
+				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -531,16 +531,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hi Mum Said Dad Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hi Mum Said Dad Limited";
-				DEVELOPMENT_TEAM = 57B8T35GZ4;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Steven Barnegren (5AMCQ7SD28)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Steven Barnegren (5AMCQ7SD28)";
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevebarnegren.tweenkitexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4a27b31a-d6bc-4261-882a-6bc3907e5dac";
-				PROVISIONING_PROFILE_SPECIFIER = InHouseWildcard;
+				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
