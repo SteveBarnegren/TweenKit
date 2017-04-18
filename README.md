@@ -6,11 +6,13 @@
 [![Platform](https://img.shields.io/cocoapods/p/TweenKit.svg?style=flat)](http://cocoapods.org/pods/TweenKit)
 [![Twitter](https://img.shields.io/badge/contact-@stevebarnegren-blue.svg?style=flat)](https://twitter.com/stevebarnegren)
 
-TweenKit is a powerful animation library that allows you to animate (or 'tween') anything. TweenKit's animations are also scrubbable; perfect for building awesome onboarding experiences!
+TweenKit is a powerful animation library that allows you to animate (or 'tween') anything. TweenKit's animations are also scrubbable, perfect for building awesome onboarding experiences!
 
-!!!GIFs!!!
+![tweenkit](https://cloud.githubusercontent.com/assets/6288713/25148841/31245f10-2474-11e7-927d-4045fb88ad52.gif)
 
-TweenKit's animations are:
+######Download the example project to see how these animations were created
+
+####TweenKit's animations are:
 
 * Reveseable
 * Repeatable
@@ -32,13 +34,13 @@ it, simply add the following line to your Podfile:
 pod "TweenKit"
 ```
 
-## How to use
+## Importing TweenKit
 
-### Import TweenKit
+
 
 Add `import TweenKit` to the top of the files you want to use TweenKit from
 
-### Creating an ActionScheduler
+## Creating an ActionScheduler
 
 Create an instance of `ActionScheduler` to run your animations. You should retain the scheduler, so it's best made as a property on your View Controller.
 
@@ -46,15 +48,15 @@ Create an instance of `ActionScheduler` to run your animations. You should retai
 let scheduler = ActionScheduler()
 ```
 
-### Actions
+## Actions
 
-TweenKit's animations are comprised of 'Actions'. These are small animation units that can be chained or grouped to build complex animations. Once you have created an action, you can tell the scheduler to run it.
+TweenKit's animations are composed of 'Actions'. These are small animation units that can be chained or grouped to build complex animations. Once you have created an action, you can tell the scheduler to run it.
 
 ```
 scheduler.run(action: myAction)
 ```
 
-### Animating a view's frame
+## Animating a view's frame
 
 Anything that conforms to the 'Tweenable' protocol, can be animated.
 
@@ -77,7 +79,7 @@ scheduler.run(action: action)
 ```
 ![basictween](https://cloud.githubusercontent.com/assets/6288713/24793903/a4d1b0b8-1b7b-11e7-925d-42deea17faeb.gif)
 
-### Grouping actions
+## Grouping actions
 
 Using an `ActionGroup`, several animations can be run at once. For instance, we can change a view's frame and it's background color:
 
@@ -108,7 +110,7 @@ scheduler.run(action: moveAndChangeColor)
 
 ![grouptween](https://cloud.githubusercontent.com/assets/6288713/24795622/d9c06778-1b81-11e7-9c8b-c44c614e7528.gif)
 
-### Running actions in sequence
+## Running actions in sequence
 
 Using an `ActionSequence`, several animations can be run in order. This time, we can use supply a closure as the 'from' parameter, to animate the view from it's current frame:
 
@@ -133,7 +135,7 @@ scheduler.run(action: moveTwice)
 
 ![sequencetween](https://cloud.githubusercontent.com/assets/6288713/24795989/3486bcba-1b83-11e7-8e2d-cdce94c451ad.gif)
 
-### Repeating actions
+## Repeating actions
 
 Use `RepeatAction` to repeat your actions, or `RepeatForeverAction` to repeat an action forever. You can easily contruct these using the `repeated(times:)` and `repeatedForever` methods on any action:
 
@@ -142,7 +144,7 @@ let repeatedForever = myAction.repeatedForever()
 scheduler.run(action: repeatedForever)
 ```
 
-### Yoyo
+## Yoyo
 
 If you want your action to go back and forth, you can use a `YoyoAction`. These can be easily constructed by calling the `yoyo()` method on any action:
 
@@ -158,7 +160,7 @@ scheduler.run(action: move.yoyo().repeatedForever() )
 ```
 ![yoyotween](https://cloud.githubusercontent.com/assets/6288713/24805340/49231f76-1ba9-11e7-9832-2ce5da836947.gif)
 
-### Arc Actions
+## Arc Actions
 
 `ArcAction` can animate any object that conforms to `Tweenable2DCoordinate` in a circular motion.
 
@@ -192,7 +194,7 @@ scheduler.run(action: repeatForever)
 
 ![activityindicator](https://cloud.githubusercontent.com/assets/6288713/24805875/f4b39e0a-1baa-11e7-9e3d-ba8116ec27c5.gif)
 
-### Bezier Actions
+## Bezier Actions
 
 Objects can be animated along a bezier path using `BezierAction`. The callback supplies both position and rotation.
 
@@ -215,7 +217,7 @@ scheduler.run(action: action)
 
 ![rocket](https://cloud.githubusercontent.com/assets/6288713/24763091/43de5858-1ae8-11e7-9e70-3e5d4dc182eb.gif)
 
-### Scrubbable actions
+## Scrubbable actions
 
 Scrubbable Actions are great for building unique onboarding experiences.
 
@@ -239,7 +241,7 @@ func sliderChanged(slider: UISlider) {
 
 ![scrubbabletween](https://cloud.githubusercontent.com/assets/6288713/24806390/9955ef7a-1bac-11e7-901c-625e8283487f.gif)
 
-### Animating your own objects
+## Animating your own objects
 
 By adding conformance to the `Tweenable` protocol, anything can be animated. You decide what it means to 'tween' your object, making this a flexible approach.
 
@@ -247,7 +249,7 @@ For instance, by conforming `String` to `Tweenable` we can turn a **bat** into a
 
 ![battocat](https://cloud.githubusercontent.com/assets/6288713/24763350/04d6c82e-1ae9-11e7-9aa8-d0ec97cdd8f1.gif)
 
-### Other Stuff
+## Other Stuff
 
 Use `DelayAction` to add a delay in to a sequence
 
