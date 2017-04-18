@@ -247,6 +247,15 @@ By adding conformance to the `Tweenable` protocol, anything can be animated. You
 
 For instance, by conforming `String` to `Tweenable` we can turn a **bat** into a **cat**:
 
+```
+InterpolationAction(from: "bat",
+                    to: "cat",
+                    duration: 4,
+                    easing: .exponentialInOut) {
+                     [unowned self] in self.label.text = $0
+}
+```
+
 ![battocat](https://cloud.githubusercontent.com/assets/6288713/24763350/04d6c82e-1ae9-11e7-9aa8-d0ec97cdd8f1.gif)
 
 ## Other Stuff
