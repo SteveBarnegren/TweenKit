@@ -10,6 +10,8 @@ import UIKit
 
 class BackgroundColorView: UIView {
     
+    // MARK: - Internal
+    
     func setColors(top: UIColor, bottom: UIColor) {
         
         CATransaction.begin()
@@ -25,7 +27,7 @@ class BackgroundColorView: UIView {
     
     // MARK: - Properties
     
-    let gradientLayer: CAGradientLayer = {
+    private let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         return layer
     }()

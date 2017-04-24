@@ -12,7 +12,7 @@ import TweenKit
 class StarsView: UIView {
     
     // MARK: - Types
-    struct Star {
+    private struct Star {
         var t = 0.0
         let restPosition: CGPoint
         let moveAmount = CGFloat(1.0)
@@ -70,8 +70,8 @@ class StarsView: UIView {
     
     // MARK: - Properties
     
-    var stars: [Star]!
-    var actionScrubber: ActionScrubber!
+    private var stars: [Star]!
+    private var actionScrubber: ActionScrubber!
     
     // MARK: - UIView
     
@@ -102,7 +102,7 @@ class StarsView: UIView {
     
     // MARK: - Methods
     
-    func makeStars() -> [Star] {
+    private func makeStars() -> [Star] {
         
         var stars = [Star]()
         let numStars = 1000

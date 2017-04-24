@@ -83,7 +83,7 @@ class RocketView: UIView {
     
     // MARK: - Properties
     
-    var actionScrubber: ActionScrubber?
+    private var actionScrubber: ActionScrubber?
     
     private let drawPathView: DrawClosureView = {
         let view = DrawClosureView()

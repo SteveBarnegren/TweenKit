@@ -11,9 +11,16 @@ import UIKit
 
 protocol BezierDemoModel {
     
+    // The number of points that the curve should have
     var numberOfPoints: Int {get}
+    
+    // Straight-line connects that should be drawn between points (eg. to show handles)
     var connections: [(Int, Int)] {get}
+    
+    // The start position for each point
     func startPositionForPoint(atIndex index: Int) -> CGPoint
+    
+    // Make a bezier path from points
     func makePath(fromPoints points: [CGPoint]) -> UIBezierPath
 }
 

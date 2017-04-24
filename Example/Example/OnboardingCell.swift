@@ -16,8 +16,11 @@ class OnboardingCell: UICollectionViewCell {
         titleLabel.text = text
     }
     
-        
+    // MARK: - Outlets
+    
     @IBOutlet weak private var titleLabel: UILabel!
+    
+    // MARK: - UICollectionViewCell
 
     override func awakeFromNib() {
         super.awakeFromNib()

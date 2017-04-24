@@ -11,7 +11,7 @@ import TweenKit
 
 class TweenKitAttributesView: UIView {
     
-    // MARK: - Public
+    // MARK: - Internal
     
     init() {
         
@@ -56,7 +56,7 @@ class TweenKitAttributesView: UIView {
     
     // MARK: - Properties
     
-    class LabelInfo {
+    private class LabelInfo {
         let title: String
         var pctVisible: CGFloat
         init(title: String) {
@@ -65,9 +65,13 @@ class TweenKitAttributesView: UIView {
         }
     }
     
-    var actionScrubber: ActionScrubber? = nil
-    let labelsInfo = [LabelInfo(title: "Scrubbable"), LabelInfo(title: "Reverseable"), LabelInfo(title: "Groupable"), LabelInfo(title: "Sequenceable")]
-    var labels = [UILabel]()
+    private var actionScrubber: ActionScrubber? = nil
+    private let labelsInfo = [LabelInfo(title: "Scrubbable"),
+                              LabelInfo(title: "Reverseable"),
+                              LabelInfo(title: "Groupable"),
+                              LabelInfo(title: "Sequenceable")]
+    
+    private var labels = [UILabel]()
     
     // MARK: - UIView
     

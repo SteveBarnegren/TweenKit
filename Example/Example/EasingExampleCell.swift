@@ -10,7 +10,7 @@ import UIKit
 
 class EasingExampleCell: UITableViewCell {
     
-    // MARK: - Public
+    // MARK: - Internal
     
     func setTitle(title: String) {
         self.titleLabel.text = title
@@ -23,17 +23,19 @@ class EasingExampleCell: UITableViewCell {
         }
     }
     
-    // MARK: - Views
+    // MARK: - Outlets
+    
     @IBOutlet weak private var easingContainerView: UIView!
     @IBOutlet weak private var titleLabel: UILabel!
     
-    let squareLayer: CALayer = {
+    // MARK: - Properties
+    
+    private let squareLayer: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor.blue.cgColor
         return layer
     }()
     
-    // MARK: - Properties
     
     // MARK: - UITableViewCell
     
@@ -61,6 +63,4 @@ class EasingExampleCell: UITableViewCell {
         
         CATransaction.commit()
     }
-    
-    
 }

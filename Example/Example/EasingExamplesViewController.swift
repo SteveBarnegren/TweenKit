@@ -13,14 +13,14 @@ class EasingExamplesViewController: UIViewController {
     
     // MARK: - Types
     
-    struct CellModel {
+    fileprivate struct CellModel {
         let easing: Easing
         var value = 0.0
     }
     
     // MARK: - Constants
     
-    let cellClassName = "EasingExampleCell"
+    fileprivate let cellClassName = "EasingExampleCell"
     
     // MARK: - Properties
     
@@ -69,7 +69,15 @@ class EasingExamplesViewController: UIViewController {
         }
     }
     
-    func startAnimation(){
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tableView.frame = view.bounds
+    }
+    
+    // MARK: - Animation
+    
+    fileprivate func startAnimation(){
         
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear) {
             [unowned self] in
@@ -81,19 +89,14 @@ class EasingExamplesViewController: UIViewController {
             
             self.updateTableCells()
         }
-            
+        
         let sequence = ActionSequence(actions: DelayAction(duration: 0.5), action, DelayAction(duration: 0.5))
         let repeated = sequence.repeatedForever()
         scheduler.run(action: repeated)
         
         hasStartedAnimation = true
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        tableView.frame = view.bounds
-    }
+
 }
 
 // MARK: - Manage Table

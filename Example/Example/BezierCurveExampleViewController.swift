@@ -11,7 +11,7 @@ import TweenKit
 
 class BezierCurveExampleViewController: UIViewController {
     
-    // MARK: - Public
+    // MARK: - Internal
     
     init(model: BezierDemoModel) {
         self.model = model
@@ -20,30 +20,30 @@ class BezierCurveExampleViewController: UIViewController {
 
     // MARK: - Properties
     
-    let scheduler = ActionScheduler()
-    var isAnimating = false
-    let model: BezierDemoModel!
+    fileprivate let scheduler = ActionScheduler()
+    fileprivate var isAnimating = false
+    fileprivate let model: BezierDemoModel!
     
-    var points = [CGPoint]()
+    fileprivate var points = [CGPoint]()
 
-    let pointsView: DraggablePointsView = {
+    fileprivate let pointsView: DraggablePointsView = {
         let view = DraggablePointsView(frame: .zero)
         return view
     }()
     
-    let drawView: DrawClosureView = {
+    fileprivate let drawView: DrawClosureView = {
         let view = DrawClosureView()
         return view
     }()
     
-    let animatingLayer: CALayer = {
+    fileprivate let animatingLayer: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor.blue.cgColor
         layer.frame.size = CGSize(width: 40, height: 40)
         return layer
     }()
     
-    let easingSelector: CycleSelector<Easing> =  {
+    fileprivate let easingSelector: CycleSelector<Easing> =  {
         
         let options = Easing.all().map{
             ($0.name, $0)
@@ -53,7 +53,7 @@ class BezierCurveExampleViewController: UIViewController {
         return selector
     }()
     
-    let durationSelector: CycleSelector<Double> =  {
+    fileprivate let durationSelector: CycleSelector<Double> =  {
         
         let options: [(String, Double)] = [
             ("1s", 1.0),

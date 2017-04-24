@@ -11,7 +11,7 @@ import TweenKit
 
 class IntroView: UIView {
     
-    // MARK: - Public
+    // MARK: - Internal
     
     func update(t: Double) {
         actionScrubber.update(t: t)
@@ -51,8 +51,8 @@ class IntroView: UIView {
     
     // MARK: - Properties
     
-    var labelSeparation = CGFloat(16)
-    var actionScrubber: ActionScrubber!
+    private var labelSeparation = CGFloat(16)
+    private var actionScrubber: ActionScrubber!
     
     private let topLabel: UILabel = {
         let label = UILabel(frame: .zero)

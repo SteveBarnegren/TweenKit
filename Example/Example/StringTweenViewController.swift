@@ -133,9 +133,9 @@ extension String: Tweenable {
 
 class StringTweenViewController: UIViewController {
     
-    let scheduler = ActionScheduler()
+    private let scheduler = ActionScheduler()
     
-    let label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "bat"
         label.font = UIFont.systemFont(ofSize: 40, weight: 4)

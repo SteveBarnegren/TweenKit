@@ -10,7 +10,7 @@ import UIKit
 
 class ClockView: UIView {
     
-    // MARK: - Public
+    // MARK: - Internal
     
     var hours = 15.0 {
         didSet{ drawView.redraw() }
@@ -83,9 +83,9 @@ class ClockView: UIView {
     
     // MARK: - Properties
     
-    let lineWidth = CGFloat(3)
+    private let lineWidth = CGFloat(3)
     
-    var clockPosition: CGPoint {
+    private var clockPosition: CGPoint {
         
         let min = CGPoint(x: UIScreen.main.bounds.size.width/2,
                           y: UIScreen.main.bounds.size.height + (clockSize.height/2) + 10)
@@ -94,13 +94,13 @@ class ClockView: UIView {
         return min.lerp(t: onScreenAmount, end: max)
     }
     
-    var clockSize: CGSize {
+    private var clockSize: CGSize {
         let sideLength = 120.0 * self.size
         return CGSize(width: sideLength,
                       height: sideLength)
     }
     
-    let drawView: DrawClosureView = {
+    private let drawView: DrawClosureView = {
         let view = DrawClosureView()
         return view
     }()
@@ -115,14 +115,5 @@ class ClockView: UIView {
         super.layoutSubviews()
         drawView.frame = bounds
     }
-    
-    // MARK: - Methods
-    
-    
-    
-    
-    
-    
-    
     
 }
