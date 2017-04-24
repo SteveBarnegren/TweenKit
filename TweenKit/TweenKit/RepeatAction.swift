@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Repeats an inner action a specified number of times */
 public class RepeatAction: FiniteTimeAction {
     
     // MARK: - Public
@@ -15,6 +16,11 @@ public class RepeatAction: FiniteTimeAction {
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
     
+    /**
+     Create with an action to repeat
+     - Parameter action: The action to repeat
+     - Parameter times: The number of repeats
+     */
     public init(action: FiniteTimeAction, times: Int) {
         self.action = action
         self.repeats = times

@@ -8,6 +8,11 @@
 
 import Foundation
 
+/** 
+ Used to manually control an action's time.
+ Init with an action, and scrub using one of the update methods.
+ Only supports FiniteTimeActions (RepeatForever not supported)
+ */
 public class ActionScrubber {
     
     // MARK: - Public
@@ -16,6 +21,10 @@ public class ActionScrubber {
         self.action = action
     }
     
+    /**
+     Scrub the contained action to a specified time
+     - parameter t: t (0-1) to scrub to
+     */
     public func update(t: Double) {
         
         // Start the action
@@ -44,12 +53,16 @@ public class ActionScrubber {
         lastUpdateT = t
     }
     
+    /**
+     Scrub the contained action to a specified time
+     - parameter elapsedTime: The time to scrub to in seconds
+     */
     public func update(elapsedTime: Double) {
         update(t: elapsedTime / action.duration)
     }
     
     // MARK: - Properties
-
+    
     private var action: FiniteTimeAction
     private var hasBegun = false
     private var lastUpdateT: Double?

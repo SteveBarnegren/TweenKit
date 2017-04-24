@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - ****** CURVE ******
 
+/** Enum for describing a curve segment for BezierPath */
 public enum Curve<T: Tweenable2DCoordinate> {
     case lineToPoint(T)
     case quadCurveToPoint(T, cp: T)
@@ -102,6 +103,7 @@ struct BezierPoint<T: Tweenable2DCoordinate> {
 
 // MARK: - ****** BEZIER PATH ******
 
+/** BezierPaths can be passed to BezierAction to animate over curves/paths */
 public struct BezierPath<T: Tweenable2DCoordinate> {
     let startLocation: T
     let endLocation: T
@@ -110,6 +112,11 @@ public struct BezierPath<T: Tweenable2DCoordinate> {
     var startOvershootAngle = 0.0
     var endOvershootAngle = 0.0
     
+    /**
+     Create bezier path instance from curves
+     - Parameter start: The start coordinate of the curve
+     - Parameter curves: Array of curves that make up the path
+     */
     public init(start: T, curves: [Curve<T>]) {
         
         guard curves.count > 0 else {

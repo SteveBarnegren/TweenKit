@@ -8,36 +8,34 @@
 
 import Foundation
 
-/** Groups run multiple actions in parallel */
+/** Runs several actions in parallel */
 public class ActionGroup: FiniteTimeAction, SchedulableAction {
     
     // MARK: - Public
     
-    public var onBecomeActive: () -> () = {}
-    public var onBecomeInactive: () -> () = {}
-    
-    public var reverse = false {
-        didSet {
-            wrappedActions = wrappedActions.map{ wrapped in
-                wrapped.action.reverse = reverse
-                return wrapped
-            }
-        }
-    }
-    
-    public init() {
-    }
-    
+    /**
+     Create with a set of actions
+     - Parameter actions: The actions the group should contain
+     */
     public convenience init(actions: FiniteTimeAction...) {
         self.init(actions: actions)
     }
     
+    /**
+     Create with a set of actions
+     - Parameter actions: Array of actions the group should contain
+     */
     public init(actions: [FiniteTimeAction]) {
         actions.forEach{
             add(action: $0)
         }
     }
     
+    /**
+     Create with a set of actions, all run with an offset
+     - Parameter actions: Array of actions the group should contain
+     - Parameter offset: The time offset of each action from the previous
+     */
     public init(staggered actions: [FiniteTimeAction], offset: Double) {
         
         for (index, action) in actions.enumerated() {
@@ -54,7 +52,28 @@ public class ActionGroup: FiniteTimeAction, SchedulableAction {
         }
     }
     
-    public func add(action: FiniteTimeAction) {
+    public var onBecomeActive: () -> () = {}
+    public var onBecomeInactive: () -> () = {}
+    
+    public var reverse = false {
+        didSet {
+            wrappedActions = wrappedActions.map{ wrapped in
+                wrapped.action.reverse = reverse
+                return wrapped
+            }
+        }
+    }
+
+    // MARK: - Private Properties
+    
+    public internal(set) var duration = Double(0)
+    private var triggerActions = [TriggerAction]()
+    private var wrappedActions = [GroupActionWrapper]()
+    private var lastUpdateT = 0.0
+    
+    // MARK: - Private methods
+    
+    private func add(action: FiniteTimeAction) {
         
         let allActions = wrappedActions.map{ $0.action } + (triggerActions as [FiniteTimeAction])
         for existingAction in allActions {
@@ -72,17 +91,9 @@ public class ActionGroup: FiniteTimeAction, SchedulableAction {
             calculateDuration()
         }
     }
+
     
-    // MARK: - Private Properties
-    
-    public internal(set) var duration = Double(0)
-    private var triggerActions = [TriggerAction]()
-    private var wrappedActions = [GroupActionWrapper]()
-    private var lastUpdateT = 0.0
-    
-    // MARK: - Private methods
-    
-    func calculateDuration() {
+    private func calculateDuration() {
         duration = wrappedActions.reduce(0){ max($0, $1.action.duration) }
     }
     

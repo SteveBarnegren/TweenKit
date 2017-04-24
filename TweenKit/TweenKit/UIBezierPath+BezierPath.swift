@@ -11,6 +11,10 @@ import UIKit
 
 public extension CGPath {
     
+    /**
+     The path as a TweenKit.BezierPath instance
+     - Returns: A TweenKit.BezierPath instance
+     */
     func asBezierPath() -> BezierPath<CGPoint> {
         
         // Define Path Element
@@ -106,6 +110,10 @@ public extension CGPath {
 
 public extension UIBezierPath {
     
+    /**
+     The path as a TweenKit.BezierPath instance
+     - Returns: A TweenKit.BezierPath instance
+     */
     func asBezierPath() -> BezierPath<CGPoint> {
         return self.cgPath.asBezierPath()
     }

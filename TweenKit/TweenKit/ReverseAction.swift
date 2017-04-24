@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Reverses the inner action */
 public class ReverseAction: FiniteTimeAction {
     
     // MARK: - Public
@@ -15,6 +16,10 @@ public class ReverseAction: FiniteTimeAction {
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
     
+    /**
+     Create with the action to reverse
+     - Parameter action: The action to reverse
+     */
     init(action: FiniteTimeAction) {
         self.action = action
         self.action.reverse = true

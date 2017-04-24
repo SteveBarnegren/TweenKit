@@ -10,20 +10,33 @@ import Foundation
 
 @objc public class ActionScheduler : NSObject {
     
-    // MARK: - Internal
+    // MARK: - Public
     
+    /**
+    Run an action
+    - Parameter action: The action to run
+    - Returns: Animation instance. You may wish to keep this, so that you can remove the animation later using the remove(animation:) method
+    */
     @discardableResult public func run(action: SchedulableAction) -> Animation {
         let animation = Animation(action: action)
         add(animation: animation)
         return animation
     }
     
+    /**
+     Adds an Animation to the scheduler. Usually you don't need to construct animations yourself, you can run the action directly.
+     - Parameter animation: The animation to run
+     */
     public func add(animation: Animation) {
         animations.append(animation)
         animation.willStart()
         startLoop()
     }
     
+    /**
+     Removes a currently running animation
+     - Parameter animation: The animation to remove
+     */
     public func remove(animation: Animation) {
         
         guard let index = animations.index(of: animation) else {
@@ -39,6 +52,9 @@ import Foundation
         }
     }
     
+    /**
+     Removes all animations
+     */
     public func removeAll() {
         
         let allAnimations = animations
@@ -47,6 +63,9 @@ import Foundation
         }
     }
     
+    /**
+     The number of animations that are currently running
+     */
     public var numRunningAnimations: Int {
         return self.animations.count
     }
@@ -87,7 +106,6 @@ import Foundation
     }
     
     @objc private func displayLinkCallback(displaylink: CADisplayLink) {
-        //print(displaylink.timestamp)
         
         // We need a previous time stamp to check against. Save if we don't already have one
         guard let last = lastTimeStamp else{

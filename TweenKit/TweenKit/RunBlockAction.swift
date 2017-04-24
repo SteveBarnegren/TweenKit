@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Runs a block. Can be used to add callbacks in sequences */
 public class RunBlockAction: TriggerAction {
     
     // MARK: - Public
@@ -15,6 +16,10 @@ public class RunBlockAction: TriggerAction {
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
     
+    /**
+     Create with a callback closure
+     - Parameter handler: The closure to call
+     */
     public init(handler: @escaping () -> ()) {
         self.handler = handler
     }

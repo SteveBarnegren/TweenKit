@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Repeats inner action forever */
 public class RepeatForeverAction: InfiniteTimeAction {
 
     // MARK: - Public
@@ -15,6 +16,10 @@ public class RepeatForeverAction: InfiniteTimeAction {
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
     
+    /**
+     Create with an action to repeat forever
+     - Parameter action: The action to repeat
+     */
     public init(action: FiniteTimeAction) {
         self.action = action;
     }

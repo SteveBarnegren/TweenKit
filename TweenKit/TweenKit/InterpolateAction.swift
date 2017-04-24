@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TweenableValue<T: Tweenable> {
+fileprivate enum TweenableValue<T: Tweenable> {
     case constant(T)
     case dynamic( () -> (T) )
     
@@ -22,6 +22,7 @@ public enum TweenableValue<T: Tweenable> {
     }
 }
 
+/** Action to animate between two values */
 public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAction {
 
     // MARK: - Public
@@ -30,6 +31,14 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
     public var onBecomeInactive: () -> () = {}
     public var easing: Easing
     
+    /**
+     Create action to interpolate between two values
+     - Parameter startValue: The value to animate from
+     - Parameter endValue: The value to animate to
+     - Parameter duration: The duration of the animation
+     - Parameter easing: The easing function to use
+     - Parameter update: Callback with the interpolated value
+     */
     public init(from startValue: T,
                 to endValue: T,
                 duration: Double,
@@ -44,6 +53,14 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
         self.endTweenableValue = .constant(endValue)
     }
     
+    /**
+     Create action to interpolate between two values
+     - Parameter startValue: Closure that supplies the value to animation from (called just before the animation will begin)
+     - Parameter endValue: The value to animate to
+     - Parameter duration: The duration of the animation
+     - Parameter easing: The easing function to use
+     - Parameter update: Callback with the interpolated value
+     */
     public init(from startValue: @escaping () -> (T),
                 to endValue: T,
                 duration: Double,
@@ -58,6 +75,14 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
         self.endTweenableValue = .constant(endValue)
     }
     
+    /**
+     Create action to interpolate between two values
+     - Parameter startValue: The value to animate from
+     - Parameter endValue: The value to animate to
+     - Parameter speed: The speed of the animation
+     - Parameter easing: The easing function to use
+     - Parameter update: Callback with the interpolated value
+     */
     public init(from startValue: T,
                 to endValue: T,
                 speed: Double,
@@ -80,8 +105,8 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
     private var startTweenableValue: TweenableValue<T>
     private var endTweenableValue: TweenableValue<T>
 
-    private var startValue: T! // Make private - set in initialiser
-    private var endValue: T! // Make private - set in initialiser
+    private var startValue: T!
+    private var endValue: T!
     
     var updateHandler: (_: T) -> () = {_ in}
 

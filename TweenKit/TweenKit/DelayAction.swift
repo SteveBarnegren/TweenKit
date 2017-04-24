@@ -8,10 +8,15 @@
 
 import Foundation
 
+/** Can be used to add a delay to a sequence */
 public class DelayAction: FiniteTimeAction {
     
     // MARK: - Public
     
+    /**
+     Create with duration
+     - Parameter duration: The duration of the deley
+     */
     public init(duration: Double) {
         self.duration = duration
     }

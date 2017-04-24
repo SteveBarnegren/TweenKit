@@ -8,10 +8,19 @@
 
 import Foundation
 
+/** Action for animating objects in an arc or circle */
 public class ArcAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     
     // MARK: - Public
     
+    /**
+     Animate between two angles around a circle
+     - Parameter center: The center of the circle
+     - Parameter startRadians: The start angle in radians
+     - Parameter endRadians: The end angle in radians
+     - Parameter duration: The duration of the animation
+     - Parameter update: Callback with position
+     */
     public init(center: T,
                 radius: Double,
                 startRadians: Double,
@@ -27,6 +36,14 @@ public class ArcAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
         self.handler = update
     }
     
+    /**
+     Animate between two angles around a circle
+     - Parameter center: The center of the circle
+     - Parameter startRadians: The start angle in degrees
+     - Parameter endRadians: The end angle in degrees
+     - Parameter duration: The duration of the animation
+     - Parameter update: Callback with position
+     */
     public init(center: T,
                 radius: Double,
                 startDegrees: Double,

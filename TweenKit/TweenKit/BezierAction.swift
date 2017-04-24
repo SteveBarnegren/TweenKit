@@ -8,9 +8,17 @@
 
 import Foundation
 
+/** Action for animating over a bezier path */
 public class BezierAction<T: Tweenable2DCoordinate>: FiniteTimeAction {
     
     // MARK: - Public
+    
+    /**
+     Create with a BezierPath instance
+     - Parameter path: The path to animate over
+     - Parameter duration: Duration of the animation
+     - Parameter update: Callback with position and rotation
+     */
     public init(path: BezierPath<T>, duration: Double, update: @escaping (T, Lazy<Double>) -> ()) {
         self.duration = duration
         self.path = path

@@ -87,6 +87,12 @@ class TestViewController: UIViewController {
         })
  */
         
+        let scrubber = ActionScrubber(action: action)
+        scrubber.update(elapsedTime: 6)
+        scrubber.update(t: 0.4)
+        
+        scheduler.run(action: action)
+        
         let animation = Animation(action: action.yoyo())
         scheduler.add(animation: animation)
     }

@@ -24,9 +24,30 @@ class SequenceActionWrapper {
     }
 }
 
+/** Runs multiple actions in sequence */
 public class ActionSequence: FiniteTimeAction {
     
     // MARK: - Public
+    
+    /**
+     Create with actions
+     - Parameter actions: Array of actions the sequence should contain
+     */
+    public init(actions: [FiniteTimeAction]) {
+        actions.forEach{
+            add(action: $0)
+        }
+    }
+    
+    /**
+     Create with actions
+     - Parameter actions: Actions the sequence should contain
+     */
+    public init(actions: FiniteTimeAction...) {
+        actions.forEach{
+            add(action: $0)
+        }
+    }
     
     public var onBecomeActive: () -> () = {}
     public var onBecomeInactive: () -> () = {}
@@ -37,27 +58,6 @@ public class ActionSequence: FiniteTimeAction {
         }
     }
 
-    public init() {
-    }
-    
-    public init(actions: [FiniteTimeAction]) {
-        actions.forEach{
-            add(action: $0)
-        }
-    }
-    
-    public init(actions: FiniteTimeAction...) {
-        actions.forEach{
-            add(action: $0)
-        }
-    }
-
-    public func add(action: FiniteTimeAction) {
-        wrappedActions.append( SequenceActionWrapper(action: action) )
-        calculateDuration()
-        calculateOffsets()
-    }
-    
     // MARK: - Private Properties
     
     public private(set) var duration = Double(0)
@@ -67,6 +67,12 @@ public class ActionSequence: FiniteTimeAction {
     private var lastRunAction: SequenceActionWrapper?
     
     // MARK: - Private Methods
+    
+    private func add(action: FiniteTimeAction) {
+        wrappedActions.append( SequenceActionWrapper(action: action) )
+        calculateDuration()
+        calculateOffsets()
+    }
 
     private func calculateDuration() {
         duration = wrappedActions.reduce(0) { $0 + $1.action.duration }

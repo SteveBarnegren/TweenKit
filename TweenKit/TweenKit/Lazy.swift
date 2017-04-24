@@ -18,13 +18,18 @@ import Foundation
 
  eg. The BezierAction update handler supplys two arguments, position and rotation: () -> (position: Double, rotation: Lazy<Double>)
  
- Positon is quick to calculate, and will be used by the supplied closure in almost all cases.
+ Positon is quick to calculate, and will be used by the supplied closure in pretty much all cases.
  Rotation is a bit more intensive to calculate, and the closure might not even use it.
  Wrapping the calculation in Lazy<Double>, rotation will not be caluclated if rotation.value is never called.
  
  The result of the value is cached, so calling calling .value multiple times will only perform the calculation once
  */
 
+
+/**
+ Wrapper for long running calulations. Calculation will not be performed until .value is called.
+ Caches result for sunsequent calls
+ */
 public class Lazy<T> {
     
     let calculateValue: () -> (T)

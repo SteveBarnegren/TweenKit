@@ -11,6 +11,7 @@ import Foundation
 let kPERIOD: Double = 0.3
 let M_PI_X_2: Double = Double.pi * 2.0
 
+/** The easing (timing function) that an animation should use */
 public enum Easing: Int {
     
     // Linear

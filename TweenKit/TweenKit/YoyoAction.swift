@@ -8,6 +8,7 @@
 
 import Foundation
 
+/** Animates inner action to end and then back to beginning */
 public class YoyoAction: FiniteTimeAction {
     
     // MARK: - Types
@@ -31,6 +32,10 @@ public class YoyoAction: FiniteTimeAction {
         }
     }
 
+    /**
+     Create with action to yoyo
+     - Parameter action: The action to yoyo
+     */
     public init(action: FiniteTimeAction) {
         
         self.action = action
