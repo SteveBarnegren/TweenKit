@@ -43,7 +43,7 @@ class RocketView: UIView {
                                     [unowned self] (position, rotation) in
                                     self.rocketImageView.center = position
                                     
-                                    let rocketRotation = CGFloat(rotation.value + Double.pi/2)
+                                    let rocketRotation = CGFloat(rotation.value)
                                     self.rocketImageView.transform = CGAffineTransform(rotationAngle: rocketRotation)
                                     
                                     self.drawPathView.redraw()
