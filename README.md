@@ -12,9 +12,9 @@ TweenKit is a powerful animation library that allows you to animate (or 'tween')
 
 Download the example project to see how these animations were created
 
-###TweenKit's animations are:
+TweenKit's animations are:
 
-* Reveseable
+* Reversible
 * Repeatable
 * Groupable
 * Sequenceable
