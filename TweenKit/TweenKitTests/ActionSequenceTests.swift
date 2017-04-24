@@ -187,7 +187,20 @@ class SequenceTests: XCTestCase {
     
     // MARK: - Call Trigger Actions
     
-    func testSequenceCallsTriggerActions() {
+    func testSequenceCallsTriggerActionAtBeginning() {
+        
+        var numCalls = 0
+        
+        let triggerAction = RunBlockAction(handler: { numCalls += 1 })
+        let timeAction = FiniteTimeActionMock(duration: 1.0)
+        
+        let sequence = ActionSequence(actions: timeAction, triggerAction)
+        sequence.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testSequenceCallsTriggerActionAtEnd() {
         
         var numCalls = 0
         
@@ -199,4 +212,36 @@ class SequenceTests: XCTestCase {
         
         XCTAssertEqual(numCalls, 1)
     }
+    
+    func testSequenceCallsTriggerActionInMiddle() {
+        
+        var numCalls = 0
+        
+        let startAction = FiniteTimeActionMock(duration: 1.0)
+        let triggerAction = RunBlockAction(handler: { numCalls += 1 })
+        let endAction = FiniteTimeActionMock(duration: 1.0)
+        
+        let sequence = ActionSequence(actions: startAction, triggerAction, endAction)
+        sequence.simulateFullLifeCycle()
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+    
+    func testSequenceCallsTriggerActionInMiddleWithSimulatedProgress() {
+        
+        var numCalls = 0
+        
+        let startAction = FiniteTimeActionMock(duration: 1.0)
+        let triggerAction = RunBlockAction(handler: { numCalls += 1 })
+        let endAction = FiniteTimeActionMock(duration: 1.0)
+        
+        let sequence = ActionSequence(actions: startAction, triggerAction, endAction)
+        
+        let scheduler = ActionScheduler()
+        scheduler.run(action: sequence)
+        scheduler.progressTime(duration: sequence.duration + 0.1, stepSize: 0.5)
+        
+        XCTAssertEqual(numCalls, 1)
+    }
+
 }

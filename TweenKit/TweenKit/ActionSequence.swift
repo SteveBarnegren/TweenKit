@@ -181,6 +181,11 @@ public class ActionSequence: FiniteTimeAction {
             
             if continueToNext {
                 //wrapper.action.update(t: reverse ? 0.0 : 1.0)
+                
+                if let trigger = wrapper.action as? TriggerAction {
+                    trigger.trigger()
+                }
+                
                 wrapper.action.didFinish()
                 wrapper.action.didBecomeInactive()
                 wrapper.state = .finished
