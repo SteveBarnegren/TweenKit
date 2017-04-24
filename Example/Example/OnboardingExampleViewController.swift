@@ -142,6 +142,7 @@ class OnboardingExampleViewController: UIViewController {
         
         if !hasAppeared {
             actionScrubber = ActionScrubber(action: buildAction())
+            actionScrubber?.clampTValuesAboveOne = true
         }
     }
     
