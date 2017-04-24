@@ -18,8 +18,8 @@ extension FloatingPoint {
 }
 
 // MARK: - Constants
-let defaultBackgroundColorTop = UIColor(red: 0.263, green: 0.118, blue: 0.565, alpha: 1.00)
-let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
+fileprivate let defaultBackgroundColorTop = UIColor(red: 0.263, green: 0.118, blue: 0.565, alpha: 1.00)
+fileprivate let defaultBackgroundColorBottom = UIColor(red: 1.000, green: 0.357, blue: 0.525, alpha: 1.00)
 
 
 class SunAndMoonExampleViewController: UIViewController {
@@ -36,13 +36,13 @@ class SunAndMoonExampleViewController: UIViewController {
     
     // MARK: - Properties
     
-    let scrubbable: Bool
-    let scheduler = ActionScheduler()
-    var actionScrubber: ActionScrubber?
+    private let scrubbable: Bool
+    private let scheduler = ActionScheduler()
+    private var actionScrubber: ActionScrubber?
     
     // MARK: - Views / Layers
     
-    let slider: UISlider = {
+    private let slider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         slider.minimumValue = 0
@@ -52,30 +52,30 @@ class SunAndMoonExampleViewController: UIViewController {
         return slider
     }()
     
-    let gradientLayer: CAGradientLayer = {
+    private let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         return layer
     }()
     
-    let sunMiddle: CALayer = {
+    private let sunMiddle: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor(red: 0.965, green: 0.490, blue: 0.125, alpha: 1.00).cgColor
         return layer
     }()
     
-    let sunSideSpoke: CALayer = {
+    private let sunSideSpoke: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor(red: 1.000, green: 0.918, blue: 0.318, alpha: 1.00).cgColor
         return layer
     }()
     
-    let sunDiagonalSpoke: CALayer = {
+    private let sunDiagonalSpoke: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor(red: 1.000, green: 0.918, blue: 0.318, alpha: 1.00).cgColor
         return layer
     }()
     
-    let moon: CAShapeLayer = {
+    private let moon: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.white.cgColor
         layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -117,23 +117,29 @@ class SunAndMoonExampleViewController: UIViewController {
 
     // MARK: - Animation Variables
     
-    var sunRadius = CGFloat(50) {
+    /*
+     The general pattern here, is that these variables are altered in the action callbacks.
+     They then call the update methods on didSet (down at the bottom) to alter the properties of the views.
+     If an animation is quite complex, it can be easier to do it this way than to try to animate all of the view properties directly.
+ */
+
+    private var sunRadius = CGFloat(50) {
         didSet { updateSun() }
     }
     
-    var sunRotation = CGFloat(0) {
+    private var sunRotation = CGFloat(0) {
         didSet{ updateSun() }
     }
     
-    var sunSideSpokeSize = CGFloat(1) {
+    private var sunSideSpokeSize = CGFloat(1) {
         didSet{ updateSun() }
     }
     
-    var sunOnScreenAmount = CGFloat(0.0) {
+    private var sunOnScreenAmount = CGFloat(0.0) {
         didSet{ updateSun() }
     }
     
-    var sunPosition: CGPoint {
+    private var sunPosition: CGPoint {
         
         let maxValue = view.center
         let minValue = CGPoint(x: view.center.x,
@@ -142,11 +148,11 @@ class SunAndMoonExampleViewController: UIViewController {
         return minValue.lerp(t: Double(sunOnScreenAmount), end: maxValue)
     }
     
-    var moonOnScreenAmount = CGFloat(0.0) {
+    private var moonOnScreenAmount = CGFloat(0.0) {
         didSet{ updateMoon() }
     }
     
-    var moonPosition: CGPoint {
+    private var moonPosition: CGPoint {
         
         let maxValue = view.center
         let minValue = CGPoint(x: view.center.x,
@@ -155,11 +161,11 @@ class SunAndMoonExampleViewController: UIViewController {
         return minValue.lerp(t: Double(moonOnScreenAmount), end: maxValue)
     }
     
-    var backgroundColorTop = defaultBackgroundColorTop {
+    private var backgroundColorTop = defaultBackgroundColorTop {
         didSet{ updateBackgroundGradient() }
     }
     
-    var backgroundColorBottom = defaultBackgroundColorBottom {
+    private var backgroundColorBottom = defaultBackgroundColorBottom {
         didSet{ updateBackgroundGradient() }
     }
     
@@ -202,7 +208,9 @@ class SunAndMoonExampleViewController: UIViewController {
                               height: slider.bounds.size.height);
     }
     
-    func makeSunAction() -> FiniteTimeAction {
+    // MARK: - Build Actions
+    
+    private func makeSunAction() -> FiniteTimeAction {
         
         let duration = 2.0
         
@@ -241,7 +249,7 @@ class SunAndMoonExampleViewController: UIViewController {
         
     }
     
-    func makeMoonAction() -> FiniteTimeAction {
+    private func makeMoonAction() -> FiniteTimeAction {
         
         let duration = 2.0
         
@@ -278,7 +286,7 @@ class SunAndMoonExampleViewController: UIViewController {
     
     // MARK: - Update
 
-    func updateSun() {
+    private func updateSun() {
     
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -290,7 +298,7 @@ class SunAndMoonExampleViewController: UIViewController {
         CATransaction.commit()
     }
     
-    func updateSunMiddle() {
+    private func updateSunMiddle() {
         
         sunMiddle.frame = CGRect(x: sunPosition.x - sunRadius,
                                  y: sunPosition.y - sunRadius,
@@ -300,7 +308,7 @@ class SunAndMoonExampleViewController: UIViewController {
         sunMiddle.cornerRadius = sunMiddle.bounds.size.width/2
     }
     
-    func updateSunSideSpoke() {
+    private func updateSunSideSpoke() {
         
         sunSideSpoke.transform = CATransform3DIdentity
         
@@ -315,7 +323,7 @@ class SunAndMoonExampleViewController: UIViewController {
         
     }
     
-    func updateSunDiagonalSpoke() {
+    private func updateSunDiagonalSpoke() {
         
         sunDiagonalSpoke.transform = CATransform3DIdentity
         
@@ -330,7 +338,7 @@ class SunAndMoonExampleViewController: UIViewController {
         
     }
     
-    func updateMoon() {
+    private func updateMoon() {
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -343,7 +351,7 @@ class SunAndMoonExampleViewController: UIViewController {
         CATransaction.commit()
     }
     
-    func updateBackgroundGradient() {
+    private func updateBackgroundGradient() {
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -358,7 +366,7 @@ class SunAndMoonExampleViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func sliderValueChanged() {
+    @objc private func sliderValueChanged() {
         actionScrubber?.update(t: Double(slider.value))
     }
 

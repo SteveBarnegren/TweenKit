@@ -26,9 +26,9 @@ extension CALayer {
 
 class ActivityIndicatorExampleViewController: UIViewController {
     
-    let scheduler = ActionScheduler()
+    private let scheduler = ActionScheduler()
 
-    var circleLayers = [CALayer]()
+    private var circleLayers = [CALayer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class ActivityIndicatorExampleViewController: UIViewController {
         startAnimation()
     }
     
-    func startAnimation() {
+    private func startAnimation() {
         
         // Set layers start positions
         let radius = 50.0

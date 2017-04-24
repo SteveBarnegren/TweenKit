@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - ***** ExampleType enum *****
+
 enum ExampleType: Int {
     
     case basicTween
@@ -76,6 +78,7 @@ enum ExampleType: Int {
     }
 }
 
+// MARK: - ***** ExampleSwitcherViewController *****
 
 class ExampleSwitcherViewController: UIViewController {
     
@@ -164,7 +167,7 @@ class ExampleSwitcherViewController: UIViewController {
         setContentViewController(to: viewController)
     }
     
-    func setContentViewController(to viewController: UIViewController) {
+    private func setContentViewController(to viewController: UIViewController) {
         
         if let existing = contentViewController {
             existing.removeFromParentViewController()

@@ -12,10 +12,10 @@ import TweenKit
 class BasicTweenViewController: UIViewController {
     
     // Create a scheuler - used to run actions
-    let scheduler = ActionScheduler()
+    private let scheduler = ActionScheduler()
     
     // The view we will be animating
-    let squareView: UIView = {
+    private let squareView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.red
         view.center = CGPoint(x: 100, y: 100)
@@ -31,7 +31,7 @@ class BasicTweenViewController: UIViewController {
         startAnimation()
     }
     
-    func startAnimation() {
+    private func startAnimation() {
         
         // Work out the new frame that we want the view to have
         let newWidth = CGFloat(200)
