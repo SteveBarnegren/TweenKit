@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09140D831E8DA46C00E3A4BB /* OnboardingExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */; };
-		09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */; };
-		09140D8B1E8E726E00E3A4BB /* OnboardingCellHello.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */; };
+		09140D8A1E8E726E00E3A4BB /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D881E8E726E00E3A4BB /* OnboardingCell.swift */; };
+		09140D8B1E8E726E00E3A4BB /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09140D891E8E726E00E3A4BB /* OnboardingCell.xib */; };
 		09140D8D1E8E898B00E3A4BB /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D8C1E8E898B00E3A4BB /* RocketView.swift */; };
 		09140D8F1E8EA72B00E3A4BB /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D8E1E8EA72B00E3A4BB /* StarsView.swift */; };
 		09140D921E8EB6DD00E3A4BB /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09140D911E8EB6DD00E3A4BB /* BackgroundColorView.swift */; };
@@ -78,8 +78,8 @@
 
 /* Begin PBXFileReference section */
 		09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExampleViewController.swift; sourceTree = "<group>"; };
-		09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCellHello.swift; sourceTree = "<group>"; };
-		09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCellHello.xib; sourceTree = "<group>"; };
+		09140D881E8E726E00E3A4BB /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		09140D891E8E726E00E3A4BB /* OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		09140D8C1E8E898B00E3A4BB /* RocketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		09140D8E1E8EA72B00E3A4BB /* StarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		09140D911E8EB6DD00E3A4BB /* BackgroundColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 			children = (
 				09140D901E8EA73100E3A4BB /* BackgroundViews */,
 				09140D821E8DA46C00E3A4BB /* OnboardingExampleViewController.swift */,
-				09140D881E8E726E00E3A4BB /* OnboardingCellHello.swift */,
-				09140D891E8E726E00E3A4BB /* OnboardingCellHello.xib */,
+				09140D881E8E726E00E3A4BB /* OnboardingCell.swift */,
+				09140D891E8E726E00E3A4BB /* OnboardingCell.xib */,
 			);
 			name = "9. Onboarding";
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9241E7C85A300E7AEE2 /* LaunchScreen.storyboard in Resources */,
-				09140D8B1E8E726E00E3A4BB /* OnboardingCellHello.xib in Resources */,
+				09140D8B1E8E726E00E3A4BB /* OnboardingCell.xib in Resources */,
 				096D09B21E89275600E0A406 /* EasingExampleCell.xib in Resources */,
 				6750B9211E7C85A300E7AEE2 /* Assets.xcassets in Resources */,
 			);
@@ -374,7 +374,7 @@
 				097B7CA91E8D11CF00D56D03 /* DrawClosureView.swift in Sources */,
 				09140D831E8DA46C00E3A4BB /* OnboardingExampleViewController.swift in Sources */,
 				0984A59C1E83BEB100240A50 /* ExampleSwitcherViewController.swift in Sources */,
-				09140D8A1E8E726E00E3A4BB /* OnboardingCellHello.swift in Sources */,
+				09140D8A1E8E726E00E3A4BB /* OnboardingCell.swift in Sources */,
 				09CE9BAA1E95447E0008C33E /* IntroView.swift in Sources */,
 				0984A5AA1E843CA800240A50 /* SunAndMoonExampleViewController.swift in Sources */,
 				096D09B11E89275600E0A406 /* EasingExampleCell.swift in Sources */,

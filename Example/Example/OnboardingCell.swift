@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardingCellHello: UICollectionViewCell {
+class OnboardingCell: UICollectionViewCell {
     
     // MARK: - Public
     

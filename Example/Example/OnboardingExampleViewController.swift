@@ -323,7 +323,7 @@ class OnboardingExampleViewController: UIViewController {
     }
     
     func registerCells() {
-        collectionView.registerCellFromNib(withTypeName: OnboardingCellHello.typeName)
+        collectionView.registerCellFromNib(withTypeName: OnboardingCell.typeName)
     }
 }
 
@@ -354,7 +354,7 @@ extension OnboardingExampleViewController: UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCellHello.typeName, for: indexPath) as! OnboardingCellHello
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.typeName, for: indexPath) as! OnboardingCell
         cell.setTitle(cellTitles[indexPath.row])
         return cell
     }
