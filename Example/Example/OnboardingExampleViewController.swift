@@ -9,11 +9,20 @@
 import UIKit
 import TweenKit
 
+/*
+ The basic structure here, is that we have a horizontally scrolling collection view that is transparent.
+ The collectionview cells have a label at the top, showing the text for each slide.
+ 
+ There are also a bunch of full screen views underneith the collectionview that play the animations for various slides. (rocketView, clockView etc.)
+ We build a single tweenkit action (composed of smaller sub actions for each thing we want to animate), where the duration is 1s per page.
+ We can then use an ActionScrubber instance, and drive the action using the offset of the scrollview, mapping each page swipe to 1s.
+ */
+
 class OnboardingExampleViewController: UIViewController {
     
     // MARK: - Properties
     
-    let cellTitles: [String] = [
+    fileprivate let cellTitles: [String] = [
         "",
         "This is a rocket",
         "This is a clock",
@@ -21,46 +30,46 @@ class OnboardingExampleViewController: UIViewController {
         "Will make your onboarding rock"
     ]
     
-    var actionScrubber: ActionScrubber?
-    var hasAppeared = false
+    fileprivate var actionScrubber: ActionScrubber?
+    fileprivate var hasAppeared = false
     
-    var showExclamation = false
-    var exclamationOriginY: CGFloat?
+    fileprivate var showExclamation = false
+    fileprivate var exclamationOriginY: CGFloat?
     
-    let backgroundColorView = {
+    fileprivate let backgroundColorView = {
         return BackgroundColorView()
     }()
     
-    let introView = {
+    fileprivate let introView = {
         return IntroView()
     }()
     
-    let starsView = {
+    fileprivate let starsView = {
         return StarsView()
     }()
     
-    let rocketView = {
+    fileprivate let rocketView = {
        return RocketView()
     }()
     
-    let clockView: ClockView = {
+    fileprivate let clockView: ClockView = {
         let view = ClockView()
         view.isHidden = true
         return view
     }()
     
-    let tkAttributesView: TweenKitAttributesView = {
+    fileprivate let tkAttributesView: TweenKitAttributesView = {
         let view = TweenKitAttributesView()
         return view
     }()
     
-    let exclamationLayer: CALayer = {
+    fileprivate let exclamationLayer: CALayer = {
         let layer = CALayer()
         layer.backgroundColor = UIColor.white.cgColor
         return layer
     }()
     
-    let collectionView: UICollectionView = {
+    fileprivate let collectionView: UICollectionView = {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -71,7 +80,7 @@ class OnboardingExampleViewController: UIViewController {
         return collectionView
     }()
     
-    let pageControl: UIPageControl = {
+    fileprivate let pageControl: UIPageControl = {
         let pageControl = UIPageControl(frame: .zero)
         return pageControl
     }()
@@ -82,7 +91,7 @@ class OnboardingExampleViewController: UIViewController {
         super.viewDidLoad()
         
         // Collection view
-        registerCells()
+        collectionView.registerCellFromNib(withTypeName: OnboardingCell.typeName)
         
         // Page Control
         pageControl.numberOfPages = cellTitles.count
@@ -128,28 +137,6 @@ class OnboardingExampleViewController: UIViewController {
         updateExclamationLayer()
     }
     
-    func updateExclamationLayer() {
-        
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        
-        exclamationLayer.isHidden = true
-        if showExclamation, let originY = exclamationOriginY {
-            
-            let bottomY = clockView.clockRect.origin.y - 30
-            if bottomY > originY {
-                
-                exclamationLayer.isHidden = false
-                exclamationLayer.frame = CGRect(x: view.bounds.size.width/2 - clockView.clockRect.width/2,
-                                                y: originY,
-                                                width: clockView.clockRect.width,
-                                                height: bottomY - originY)
-            }
-        }
-        
-        CATransaction.commit()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -163,9 +150,9 @@ class OnboardingExampleViewController: UIViewController {
         hasAppeared = true
     }
     
-    // MARK: - Methods
+    // MARK: - Build Action
     
-    func buildAction() -> FiniteTimeAction {
+    fileprivate func buildAction() -> FiniteTimeAction {
         
         let rocketAction = InterpolationAction(from: 0.0, to: 1.0, duration: 2.0, easing: .linear) {
             [unowned self] in
@@ -192,7 +179,7 @@ class OnboardingExampleViewController: UIViewController {
         )
     }
     
-    func makeClockAction() -> FiniteTimeAction {
+    fileprivate func makeClockAction() -> FiniteTimeAction {
         
         // First page action (move clock on screen)
         let firstPageAction = InterpolationAction(from: 0.0,
@@ -270,7 +257,7 @@ class OnboardingExampleViewController: UIViewController {
         return ActionSequence(actions: DelayAction(duration: 1.0), fullAction)
     }
     
-    func makeTkAttributesAction() -> FiniteTimeAction {
+    fileprivate func makeTkAttributesAction() -> FiniteTimeAction {
         
         let action = InterpolationAction(from: 0.0,
                                          to: 1.0,
@@ -283,7 +270,7 @@ class OnboardingExampleViewController: UIViewController {
         return ActionSequence(actions: delay, action)
     }
     
-    func makeBackgroundColorsAction() -> FiniteTimeAction {
+    fileprivate func makeBackgroundColorsAction() -> FiniteTimeAction {
         
         let startColors = (UIColor.black, UIColor.black)
         let spaceColors = (UIColor(red: 0.004, green: 0.000, blue: 0.063, alpha: 1.00),
@@ -322,9 +309,30 @@ class OnboardingExampleViewController: UIViewController {
         return ActionSequence(actions: actions)
     }
     
-    func registerCells() {
-        collectionView.registerCellFromNib(withTypeName: OnboardingCell.typeName)
+    // MARK: - Update ExclamationLayer
+    
+    fileprivate func updateExclamationLayer() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        exclamationLayer.isHidden = true
+        if showExclamation, let originY = exclamationOriginY {
+            
+            let bottomY = clockView.clockRect.origin.y - 30
+            if bottomY > originY {
+                
+                exclamationLayer.isHidden = false
+                exclamationLayer.frame = CGRect(x: view.bounds.size.width/2 - clockView.clockRect.width/2,
+                                                y: originY,
+                                                width: clockView.clockRect.width,
+                                                height: bottomY - originY)
+            }
+        }
+        
+        CATransaction.commit()
     }
+
 }
 
 extension OnboardingExampleViewController: UIScrollViewDelegate {
