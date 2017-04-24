@@ -16,7 +16,13 @@ import Foundation
 public class ActionScrubber {
     
     // MARK: - Public
+
+    /** If false, scrubbing past the start of the animation is clamped */
+    public var clampTValuesBelowZero = false
     
+    /** If false, scrubbing past the end of the animation is clamped */
+    public var clampTValuesAboveOne = false
+
     public init(action: FiniteTimeAction) {
         self.action = action
     }
@@ -45,8 +51,16 @@ public class ActionScrubber {
             action.reverse = reverse
         }
         
+        // Constrain t
+        var t = t
+        if clampTValuesBelowZero {
+            t = t.constrained(min: 0)
+        }
+        if clampTValuesAboveOne {
+            t = t.constrained(max: 1)
+        }
+        
         // Update
-        //let t = t.constrained(min: 0.0, max: 1.0)
         action.update(t: t)
         
         // Save t
