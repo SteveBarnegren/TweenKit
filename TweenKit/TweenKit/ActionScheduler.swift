@@ -47,7 +47,7 @@ import Foundation
         }
     }
     
-    var numRunningAnimations: Int {
+    public var numRunningAnimations: Int {
         return self.animations.count
     }
 
