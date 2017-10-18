@@ -24,7 +24,7 @@ class YoyoActionTests: XCTestCase {
         let inner = InterpolationAction(from: 0, to: 1, duration: 5, easing: .linear, update: { _ in })
         let yoyo = YoyoAction(action: inner)
         
-        XCTAssertEqualWithAccuracy(inner.duration * 2, yoyo.duration, accuracy: 0.001)
+        XCTAssertEqual(inner.duration * 2, yoyo.duration, accuracy: 0.001)
     }
     
     func testMidPointIsEndOfAction() {
@@ -40,7 +40,7 @@ class YoyoActionTests: XCTestCase {
         yoyo.willBegin()
         yoyo.update(t: 0.5)
         
-        XCTAssertEqualWithAccuracy(value, end, accuracy: 0.001)
+        XCTAssertEqual(value, end, accuracy: 0.001)
     }
     
     func testEndPointIsBeginningOfAction() {
@@ -56,7 +56,7 @@ class YoyoActionTests: XCTestCase {
         yoyo.willBegin()
         yoyo.update(t: 1)
         
-        XCTAssertEqualWithAccuracy(value, start, accuracy: 0.001)
+        XCTAssertEqual(value, start, accuracy: 0.001)
     }
     
     func testOnFinishUpdatesInnerAction() {
@@ -65,7 +65,7 @@ class YoyoActionTests: XCTestCase {
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: {value = $0})
         let yoyo = action.yoyo()
         yoyo.simulateFullLifeCycle()
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value, 0.0, accuracy: 0.001)
     }
     
     func testInnerActionEventOrder() {

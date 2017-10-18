@@ -31,7 +31,7 @@ class ActionScrubberTests: XCTestCase {
         let scrubber = ActionScrubber(action: action)
         scrubber.update(t: 0.5)
         
-        XCTAssertEqualWithAccuracy(value, 2.0, accuracy: 0.0001)
+        XCTAssertEqual(value, 2.0, accuracy: 0.0001)
     }
     
     func testActionScrubberScrubsInnerActionWhenUpdateElapsedTime() {
@@ -48,7 +48,7 @@ class ActionScrubberTests: XCTestCase {
         let scrubber = ActionScrubber(action: action)
         scrubber.update(elapsedTime: action.duration / 2)
         
-        XCTAssertEqualWithAccuracy(value, 2.0, accuracy: 0.0001)
+        XCTAssertEqual(value, 2.0, accuracy: 0.0001)
     }
     
     // MARK: - Clamping
@@ -95,7 +95,7 @@ class ActionScrubberTests: XCTestCase {
         scrubber.clampTValuesBelowZero = true
         scrubber.update(t: -0.4)
         
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value, 0.0, accuracy: 0.001)
     }
     
     func testCannotScrubPastEndWithClampingEnabled() {
@@ -110,7 +110,7 @@ class ActionScrubberTests: XCTestCase {
         scrubber.clampTValuesAboveOne = true
         scrubber.update(t: 3)
         
-        XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value, 1.0, accuracy: 0.001)
     }
 
     

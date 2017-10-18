@@ -50,7 +50,7 @@ class RepeatForeverActionTests: XCTestCase {
         let secondReading = value
         
         // The readings should be about 0.5 apart
-        XCTAssertNotEqualWithAccuracy(firstReading, secondReading, 0.3)
+        XCTAssertNotEqual(firstReading, secondReading, accuracy: 0.3)
     }
     
     // MARK: - Test Inner Action LifeCycle Events

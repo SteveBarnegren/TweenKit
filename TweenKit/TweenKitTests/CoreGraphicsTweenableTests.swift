@@ -17,7 +17,7 @@ class CoreGraphicsTweenableTests: XCTestCase {
     
         let start = CGFloat(2)
         let end = CGFloat(4)
-        XCTAssertEqualWithAccuracy(start.lerp(t: 0.5, end: end), CGFloat(3), accuracy: 0.001)
+        XCTAssertEqual(start.lerp(t: 0.5, end: end), CGFloat(3), accuracy: 0.001)
     }
     
     // MARK: - CGPoint
@@ -49,8 +49,8 @@ class CoreGraphicsTweenableTests: XCTestCase {
         
         let point = CGPoint(x: x, y: y)
        
-        XCTAssertEqualWithAccuracy(point.tweenableX, Double(x), accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(point.tweenableY, Double(y), accuracy: 0.001)
+        XCTAssertEqual(point.tweenableX, Double(x), accuracy: 0.001)
+        XCTAssertEqual(point.tweenableY, Double(y), accuracy: 0.001)
     }
     
     // MARK: - CGSize

@@ -20,7 +20,7 @@ class DelayActionTests: XCTestCase {
         
         let duration = 5.0
         let action = DelayAction(duration: duration)
-        XCTAssertEqualWithAccuracy(action.duration, duration, accuracy: 0.001)
+        XCTAssertEqual(action.duration, duration, accuracy: 0.001)
     }
     
     // MARK: - Active / Inactive closures

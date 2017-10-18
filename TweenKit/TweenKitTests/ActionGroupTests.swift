@@ -25,7 +25,7 @@ class GroupTests: XCTestCase {
         let threeSecondAction = InterpolationAction(from: 0.0, to: 1.0, duration: 3.0, easing: .linear, update: { _ in })
         
         let group = ActionGroup(actions: oneSecondAction, twoSecondAction, threeSecondAction)
-        XCTAssertEqualWithAccuracy(group.duration, 3.0, accuracy: 0.001)
+        XCTAssertEqual(group.duration, 3.0, accuracy: 0.001)
     }
     
     func testAllActionsComplete() {
@@ -43,9 +43,9 @@ class GroupTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: group.duration + 0.1)
         
-        XCTAssertEqualWithAccuracy(firstValue, 1.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(secondValue, 1.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(thirdValue, 1.0, accuracy: 0.001)
+        XCTAssertEqual(firstValue, 1.0, accuracy: 0.001)
+        XCTAssertEqual(secondValue, 1.0, accuracy: 0.001)
+        XCTAssertEqual(thirdValue, 1.0, accuracy: 0.001)
     }
     
     func testRunBlockActionsAreRunAtBeginning() {
@@ -153,9 +153,9 @@ class GroupTests: XCTestCase {
         let group = ActionGroup(actions: action1, action2, action3)
         group.simulateFullLifeCycle()
         
-        XCTAssertEqualWithAccuracy(value1, 1.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(value2, 1.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(value3, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value1, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value2, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value3, 1.0, accuracy: 0.001)
     }
     
     func testGroupFullLifeCycleUpdatesInnerActionsWhenReversed() {
@@ -170,9 +170,9 @@ class GroupTests: XCTestCase {
         group.reverse = true
         group.simulateFullLifeCycle()
         
-        XCTAssertEqualWithAccuracy(value1, 0.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(value2, 0.0, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(value3, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value1, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value2, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value3, 0.0, accuracy: 0.001)
     }
     
     // MARK: - Active / Inactive closures

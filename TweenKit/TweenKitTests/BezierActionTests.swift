@@ -32,7 +32,7 @@ class BezierActionTests: XCTestCase {
                                   duration: duration,
                                   update: {_ in})
         
-        XCTAssertEqualWithAccuracy(action.duration, duration, accuracy: 0.001)
+        XCTAssertEqual(action.duration, duration, accuracy: 0.001)
     }
     
     

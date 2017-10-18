@@ -25,7 +25,7 @@ class ReverseActionTests: XCTestCase {
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear, update: { _ in} )
         let reversed = action.reversed()
         
-        XCTAssertEqualWithAccuracy(action.duration, reversed.duration, accuracy: 0.001)
+        XCTAssertEqual(action.duration, reversed.duration, accuracy: 0.001)
     }
     
     // MARK: - Test Tweening
@@ -41,7 +41,7 @@ class ReverseActionTests: XCTestCase {
         reversed.willBegin()
         reversed.update(t: 0.0)
         
-        XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value, 1.0, accuracy: 0.001)
     }
     
     func testReverseActionEndsAtActionStart() {
@@ -55,7 +55,7 @@ class ReverseActionTests: XCTestCase {
         reversed.willBegin()
         reversed.update(t: 1.0)
         
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value, 0.0, accuracy: 0.001)
     }
     
     // MARK: - Test LifeCycle

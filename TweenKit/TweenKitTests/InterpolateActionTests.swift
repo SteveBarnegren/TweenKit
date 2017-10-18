@@ -31,7 +31,7 @@ class InterpolateActionTests: XCTestCase {
         action.willBegin()
         action.update(t: 0.0)
         
-        XCTAssertEqualWithAccuracy(updatedValue, startValue, accuracy: 0.001)
+        XCTAssertEqual(updatedValue, startValue, accuracy: 0.001)
     }
     
     func testInterpolateActionEndsWithEndValue() {
@@ -47,7 +47,7 @@ class InterpolateActionTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: duration + 0.1)
         
-        XCTAssertEqualWithAccuracy(value, expectedEndValue, accuracy: 0.001)
+        XCTAssertEqual(value, expectedEndValue, accuracy: 0.001)
     }
     
     func testInterpolateActionEndsWithStartValueReversed() {
@@ -62,7 +62,7 @@ class InterpolateActionTests: XCTestCase {
         scheduler.add(animation: animation)
         scheduler.progressTime(duration: duration + 0.1)
         
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value, 0.0, accuracy: 0.001)
     }
     
     // MARK: - LifeCycle
@@ -72,7 +72,7 @@ class InterpolateActionTests: XCTestCase {
         var value = 0.0
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear) { value = $0 }
         action.simulateFullLifeCycle()
-        XCTAssertEqualWithAccuracy(value, 1.0, accuracy: 0.001)
+        XCTAssertEqual(value, 1.0, accuracy: 0.001)
     }
     
     func testInterpolateActionFullLifeCycleResultsInExpectedEndValueWhenReversed() {
@@ -81,7 +81,7 @@ class InterpolateActionTests: XCTestCase {
         let action = InterpolationAction(from: 0.0, to: 1.0, duration: 5.0, easing: .linear) { value = $0 }
         action.reverse = true
         action.simulateFullLifeCycle()
-        XCTAssertEqualWithAccuracy(value, 0.0, accuracy: 0.001)
+        XCTAssertEqual(value, 0.0, accuracy: 0.001)
     }
     
     // MARK: - Active / Inactive closures
