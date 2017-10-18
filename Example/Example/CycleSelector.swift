@@ -79,7 +79,7 @@ class CycleSelector<T>: UIView {
     
     // MARK: - Methods
     
-    func wasTapped() {
+    @objc func wasTapped() {
         
         selectedIndex += 1
         if selectedIndex >= options.count {

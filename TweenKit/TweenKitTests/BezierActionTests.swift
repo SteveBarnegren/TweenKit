@@ -30,7 +30,7 @@ class BezierActionTests: XCTestCase {
         let path = makeBasicTestPath()
         let action = BezierAction(path: path,
                                   duration: duration,
-                                  update: {_ in})
+                                  update: {_,_  in})
         
         XCTAssertEqual(action.duration, duration, accuracy: 0.001)
     }
@@ -81,7 +81,7 @@ class BezierActionTests: XCTestCase {
         let path = makeBasicTestPath()
         let action = BezierAction(path: path,
                                   duration: 1.0,
-                                  update: {_ in})
+                                  update: {_,_  in})
         action.onBecomeActive = {
             numCalls += 1
         }
@@ -96,7 +96,7 @@ class BezierActionTests: XCTestCase {
         let path = makeBasicTestPath()
         let action = BezierAction(path: path,
                                   duration: 1.0,
-                                  update: {_ in})
+                                  update: {_,_  in})
         action.onBecomeInactive = {
             numCalls += 1
         }

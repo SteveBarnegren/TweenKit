@@ -41,7 +41,7 @@ class StarsView: UIView {
         backgroundColor = UIColor.clear
      
         // Create the stars
-        stars = makeStars().sorted{ $0.0.currentPosition.y < $0.1.currentPosition.y }
+        stars = makeStars().sorted{ $0.currentPosition.y < $1.currentPosition.y }
         
         // Create the action
         let duration = 0.6

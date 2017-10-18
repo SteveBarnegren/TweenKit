@@ -138,7 +138,7 @@ class StringTweenViewController: UIViewController {
     private let label: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "bat"
-        label.font = UIFont.systemFont(ofSize: 40, weight: 4)
+        label.font = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight(rawValue: 4))
         label.textAlignment = .center
         return label
     }()

@@ -57,7 +57,7 @@ class IntroView: UIView {
     private let topLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Onboarding with".uppercased()
-        label.font = UIFont.systemFont(ofSize: 16, weight: 3)
+        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(rawValue: 3))
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.sizeToFit()
@@ -67,7 +67,7 @@ class IntroView: UIView {
     private let bottomLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "TweenKit"
-        label.font = UIFont.systemFont(ofSize: 16, weight: 3)
+        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(rawValue: 3))
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.sizeToFit()
