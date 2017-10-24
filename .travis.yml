@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode8.3
+osx_image: xcode9.1
 xcode_project: TweenKit.xcodeproj
 xcode_scheme: TweenKit
 xcode_sdk: iphonesimulator10.1
