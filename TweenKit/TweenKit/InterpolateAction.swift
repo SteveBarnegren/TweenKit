@@ -90,7 +90,7 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
                 update: @escaping (_: T) -> ()) {
         
         self.easing = easing
-        self.duration = startValue.distanceTo(other: endValue) / speed
+        self.duration = abs(startValue.distanceTo(other: endValue)) / speed
         self.updateHandler = update
         self.startTweenableValue = .constant(startValue)
         self.endTweenableValue = .constant(endValue)
