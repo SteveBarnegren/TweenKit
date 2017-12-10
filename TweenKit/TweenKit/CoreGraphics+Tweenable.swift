@@ -16,7 +16,7 @@ extension CGFloat: Tweenable {
     }
     
     public func distanceTo(other: CGFloat) -> Double {
-        return Double(other - self)
+        return Double(abs(other - self))
     }
 }
 

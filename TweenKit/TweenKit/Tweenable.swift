@@ -22,10 +22,10 @@ public protocol Tweenable {
     func lerp(t: Double, end: Self) -> Self
     
     /**
-     Returns the distance to another value. Required to calculate durations for speed based actions.
+     Returns the absolute distance to another value. Required to calculate durations for speed based actions.
      If you don't need to use speed based actions, you can fatal error here
      - Parameter other: Another instance
-     - Returns: The distance to the other instance
+     - Returns: The distance to the other instance, must be positive
      */
     func distanceTo(other: Self) -> Double
 }
@@ -36,7 +36,7 @@ extension Float: Tweenable {
     }
     
     public func distanceTo(other: Float) -> Double {
-        return Double(other - self)
+        return Double(abs(other - self))
     }
 }
 
@@ -46,7 +46,7 @@ extension Double: Tweenable {
     }
     
     public func distanceTo(other: Double) -> Double {
-        return other - self
+        return abs(other - self)
     }
 }
 
