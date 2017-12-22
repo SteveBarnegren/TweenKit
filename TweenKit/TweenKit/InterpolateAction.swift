@@ -88,9 +88,15 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
                 speed: Double,
                 easing: Easing,
                 update: @escaping (_: T) -> ()) {
-        
+
+        var distance = startValue.distanceTo(other: endValue)
+        if distance < 0 {
+            assert(true, "Distance returned from distanceTo(other:) in \(type(of: startValue)) must be positive.")
+            distance = -distance
+        }
+
         self.easing = easing
-        self.duration = abs(startValue.distanceTo(other: endValue)) / speed
+        self.duration = distance / speed
         self.updateHandler = update
         self.startTweenableValue = .constant(startValue)
         self.endTweenableValue = .constant(endValue)
