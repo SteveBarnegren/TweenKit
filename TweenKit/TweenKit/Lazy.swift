@@ -32,19 +32,27 @@ import Foundation
  */
 public class Lazy<T> {
     
-    let calculateValue: () -> (T)
-    var backing: T?
+    private indirect enum State<T> {
+        case closure( () -> (T) )
+        case value(T)
+    }
     
-    init(calculate: @escaping () -> (T)) {
-        self.calculateValue = calculate
+    private var state: State<T>
+    
+    public init(calculate: @escaping () -> (T)) {
+        self.state = .closure(calculate)
     }
     
     public var value : T {
         get {
-            if backing == nil {
-                backing = calculateValue()
+            switch state {
+            case .value(let value):
+                return value
+            case .closure(let closure):
+                let result = closure()
+                self.state = .value(result)
+                return result
             }
-            return backing!
         }
     }
 }

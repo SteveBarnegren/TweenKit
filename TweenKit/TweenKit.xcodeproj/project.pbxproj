@@ -35,6 +35,7 @@
 		09FF20891E8036A40029CB2D /* FiniteTimeActioMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF20881E8036A40029CB2D /* FiniteTimeActioMock.swift */; };
 		09FF208B1E815B460029CB2D /* ReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208A1E815B460029CB2D /* ReverseAction.swift */; };
 		09FF208D1E8169E00029CB2D /* ReverseActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */; };
+		670349A12094DBC1002A1E30 /* LazyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670349A02094DBC1002A1E30 /* LazyTests.swift */; };
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		673CB76B1E7E889100592F24 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
 		673CB76D1E7E92BB00592F24 /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
@@ -93,6 +94,7 @@
 		09FF20881E8036A40029CB2D /* FiniteTimeActioMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteTimeActioMock.swift; sourceTree = "<group>"; };
 		09FF208A1E815B460029CB2D /* ReverseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseAction.swift; sourceTree = "<group>"; };
 		09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseActionTests.swift; sourceTree = "<group>"; };
+		670349A02094DBC1002A1E30 /* LazyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyTests.swift; sourceTree = "<group>"; };
 		673CB7681E7DAEC000592F24 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		673CB76A1E7E889100592F24 /* ActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroup.swift; sourceTree = "<group>"; };
 		673CB76C1E7E92BB00592F24 /* ActionSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSequence.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				09BB04EC1E80062E0011E68E /* Supporting */,
 				09BB04F11E8018E20011E68E /* SchedulerTests.swift */,
 				09A2E3691EAE441C00A7A0E8 /* ActionScrubberTests.swift */,
+				670349A02094DBC1002A1E30 /* LazyTests.swift */,
 				09CE9BAD1E9639E00008C33E /* Tweenable */,
 				09FF207E1E802B6D0029CB2D /* Actions */,
 				6750B9031E7C855A00E7AEE2 /* Info.plist */,
@@ -448,6 +451,7 @@
 				09FF20831E802D330029CB2D /* ActionGroupTests.swift in Sources */,
 				09F52D801E8A6D92003B09E2 /* BezierActionTests.swift in Sources */,
 				09BB04F81E8023950011E68E /* Sheduler+Extensions.swift in Sources */,
+				670349A12094DBC1002A1E30 /* LazyTests.swift in Sources */,
 				09FF20871E802D530029CB2D /* RunBlockActionTests.swift in Sources */,
 				09BB04F61E80208C0011E68E /* RepeatForeverActionTests.swift in Sources */,
 				0984A5AE1E853EFC00240A50 /* XCTestCase+CustomAssertions.swift in Sources */,
