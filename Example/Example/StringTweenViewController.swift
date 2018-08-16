@@ -13,7 +13,7 @@ let alphabetString = "abcdefghijklmnopqrstuvwxyz"
 
 func convertCharacterToInt(_ character: Character) -> Int {
     
-    for (index, char) in alphabetString.characters.enumerated() {
+    for (index, char) in alphabetString.enumerated() {
         if char == character {
             return index
         }
@@ -24,7 +24,7 @@ func convertCharacterToInt(_ character: Character) -> Int {
 
 func convertIntToCharacter(_ int: Int) -> Character {
     
-    for (index, char) in alphabetString.characters.enumerated() {
+    for (index, char) in alphabetString.enumerated() {
         if index == int {
             return char
         }
@@ -55,7 +55,7 @@ extension String: Tweenable {
         // If you want to use this in production, you should implement something more robust
         // Long strings also suffer from floating point precision issues
         
-        precondition(self.characters.count == end.characters.count)
+        precondition(self.count == end.count)
         
         // 'Snap' near the ends
         if t < 0.00001 {
@@ -69,7 +69,7 @@ extension String: Tweenable {
         let toNumber = end.asNumber()
         
         let interpolated = Double(fromNumber).lerp(t: t, end: Double(toNumber))
-        return String(number: Int(interpolated), length: self.characters.count)
+        return String(number: Int(interpolated), length: self.count)
     }
     
     init(number: Int, length: Int) {
@@ -102,7 +102,7 @@ extension String: Tweenable {
         
         var cumulative = 0
         
-        for (index, char) in characters.reversed().enumerated() {
+        for (index, char) in self.reversed().enumerated() {
          
             var num = convertCharacterToInt(char)
             
@@ -122,7 +122,7 @@ extension String: Tweenable {
     }
    
     var alphabetLength: Int {
-        return alphabetString.characters.count
+        return alphabetString.count
     }
 
     public func distanceTo(other: String) -> Double {
