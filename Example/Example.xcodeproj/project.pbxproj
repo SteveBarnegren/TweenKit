@@ -525,7 +525,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -544,7 +544,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
