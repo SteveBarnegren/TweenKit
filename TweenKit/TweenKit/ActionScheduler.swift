@@ -174,7 +174,7 @@ import Foundation
                                       selector: #selector(displayLinkCallback(displaylink:)))
         
         caDisplayLink?.add(to: .current,
-                           forMode: .commonModes)
+                           forMode: .common)
         
     }
     

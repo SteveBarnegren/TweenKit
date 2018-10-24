@@ -170,15 +170,15 @@ class ExampleSwitcherViewController: UIViewController {
     private func setContentViewController(to viewController: UIViewController) {
         
         if let existing = contentViewController {
-            existing.removeFromParentViewController()
+            existing.removeFromParent()
             existing.view.removeFromSuperview()
         }
         
         contentViewController = nil
         
-        addChildViewController(viewController)
+        addChild(viewController)
         view.addSubview(viewController.view)
-        view.sendSubview(toBack: viewController.view)
+        view.sendSubviewToBack(viewController.view)
         contentViewController = viewController
         
         view.setNeedsLayout()

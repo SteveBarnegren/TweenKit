@@ -27,7 +27,7 @@ class EasingExamplesViewController: UIViewController {
     fileprivate let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset.top = 50
         tableView.allowsSelection = false
         return tableView
