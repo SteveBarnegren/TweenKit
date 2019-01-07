@@ -21,8 +21,8 @@ TweenKit makes it easy to animate anything!
   s.source           = { :git => 'https://github.com/SteveBarnegren/TweenKit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/SteveBarnegren'
 
-  s.ios.deployment_target = '8.0'
-  s.tvos.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
+  s.tvos.deployment_target = '9.0'
   s.swift_version = '4.2'
 
   s.source_files = 'TweenKit/TweenKit/*.swift'
