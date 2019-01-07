@@ -53,6 +53,29 @@
 		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
 		6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
 		6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
+		67BA923921E373E7006D7022 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
+		67BA923A21E373E9006D7022 /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
+		67BA923B21E373EB006D7022 /* ActionScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */; };
+		67BA923C21E373EE006D7022 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
+		67BA923D21E373F0006D7022 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
+		67BA923E21E373F3006D7022 /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */; };
+		67BA923F21E373F5006D7022 /* CoreGraphics+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */; };
+		67BA924021E373F7006D7022 /* UIKit+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76E1E7E98E100592F24 /* UIKit+Tweenable.swift */; };
+		67BA924121E373FA006D7022 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
+		67BA924221E373FD006D7022 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9361E7C878F00E7AEE2 /* Action.swift */; };
+		67BA924321E373FF006D7022 /* InterpolateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */; };
+		67BA924421E37401006D7022 /* RepeatForeverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */; };
+		67BA924521E37403006D7022 /* YoyoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7711E7EA0BD00592F24 /* YoyoAction.swift */; };
+		67BA924621E37405006D7022 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7731E7EA8AA00592F24 /* RepeatAction.swift */; };
+		67BA924721E37407006D7022 /* RunBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7771E7EC8F600592F24 /* RunBlockAction.swift */; };
+		67BA924821E37409006D7022 /* ReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208A1E815B460029CB2D /* ReverseAction.swift */; };
+		67BA924921E3740B006D7022 /* DelayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A41E83F99200240A50 /* DelayAction.swift */; };
+		67BA924A21E3740E006D7022 /* UIBezierPath+BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */; };
+		67BA924B21E37410006D7022 /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */; };
+		67BA924C21E37412006D7022 /* BezierAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09B31E894D6700E0A406 /* BezierAction.swift */; };
+		67BA924D21E37414006D7022 /* ArcAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914BDDD1E82C5F80002C6FB /* ArcAction.swift */; };
+		67BA924E21E37417006D7022 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
+		67BA924F21E37419006D7022 /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +138,8 @@
 		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScheduler.swift; sourceTree = "<group>"; };
 		6750B9481E7DA10100E7AEE2 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		67BA923121E373D2006D7022 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BA923421E373D2006D7022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +155,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B8FD1E7C855A00E7AEE2 /* TweenKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67BA922E21E373D2006D7022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +259,7 @@
 				6750B8F61E7C855A00E7AEE2 /* TweenKit.h */,
 				6750B8F71E7C855A00E7AEE2 /* Info.plist */,
 				6750B9001E7C855A00E7AEE2 /* TweenKitTests */,
+				67BA923221E373D2006D7022 /* TweenKit-tvOS */,
 				6750B8F41E7C855A00E7AEE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -236,6 +269,7 @@
 			children = (
 				6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */,
 				6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */,
+				67BA923121E373D2006D7022 /* TweenKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,6 +337,14 @@
 			name = Easing;
 			sourceTree = "<group>";
 		};
+		67BA923221E373D2006D7022 /* TweenKit-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				67BA923421E373D2006D7022 /* Info.plist */,
+			);
+			path = "TweenKit-tvOS";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -311,6 +353,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67BA922C21E373D2006D7022 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +402,24 @@
 			productReference = 6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		67BA923021E373D2006D7022 /* TweenKit-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67BA923821E373D2006D7022 /* Build configuration list for PBXNativeTarget "TweenKit-tvOS" */;
+			buildPhases = (
+				67BA922C21E373D2006D7022 /* Headers */,
+				67BA922D21E373D2006D7022 /* Sources */,
+				67BA922E21E373D2006D7022 /* Frameworks */,
+				67BA922F21E373D2006D7022 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TweenKit-tvOS";
+			productName = "TweenKit-tvOS";
+			productReference = 67BA923121E373D2006D7022 /* TweenKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -373,6 +440,10 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
+					67BA923021E373D2006D7022 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 6750B8ED1E7C855A00E7AEE2 /* Build configuration list for PBXProject "TweenKit" */;
@@ -388,6 +459,7 @@
 			projectRoot = "";
 			targets = (
 				6750B8F21E7C855A00E7AEE2 /* TweenKit */,
+				67BA923021E373D2006D7022 /* TweenKit-tvOS */,
 				6750B8FB1E7C855A00E7AEE2 /* TweenKitTests */,
 			);
 		};
@@ -402,6 +474,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6750B8FA1E7C855A00E7AEE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67BA922F21E373D2006D7022 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -466,6 +545,36 @@
 				0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */,
 				09FF20891E8036A40029CB2D /* FiniteTimeActioMock.swift in Sources */,
 				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67BA922D21E373D2006D7022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67BA924C21E37412006D7022 /* BezierAction.swift in Sources */,
+				67BA924421E37401006D7022 /* RepeatForeverAction.swift in Sources */,
+				67BA924D21E37414006D7022 /* ArcAction.swift in Sources */,
+				67BA924021E373F7006D7022 /* UIKit+Tweenable.swift in Sources */,
+				67BA923F21E373F5006D7022 /* CoreGraphics+Tweenable.swift in Sources */,
+				67BA924321E373FF006D7022 /* InterpolateAction.swift in Sources */,
+				67BA924621E37405006D7022 /* RepeatAction.swift in Sources */,
+				67BA923921E373E7006D7022 /* Math.swift in Sources */,
+				67BA924221E373FD006D7022 /* Action.swift in Sources */,
+				67BA924F21E37419006D7022 /* ActionSequence.swift in Sources */,
+				67BA923C21E373EE006D7022 /* ActionScheduler.swift in Sources */,
+				67BA924821E37409006D7022 /* ReverseAction.swift in Sources */,
+				67BA924721E37407006D7022 /* RunBlockAction.swift in Sources */,
+				67BA923B21E373EB006D7022 /* ActionScrubber.swift in Sources */,
+				67BA924121E373FA006D7022 /* Easing.swift in Sources */,
+				67BA923D21E373F0006D7022 /* Animation.swift in Sources */,
+				67BA923A21E373E9006D7022 /* Lazy.swift in Sources */,
+				67BA923E21E373F3006D7022 /* Tweenable.swift in Sources */,
+				67BA924E21E37417006D7022 /* ActionGroup.swift in Sources */,
+				67BA924521E37403006D7022 /* YoyoAction.swift in Sources */,
+				67BA924921E3740B006D7022 /* DelayAction.swift in Sources */,
+				67BA924A21E3740E006D7022 /* UIBezierPath+BezierPath.swift in Sources */,
+				67BA924B21E37410006D7022 /* BezierPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +777,65 @@
 			};
 			name = Release;
 		};
+		67BA923621E373D2006D7022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TweenKit-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.itv.TweenKit-tvOS";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = TweenKit;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Debug;
+		};
+		67BA923721E373D2006D7022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TweenKit-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.itv.TweenKit-tvOS";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = TweenKit;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -694,6 +862,15 @@
 			buildConfigurations = (
 				6750B90B1E7C855A00E7AEE2 /* Debug */,
 				6750B90C1E7C855A00E7AEE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67BA923821E373D2006D7022 /* Build configuration list for PBXNativeTarget "TweenKit-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67BA923621E373D2006D7022 /* Debug */,
+				67BA923721E373D2006D7022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 @objc public class ActionScheduler : NSObject {
     
