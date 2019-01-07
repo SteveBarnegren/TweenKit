@@ -53,7 +53,6 @@
 		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
 		6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
 		6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
-		67BA923521E373D2006D7022 /* TweenKit_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 67BA923321E373D2006D7022 /* TweenKit_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67BA923921E373E7006D7022 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		67BA923A21E373E9006D7022 /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
 		67BA923B21E373EB006D7022 /* ActionScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */; };
@@ -139,8 +138,7 @@
 		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScheduler.swift; sourceTree = "<group>"; };
 		6750B9481E7DA10100E7AEE2 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		67BA923121E373D2006D7022 /* TweenKit_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		67BA923321E373D2006D7022 /* TweenKit_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweenKit_tvOS.h; sourceTree = "<group>"; };
+		67BA923121E373D2006D7022 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA923421E373D2006D7022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,7 +269,7 @@
 			children = (
 				6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */,
 				6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */,
-				67BA923121E373D2006D7022 /* TweenKit_tvOS.framework */,
+				67BA923121E373D2006D7022 /* TweenKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,7 +340,6 @@
 		67BA923221E373D2006D7022 /* TweenKit-tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				67BA923321E373D2006D7022 /* TweenKit_tvOS.h */,
 				67BA923421E373D2006D7022 /* Info.plist */,
 			);
 			path = "TweenKit-tvOS";
@@ -363,7 +360,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67BA923521E373D2006D7022 /* TweenKit_tvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +417,7 @@
 			);
 			name = "TweenKit-tvOS";
 			productName = "TweenKit-tvOS";
-			productReference = 67BA923121E373D2006D7022 /* TweenKit_tvOS.framework */;
+			productReference = 67BA923121E373D2006D7022 /* TweenKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -802,7 +798,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.itv.TweenKit-tvOS";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TweenKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -831,7 +827,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.itv.TweenKit-tvOS";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TweenKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;

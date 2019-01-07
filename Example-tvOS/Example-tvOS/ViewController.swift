@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TweenKit_tvOS
+import TweenKit
 
 class ViewController: UIViewController {
     

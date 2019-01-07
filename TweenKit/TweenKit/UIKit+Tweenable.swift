@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIColor: Tweenable {
     public func lerp(t: Double, end: UIColor) -> Self {
