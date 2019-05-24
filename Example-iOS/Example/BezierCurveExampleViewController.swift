@@ -212,9 +212,9 @@ class BezierCurveExampleViewController: UIViewController {
         label.alpha = 0
         view.addSubview(label)
         
-        let leftPin = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: label, attribute: .left, multiplier: 1, constant: -8)
-        let rightPin = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: label, attribute: .right, multiplier: 1, constant: 8)
-        let bottomPin = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 60)
+        let leftPin = NSLayoutConstraint(item: view as Any, attribute: .left, relatedBy: .equal, toItem: label, attribute: .left, multiplier: 1, constant: -8)
+        let rightPin = NSLayoutConstraint(item: view as Any, attribute: .right, relatedBy: .equal, toItem: label, attribute: .right, multiplier: 1, constant: 8)
+        let bottomPin = NSLayoutConstraint(item: view as Any, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 60)
         view.addConstraints([leftPin, rightPin, bottomPin])
         
         // Fade in then out
