@@ -54,7 +54,7 @@ public extension CGPath {
                     return nil
                 }
                 
-                let newPathElement: PathElement
+                var newPathElement: PathElement?
                 
                 switch element.type {
                 case .moveToPoint:
@@ -80,10 +80,13 @@ public extension CGPath {
                     }
                     newPathElement = PathElement(curve: .lineToPoint(start))
                 @unknown default:
-                    fatalError("Unsupported CGPathElementType")
+                    print("Unsupported CGPathElementType")
+                    break
                 }
-
-                pathElements?.pointee.append(newPathElement)
+                
+                guard let newPath = newPathElement else { return }
+                
+                pathElements?.pointee.append(newPath)
             }
         }
         
