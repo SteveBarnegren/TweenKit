@@ -79,6 +79,8 @@ public extension CGPath {
                         fatalError("Cannot close a path that has not started")
                     }
                     newPathElement = PathElement(curve: .lineToPoint(start))
+                @unknown default:
+                    fatalError("Unsupported CGPathElementType element type")
                 }
 
                 pathElements?.pointee.append(newPathElement)

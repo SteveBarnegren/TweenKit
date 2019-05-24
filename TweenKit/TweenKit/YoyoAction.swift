@@ -127,7 +127,7 @@ public class YoyoAction: FiniteTimeAction {
 
 public extension FiniteTimeAction {
     
-    public func yoyo() -> YoyoAction {
+    func yoyo() -> YoyoAction {
         return YoyoAction(action: self)
     }
 }

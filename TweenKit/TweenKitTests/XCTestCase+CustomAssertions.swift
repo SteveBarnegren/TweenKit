@@ -84,7 +84,7 @@ extension XCTestCase {
             return
         }
         
-        let message = "(\(p1.x), \(p1.y)) is not equal to (\(p2.x, p2.y)))"
+        let message = "(\(p1.x), \(p1.y)) is not equal to (\((p2.x, p2.y))))"
         
         XCTFail(message, file: file, line: line)
     }
@@ -104,7 +104,7 @@ extension XCTestCase {
             return
         }
         
-        let message = "(\(s1.width), \(s1.height)) is not equal to (\(s2.width, s2.height)))"
+        let message = "(\(s1.width), \(s1.height)) is not equal to (\((s2.width, s2.height))))"
         
         XCTFail(message, file: file, line: line)
     }
