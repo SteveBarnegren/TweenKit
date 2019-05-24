@@ -80,7 +80,7 @@ public extension CGPath {
                     }
                     newPathElement = PathElement(curve: .lineToPoint(start))
                 @unknown default:
-                    fatalError("Unsupported CGPathElementType element type")
+                    fatalError("Unsupported CGPathElementType")
                 }
 
                 pathElements?.pointee.append(newPathElement)
