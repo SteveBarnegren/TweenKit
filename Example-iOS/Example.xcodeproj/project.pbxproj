@@ -44,6 +44,13 @@
 			remoteGlobalIDString = 6750B8F21E7C855A00E7AEE2;
 			remoteInfo = TweenKit;
 		};
+		22F7A12A2297F93700BF126E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67BA923121E373D2006D7022;
+			remoteInfo = "TweenKit-tvOS";
+		};
 		6750B9301E7C85AD00E7AEE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
@@ -251,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */,
+				22F7A12B2297F93700BF126E /* TweenKit.framework */,
 				6750B9331E7C85AD00E7AEE2 /* TweenKitTests.xctest */,
 			);
 			name = Products;
@@ -285,20 +293,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Steve Barnegren";
 				TargetAttributes = {
 					6750B9151E7C85A300E7AEE2 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = VAA3W4LPY2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
 			buildConfigurationList = 6750B9111E7C85A300E7AEE2 /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -321,6 +329,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		22F7A12B2297F93700BF126E /* TweenKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TweenKit.framework;
+			remoteRef = 22F7A12A2297F93700BF126E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -406,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -464,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -525,7 +542,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -544,7 +561,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a6cfdde-fec1-4cf8-b5ce-8dc4492fa36b";
 				PROVISIONING_PROFILE_SPECIFIER = "Wildcard-iOS-Development";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
