@@ -6,6 +6,8 @@
 //  Copyright © 2017 Steve Barnegren. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import Foundation
 import UIKit
 
@@ -36,3 +38,5 @@ extension UIColor: Tweenable {
         fatalError("Not implemented")
     }
 }
+
+#endif

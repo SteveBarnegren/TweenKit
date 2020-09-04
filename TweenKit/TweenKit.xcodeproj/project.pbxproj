@@ -99,6 +99,7 @@
 		67BA924D21E37414006D7022 /* ArcAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914BDDD1E82C5F80002C6FB /* ArcAction.swift */; };
 		67BA924E21E37417006D7022 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
 		67BA924F21E37419006D7022 /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
+		67FC3C662502D7A700734D5A /* UIKit+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76E1E7E98E100592F24 /* UIKit+Tweenable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -653,6 +654,7 @@
 				678408D52502CCAA00FEA79B /* DelayAction.swift in Sources */,
 				678408DA2502CCB800FEA79B /* ActionGroup.swift in Sources */,
 				678408C72502CC8A00FEA79B /* Math.swift in Sources */,
+				67FC3C662502D7A700734D5A /* UIKit+Tweenable.swift in Sources */,
 				678408D32502CCAA00FEA79B /* RunBlockAction.swift in Sources */,
 				678408D22502CCAA00FEA79B /* RepeatAction.swift in Sources */,
 				678408CD2502CCA300FEA79B /* Easing.swift in Sources */,
