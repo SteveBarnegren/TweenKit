@@ -11,7 +11,61 @@
 		678408932502C96700FEA79B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678408922502C96700FEA79B /* ViewController.swift */; };
 		678408952502C96900FEA79B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 678408942502C96900FEA79B /* Assets.xcassets */; };
 		678408982502C96900FEA79B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678408962502C96900FEA79B /* Main.storyboard */; };
+		678408C12502CC0600FEA79B /* TweenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678408BC2502CB5400FEA79B /* TweenKit.framework */; };
+		678408C22502CC0600FEA79B /* TweenKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 678408BC2502CB5400FEA79B /* TweenKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		678408A62502CAAE00FEA79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6750B8F31E7C855A00E7AEE2;
+			remoteInfo = TweenKit;
+		};
+		678408A82502CAAE00FEA79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67BA923121E373D2006D7022;
+			remoteInfo = "TweenKit-tvOS";
+		};
+		678408AA2502CAAE00FEA79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6750B8FC1E7C855A00E7AEE2;
+			remoteInfo = TweenKitTests;
+		};
+		678408BB2502CB5400FEA79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 678408B12502CAD800FEA79B;
+			remoteInfo = "TweenKit-macOS";
+		};
+		678408C42502CC3F00FEA79B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 678408B02502CAD800FEA79B;
+			remoteInfo = "TweenKit-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		678408C32502CC0600FEA79B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				678408C22502CC0600FEA79B /* TweenKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6784088D2502C96700FEA79B /* Example-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,6 +75,7 @@
 		678408972502C96900FEA79B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		678408992502C96900FEA79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6784089A2502C96900FEA79B /* Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example_macOS.entitlements; sourceTree = "<group>"; };
+		678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TweenKit.xcodeproj; path = ../TweenKit/TweenKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				678408C12502CC0600FEA79B /* TweenKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +93,10 @@
 		678408842502C96700FEA79B = {
 			isa = PBXGroup;
 			children = (
+				678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */,
 				6784088F2502C96700FEA79B /* Example-macOS */,
 				6784088E2502C96700FEA79B /* Products */,
+				678408B92502CB5400FEA79B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +121,24 @@
 			path = "Example-macOS";
 			sourceTree = "<group>";
 		};
+		678408A12502CAAE00FEA79B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				678408A72502CAAE00FEA79B /* TweenKit.framework */,
+				678408A92502CAAE00FEA79B /* TweenKit.framework */,
+				678408BC2502CB5400FEA79B /* TweenKit.framework */,
+				678408AB2502CAAE00FEA79B /* TweenKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		678408B92502CB5400FEA79B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -73,10 +149,12 @@
 				678408892502C96700FEA79B /* Sources */,
 				6784088A2502C96700FEA79B /* Frameworks */,
 				6784088B2502C96700FEA79B /* Resources */,
+				678408C32502CC0600FEA79B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				678408C52502CC3F00FEA79B /* PBXTargetDependency */,
 			);
 			name = "Example-macOS";
 			productName = "Example-macOS";
@@ -109,12 +187,49 @@
 			mainGroup = 678408842502C96700FEA79B;
 			productRefGroup = 6784088E2502C96700FEA79B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 678408A12502CAAE00FEA79B /* Products */;
+					ProjectRef = 678408A02502CAAE00FEA79B /* TweenKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6784088C2502C96700FEA79B /* Example-macOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		678408A72502CAAE00FEA79B /* TweenKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TweenKit.framework;
+			remoteRef = 678408A62502CAAE00FEA79B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		678408A92502CAAE00FEA79B /* TweenKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TweenKit.framework;
+			remoteRef = 678408A82502CAAE00FEA79B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		678408AB2502CAAE00FEA79B /* TweenKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TweenKitTests.xctest;
+			remoteRef = 678408AA2502CAAE00FEA79B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		678408BC2502CB5400FEA79B /* TweenKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TweenKit.framework;
+			remoteRef = 678408BB2502CB5400FEA79B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6784088B2502C96700FEA79B /* Resources */ = {
@@ -139,6 +254,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		678408C52502CC3F00FEA79B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TweenKit-macOS";
+			targetProxy = 678408C42502CC3F00FEA79B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		678408962502C96900FEA79B /* Main.storyboard */ = {

@@ -53,6 +53,29 @@
 		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
 		6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
 		6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
+		678408B52502CAD800FEA79B /* TweenKit_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 678408B32502CAD800FEA79B /* TweenKit_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		678408C62502CC7200FEA79B /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
+		678408C72502CC8A00FEA79B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
+		678408C82502CC8D00FEA79B /* ActionScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */; };
+		678408C92502CC9100FEA79B /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
+		678408CA2502CC9400FEA79B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
+		678408CB2502CC9700FEA79B /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */; };
+		678408CC2502CC9A00FEA79B /* CoreGraphics+Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9411E7C90DF00E7AEE2 /* CoreGraphics+Tweenable.swift */; };
+		678408CD2502CCA300FEA79B /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
+		678408CE2502CCA700FEA79B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9361E7C878F00E7AEE2 /* Action.swift */; };
+		678408CF2502CCAA00FEA79B /* InterpolateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */; };
+		678408D02502CCAA00FEA79B /* RepeatForeverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */; };
+		678408D12502CCAA00FEA79B /* YoyoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7711E7EA0BD00592F24 /* YoyoAction.swift */; };
+		678408D22502CCAA00FEA79B /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7731E7EA8AA00592F24 /* RepeatAction.swift */; };
+		678408D32502CCAA00FEA79B /* RunBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7771E7EC8F600592F24 /* RunBlockAction.swift */; };
+		678408D42502CCAA00FEA79B /* ReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208A1E815B460029CB2D /* ReverseAction.swift */; };
+		678408D52502CCAA00FEA79B /* DelayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984A5A41E83F99200240A50 /* DelayAction.swift */; };
+		678408D62502CCB300FEA79B /* UIBezierPath+BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D831E8AAD0A003B09E2 /* UIBezierPath+BezierPath.swift */; };
+		678408D72502CCB300FEA79B /* BezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F52D7B1E8A6AF5003B09E2 /* BezierPath.swift */; };
+		678408D82502CCB300FEA79B /* BezierAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D09B31E894D6700E0A406 /* BezierAction.swift */; };
+		678408D92502CCB300FEA79B /* ArcAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914BDDD1E82C5F80002C6FB /* ArcAction.swift */; };
+		678408DA2502CCB800FEA79B /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
+		678408DB2502CCB800FEA79B /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
 		67BA923921E373E7006D7022 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		67BA923A21E373E9006D7022 /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
 		67BA923B21E373EB006D7022 /* ActionScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7C9D1E8C0CF500D56D03 /* ActionScrubber.swift */; };
@@ -138,6 +161,9 @@
 		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScheduler.swift; sourceTree = "<group>"; };
 		6750B9481E7DA10100E7AEE2 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		678408B12502CAD800FEA79B /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		678408B32502CAD800FEA79B /* TweenKit_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweenKit_macOS.h; sourceTree = "<group>"; };
+		678408B42502CAD800FEA79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67BA923121E373D2006D7022 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA923421E373D2006D7022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +181,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B8FD1E7C855A00E7AEE2 /* TweenKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		678408AE2502CAD800FEA79B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +293,7 @@
 				6750B8F71E7C855A00E7AEE2 /* Info.plist */,
 				6750B9001E7C855A00E7AEE2 /* TweenKitTests */,
 				67BA923221E373D2006D7022 /* TweenKit-tvOS */,
+				678408B22502CAD800FEA79B /* TweenKit-macOS */,
 				6750B8F41E7C855A00E7AEE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -270,6 +304,7 @@
 				6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */,
 				6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */,
 				67BA923121E373D2006D7022 /* TweenKit.framework */,
+				678408B12502CAD800FEA79B /* TweenKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +372,15 @@
 			name = Easing;
 			sourceTree = "<group>";
 		};
+		678408B22502CAD800FEA79B /* TweenKit-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				678408B32502CAD800FEA79B /* TweenKit_macOS.h */,
+				678408B42502CAD800FEA79B /* Info.plist */,
+			);
+			path = "TweenKit-macOS";
+			sourceTree = "<group>";
+		};
 		67BA923221E373D2006D7022 /* TweenKit-tvOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +397,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		678408AC2502CAD800FEA79B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				678408B52502CAD800FEA79B /* TweenKit_macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +454,24 @@
 			productReference = 6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		678408B02502CAD800FEA79B /* TweenKit-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 678408B82502CAD800FEA79B /* Build configuration list for PBXNativeTarget "TweenKit-macOS" */;
+			buildPhases = (
+				678408AC2502CAD800FEA79B /* Headers */,
+				678408AD2502CAD800FEA79B /* Sources */,
+				678408AE2502CAD800FEA79B /* Frameworks */,
+				678408AF2502CAD800FEA79B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TweenKit-macOS";
+			productName = "TweenKit-macOS";
+			productReference = 678408B12502CAD800FEA79B /* TweenKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		67BA923021E373D2006D7022 /* TweenKit-tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67BA923821E373D2006D7022 /* Build configuration list for PBXNativeTarget "TweenKit-tvOS" */;
@@ -440,6 +510,11 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
+					678408B02502CAD800FEA79B = {
+						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = VAA3W4LPY2;
+						ProvisioningStyle = Automatic;
+					};
 					67BA923021E373D2006D7022 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
@@ -462,6 +537,7 @@
 			targets = (
 				6750B8F21E7C855A00E7AEE2 /* TweenKit */,
 				67BA923021E373D2006D7022 /* TweenKit-tvOS */,
+				678408B02502CAD800FEA79B /* TweenKit-macOS */,
 				6750B8FB1E7C855A00E7AEE2 /* TweenKitTests */,
 			);
 		};
@@ -476,6 +552,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6750B8FA1E7C855A00E7AEE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		678408AF2502CAD800FEA79B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -547,6 +630,35 @@
 				0984A5AC1E85229F00240A50 /* Action+Testable.swift in Sources */,
 				09FF20891E8036A40029CB2D /* FiniteTimeActioMock.swift in Sources */,
 				09BB04F41E801CE30011E68E /* InterpolateActionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		678408AD2502CAD800FEA79B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				678408CC2502CC9A00FEA79B /* CoreGraphics+Tweenable.swift in Sources */,
+				678408D62502CCB300FEA79B /* UIBezierPath+BezierPath.swift in Sources */,
+				678408CE2502CCA700FEA79B /* Action.swift in Sources */,
+				678408C62502CC7200FEA79B /* Lazy.swift in Sources */,
+				678408DB2502CCB800FEA79B /* ActionSequence.swift in Sources */,
+				678408D82502CCB300FEA79B /* BezierAction.swift in Sources */,
+				678408C92502CC9100FEA79B /* ActionScheduler.swift in Sources */,
+				678408D02502CCAA00FEA79B /* RepeatForeverAction.swift in Sources */,
+				678408D12502CCAA00FEA79B /* YoyoAction.swift in Sources */,
+				678408D72502CCB300FEA79B /* BezierPath.swift in Sources */,
+				678408C82502CC8D00FEA79B /* ActionScrubber.swift in Sources */,
+				678408D42502CCAA00FEA79B /* ReverseAction.swift in Sources */,
+				678408CA2502CC9400FEA79B /* Animation.swift in Sources */,
+				678408D52502CCAA00FEA79B /* DelayAction.swift in Sources */,
+				678408DA2502CCB800FEA79B /* ActionGroup.swift in Sources */,
+				678408C72502CC8A00FEA79B /* Math.swift in Sources */,
+				678408D32502CCAA00FEA79B /* RunBlockAction.swift in Sources */,
+				678408D22502CCAA00FEA79B /* RepeatAction.swift in Sources */,
+				678408CD2502CCA300FEA79B /* Easing.swift in Sources */,
+				678408CB2502CC9700FEA79B /* Tweenable.swift in Sources */,
+				678408D92502CCB300FEA79B /* ArcAction.swift in Sources */,
+				678408CF2502CCAA00FEA79B /* InterpolateAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +893,65 @@
 			};
 			name = Release;
 		};
+		678408B62502CAD800FEA79B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TweenKit-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "stevebarnegren.TweenKit-macOS";
+				PRODUCT_MODULE_NAME = TweenKit;
+				PRODUCT_NAME = TweenKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		678408B72502CAD800FEA79B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = VAA3W4LPY2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "TweenKit-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "stevebarnegren.TweenKit-macOS";
+				PRODUCT_MODULE_NAME = TweenKit;
+				PRODUCT_NAME = TweenKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		67BA923621E373D2006D7022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -866,6 +1037,15 @@
 			buildConfigurations = (
 				6750B90B1E7C855A00E7AEE2 /* Debug */,
 				6750B90C1E7C855A00E7AEE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		678408B82502CAD800FEA79B /* Build configuration list for PBXNativeTarget "TweenKit-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				678408B62502CAD800FEA79B /* Debug */,
+				678408B72502CAD800FEA79B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

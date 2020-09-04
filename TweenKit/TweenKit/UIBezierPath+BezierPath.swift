@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 
 public extension CGPath {
     
@@ -112,7 +112,9 @@ public extension CGPath {
     }
 }
 
-
+#if canImport(UIKit)
+import UIKit
+//
 public extension UIBezierPath {
     
     /**
@@ -123,3 +125,4 @@ public extension UIBezierPath {
         return self.cgPath.asBezierPath()
     }
 }
+#endif

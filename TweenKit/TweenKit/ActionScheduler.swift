@@ -77,7 +77,7 @@ import QuartzCore
     private var animationsToRemove = [Animation]()
 
     private var displayLink: DisplayLink?
-    private var lastTimeStamp: CFTimeInterval?
+    private var lastTimeStamp: Double?
     
     // MARK: - Deinit
     
@@ -95,8 +95,8 @@ import QuartzCore
         
         lastTimeStamp = nil
         
-        displayLink = DisplayLink(handler: {[unowned self] (displayLink) in
-             self.displayLinkCallback(displaylink: displayLink)
+        displayLink = DisplayLink(handler: {[unowned self] (timestamp) in
+            self.displayLinkCallback(timestamp: timestamp)
         })
     }
     
@@ -106,20 +106,20 @@ import QuartzCore
         displayLink = nil
     }
     
-    @objc private func displayLinkCallback(displaylink: CADisplayLink) {
+    @objc private func displayLinkCallback(timestamp: Double) {
         
         // We need a previous time stamp to check against. Save if we don't already have one
-        guard let last = lastTimeStamp else{
-            lastTimeStamp = displaylink.timestamp
+        guard let last = lastTimeStamp else {
+            lastTimeStamp = timestamp
             return
         }
         
         // Update Animations
-        let dt = displaylink.timestamp - last
+        let dt = timestamp - last
         step(dt: dt)
         
         // Save the current time
-        lastTimeStamp = displaylink.timestamp
+        lastTimeStamp = timestamp
     }
     
     func step(dt: Double) {
@@ -160,12 +160,40 @@ import QuartzCore
     }
 }
 
+#if os(macOS)
+@objc class DisplayLink : NSObject {
+    
+    private let handler: (Double) -> ()
+    private var timer: Timer?
+    
+    init(handler: @escaping (Double) -> ()) {
+        self.handler = handler
+        super.init()
+        
+        let timer = Timer(timeInterval: 0.001,
+                          target: self,
+                          selector: #selector(timerFired),
+                          userInfo: nil,
+                          repeats: true)
+        
+        RunLoop.current.add(timer, forMode: .common)
+    }
+    
+    @objc private func timerFired(timer: Timer) {
+        self.handler(CACurrentMediaTime())
+    }
+    
+    func invalidate() {
+        timer?.invalidate()
+    }
+}
+#else
 @objc class DisplayLink : NSObject {
     
     var caDisplayLink: CADisplayLink? = nil
-    let handler: (CADisplayLink) -> ()
+    private let handler: (Double) -> ()
     
-    init(handler: @escaping (CADisplayLink) -> ()) {
+    init(handler: @escaping (Double) -> ()) {
         
         self.handler = handler
         
@@ -180,10 +208,11 @@ import QuartzCore
     }
     
     @objc private func displayLinkCallback(displaylink: CADisplayLink) {
-        self.handler(displaylink)
+        self.handler(displaylink.timestamp)
     }
     
     func invalidate() {
         caDisplayLink?.invalidate()
     }
 }
+#endif
