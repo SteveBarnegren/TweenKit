@@ -6,7 +6,10 @@
 //  Copyright © 2017 Steve Barnegren. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import Foundation
+import UIKit
 @testable import TweenKit
 
 func makeBasicTestPath() -> BezierPath<CGPoint> {
@@ -18,3 +21,5 @@ func makeBasicTestPath() -> BezierPath<CGPoint> {
                           curves: [.lineToPoint(endPoint)])
     return path
 }
+
+#endif

@@ -45,7 +45,6 @@
 		673CB7761E7EAD3700592F24 /* RepeatForeverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */; };
 		673CB7781E7EC8F600592F24 /* RunBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7771E7EC8F600592F24 /* RunBlockAction.swift */; };
 		6750B8FD1E7C855A00E7AEE2 /* TweenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */; };
-		6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6750B8F61E7C855A00E7AEE2 /* TweenKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6750B9371E7C878F00E7AEE2 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9361E7C878F00E7AEE2 /* Action.swift */; };
 		6750B9391E7C8C5500E7AEE2 /* InterpolateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9381E7C8C5500E7AEE2 /* InterpolateAction.swift */; };
 		6750B9401E7C909D00E7AEE2 /* Tweenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B93F1E7C909D00E7AEE2 /* Tweenable.swift */; };
@@ -151,7 +150,6 @@
 		673CB7751E7EAD3700592F24 /* RepeatForeverAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatForeverAction.swift; sourceTree = "<group>"; };
 		673CB7771E7EC8F600592F24 /* RunBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunBlockAction.swift; sourceTree = "<group>"; };
 		6750B8F31E7C855A00E7AEE2 /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6750B8F61E7C855A00E7AEE2 /* TweenKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TweenKit.h; path = TweenKit/TweenKit.h; sourceTree = "<group>"; };
 		6750B8F71E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TweenKit/Info.plist; sourceTree = "<group>"; };
 		6750B8FC1E7C855A00E7AEE2 /* TweenKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweenKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6750B9031E7C855A00E7AEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				6750B8F51E7C855A00E7AEE2 /* TweenKit */,
-				6750B8F61E7C855A00E7AEE2 /* TweenKit.h */,
 				6750B8F71E7C855A00E7AEE2 /* Info.plist */,
 				6750B9001E7C855A00E7AEE2 /* TweenKitTests */,
 				67BA923221E373D2006D7022 /* TweenKit-tvOS */,
@@ -397,7 +394,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6750B9041E7C855A00E7AEE2 /* TweenKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

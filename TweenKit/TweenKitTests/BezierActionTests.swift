@@ -6,6 +6,8 @@
 //  Copyright © 2017 Steve Barnegren. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import XCTest
 @testable import TweenKit
 
@@ -104,8 +106,6 @@ class BezierActionTests: XCTestCase {
         
         XCTAssertEqual(numCalls, 1)
     }
-
-    
-    
-    
 }
+
+#endif
