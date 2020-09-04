@@ -12,7 +12,7 @@ import TweenKit
 class BasicTweenViewController: UIViewController {
     
     // Create a scheuler - used to run actions
-    private let scheduler = ActionScheduler()
+    private let scheduler = ActionScheduler(automaticallyAdvanceTime: true)
     
     // The view we will be animating
     private let squareView: UIView = {

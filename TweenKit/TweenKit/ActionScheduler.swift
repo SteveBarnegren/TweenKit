@@ -12,6 +12,11 @@ import QuartzCore
 @objc public class ActionScheduler : NSObject {
     
     // MARK: - Public
+        
+    public init(automaticallyAdvanceTime: Bool = true) {
+        self.automaticallyAdvanceTime = automaticallyAdvanceTime
+        super.init()
+    }
     
     /**
     Run an action
@@ -31,7 +36,10 @@ import QuartzCore
     public func add(animation: Animation) {
         animations.append(animation)
         animation.willStart()
-        startLoop()
+        
+        if automaticallyAdvanceTime {
+            startLoop()
+        }
     }
     
     /**
@@ -78,6 +86,7 @@ import QuartzCore
 
     private var displayLink: DisplayLink?
     private var lastTimeStamp: Double?
+    private let automaticallyAdvanceTime: Bool
     
     // MARK: - Deinit
     

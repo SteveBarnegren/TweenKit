@@ -16,7 +16,7 @@ class RepeatActionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        scheduler = ActionScheduler()
+        scheduler = ActionScheduler(automaticallyAdvanceTime: false)
     }
     
     func testRepeatActionIsExpectedLength() {

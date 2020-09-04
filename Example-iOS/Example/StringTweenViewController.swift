@@ -133,7 +133,7 @@ extension String: Tweenable {
 
 class StringTweenViewController: UIViewController {
     
-    private let scheduler = ActionScheduler()
+    private let scheduler = ActionScheduler(automaticallyAdvanceTime: true)
     
     private let label: UILabel = {
         let label = UILabel(frame: .zero)

@@ -15,7 +15,7 @@ class SequenceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        scheduler = ActionScheduler()
+        scheduler = ActionScheduler(automaticallyAdvanceTime: false)
     }
     
     func testDurationIsSumOfActionsDuration() {
@@ -237,7 +237,7 @@ class SequenceTests: XCTestCase {
         
         let sequence = ActionSequence(actions: startAction, triggerAction, endAction)
         
-        let scheduler = ActionScheduler()
+        let scheduler = ActionScheduler(automaticallyAdvanceTime: false)
         scheduler.run(action: sequence)
         scheduler.progressTime(duration: sequence.duration + 0.1, stepSize: 0.5)
         

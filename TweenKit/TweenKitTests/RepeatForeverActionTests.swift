@@ -16,7 +16,7 @@ class RepeatForeverActionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        scheduler = ActionScheduler()
+        scheduler = ActionScheduler(automaticallyAdvanceTime: false)
     }
     
     // MARK: - Test Repeat Forever
