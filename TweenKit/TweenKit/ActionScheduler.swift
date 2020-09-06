@@ -131,7 +131,8 @@ import QuartzCore
         lastTimeStamp = timestamp
     }
     
-    func step(dt: Double) {
+    /// Advance the scheduler's time by amount dt
+    public func step(dt: Double) {
         
         for animation in animations {
             
