@@ -2,6 +2,6 @@ language: swift
 osx_image: xcode12
 xcode_project: TweenKit.xcodeproj
 xcode_scheme: TweenKit
-xcode_sdk: iphonesimulator12.0
+xcode_sdk: iphonesimulator14.0
 
-script: xcodebuild test -project TweenKit/TweenKit.xcodeproj -scheme TweenKit -sdk iphonesimulator -destination "name=iPhone SE"
+script: xcodebuild test -project TweenKit/TweenKit.xcodeproj -scheme TweenKit -sdk iphonesimulator -destination "name=iPhone SE (2nd generation)"
