@@ -51,6 +51,13 @@
 			remoteGlobalIDString = 67BA923121E373D2006D7022;
 			remoteInfo = "TweenKit-tvOS";
 		};
+		673F10A32522752000A8597D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 678408B12502CAD800FEA79B;
+			remoteInfo = "TweenKit-macOS";
+		};
 		6750B9301E7C85AD00E7AEE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6750B92B1E7C85AD00E7AEE2 /* TweenKit.xcodeproj */;
@@ -259,6 +266,7 @@
 			children = (
 				6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */,
 				22F7A12B2297F93700BF126E /* TweenKit.framework */,
+				673F10A42522752000A8597D /* TweenKit.framework */,
 				6750B9331E7C85AD00E7AEE2 /* TweenKitTests.xctest */,
 			);
 			name = Products;
@@ -334,6 +342,13 @@
 			fileType = wrapper.framework;
 			path = TweenKit.framework;
 			remoteRef = 22F7A12A2297F93700BF126E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		673F10A42522752000A8597D /* TweenKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TweenKit.framework;
+			remoteRef = 673F10A32522752000A8597D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		6750B9311E7C85AD00E7AEE2 /* TweenKit.framework */ = {

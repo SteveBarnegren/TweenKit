@@ -54,4 +54,12 @@ extension Double {
     var fract: Double {
         return self - Double(Int(self))
     }
+    
+    var orZeroIfNanOrInfinite: Double {
+        if self.isNaN || self.isInfinite {
+            return 0
+        } else {
+            return self
+        }
+    }
 }
