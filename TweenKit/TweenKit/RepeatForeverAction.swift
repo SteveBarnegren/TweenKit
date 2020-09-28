@@ -50,14 +50,15 @@ public class RepeatForeverAction: InfiniteTimeAction {
     
     public func update(elapsedTime: CFTimeInterval) {
         
-        let repeatNumber = Int(elapsedTime / action.duration)
+        let repeatNumberDouble = (elapsedTime / action.duration).orZeroIfNanOrInfinite
+        let repeatNumber = Int(repeatNumberDouble)
         
-        (lastRepeatNumber..<repeatNumber).forEach{ _ in
+        (lastRepeatNumber..<repeatNumber).forEach { _ in
             self.action.didFinish()
             self.action.willBegin()
         }
 
-        let actionT = (elapsedTime / action.duration).fract
+        let actionT = repeatNumberDouble.fract
         action.update(t: actionT)
         
         lastRepeatNumber = repeatNumber

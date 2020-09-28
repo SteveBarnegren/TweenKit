@@ -65,7 +65,8 @@ public class Animation : Equatable {
         self.elapsedTime = elapsedTime
         
         if let action = action as? FiniteTimeAction {
-            action.update(t: elapsedTime / duration)
+            let t = (elapsedTime / duration).orZeroIfNanOrInfinite
+            action.update(t: t)
         }
         else if let action = action as? InfiniteTimeAction {
             action.update(elapsedTime: elapsedTime)
