@@ -36,6 +36,8 @@
 		09FF208B1E815B460029CB2D /* ReverseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208A1E815B460029CB2D /* ReverseAction.swift */; };
 		09FF208D1E8169E00029CB2D /* ReverseActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF208C1E8169E00029CB2D /* ReverseActionTests.swift */; };
 		670349A12094DBC1002A1E30 /* LazyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670349A02094DBC1002A1E30 /* LazyTests.swift */; };
+		671BC20E252283E500BDA219 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675B093125227C1000422BB0 /* DisplayLink.swift */; };
+		671BC213252283E500BDA219 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675B093125227C1000422BB0 /* DisplayLink.swift */; };
 		673CB7691E7DAEC000592F24 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
 		673CB76B1E7E889100592F24 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76A1E7E889100592F24 /* ActionGroup.swift */; };
 		673CB76D1E7E92BB00592F24 /* ActionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB76C1E7E92BB00592F24 /* ActionSequence.swift */; };
@@ -52,6 +54,7 @@
 		6750B9451E7C9B4C00E7AEE2 /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9441E7C9B4C00E7AEE2 /* Easing.swift */; };
 		6750B9471E7D99FD00E7AEE2 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */; };
 		6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6750B9481E7DA10100E7AEE2 /* Animation.swift */; };
+		675B093225227C1000422BB0 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675B093125227C1000422BB0 /* DisplayLink.swift */; };
 		678408B52502CAD800FEA79B /* TweenKit_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 678408B32502CAD800FEA79B /* TweenKit_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		678408C62502CC7200FEA79B /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B7CAE1E8D735900D56D03 /* Lazy.swift */; };
 		678408C72502CC8A00FEA79B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673CB7681E7DAEC000592F24 /* Math.swift */; };
@@ -160,6 +163,7 @@
 		6750B9441E7C9B4C00E7AEE2 /* Easing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
 		6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionScheduler.swift; sourceTree = "<group>"; };
 		6750B9481E7DA10100E7AEE2 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		675B093125227C1000422BB0 /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		678408B12502CAD800FEA79B /* TweenKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TweenKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		678408B32502CAD800FEA79B /* TweenKit_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweenKit_macOS.h; sourceTree = "<group>"; };
 		678408B42502CAD800FEA79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			children = (
 				6750B9461E7D99FD00E7AEE2 /* ActionScheduler.swift */,
 				6750B9481E7DA10100E7AEE2 /* Animation.swift */,
+				675B093125227C1000422BB0 /* DisplayLink.swift */,
 			);
 			name = Scheduler;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 				09FF208B1E815B460029CB2D /* ReverseAction.swift in Sources */,
 				673CB7781E7EC8F600592F24 /* RunBlockAction.swift in Sources */,
 				0914BDDE1E82C5F80002C6FB /* ArcAction.swift in Sources */,
+				675B093225227C1000422BB0 /* DisplayLink.swift in Sources */,
 				097B7C9E1E8C0CF500D56D03 /* ActionScrubber.swift in Sources */,
 				673CB7761E7EAD3700592F24 /* RepeatForeverAction.swift in Sources */,
 				6750B9491E7DA10100E7AEE2 /* Animation.swift in Sources */,
@@ -650,6 +656,7 @@
 				678408D52502CCAA00FEA79B /* DelayAction.swift in Sources */,
 				678408DA2502CCB800FEA79B /* ActionGroup.swift in Sources */,
 				678408C72502CC8A00FEA79B /* Math.swift in Sources */,
+				671BC213252283E500BDA219 /* DisplayLink.swift in Sources */,
 				67FC3C662502D7A700734D5A /* UIKit+Tweenable.swift in Sources */,
 				678408D32502CCAA00FEA79B /* RunBlockAction.swift in Sources */,
 				678408D22502CCAA00FEA79B /* RepeatAction.swift in Sources */,
@@ -680,6 +687,7 @@
 				67BA923B21E373EB006D7022 /* ActionScrubber.swift in Sources */,
 				67BA924121E373FA006D7022 /* Easing.swift in Sources */,
 				67BA923D21E373F0006D7022 /* Animation.swift in Sources */,
+				671BC20E252283E500BDA219 /* DisplayLink.swift in Sources */,
 				67BA923A21E373E9006D7022 /* Lazy.swift in Sources */,
 				67BA923E21E373F3006D7022 /* Tweenable.swift in Sources */,
 				67BA924E21E37417006D7022 /* ActionGroup.swift in Sources */,
